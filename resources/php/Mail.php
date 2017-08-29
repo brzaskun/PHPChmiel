@@ -7,7 +7,6 @@ class Mail {
         $poziomzaswiadczenie = Mail::pobierzPoziomZaswiadczenia($szkolenieuser);
         $instrukcja = R::getCell("SELECT instrukcja FROM szkoleniewykaz WHERE  nazwa = '$szkolenieuser'");
         $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
-        try {
             // Create the Mailer using your created Transport 
             $mailer = Mail::mailerFactory();
             $logger = Mail::loggerFactory($mailer);
@@ -77,10 +76,6 @@ class Mail {
                 $sql = "UPDATE  `uczestnicy` SET  `wyslanymailupr` = '1' WHERE  `uczestnicy`.`id` = $id_uzytkownik;";
                 $res = R::exec($sql);
             }
-        } catch (Exception $error) {
-            return $email;
-            //Mail::mailerror($error); 
-        }
     }
     
     public final static function pobierzPoziomZaswiadczenia($szkolenie, $plec) { 
@@ -113,6 +108,9 @@ class Mail {
     }
 
     public static function mailcertyfikat($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenieuser, $id) {
+        $bcc = "brzaskun@o2.pl";
+        $kontakt = "Grzegorz";
+        $wiadomosc = "zaczynam wysylac zaswiadczenie\r";
         require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
@@ -194,27 +192,26 @@ class Mail {
                 // Send the message
                 $numSent = $mailer->send($message, $failedRecipients);
                 if ($numSent == 0) {
-                    throw new Exception("Wystąpił błąd. Nie wysłano certyfikatu ukończenia do użytkownika $email");
+                    $niewyslano = $failedRecipients[0];
+                    Mail::mailniewyslano($niewyslano,$logger);
                 } else if ($numSent > 0) {
-                    $niewyslano = NULL;
-                    if ($numSent == 1) {
-                        $niewyslano = $failedRecipients[0];
-                        Mail::mailniewyslano($niewyslano,$logger);
-                    }
                     $sql = "UPDATE uczestnicy SET wyslanycert = 1 WHERE id = '$id'";
                     $res = R::exec($sql);
-    //                if ($res == 1) {
-    //                    throw new Exception("Nie udało się zaznaczyć tego w tabeli wysłania certyfikatu ukończenia");
-    //                }
+                    $wiadomosc = "wyslalem zaswiadczenie\r";
                 }
             } catch (Exception $e) {
+                $wiadomosc = "blad wysylki zaswiadczenia \r";
                 Mail::mailerror($e);
             }
         }
+        return $wiadomosc;
     }
     
     
     public static function mailupowaznienie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $id) {
+        $bcc = "brzaskun@o2.pl";
+        $kontakt = "Grzegorz";
+        $wiadomosc = "zaczynam wysylac upowaznienie\r";
         require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             try {
@@ -303,10 +300,13 @@ class Mail {
     //                    throw new Exception("Wysłano mail z upoważnieniem na adres $email, ale nie udało się zaznaczyć tego w tabeli");
     //                }
                 }
+                $wiadomosc = "wyslalem upowaznienie\r";
             } catch (Exception $e) {
                 Mail::mailerror($e);
+                $wiadomosc = "skonczylem wysylac upowaznienie\r";
             }
         }
+        return $wiadomosc;
     }
     
     private static function mailerFactory() {
