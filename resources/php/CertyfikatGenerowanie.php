@@ -7,14 +7,17 @@ class CertyfikatGenerowanie {
         if (session_status() != 2) {
             session_start();
         };
-        date_default_timezone_set('Europe/Warsaw');
         try {
             require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
             R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
-        } catch (Exception $e) {};
+        } catch (Exception $e) {
+            
+        };
         try {
             require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
-        } catch (Exception $em) {}
+        } catch (Exception $em) {
+            
+        }
         date_default_timezone_set('Europe/Warsaw');
         try {
             $id = $_SESSION['uczestnik']['id'];
@@ -29,12 +32,11 @@ class CertyfikatGenerowanie {
                 $datadozapisu =  date("d.m.Y");
                 $poziomzaswiadczenie = self::pobierzPoziomZaswiadczenia();
                 $html = self::pobierzTrescZaswiadczenia($imienaz, $datadozapisu, $poziomzaswiadczenie);
-                require_once("resources/MPDF57/mpdf.php");
+                require_once($_SERVER['DOCUMENT_ROOT'].'/resources/MPDF57/mpdf.php');
                 $mpdf = new mPDF();
                 $mpdf->SetImportUse();
                 $id_zaswiadczenie = (int)R::getCell("SELECT id_zaswiadczenie FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
                 $pdf = R::getCell("SELECT pdf FROM zaswiadczenia WHERE id = '$id_zaswiadczenie'");
-                $poziomzaswiadczenie = null;
                 if ($pdf) {
                     $pagecount = $mpdf->SetSourceFile('resources/css/pics/'.$pdf);
                 } else {
@@ -55,6 +57,8 @@ class CertyfikatGenerowanie {
                 R::exec("UPDATE  `uczestnicy` SET  `zaswiadczeniedata`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
             }
         } catch (Exception $error) {
+            $email = $_SESSION['uczestnik']['email'];
+            $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
             Mail::mailerror2($error, $email, $szkolenie);
         }
     }
@@ -71,7 +75,7 @@ class CertyfikatGenerowanie {
                 $bcc = $email;
             }
         } catch (Exception $s) {
-          
+          Mail::mailerror($error);
         }
         return $bcc;
     }
@@ -95,7 +99,9 @@ class CertyfikatGenerowanie {
                     $poziomzaswiadczenie = "poziom PREMIUM";
                     break;
             }
-        } catch (Exception $e){}
+        } catch (Exception $e){
+            Mail::mailerror($e);
+        }
         return $poziomzaswiadczenie;
     }
             

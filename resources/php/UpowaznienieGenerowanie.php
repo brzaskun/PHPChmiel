@@ -31,7 +31,9 @@ class UpowaznienieGenerowanie {
                 } else {
                     return "false";
                 }
-            } catch (Exception $em) {}
+            } catch (Exception $em) {
+                
+            }
         }
     }
     
@@ -43,7 +45,9 @@ class UpowaznienieGenerowanie {
         try {
             require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
             R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
-        } catch (exception $e) {};
+        } catch (Exception $e) {
+            
+        };
         $id = $_SESSION['uczestnik']['id'];
         date_default_timezone_set('Europe/Warsaw');
         $niewyslano = (int)R::getCell("SELECT  `wyslaneup` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
@@ -51,7 +55,9 @@ class UpowaznienieGenerowanie {
         if ($niewyslano == 0 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             try {
                 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php'); 
-            } catch (Exception $em) {}
+            } catch (Exception $em) {
+                
+            }
             try {
                 $grupy = self::pobierzgrupy($id);
                 if (strlen($grupy) > 0) {
@@ -176,10 +182,14 @@ class UpowaznienieGenerowanie {
     }
 
     public final static function pobierzgrupy($id) {
-        $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'";
-        $zapisanegrupy = R::getCol($sql);
-        $output = mb_strtolower(implode(", ",$zapisanegrupy),'UTF-8');
-        return $output;
+        try {
+            $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'";
+            $zapisanegrupy = R::getCol($sql);
+            $output = mb_strtolower(implode(", ",$zapisanegrupy),'UTF-8');
+            return $output;
+        } catch (Exception $error) {
+            Mail::mailerror($error);
+        }
     }
 }
 ?>
