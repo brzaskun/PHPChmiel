@@ -3,7 +3,7 @@
 class Mail {
 
     public static function mailautomat($imienazwisko, $plec, $email, $szkolenieuser, $id_uzytkownik) {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
+        require_once 'resources/swiftmailer/swift_required.php';
         $poziomzaswiadczenie = Mail::pobierzPoziomZaswiadczenia($szkolenieuser);
         $instrukcja = R::getCell("SELECT instrukcja FROM szkoleniewykaz WHERE  nazwa = '$szkolenieuser'");
         $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
@@ -108,26 +108,23 @@ class Mail {
     }
 
     public static function mailcertyfikat($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenieuser, $id) {
-        $bcc = "brzaskun@o2.pl";
-        $kontakt = "Grzegorz";
         $wiadomosc = "zaczynam wysylac zaswiadczenie\r";
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
+        require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
-            try {
-                // Create the Mailer using your created Transport
-                $mailer = Mail::mailerFactory();
-                $logger = Mail::loggerFactory($mailer);
-                // Create a message
-                $message = null;
-                if ($plec === "k") {
-                    $message = Swift_Message::newInstance('Zaświadczenie ukończenia e-szkolenia - '. $linia1)
-                            ->setContentType('text/plain')
-                            ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                            ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                            ->setTo(array($email => $imienazwisko))
-                            ->setBcc(array($bcc => $kontakt));
-                    $message->setBody('
+            // Create the Mailer using your created Transport
+            $mailer = Mail::mailerFactory();
+            $logger = Mail::loggerFactory($mailer);
+            // Create a message
+            $message = null;
+            if ($plec === "k") {
+                $message = Swift_Message::newInstance('Zaświadczenie ukończenia e-szkolenia - ' . $linia1)
+                        ->setContentType('text/plain')
+                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setTo(array($email => $imienazwisko))
+                        ->setBcc(array($bcc => $kontakt));
+                $message->setBody('
                     <!DOCTYPE html><html lang="pl">
                     <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                     <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
@@ -140,26 +137,26 @@ class Mail {
                     <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
                     <p>Zespół ODO Management Group</p><br/>
                     <img src="' . // Embed the file
-                                    $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                                    '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
+                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
+                        '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
                     <img src="' . // Embed the file
-                                    $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                                    '" width="152" height="32" margin-left="5">
+                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
+                        '" width="152" height="32" margin-left="5">
                     <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
                     </div>
                     <div style="height: 40px;">
                     </div>
                     </body></html> 
                 ', 'text/html');
-                } else {
+            } else {
 
-                    $message = Swift_Message::newInstance('Zaświadczenie ukończenia e-szkolenia - '. $linia1)
-                            ->setContentType('text/plain')
-                            ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                            ->setTo(array($email => $imienazwisko))
-                            ->setBcc(array($bcc => $kontakt))
-                            ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'));
-                    $message->setBody('
+                $message = Swift_Message::newInstance('Zaświadczenie ukończenia e-szkolenia - ' . $linia1)
+                        ->setContentType('text/plain')
+                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setTo(array($email => $imienazwisko))
+                        ->setBcc(array($bcc => $kontakt))
+                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'));
+                $message->setBody('
                     <!DOCTYPE html><html lang="pl">
                     <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                     <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
@@ -172,49 +169,43 @@ class Mail {
                     <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
                     <p>Zespół ODO Management Group</p><br/>
                     <img src="' . // Embed the file
-                                    $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                                    '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
+                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
+                        '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
                     <img src="' . // Embed the file
-                                    $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                                    '" width="152" height="32">
+                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
+                        '" width="152" height="32">
                     <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
                     </div>
                     <div style="height: 40px;">
                     </div>
                     </body></html>
                 ', 'text/html');
-                }
-                //zalacz plik
-                $message->attach(Swift_Attachment::fromPath($filename));
-                // Send the message
-                $failedRecipients = array();
-                $numSent = 0;
-                // Send the message
-                $numSent = $mailer->send($message, $failedRecipients);
-                if ($numSent == 0) {
-                    $niewyslano = $failedRecipients[0];
-                    Mail::mailniewyslano($niewyslano,$logger);
-                } else if ($numSent > 0) {
-                    $sql = "UPDATE uczestnicy SET wyslanycert = 1 WHERE id = '$id'";
-                    $res = R::exec($sql);
-                    $wiadomosc = "wyslalem zaswiadczenie\r";
-                }
-            } catch (Exception $e) {
-                $wiadomosc = "blad wysylki zaswiadczenia \r";
-                Mail::mailerror($e);
+            }
+            //zalacz plik
+            $message->attach(Swift_Attachment::fromPath($filename));
+            // Send the message
+            $failedRecipients = array();
+            $numSent = 0;
+            // Send the message
+            $numSent = $mailer->send($message, $failedRecipients);
+            if ($numSent == 0) {//ZMIENIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                $niewyslano = $failedRecipients[0];
+                Mail::mailniewyslano($niewyslano, $logger);
+            } else {
+                $sql = "UPDATE uczestnicy SET wyslanycert = 1 WHERE id = '$id'";
+                $res = R::exec($sql);
+                $wiadomosc = "wyslalem zaswiadczenie\r\n";
             }
         }
         return $wiadomosc;
     }
-    
-    
+
     public static function mailupowaznienie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $id) {
-        $bcc = "brzaskun@o2.pl";
-        $kontakt = "Grzegorz";
+//        $bcc = "brzaskun@o2.pl";
+//        $kontakt = "Grzegorz";
         $wiadomosc = "zaczynam wysylac upowaznienie\r";
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
+        require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            try {
                 // Create the Mailer using your created Transport
                 $mailer = Mail::mailerFactory();
                 $logger = Mail::loggerFactory($mailer);
@@ -301,10 +292,6 @@ class Mail {
     //                }
                 }
                 $wiadomosc = "wyslalem upowaznienie\r";
-            } catch (Exception $e) {
-                Mail::mailerror($e);
-                $wiadomosc = "skonczylem wysylac upowaznienie\r";
-            }
         }
         return $wiadomosc;
     }
@@ -328,8 +315,7 @@ class Mail {
     }
     
     public static function mailniewyslano($niewyslano,$logger) {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
-        try {
+        require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
             $logger = Mail::loggerFactory($mailer);
@@ -356,14 +342,10 @@ class Mail {
                         </body></html>
                         ', 'text/html');
             $mailer->send($message);
-        } catch (Exception $e) {
-            
-        }
     }
     
     public static function mailerror($error) {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
-        try {
+        require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
             $logger = Mail::loggerFactory($mailer);
@@ -392,14 +374,10 @@ class Mail {
                         </body></html>
                         ', 'text/html');
             $mailer->send($message);
-        } catch (Exception $e) {
-            
-        }
     }
     
     public static function mailerror2($error, $email, $szkolenie) {
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
-        try {
+        require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
             $logger = Mail::loggerFactory($mailer);
@@ -428,9 +406,6 @@ class Mail {
                         </body></html>
                         ', 'text/html');
             $mailer->send($message);
-        } catch (Exception $e) {
-            
-        }
     }
 
     

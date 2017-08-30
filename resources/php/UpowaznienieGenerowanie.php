@@ -165,11 +165,6 @@ class UpowaznienieGenerowanie {
     }
     
      public final static function pobierzBCC() {
-        try {
-            $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
-            require_once($sciezkaroot . '/resources/php/Rb.php');
-            R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
-        } catch (Exception $e) {};
         $bcc = $_SESSION['uczestnik']['BCC'];
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
         $firma = $_SESSION['uczestnik']['firma'];
@@ -182,14 +177,10 @@ class UpowaznienieGenerowanie {
     }
 
     public final static function pobierzgrupy($id) {
-        try {
-            $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'";
-            $zapisanegrupy = R::getCol($sql);
-            $output = mb_strtolower(implode(", ",$zapisanegrupy),'UTF-8');
-            return $output;
-        } catch (Exception $error) {
-            Mail::mailerror($error);
-        }
+        $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'";
+        $zapisanegrupy = R::getCol($sql);
+        $output = mb_strtolower(implode(", ",$zapisanegrupy),'UTF-8');
+        return $output;
     }
 }
 ?>

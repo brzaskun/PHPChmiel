@@ -11,8 +11,6 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v220817a" />
-        <link rel="stylesheet" href="/resources/dataTableNew/media/css/jquery.dataTables.css?v220817a"/>
-        <link rel="stylesheet" href="/resources/css/tablecss.css?v220817a"/>
         <link rel="stylesheet" href="/resources/css/main.css?v220817a"/>
         <link rel="stylesheet" href="/resources/css/details.css?v220817a"/>
         <link rel="stylesheet" href="/resources/contextmenu/jquery.contextMenu.css?v220817a"/>
@@ -20,8 +18,6 @@
         <script src="/resources/js/jquery-1.12.3.js?v220817a"></script>
         <script src="/resources/dataTable/jquery-ui-1.10.3.custom.js?v220817a"></script>
         <script src="/resources/js/jquery.form.js?v220817a"></script>
-        <script src="/resources/dataTableNew/media/js/jquery.dataTables.js?v220817a"></script>
-        <script src="/resources/contextmenu/jquery.contextMenu.js?v220817a"></script>
         <script src="/resources/contextmenu/jquery.ui.position.js?v220817a"></script>
         <script src="/resources/primeui-4.1.12/primeui.min.js?v220817a"></script>
         <script src="/resources/js/main.js?v220817a"></script>
@@ -65,11 +61,12 @@
 <!--                            <button id="zaswiadczenie" name="zaswiadczenie" class="buttonszkolenie" type="button" onclick="generujtesty()" style="float: right;" title="Pobranie zaświadczenia o ukończeniu szkolenia">
                                 <span class="spanszkolenie">zaświadczenie</span>
                             </button>-->
-                            <button id="zaswiadczenie" name="zaswiadczenie" class="buttonszkolenie" formaction="drukzaswiadczenie.php" formmethod="post"
+                            <button id="zaswiadczenie" name="zaswiadczenie" class="buttonszkolenie" formaction="drukzaswiadczenie.php?<?=bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM))?>" 
+                                    formmethod="post"
                                     type="submit"  style="float: right;" title="Pobranie zaświadczenia o ukończeniu szkolenia" onclick="generujtesty()">
                                 <span class="spanszkolenie">zaświadczenie</span>
                             </button>
-                            <button id="powtorztest" name="powtorztest" type="submit" class="buttonszkolenie" formaction="nowylogin.php" formmethod="post"
+                            <button id="powtorztest" name="powtorztest" type="submit" class="buttonszkolenie" formaction="nowylogin.php?<?=bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM))?>" formmethod="post"
                                     style="float: right;"><span class="spanszkolenie" title="Możliwość powtórzenia szkolenia i testu">powtórz</span></button>
                         </div>
                     </div>
@@ -110,7 +107,7 @@
                     }());
                 </script>
         <?php error_reporting(0);
-        require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/KoniecTestu.php');
+        require_once('resources/php/KoniecTestu.php');
         if (Sprawdzwyniki::$zdane ==1) {
             KoniecTestu::odnotuj();
             KoniecTestu::archiwizuj();

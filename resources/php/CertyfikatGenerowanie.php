@@ -65,42 +65,34 @@ class CertyfikatGenerowanie {
     
     public final static function pobierzBCC() {
         $bcc = $_SESSION['uczestnik']['BCC'];
-        try {
-            //email inny dla szkolenia ustawiany w firma-szkolenie 
-            $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
-            $firma = $_SESSION['uczestnik']['firma'];
-            $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
-            $email = R::getCell($sql);
-            if (isset($email)) {
-                $bcc = $email;
-            }
-        } catch (Exception $s) {
-          Mail::mailerror($error);
+        //email inny dla szkolenia ustawiany w firma-szkolenie 
+        $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
+        $firma = $_SESSION['uczestnik']['firma'];
+        $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
+        $email = R::getCell($sql);
+        if (isset($email)) {
+            $bcc = $email;
         }
         return $bcc;
     }
 
     public final static function pobierzPoziomZaswiadczenia() { 
         $poziomzaswiadczenie = "";
-        try {
-            $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
-            $czy_jest_zaswiadczenie = (int)R::getCell("SELECT id_zaswiadczenie FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
-            if ($czy_jest_zaswiadczenie) {
-                $poziomzaswiadczenie = R::getCell("SELECT poziom FROM zaswiadczenia WHERE id = '$czy_jest_zaswiadczenie'");
-            }
-            switch ($szkolenie) {
-                case 'szkolenie1' : 
-                    $poziomzaswiadczenie = "poziom BASIC";
-                    break;
-                case 'szkolenie2' :
-                    $poziomzaswiadczenie = "poziom OPTIMUM";
-                    break;
-                case 'szkolenie3' :
-                    $poziomzaswiadczenie = "poziom PREMIUM";
-                    break;
-            }
-        } catch (Exception $e){
-            Mail::mailerror($e);
+        $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
+        $czy_jest_zaswiadczenie = (int)R::getCell("SELECT id_zaswiadczenie FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
+        if ($czy_jest_zaswiadczenie) {
+            $poziomzaswiadczenie = R::getCell("SELECT poziom FROM zaswiadczenia WHERE id = '$czy_jest_zaswiadczenie'");
+        }
+        switch ($szkolenie) {
+            case 'szkolenie1' : 
+                $poziomzaswiadczenie = "poziom BASIC";
+                break;
+            case 'szkolenie2' :
+                $poziomzaswiadczenie = "poziom OPTIMUM";
+                break;
+            case 'szkolenie3' :
+                $poziomzaswiadczenie = "poziom PREMIUM";
+                break;
         }
         return $poziomzaswiadczenie;
     }

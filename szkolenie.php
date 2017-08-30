@@ -1,13 +1,15 @@
 <?php error_reporting(0);
-if(session_status()!=2){     session_start(); };
-
+if(session_status()!=2){     
+    session_start(); 
+};
+$zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
 if (isset($_POST['zakonczszkolenie'])) {
     $_SESSION['testrozpoczety'] = "tak";
-    $url = 'test.php';
+    $url = "test.php?$zm";
     header("Location: $url");
     exit();
 }
-require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/NextslideSzkolenie.php');
+require_once("resources/php/NextslideSzkolenie.php");
 if (isset($_POST['nextszkolenie'])) {
     NextslideSzkolenie::next();
 } else if (isset($_POST['backszkolenie'])) {

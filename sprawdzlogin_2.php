@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(2);
 if (session_status() != 2) {
     session_start();
@@ -31,7 +30,7 @@ $ilosclogowan = $_SESSION['uczestnik']['ilosclogowan'];
 date_default_timezone_set('Europe/Warsaw');
 $czasbiezacy = date("Y-m-d H:i:s");
 $id = $_SESSION['uczestnik']['id'];
-
+$zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
 $ip = PobierzIp::getClientIP(true);
 R::exec("UPDATE  `uczestnicy` SET  `iplogowania`='$ip' WHERE  `uczestnicy`.`id` = '$id';");
 if (!isset($_SESSION['uczestnik']['sessionstart'])) {
@@ -41,14 +40,14 @@ if (!isset($_SESSION['uczestnik']['sessionstart'])) {
 }
 //managera tez przerzucamy od razu do jego zakladki :)
 if ($_SESSION['uczestnik']['uprawnienia'] == "manager") {
-    $url = 'manager.php';
+    $url = "manager.php?$zm";
     header("Location: $url");
     exit();
 }
 
 //jezeli uczestnik jest z firmy nieaktywnej to przekieruj na specjalny slide
 if ($firmaaktywna==0) {
-    $url = 'exit_.php';
+    $url = "exit_.php?$zm";
     header("Location: $url");
     $_SESSION['wyjdz'] = 'tak';
     exit();
@@ -57,7 +56,8 @@ if ($firmaaktywna==0) {
 //jezeli uczestnik zdal test to nie ma sensu robic innych rzeczy tylko przekierowac go na strone wynik testu. moze chce sobie przypomniec chwile chwaly
 //lub pobrac certyfikat
 if (isset($_SESSION['uczestnik']['sessionend'])) {
-    $url = 'exit_zdanytest.php';
+    $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
+    $url = "exit_zdanytest.php?$zm";
     header("Location: $url");
     $_SESSION['wyjdz'] = 'tak';
     exit();
@@ -68,7 +68,7 @@ if (isset($_SESSION['uczestnik']['sessionstart'])) {
     $datetime2 = new DateTime($czasbiezacy);
     $intervald = $datetime1->diff($datetime2)->d;
     if ($intervald > 0) {
-        $url = 'exit_mineladoba.php';
+        $url = "exit_mineladoba.php?$zm";
         header("Location: $url");
         exit();
     }
@@ -80,7 +80,7 @@ if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         $ilosclogowan++;
         R::exec("UPDATE  `uczestnicy` SET `ilosclogowan`='$ilosclogowan', `dataostatniegologowania`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
         $_SESSION['test'] = null;
-        $url = 'exit_zaduzoszkolen.php';
+        $url = "exit_zaduzoszkolen.php?$zm";
         header("Location: $url");
         exit();
     } else {
@@ -88,7 +88,7 @@ if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         R::exec("UPDATE  `uczestnicy` SET `ilosclogowan`='$ilosclogowan', `dataostatniegologowania`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
         $_SESSION['test'] = null;
         $_SESSION['szkolenietrwa'] = "tak";
-        $url = 'szkolenie.php';
+        $url = "szkolenie.php?$zm";
         header("Location: $url");
         exit();
     }
