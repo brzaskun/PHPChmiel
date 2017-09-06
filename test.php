@@ -23,8 +23,8 @@
         <title>Testy Dane Wrażliwe</title>
     </head>
     <body>
-
-        <?php
+       <?php
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
         if (session_status() != 2) {
             session_start();
         };

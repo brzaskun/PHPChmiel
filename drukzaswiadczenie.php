@@ -16,6 +16,7 @@
     </head>
     <body>
         <?php
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
         error_reporting(E_ALL & ~E_DEPRECATED);
         if (session_status() != 2) {
             session_start();

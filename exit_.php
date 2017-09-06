@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
-<?php error_reporting(0); 
+<?php 
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+error_reporting(0);
 if(session_status()!=2){     session_start(); };
 $_SESSION['szkolenietrwa'] = "nie";
 $_SESSION['testrozpoczety']= "nie";

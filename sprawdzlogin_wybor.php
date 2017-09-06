@@ -1,13 +1,14 @@
 <?php
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+if (session_status() != 2) {
+    session_start();
+}
 error_reporting(2);
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot . '/resources/php/Rb.php');
 require_once($sciezkaroot . '/resources/php/Zerowanieciastek.php');
 //inicjujemy clase do lazczenia sie z baza danych
 R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
-if (session_status() != 2) {
-    session_start();
-}
 $mail = $_SESSION['mail'];
 $parametr = "email = '$mail'";
 $uczestnicy = R::findAll('uczestnicy', $parametr);
