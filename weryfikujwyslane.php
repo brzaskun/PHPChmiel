@@ -26,6 +26,8 @@
         echo $_SESSION['uczestnik']['imienazwisko'];
         echo " ";
         echo $_SESSION['uczestnik']['sessionend'];
+        echo " ";
+        echo $_SESSION['uczestnik']['email'];
         echo "<br />\n";
     }
     if ($ilemaili > 0) {
