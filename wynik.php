@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="pl">
-    <?php
-    error_reporting(0);
+<?php
     if (session_status() != 2) {
         session_start();
     };
     $_SESSION['szkolenietrwa'] = "nie";
     $_SESSION['testrozpoczety'] = "nie";
+    error_reporting(0);
     ?>
+<!DOCTYPE html>
+<html lang="pl">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v220817a" />
