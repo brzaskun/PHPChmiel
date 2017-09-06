@@ -346,6 +346,10 @@ class Mail {
     
     public static function mailwyslanoawaryjnie($maile) {
         require_once 'resources/swiftmailer/swift_required.php';
+        $mailelista = "";
+        foreach ($maile as $value) {
+            $mailelista = $mailelista." ".$value."<br />\n";
+        }
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
             $logger = Mail::loggerFactory($mailer);
@@ -361,6 +365,7 @@ class Mail {
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
                         <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
                                 . '<p> ilosc maili '.sizeof($maile).'</p>'
+                                . '<p> maile '.$mailelista.'</p>'
                         . '</div>
                         <div>
                         <span>treść loggera</span>
