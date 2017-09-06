@@ -367,10 +367,6 @@ class Mail {
                                 . '<p> ilosc maili '.sizeof($maile).'</p>'
                                 . '<p> maile '.$mailelista.'</p>'
                         . '</div>
-                        <div>
-                        <span>treść loggera</span>
-                        <p>'.$logger->dump().'</p>
-                        </div>
                         </body></html>
                         ', 'text/html');
             $mailer->send($message);
