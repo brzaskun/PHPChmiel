@@ -13,16 +13,28 @@
     echo "<br />\n";
     require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/CertyfikatGenerowanie.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/UpowaznienieGenerowanie.php');
+    $ilemaili = 0;
+    $maile = array();
     foreach ($jestwbazie as $value) {
         $parameter = "id=".$value['id'];
         $znaleziony_ucz = R::findOne('uczestnicy', $parameter);
         $_SESSION['uczestnik'] = $znaleziony_ucz->getProperties();
         CertyfikatGenerowanie::generuj();
         UpowaznienieGenerowanie::generuj();
+        $ilemaili = $ilemaili+1;
+        array_push($maile, $_SESSION['uczestnik']['email']);
         echo $_SESSION['uczestnik']['imienazwisko'];
         echo " ";
         echo $_SESSION['uczestnik']['sessionend'];
         echo "<br />\n";
+    }
+    if ($ilemaili > 0) {
+        try {
+            require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
+        } catch (Exception $em) {
+ 
+        }
+        Mail::mailwyslanoawaryjnie($maile);
     }
 ?>
 

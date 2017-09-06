@@ -344,6 +344,33 @@ class Mail {
             $mailer->send($message);
     }
     
+    public static function mailwyslanoawaryjnie($maile) {
+        require_once 'resources/swiftmailer/swift_required.php';
+            // Create the Mailer using your created Transport
+            $mailer = Mail::mailerFactory();
+            $logger = Mail::loggerFactory($mailer);
+            // Create a message 
+            $message = Swift_Message::newInstance('Wysłano awaryjnie') 
+                        ->setContentType('text/plain')
+                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
+                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
+                        ->setBody('<!DOCTYPE html><html lang="pl">
+                        <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+                        <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
+                        <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
+                                . '<p> ilosc maili '.sizeof($maile).'</p>'
+                        . '</div>
+                        <div>
+                        <span>treść loggera</span>
+                        <p>'.$logger->dump().'</p>
+                        </div>
+                        </body></html>
+                        ', 'text/html');
+            $mailer->send($message);
+    }
+    
     public static function mailerror($error) {
         require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
