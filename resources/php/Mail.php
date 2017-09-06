@@ -106,8 +106,8 @@ class Mail {
         }
         return $linia1;
     }
-
-    public static function mailcertyfikat($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenieuser, $id) {
+           
+    public static function mailzaswiadczenie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenieuser, $id) {
         $wiadomosc = "zaczynam wysylac zaswiadczenie\r";
         require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {

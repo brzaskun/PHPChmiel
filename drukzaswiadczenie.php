@@ -43,9 +43,13 @@
             $uczestnik = $_SESSION['uczestnik'];
             $plec = $_SESSION['uczestnik']['plec'];
             $imienaz = $_SESSION['uczestnik']['imienazwisko'];
-            $kontakt = $_SESSION['uczestnik']['kontakt'];
+            $kontakt = "ODO Management Group";
+            if (isset($_SESSION['uczestnik']['kontakt'])) {
+                $kontakt = $_SESSION['uczestnik']['kontakt'];
+            }
             $bcc = CertyfikatGenerowanie::pobierzBCC();
-            $datadozapisu = date("d.m.Y");
+            $datadozapisu = R::getCell("SELECT `sessionend` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
+            $datadozapisu = date('d.m.Y', strtotime($datadozapisu));
             $poziomzaswiadczenie = CertyfikatGenerowanie::pobierzPoziomZaswiadczenia();
             $html = CertyfikatGenerowanie::pobierzTrescZaswiadczenia($imienaz, $datadozapisu, $poziomzaswiadczenie);
             require_once('resources/MPDF57/mpdf.php');
@@ -66,7 +70,7 @@
             $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
             $nazwapliku = 'resources/zaswiadczenia/zaswiadczenie' . $id . '_' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
             $mpdf->Output($nazwapliku, 'F');
-            echo Mail::mailcertyfikat($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
+            echo Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
             echo "wyslalem zaswiadczenie\r" . +"\r\n";
             //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
             $czasbiezacy = date("Y-m-d H:i:s");
@@ -88,7 +92,10 @@
                 $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
                 $plec = $_SESSION['uczestnik']['plec'];
                 $imienaz = $_SESSION['uczestnik']['imienazwisko'];
-                $kontakt = $_SESSION['uczestnik']['kontakt'];
+                $kontakt = "ODO Management Group";
+                if (isset($_SESSION['uczestnik']['kontakt'])) {
+                    $kontakt = $_SESSION['uczestnik']['kontakt'];
+                }
                 $bcc = UpowaznienieGenerowanie::pobierzBCC();
                 $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
                 $datanadania = R::getCell("SELECT  `datanadania` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");

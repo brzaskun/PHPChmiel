@@ -27,9 +27,13 @@ class CertyfikatGenerowanie {
                 $uczestnik = $_SESSION['uczestnik'];
                 $plec = $_SESSION['uczestnik']['plec'];
                 $imienaz = $_SESSION['uczestnik']['imienazwisko'];
-                $kontakt = $_SESSION['uczestnik']['kontakt'];
+                $kontakt = "ODO Management Group";
+                if (isset($_SESSION['uczestnik']['kontakt'])) {
+                    $kontakt = $_SESSION['uczestnik']['kontakt'];
+                }
                 $bcc = self::pobierzBCC();
-                $datadozapisu =  date("d.m.Y");
+                $datadozapisu = R::getCell("SELECT `sessionend` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
+                $datadozapisu = date('d.m.Y', strtotime($datadozapisu));
                 $poziomzaswiadczenie = self::pobierzPoziomZaswiadczenia();
                 $html = self::pobierzTrescZaswiadczenia($imienaz, $datadozapisu, $poziomzaswiadczenie);
                 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/MPDF57/mpdf.php');
@@ -50,7 +54,7 @@ class CertyfikatGenerowanie {
                 $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
                 $nazwapliku = 'resources/zaswiadczenia/zaswiadczenie'.$id.'-'.$imienazplik.'.'.$id_szkolenia.'.'.'pdf'; 
                 $mpdf->Output($nazwapliku, 'F');
-                Mail::mailcertyfikat($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
+                Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
                 //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
                 $czasbiezacy = date("Y-m-d H:i:s");
                 $id = $_SESSION['uczestnik']['id'];
@@ -64,7 +68,10 @@ class CertyfikatGenerowanie {
     }
     
     public final static function pobierzBCC() {
-        $bcc = $_SESSION['uczestnik']['BCC'];
+        $bcc = "e-szkolenia@odomg.pl";
+        if (isset($_SESSION['uczestnik']['BCC'])) {
+            $bcc = $_SESSION['uczestnik']['BCC'];
+        }
         //email inny dla szkolenia ustawiany w firma-szkolenie 
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
         $firma = $_SESSION['uczestnik']['firma'];

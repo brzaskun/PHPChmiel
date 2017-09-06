@@ -65,7 +65,10 @@ class UpowaznienieGenerowanie {
                     $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
                     $plec = $_SESSION['uczestnik']['plec'];
                     $imienaz = $_SESSION['uczestnik']['imienazwisko'];
-                    $kontakt = $_SESSION['uczestnik']['kontakt'];
+                    $kontakt = "ODO Management Group";
+                    if (isset($_SESSION['uczestnik']['kontakt'])) {
+                        $kontakt = $_SESSION['uczestnik']['kontakt'];
+                    }
                     $bcc = UpowaznienieGenerowanie::pobierzBCC();
                     $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
                     $datanadania = R::getCell("SELECT  `datanadania` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
@@ -165,7 +168,10 @@ class UpowaznienieGenerowanie {
     }
     
      public final static function pobierzBCC() {
-        $bcc = $_SESSION['uczestnik']['BCC'];
+        $bcc = "e-szkolenia@odomg.pl";
+        if (isset($_SESSION['uczestnik']['BCC'])) {
+            $bcc = $_SESSION['uczestnik']['BCC'];
+        }
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
         $firma = $_SESSION['uczestnik']['firma'];
         $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";

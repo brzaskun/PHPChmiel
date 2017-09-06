@@ -57,5 +57,6 @@ error_reporting(2);
     $data = date("Y-m-d H:i:s");
     echo $data;
     $datadozapisu =  date("d.m.Y");
+    echo date('d.m.Y', strtotime($data));
     
 ?>
