@@ -1,9 +1,12 @@
-<?php error_reporting(0);
+<?php 
+if (session_status() != 2) {
+    session_start();
+};
+error_reporting(0);
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
 R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo','Testdane7005*');
 $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
 ?>
- 
 <div id="panelladowaniapliku" style="box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: #e9e9e9;">
     <div id="plikwzorcowy" style="height: 40px;">
         <a href="/resources/wzorcowy.xls">pobierz plik wzorcowy, żeby zobaczyć jak powinien wyglądać wykaz pracowników do załadowania</a>
@@ -31,11 +34,7 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
     </form>
     <div id="divzbledami">
     <?php
-    error_reporting(0);
     require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/PHPExcel-1.8.1/Classes/PHPExcel/IOFactory.php';
-    if (session_status() != 2) {
-        session_start();
-    };
     if (isset($_FILES["file"])) {
         if ($_FILES["file"]["error"] > 0) {
             echo "Wystąpił błąd podczas pobierania pliku: " . $_FILES["file"]["error"] . "<br>";

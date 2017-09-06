@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="pl">
 <?php
 session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() != 2) {
     session_start();
 }
 ?>
+<!DOCTYPE html>
+<html lang="pl">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v220817a" />

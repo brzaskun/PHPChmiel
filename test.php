@@ -1,3 +1,9 @@
+<?php
+    session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+    if (session_status() != 2) {
+        session_start();
+    };
+?>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -24,10 +30,6 @@
     </head>
     <body>
        <?php
-        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
-        if (session_status() != 2) {
-            session_start();
-        };
         error_reporting(0);
         $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
         require_once('resources/php/Nextslide.php');
@@ -43,10 +45,6 @@
         <div class="box">
             <div class="slajd">
                 <?php
-                error_reporting(0);
-                if (session_status() != 2) {
-                    session_start();
-                };
                 $_SESSION['szkolenietrwa'] = "nie";
                 if (!isset($_SESSION['testrozpoczety'])) {
                     die("<div id='gornawklejka'><span>prosimy nie używać przycisku powrotu w przeglądarce!</span>

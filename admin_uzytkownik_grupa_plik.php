@@ -1,4 +1,7 @@
 <?php
+if (session_status() != 2) {
+        session_start();
+};
 error_reporting(0);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
 R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
@@ -52,9 +55,7 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
     <?php
     error_reporting(0);
     require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/PHPExcel-1.8.1/Classes/PHPExcel/IOFactory.php';
-    if (session_status() != 2) {
-        session_start();
-    };
+    
     if (isset($_FILES["file"])) {
         if ($_FILES["file"]["error"] > 0) {
             echo "Error: " . $_FILES["file"]["error"] . "<br>";

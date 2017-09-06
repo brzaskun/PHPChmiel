@@ -1,10 +1,11 @@
-
-<!DOCTYPE html>
-<html lang="pl">
-    <?php error_reporting(0);
+<?php error_reporting(0);
     if (session_status() != 2) {
         session_start();
     };
+?>
+<!DOCTYPE html>
+<html lang="pl">
+    <?php 
     if ($_SESSION['uczestnik']['uprawnienia'] != "manager") {
         die("Nie jesteś upoważniony do przeglądania zasobu");
     }

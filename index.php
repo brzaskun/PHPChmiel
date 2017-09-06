@@ -1,4 +1,10 @@
 <?php
+//force the page to use ssl 
+if ($_SERVER["SERVER_PORT"] != 443) {
+    $redir = "Location: https://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+    header($redir);
+    exit();
+}
 session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() == 2) {
     session_start(); 
@@ -7,12 +13,6 @@ if (session_status() == 2) {
     session_destroy();
 }
 error_reporting(2);
-//force the page to use ssl 
-if ($_SERVER["SERVER_PORT"] != 443) {
-    $redir = "Location: https://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-    header($redir);
-    exit();
-}
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot . '/resources/php/Rb.php');
 require_once($sciezkaroot . '/resources/php/Zerowanieciastek.php');

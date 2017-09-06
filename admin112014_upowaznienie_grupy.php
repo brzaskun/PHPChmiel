@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="pl">
-    <?php
-    error_reporting(0);
+<?php
     if (session_status() != 2) {
         session_start();
     };
+    error_reporting(0);
     if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         die("Nie jesteś upoważniony do przeglądania zasobu");
     } 
     ?>
+<!DOCTYPE html>
+<html lang="pl">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v220817a" />

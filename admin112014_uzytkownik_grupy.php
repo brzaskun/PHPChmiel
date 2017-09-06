@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="pl">
-    <meta charset="utf-8">
-    <?php
+ <?php
     error_reporting(0);
     if (session_status() != 2) {
         session_start();
@@ -10,8 +7,10 @@
         die("Nie jesteś upoważniony do przeglądania zasobu");
     }
     ?>
+<!DOCTYPE html>
+<html lang="pl">
+    <meta charset="utf-8">
     <head>
-        
         <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v220817a" />
         <link rel="stylesheet" href="/resources/dataTableNew/media/css/jquery.dataTables.css?v220817a"/>
          <link href="resources/dataTableNew/extensions/KeyTable/css/keyTable.dataTables.css?v220817a" rel="stylesheet" type="text/css"/>

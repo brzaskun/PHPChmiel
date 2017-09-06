@@ -1,9 +1,9 @@
 <?php
-error_reporting(0);
 session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() != 2) {
     session_start();
 };
+error_reporting(0);
 $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
 require_once('resources/php/Rb.php');
 R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
