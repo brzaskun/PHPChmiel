@@ -1,4 +1,11 @@
 <?php
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+if (session_status() == 2) {
+    session_start(); 
+    ini_set('session.gc_probability', 1);
+    $_SESSION = array();
+    session_destroy();
+}
 error_reporting(2);
 //force the page to use ssl 
 if ($_SERVER["SERVER_PORT"] != 443) {
@@ -13,15 +20,6 @@ date_default_timezone_set('Europe/Warsaw');
 //inicjujemy clase do lazczenia sie z baza danych
 R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
 //Zerowanieciastek::usunciastka(); 
-if (session_status() == 2) {
-    session_start(); 
-    $_SESSION = array();
-    session_destroy();
-}
-if (session_status() != 2) {
-    session_start();
-    $_SESSION = array();
-}
 if (isset($_GET['mail'])) {
     $mail = filter_input(INPUT_GET, 'mail', FILTER_VALIDATE_EMAIL);
     session_start();

@@ -1,3 +1,10 @@
+<?php
+    session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+    if (session_status() != 2) {
+        session_start();
+    };
+    error_reporting(E_ALL & ~E_DEPRECATED);
+?>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -16,11 +23,6 @@
     </head>
     <body>
         <?php
-        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
-        error_reporting(E_ALL & ~E_DEPRECATED);
-        if (session_status() != 2) {
-            session_start();
-        };
         require_once('resources/php/CertyfikatGenerowanie.php');
         require_once('resources/php/UpowaznienieGenerowanie.php');
 //CertyfikatGenerowanie::generuj();
