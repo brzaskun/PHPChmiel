@@ -18,9 +18,9 @@ var generujtabliceuzytkownikow = function () {
         type: "POST",
         url: "pobierzuczestnicywszyscy_112014_bigtable.php",
         data: teststring,
-        cache: false,
+        cache: true,
         error: function (xhr, status, error) {
-            let wiadomosc = 'Nie udało się pobrać danych użytkowników. '+error;
+            let wiadomosc = 'Nie udało się pobrać danych użytkowników. Błąd servera. '+error;
             $('#notify').puigrowl('show', [{severity: 'error', summary: wiadomosc}]);
         },
         success: function (response) {

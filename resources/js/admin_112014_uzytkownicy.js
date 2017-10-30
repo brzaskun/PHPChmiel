@@ -185,7 +185,7 @@ var generujtabliceuzytkownikow = function () {
         data: teststring,
         cache: false,
         error: function (xhr, status, error) {
-            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się pobrać danych użytkowników.'}]);
+            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się pobraćd danych użytkowników. '+status}]);
         },
         success: function (response) {
             if (response !== "brak") {
