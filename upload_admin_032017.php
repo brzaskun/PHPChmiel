@@ -1,7 +1,9 @@
 <?php error_reporting(0);
 if (session_status()!=2) {
     session_start();
-    }; 
+}; 
+set_time_limit(0);
+ini_set('memory_limit','256M');
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/SprawdzWprowadzanyWiersz.php'); 
 $tablicapobranychpracownikow = $_SESSION['tablicapobranychpracownikow'];
