@@ -6,9 +6,9 @@
   R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo','Testdane7005*');
   $firma = $_POST['firmanazwa'];
   if ($firma != "" && $firma != 'null' && $firma != "wybierz bieżącą firmę" && $firma != "wszystkiefirmy") {
-      $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'";
+      $sql = "/*" . MYSQLND_QC_ENABLE_SWITCH . "*/" . "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'";
   } else if ($firma == "wszystkiefirmy"){
-      $sql = "SELECT * FROM zakladpracy INNER JOIN uczestnicy ON `uczestnicy`.`firma` = `zakladpracy`.`nazwazakladu` WHERE `zakladpracy`.`firmaaktywna` = 1 ORDER BY `uczestnicy`.`id` DESC";
+      $sql = "/*" . MYSQLND_QC_ENABLE_SWITCH . "*/" . "SELECT * FROM zakladpracy INNER JOIN uczestnicy ON `uczestnicy`.`firma` = `zakladpracy`.`nazwazakladu` WHERE `zakladpracy`.`firmaaktywna` = 1 ORDER BY `uczestnicy`.`id` DESC";
   } else {
       echo "brak";
   } 

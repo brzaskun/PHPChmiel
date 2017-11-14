@@ -47,7 +47,8 @@
         ?>
         <div style="box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
            <?php
-
+            set_time_limit(0);
+            ini_set('memory_limit','256M');
             $directory = 'resources/upowaznienia/';
 
             $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
