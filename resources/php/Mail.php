@@ -69,8 +69,8 @@ class Mail {
             $numSent = 0;
             // Send the message
             $numSent = $mailer->send($message, $failedRecipients);
-            if ($numSent == 0) {
-                Mail::mailniewyslano($failedRecipients[0],$logger);
+            if (stripos($logger->dump(), "250 OK id") == 0) {
+                Mail::mailniewyslano($email,$logger);
                 return $email;
             } else if ($numSent == 1) {
                 $sql = "UPDATE  `uczestnicy` SET  `wyslanymailupr` = '1' WHERE  `uczestnicy`.`id` = $id_uzytkownik;";

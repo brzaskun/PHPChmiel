@@ -101,7 +101,7 @@ class Sprawdzwyniki {
         $wynik = self::$wynik;
         $iloscpoprawnych = self::$iloscpoprawnych;
         $iloscblednych = self::$iloscblednych;
-        $iloscodpowiedzi = self::$iloscpoprawnych+self::$iloscblednych;
+        $iloscodpowiedzi = self::$iloscodpowiedzi;
         //rejestrowanie zdania wyniku
         R::exec("UPDATE  `uczestnicy` SET  `sessionend`='$czasbiezacy', `wyniktestu`='$wynik', `iloscpoprawnych`='$iloscpoprawnych', `iloscblednych` = '$iloscblednych', `iloscodpowiedzi` = '$iloscodpowiedzi'  WHERE  `uczestnicy`.`id` = '$id';");
     }
