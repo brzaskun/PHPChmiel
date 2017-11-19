@@ -69,7 +69,7 @@ class CertyfikatGenerowanie {
     
     public final static function pobierzBCC() {
         $bcc = "e-szkolenia@odomg.pl";
-        if (isset($_SESSION['uczestnik']['BCC'])) {
+        if (isset($_SESSION['uczestnik']['BCC']) && !empty($_SESSION['uczestnik']['BCC'])) {
             $bcc = $_SESSION['uczestnik']['BCC'];
         }
         //email inny dla szkolenia ustawiany w firma-szkolenie 

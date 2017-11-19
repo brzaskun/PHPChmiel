@@ -7,12 +7,15 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
 R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo','Testdane7005*');
 $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
 ?>
-<div id="panelladowaniapliku" style="box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: #e9e9e9;">
+<div id="panelladowaniapliku" style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 10px; background-color: #e9e9e9;">
     <div id="plikwzorcowy" style="height: 40px;">
         <a href="/resources/wzorcowy.xls">pobierz plik wzorcowy, żeby zobaczyć jak powinien wyglądać wykaz pracowników do załadowania</a>
     </div>
+    <div>
+        <span style="color: red; margin-top: 10px;">Uwaga! Program pozwalana na ponowne dodanie istiejącego użytkownika z istniejącym szkoleniem, jeżeli w poprzednim rekordzie istnieje data ustania uprawnień.</span>
+    </div>
     <form id="form1" enctype="multipart/form-data" method="post" action="admin112014_uploadfile.php"> 
-        <div style="height: 220px; width: 500px;">
+        <div style="height: 220px; width: 500px; margin-top: 10px;">
             <div id="przyciskladowanie" style="cursor:pointer; text-align: center; vertical-align: middle; display: table-cell;">
                 <label for="file" style="font-weight: 800; padding: 10px;" onmouseover="$(this).css('background', '#339bb9');" onmouseout="$(this).css('background', 'gainsboro');">Wybierz plik formatu Excel do wczytania</label><br/>
             </div>

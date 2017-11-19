@@ -71,10 +71,11 @@ class Mail {
             $numSent = $mailer->send($message, $failedRecipients);
             if ($numSent == 0) {
                 Mail::mailniewyslano($failedRecipients[0],$logger);
-                throw new Exception("Wystąpił błąd. Nie wysłano maila z linkiem i instrukcja do użytkownika $email");
+                return $email;
             } else if ($numSent == 1) {
                 $sql = "UPDATE  `uczestnicy` SET  `wyslanymailupr` = '1' WHERE  `uczestnicy`.`id` = $id_uzytkownik;";
                 $res = R::exec($sql);
+                return "";
             }
     }
     
@@ -318,7 +319,6 @@ class Mail {
         require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
-            $logger = Mail::loggerFactory($mailer);
             // Create a message 
             $message = Swift_Message::newInstance('Odo raport o błędach') 
                         ->setContentType('text/plain')
@@ -352,7 +352,6 @@ class Mail {
         }
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
-            $logger = Mail::loggerFactory($mailer);
             // Create a message 
             $message = Swift_Message::newInstance('Wysłano awaryjnie') 
                         ->setContentType('text/plain')
@@ -372,11 +371,49 @@ class Mail {
             $mailer->send($message);
     }
     
+    public static function mailwyslanolinki($maile,$maileniewyslane) {
+        require_once 'resources/swiftmailer/swift_required.php';
+        $mailelista = "";
+        $licznik = 1;
+        foreach ($maile as $value) {
+            $mailelista = $mailelista." ".$licznik++.". ".$value['imienazwisko'].", ".$value['email'].", ".$value['nazwaszkolenia']."<br />\n";
+        }
+        $mailelista2 = "";
+        $licznik = 1;
+        if (!empty($maileniewyslane)) {
+            foreach ($maileniewyslane as $value) {
+                $mailelista2 = $mailelista2." ".$licznik++.". ".$value['imienazwisko'].", ".$value['email'].", ".$value['nazwaszkolenia']."<br />\n";
+            }
+        }
+            // Create the Mailer using your created Transport
+            $mailer = Mail::mailerFactory();
+            // Create a message 
+            $message = Swift_Message::newInstance('Informacja o wysłanych linkach') 
+                        ->setContentType('text/plain')
+                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
+                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
+                        ->setBody('<!DOCTYPE html><html lang="pl">
+                        <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+                        <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
+                        <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
+                                . '<p> Udało się wysłac linki dla następujących liczby użytkowników '.sizeof($maile).'</p>'
+                                . '<p> '.$mailelista.'</p>'
+                        . '</div>
+                        <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
+                                . '<p> Ilosc nieudanych wysyłek '.sizeof($maileniewyslane).'</p>'
+                                . '<p> '.$mailelista2.'</p>'
+                        . '</div>
+                        </body></html>
+                        ', 'text/html');
+            $mailer->send($message);
+    }
+    
     public static function mailerror($error) {
         require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
-            $logger = Mail::loggerFactory($mailer);
             // Create a message 
             $message = Swift_Message::newInstance('Odo raport o błędach') 
                         ->setContentType('text/plain')
@@ -408,7 +445,6 @@ class Mail {
         require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
-            $logger = Mail::loggerFactory($mailer);
             // Create a message 
             $message = Swift_Message::newInstance('Odo raport o błędach') 
                         ->setContentType('text/plain')

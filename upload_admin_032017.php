@@ -42,10 +42,10 @@ foreach ($tablicapobranychpracownikow  as $wierszbaza) {
             R::exec($sql);
             $id_uzytkownik = R::getInsertID();
             if ($id_uzytkownik > 0) {
-                $wynik = Mail::mailautomat($wierszbaza[1], $wierszbaza[2], $wierszbaza[0], $wierszbaza[3], $id_uzytkownik);
-                if (strpos($wynik, "@") !== false) {
-                    array_push($niewyslanymail, $wynik);
-                }
+//                $wynik = Mail::mailautomat($wierszbaza[1], $wierszbaza[2], $wierszbaza[0], $wierszbaza[3], $id_uzytkownik);
+//                if (strpos($wynik, "@") !== false) {
+//                    array_push($niewyslanymail, $wynik);
+//                }
                 foreach ($nazwygrup as $key => $value) {
                     $wartoscpola = $wierszbaza[$value];
                     if ($wartoscpola == 1) {

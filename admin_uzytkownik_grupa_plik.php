@@ -222,9 +222,11 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                             date_default_timezone_set('Europe/Warsaw');
                             $today_time = date("jS F, Y", strtotime($dataod));;
                             $expire_time = date("jS F, Y", strtotime($datado));
-                            if ($expire_time < $today_time) {
-                                $blad = array($datado, "data ustania jest wcześniejsza niż data nadania", "w wierszu " . $row);
-                                array_push($wykrytoblad, $blad);
+                            if (strtotime($datado) > 0) {
+                                if (strtotime($datado) < strtotime($dataod)) {
+                                    $blad = array($datado, "data ustania jest wcześniejsza niż data nadania", "w wierszu " . $row);
+                                    array_push($wykrytoblad, $blad);
+                                }
                             }
                         }
                         //walidacja szkolenia do wykorzysania pozniej
@@ -324,7 +326,7 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
     </div>
     <div class="row" style="width: 450px;">
         <form id="form2"> 
-            <input id="zaladuj" type="submit" value="Załaduj do bazy"  onclick="uploadfile_uzyt_grupa()" 
+            <input id="zaladuj" type="submit" value="Załaduj do bazy"  onclick="uploadfile_uzyt_grupa()"
                    style="padding: 10px; width: 180px; margin-top: 4%; margin-left: auto; margin-right: auto; display: none;"/>
         </form>
     </div>
