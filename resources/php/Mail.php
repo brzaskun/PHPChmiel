@@ -397,11 +397,11 @@ class Mail {
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-                        <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
-                                . '<p> Udało się wysłac linki dla następujących liczby użytkowników '.sizeof($maile).'</p>'
+                        <div style="text-align: left; font-size: 12pt; color: rgb(74,26,15);">'
+                                . '<p> Udało się wysłać linki dla następujących liczby użytkowników '.sizeof($maile).'</p>'
                                 . '<p> '.$mailelista.'</p>'
                         . '</div>
-                        <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
+                        <div style="text-align: left; font-size: 12pt; color: rgb(74,26,15);">'
                                 . '<p> Ilosc nieudanych wysyłek '.sizeof($maileniewyslane).'</p>'
                                 . '<p> '.$mailelista2.'</p>'
                         . '</div>
