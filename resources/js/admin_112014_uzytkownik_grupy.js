@@ -5,6 +5,8 @@ $(document).ready(function () {
     })
     $('#aktywnafirma').puidropdown({
         filter: true,
+        scrollHeight: 400,
+        filterMatchMode: "contains",
         change: function (e) {
             wybierzaktywnafirme();
             $(notf).hide();

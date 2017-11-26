@@ -6,7 +6,7 @@
     if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         die("Nie jesteś upoważniony do przeglądania zasobu");
     }
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="pl">
     <meta charset="utf-8">

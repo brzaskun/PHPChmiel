@@ -7,6 +7,8 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#aktywnafirma').puidropdown({
         filter: true,
+        scrollHeight: 400,
+        filterMatchMode: "contains",
         change: function (e) {
             generujtabliceuzytkownikow();
             $("#Nfirmauser").val($("#aktywnafirma").val());
