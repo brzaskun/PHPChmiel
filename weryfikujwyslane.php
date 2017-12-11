@@ -15,15 +15,17 @@
     require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/UpowaznienieGenerowanie.php');
     $ilemaili = 0;
     $maile = array();
+    $uzerywyslane = array();
     foreach ($jestwbazie as $value) {
         if (strtotime($value['sessionend']) > strtotime("2017-10-01")) {
+            array_push($uzerywyslane, $value);
             $parameter = "id=".$value['id'];
-            echo "Zaczynam przetwarzanie".$value['imienazwisko'];
-            echo "<br />\n";
+//            echo "Zaczynam przetwarzanie".$value['imienazwisko'];
+//            echo "<br />\n";
             $znaleziony_ucz = R::findOne('uczestnicy', $parameter);
             $_SESSION['uczestnik'] = $znaleziony_ucz->getProperties();
-            //CertyfikatGenerowanie::generuj();
-            //UpowaznienieGenerowanie::generuj();
+            CertyfikatGenerowanie::generuj();
+            UpowaznienieGenerowanie::generuj();
             $ilemaili = $ilemaili+1;
             array_push($maile, $_SESSION['uczestnik']['email']);
             echo $_SESSION['uczestnik']['imienazwisko'];
@@ -41,7 +43,7 @@
         } catch (Exception $em) {
  
         }
-        Mail::mailwyslanoawaryjnie($maile);
+        Mail::mailwyslanoawaryjnie($uzerywyslane);
         echo "<br />\n";
         echo "Wyslano mail dla admina";
     }

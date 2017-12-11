@@ -188,7 +188,11 @@ class Mail {
             $failedRecipients = array();
             $numSent = 0;
             // Send the message
-            $numSent = $mailer->send($message, $failedRecipients);
+            try {
+                $numSent = $mailer->send($message, $failedRecipients);
+            } catch(exception $ex) {
+                echo $ex;
+            }
             if ($numSent == 0) {//ZMIENIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 $niewyslano = $failedRecipients[0];
                 Mail::mailniewyslano($niewyslano, $logger);
@@ -298,8 +302,11 @@ class Mail {
     }
     
     private static function mailerFactory() {
-        $transport = Swift_SmtpTransport::newInstance('az0066.srv.az.pl', 465);
-        $transport->setEncryption('ssl');
+//        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 465);
+//        $transport->setEncryption('ssl');
+//        $transport->setUsername('odomg@taxman.biz.pl');
+//        $transport->setPassword('qwerty1234');
+        $transport = Swift_SmtpTransport::newInstance('az0028.srv.az.pl', 587);
         $transport->setUsername('e-szkolenia@odomg.pl');
         $transport->setPassword('Odo1234*');
         // Create the Mailer using your created Transport
@@ -329,7 +336,7 @@ class Mail {
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-                        <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
+                        <div style="text-align: left; font-size: 12pt; color: rgb(74,26,15);">'
                                 . '<p> id: '.$_SESSION['uczestnik']['id'].'</p>'
                                 . '<p> email zalogowanej osoby: '.$_SESSION['uczestnik']['email'].'</p>'
                                 . '<p> szkolenie: '.$_SESSION['uczestnik']['nazwaszkolenia'].'</p>'
@@ -344,11 +351,12 @@ class Mail {
             $mailer->send($message);
     }
     
-    public static function mailwyslanoawaryjnie($maile) {
+    public static function mailwyslanoawaryjnie($uzerywyslane) {
         require_once 'resources/swiftmailer/swift_required.php';
         $mailelista = "";
-        foreach ($maile as $value) {
-            $mailelista = $mailelista." ".$value."<br />\n";
+        $licznik = 1;
+        foreach ($uzerywyslane as $value) {
+            $mailelista = $mailelista." ".$licznik++.". ".$value['imienazwisko'].", ".$value['email'].", ".$value['nazwaszkolenia'].", ".$value['firma']."<br />\n";
         }
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
@@ -362,8 +370,8 @@ class Mail {
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-                        <div style="text-align: left; font-size: 12pt; height: 200px; color: rgb(74,26,15);">'
-                                . '<p> ilosc maili '.sizeof($maile).'</p>'
+                        <div style="text-align: left; font-size: 12pt; color: rgb(74,26,15);">'
+                                . '<p> ilosc maili '.sizeof($uzerywyslane).'</p>'
                                 . '<p> maile '.$mailelista.'</p>'
                         . '</div>
                         </body></html>

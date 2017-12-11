@@ -27,17 +27,17 @@
         require_once('resources/php/UpowaznienieGenerowanie.php');
 //CertyfikatGenerowanie::generuj();
         require_once('resources/php/Rb.php');
-        echo "R setup" . "\r\n";
+//        echo "R setup" . "\r\n";
         R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
-        echo "Mail setup" ."\r\n";
+//        echo "Mail setup" ."\r\n";
         require_once('resources/php/Mail.php');
         date_default_timezone_set('Europe/Warsaw');
         $id = $_SESSION['uczestnik']['id'];
-        echo "id " . $id . "\r\n";
+//        echo "id " . $id . "\r\n";
         $email = $_SESSION['uczestnik']['email'];
-        echo "email " . $email . "\r\n";
+//        echo "email " . $email . "\r\n";
         if ($id > 0) {
-            echo "zaczynam generowac zaswiadczenie"."\r\n";
+//            echo "zaczynam generowac zaswiadczenie"."\r\n";
             $email = $_SESSION['uczestnik']['email'];
             $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
             $uczestnik = $_SESSION['uczestnik'];
@@ -70,8 +70,8 @@
             $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
             $nazwapliku = 'resources/zaswiadczenia/zaswiadczenie' . $id . '_' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
             $mpdf->Output($nazwapliku, 'F');
-            echo Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
-            echo "wyslalem zaswiadczenie\r" . +"\r\n";
+            Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
+//            echo "wyslalem zaswiadczenie\r" . +"\r\n";
             //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
             $czasbiezacy = date("Y-m-d H:i:s");
             $id = $_SESSION['uczestnik']['id'];
@@ -83,11 +83,11 @@
         date_default_timezone_set('Europe/Warsaw');
         $niewyslano = (int) R::getCell("SELECT  `wyslaneup` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
         $email = $_SESSION['uczestnik']['email'];
-        echo "sporawdzam generowac upowaznienie\n" . +"\r\n";
+//        echo "sporawdzam generowac upowaznienie\n" . +"\r\n";
         if ($niewyslano == 0 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $grupy = UpowaznienieGenerowanie::pobierzgrupy($id);
             if (strlen($grupy) > 0) {
-                echo "zaczynam generowac upowaznienie\n"."\r\n";
+//                echo "zaczynam generowac upowaznienie\n"."\r\n";
                 $uczestnik = $_SESSION['uczestnik'];
                 $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
                 $plec = $_SESSION['uczestnik']['plec'];
@@ -189,7 +189,7 @@
                 }
             }
         }
-        echo "skonczylem generowac upowaznienie\r"."\r\n";
+//        echo "skonczylem generowac upowaznienie\r"."\r\n";
         ?>        
         <div class="box">
             <div class="slajd">
@@ -208,7 +208,21 @@
                     </div>
                    
                 </div>
-            
+<!--            <div id="testnaglowek">
+                    <h2>Wygenerowano zaświadczenie id_<?=$_SESSION['uczestnik']['id']?>_id</h2>
+                </div>
+                <div class="pytanietest">
+                  <p style="font-size: 150%; margin-left: 3%"> Gratulujemy ukończenia szkolenia przygotowanego przez</p>
+                    <p style="font-size: 150%; margin-left: 3%"> ODO Management Group.</p>
+                    <div style="padding: 3%; padding-top: 1%">
+                        <p>Z powodów technicznych nie mogło być teraz właśnie wysłane zaświadczenie potwierdzające zaliczenie testu.</p>
+                    </div>
+                    <div style="padding: 3%;">
+                        <p>Niezwłocznie po usunięciu awarii serwera, doślemy wygenerowane zaświadczenie. </p>
+                        <p>Zespół ODO Management Group</p> 
+                    </div>
+                   
+                </div>-->
         </div>
         </div>
     </body>
