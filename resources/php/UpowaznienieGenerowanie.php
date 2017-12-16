@@ -48,6 +48,7 @@ class UpowaznienieGenerowanie {
         } catch (Exception $e) {
             
         };
+        $wynik = false;
         $id = $_SESSION['uczestnik']['id'];
         date_default_timezone_set('Europe/Warsaw');
         $niewyslano = (int)R::getCell("SELECT  `wyslaneup` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
@@ -159,12 +160,14 @@ class UpowaznienieGenerowanie {
                         $czasbiezacy = date("Y-m-d H:i:s");
                         $id = $_SESSION['uczestnik']['id'];
                         R::exec("UPDATE  `uczestnicy` SET  `upowaznieniedata`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
+                        $wynik = true;
                     }
                 }
             } catch (Exception $error) {
                 Mail::mailerror($error);
             }
         }
+        return $wynik;
     }
     
      public final static function pobierzBCC() {

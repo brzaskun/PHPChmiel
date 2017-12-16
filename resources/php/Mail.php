@@ -109,7 +109,7 @@ class Mail {
     }
            
     public static function mailzaswiadczenie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenieuser, $id) {
-        $wiadomosc = "zaczynam wysylac zaswiadczenie\r";
+        $wiadomosc = "nie";
         require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
@@ -199,7 +199,7 @@ class Mail {
             } else {
                 $sql = "UPDATE uczestnicy SET wyslanycert = 1 WHERE id = '$id'";
                 $res = R::exec($sql);
-                $wiadomosc = "wyslalem zaswiadczenie\r\n";
+                $wiadomosc = "tak";
             }
         }
         return $wiadomosc;
@@ -208,7 +208,7 @@ class Mail {
     public static function mailupowaznienie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $id) {
 //        $bcc = "brzaskun@o2.pl";
 //        $kontakt = "Grzegorz";
-        $wiadomosc = "zaczynam wysylac upowaznienie\r";
+        $wiadomosc = "nie";
         require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 // Create the Mailer using your created Transport
@@ -286,6 +286,7 @@ class Mail {
                     throw new Exception("Wystąpił błąd. Nie wysłano upoważnienia do użytkownika $email");
                 } else if ($numSent > 0) {
                     $niewyslano = NULL;
+                    $wiadomosc = "tak";
                     if ($numSent == 1) {
                         $niewyslano = $failedRecipients[0];
                         Mail::mailniewyslano($niewyslano,$logger);
@@ -296,7 +297,6 @@ class Mail {
     //                    throw new Exception("Wysłano mail z upoważnieniem na adres $email, ale nie udało się zaznaczyć tego w tabeli");
     //                }
                 }
-                $wiadomosc = "wyslalem upowaznienie\r";
         }
         return $wiadomosc;
     }
@@ -361,7 +361,7 @@ class Mail {
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
             // Create a message 
-            $message = Swift_Message::newInstance('Wysłano awaryjnie') 
+            $message = Swift_Message::newInstance('Wysłano awaryjnie zaświadczenia i upoważnienia dla następujących osób') 
                         ->setContentType('text/plain')
                         ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))

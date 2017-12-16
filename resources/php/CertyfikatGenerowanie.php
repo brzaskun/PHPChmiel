@@ -19,6 +19,7 @@ class CertyfikatGenerowanie {
             
         }
         date_default_timezone_set('Europe/Warsaw');
+        $wynik = false;
         try {
             $id = $_SESSION['uczestnik']['id'];
             if ($id > 0) {
@@ -59,12 +60,14 @@ class CertyfikatGenerowanie {
                 $czasbiezacy = date("Y-m-d H:i:s");
                 $id = $_SESSION['uczestnik']['id'];
                 R::exec("UPDATE  `uczestnicy` SET  `zaswiadczeniedata`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
+                $wynik = true;
             }
         } catch (Exception $error) {
             $email = $_SESSION['uczestnik']['email'];
             $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
             Mail::mailerror2($error, $email, $szkolenie);
         }
+        return $wynik;
     }
     
     public final static function pobierzBCC() {

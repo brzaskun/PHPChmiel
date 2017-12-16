@@ -70,12 +70,15 @@
             $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
             $nazwapliku = 'resources/zaswiadczenia/zaswiadczenie' . $id . '_' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
             $mpdf->Output($nazwapliku, 'F');
-            Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
+            $czysiewyslalo = "nie";
+            $czysiewyslalo = Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
 //            echo "wyslalem zaswiadczenie\r" . +"\r\n";
             //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
-            $czasbiezacy = date("Y-m-d H:i:s");
-            $id = $_SESSION['uczestnik']['id'];
-            R::exec("UPDATE  `uczestnicy` SET  `zaswiadczeniedata`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
+            if ($czysiewyslalo=="tak") {
+                $czasbiezacy = date("Y-m-d H:i:s");
+                $id = $_SESSION['uczestnik']['id'];
+                R::exec("UPDATE  `uczestnicy` SET  `zaswiadczeniedata`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
+            }
         }
 
 //UpowaznienieGenerowanie::generuj();
@@ -181,11 +184,14 @@
                     $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
                     $nazwapliku = 'resources/upowaznienia/upowaznienie' . $id . '-' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
                     $mpdf->Output($nazwapliku, 'F');
-                    Mail::mailupowaznienie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $id);
+                    $czysiewyslalo2 = "nie";
+                    $czysiewyslalo2 = Mail::mailupowaznienie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $id);
                     //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
-                    $czasbiezacy = date("Y-m-d H:i:s");
-                    $id = $_SESSION['uczestnik']['id'];
-                    R::exec("UPDATE  `uczestnicy` SET  `upowaznieniedata`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
+                    if ($czysiewyslalo2=="tak") {
+                        $czasbiezacy = date("Y-m-d H:i:s");
+                        $id = $_SESSION['uczestnik']['id'];
+                        R::exec("UPDATE  `uczestnicy` SET  `upowaznieniedata`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
+                    }
                 }
             }
         }
