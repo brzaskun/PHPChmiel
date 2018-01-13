@@ -1,46 +1,49 @@
 <?php error_reporting(E_ALL); 
-  set_time_limit(0);
-  ini_set('memory_limit','256M');
+//  set_time_limit(0);
+//  
+//  ini_set('memory_limit','256M');
   if(session_status()!=2){     session_start(); };
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
   R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $sql = "SELECT *  FROM uczestnicy";
   $uczestnicy = R::getAll($sql);
   $czlonkowie = array();
+  //echo "start "+sizeof($uczestnicy);
    foreach ($uczestnicy as $val) {
-       try {
+//       try {
         $od = $val['sessionstart'] != "" ? substr($val['sessionstart'], 0, 10) : "";
         $do = $val['sessionend'] != "" ? substr($val['sessionend'], 0, 10) : "";
         $tab = array();
-        array_push($tab, "<span class='doedycji'>" . $val['id'] . "</span>");
-        array_push($tab, "<span class='doedycji'>" . $val['email'] . "</span>");
-        //echo "<span class='doedycji'>" . $val['email'] . "</span>";
-        array_push($tab, "<span class='doedycji'>" . $val['imienazwisko'] . "</span>");
-        array_push($tab, "<span class='doedycji'>" . $val['plec'] . "</span>");
-        array_push($tab, "<span class='doedycji'>" . $val['firma'] . "</span>");
-        array_push($tab, "<span class='doedycji'>" . $val['nazwaszkolenia'] . "</span>");
-        array_push($tab, "<span class='doedycji'>" . $val['uprawnienia'] . "</span>");
+        //echo $val['email'];
+        array_push($tab, "<span>" . $val['id'] . "</span>");
+        array_push($tab, "<span>" . $val['email'] . "</span>");
+        array_push($tab, "<span>" . $val['imienazwisko'] . "</span>");
+        array_push($tab, "<span>" . $val['plec'] . "</span>");
+        array_push($tab, "<span>" . $val['firma'] . "</span>");
+        array_push($tab, "<span>" . $val['nazwaszkolenia'] . "</span>");
+        //array_push($tab, "<span>" . $val['uprawnienia'] . "</span>");
         array_push($tab, "<span>" . $val['ilosclogowan'] . "</span>");
         array_push($tab, "<span>" . $val['wyslanymailupr'] . "</span>");
-        array_push($tab, "<span class='doedycji'>" . $od . "</span>");
+        array_push($tab, "<span>" . $od . "</span>");
         array_push($tab, "<span>" . $do . "</span>");
-        array_push($tab, "<span>" . $val['wyniktestu'] . "</span>");
-        array_push($tab, "<span>" . $val['wyslanycert'] . "</span>");
-        array_push($tab, "<input type='checkbox' class=\"czekbox\"/>");
-        array_push($tab, "<input title=\"edytuj\" name=\"edytuj\" type='checkbox' class='czekedycja' onclick=\"edituser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
-        array_push($tab, "<input title=\"reset\" name=\"reset\" type='checkbox' class='czekedycja' onclick=\"resetujuser(this);\" style=\"display: none;\"/>");
-        if ($val['email'] == "mchmielewska@interia.pl" || $value['email'] == "brzaskun@o2.pl") {
-            array_push($tab, " ");
-        } else {
-            array_push($tab, "<input title=\"usuń\" name=\"usun\" type='checkbox' class='czekedycja' onclick=\"usunwiersz(this);\"  style=\"display: none;\"/>");
-        }
+//        array_push($tab, "<span>" . $val['wyniktestu'] . "</span>");
+//        array_push($tab, "<span>" . $val['wyslanycert'] . "</span>");
+//        array_push($tab, "<input type='checkbox' class=\"czekbox\"/>");
+//        array_push($tab, "<input title=\"edytuj\" name=\"edytuj\" type='checkbox' class='czekedycja' onclick=\"edituser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
+//        array_push($tab, "<input title=\"reset\" name=\"reset\" type='checkbox' class='czekedycja' onclick=\"resetujuser(this);\" style=\"display: none;\"/>");
+//        if ($val['email'] == "mchmielewska@interia.pl" || $val['email'] == "brzaskun@o2.pl") {
+//            array_push($tab, " ");
+//        } else {
+//            array_push($tab, "<input title=\"usuń\" name=\"usun\" type='checkbox' class='czekedycja' onclick=\"usunwiersz(this);\"  style=\"display: none;\"/>");
+//        }
         array_push($czlonkowie, $tab);
-    } catch (Exception $e) {
-        
-    }
+//    } catch (Exception $e) {
+//        echo $e;
+//    }
 } 
-  $output = json_encode($czlonkowie); 
-  echo $output;
+    $output = json_encode($czlonkowie); 
+    //echo "koniec";
+   echo $output;
   
  
   

@@ -61,7 +61,7 @@ var generujtabliceuzytkownikow = function () {
                         uTable.fnSort([[1, 'asc']]);
                     }
                 }
-                naniesclickzbiorcze("#tabuser","#tabelaedituser","email");
+                //naniesclickzbiorcze("#tabuser","#tabelaedituser","email");
             }
             $("#ajax_sun").hide();
         }
@@ -82,8 +82,8 @@ var generujnazwykolumn = function () {
     zwrot.push(o1);
     o1 = {"sTitle": "szkolenie"};
     zwrot.push(o1);
-    o1 = {"sTitle": "uprawnienia"};
-    zwrot.push(o1);
+//    o1 = {"sTitle": "uprawnienia"};
+//    zwrot.push(o1);
     o1 = {"sTitle": "il. log."};
     zwrot.push(o1);
     o1 = {"sTitle": "wysł. link"};
@@ -92,18 +92,18 @@ var generujnazwykolumn = function () {
     zwrot.push(o1);
     o1 = {"sTitle": "zakończenie"};
     zwrot.push(o1);
-    o1 = {"sTitle": "wyn. test"};
-    zwrot.push(o1);
-    o1 = {"sTitle": "wysł. cert."};
-    zwrot.push(o1);
-    o1 = {"sTitle": ""};
-    zwrot.push(o1);
-    o1 = {"sTitle": "edytuj"};
-    zwrot.push(o1);
-    o1 = {"sTitle": "reset"};
-    zwrot.push(o1);
-    o1 = {"sTitle": "usuń"};
-    zwrot.push(o1);
+//    o1 = {"sTitle": "wyn. test"};
+//    zwrot.push(o1);
+//    o1 = {"sTitle": "wysł. cert."};
+//    zwrot.push(o1);
+//    o1 = {"sTitle": ""};
+//    zwrot.push(o1);
+//    o1 = {"sTitle": "edytuj"};
+//    zwrot.push(o1);
+//    o1 = {"sTitle": "reset"};
+//    zwrot.push(o1);
+//    o1 = {"sTitle": "usuń"};
+//    zwrot.push(o1);
     return zwrot;
 };
 
