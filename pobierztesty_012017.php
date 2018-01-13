@@ -6,7 +6,7 @@ if (session_status() != 2) {
 };
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
 try {
-    R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+    R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
     $szkolenia = R::getAll('SELECT * FROM testwykaz ORDER BY nazwa');
     $czlonkowie = array();
     foreach ($szkolenia as $val) {

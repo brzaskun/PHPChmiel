@@ -1,11 +1,12 @@
 <?php
-error_reporting(0);  
+error_reporting(2);  
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $_wynik = R::getAll('select * from uczestnicy');
 $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy ORDER BY `zakladpracy`.`nazwazakladu` ASC');
 $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.`nazwa` ASC');
 ?>
+
 <div style="box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro;">
     <form id="tabelauserow" >
         <div id="tbl" style="max-width: 1465px;">
@@ -93,6 +94,6 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.
 <!--        <input id="usunbutton" name="usunuser" value="usuń" type="submit" onclick="usuntabeleuser();" style="padding: 5px; padding: 10px; width: 120px; margin-left: 2%; float: left;">-->
     </form>
 </div>
-<div id="ajax_sun" title="trwa przetwarzanie" style="display: none; text-align: center; z-index: -1;" >
-    <img src="/images/ajax_loaderc.gif" alt="ajax" height="70" width="70">;
+<div id="ajax_sun" title="trwa przetwarzanie" style="text-align: center" >
+    <img src="/images/ajax_loaderc.gif" alt="ajax" height="70" width="70">
 </div>

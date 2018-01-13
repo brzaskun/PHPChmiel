@@ -17,7 +17,7 @@ class UpowaznienieGenerowanie {
         };
         try {
             require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-            R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+            R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         } catch (exception $e) {};
         $id = $_SESSION['uczestnik']['id'];
         date_default_timezone_set('Europe/Warsaw');
@@ -44,7 +44,7 @@ class UpowaznienieGenerowanie {
         };
         try {
             require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-            R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+            R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         } catch (Exception $e) {
             
         };

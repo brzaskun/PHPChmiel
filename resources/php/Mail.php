@@ -306,9 +306,9 @@ class Mail {
 //        $transport->setEncryption('ssl');
 //        $transport->setUsername('odomg@taxman.biz.pl');
 //        $transport->setPassword('qwerty1234');
-        $transport = Swift_SmtpTransport::newInstance('az0028.srv.az.pl', 587);
+        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 587);
         $transport->setUsername('e-szkolenia@odomg.pl');
-        $transport->setPassword('Odo1234*');
+        $transport->setPassword('odo1234');
         // Create the Mailer using your created Transport
         return Swift_Mailer::newInstance($transport);
     }

@@ -13,11 +13,9 @@ $(document).ready(function () {
 });
 
 var generujtabliceuzytkownikow = function () {
-    var teststring = {"firmanazwa": "wszystkiefirmy"};
     $.ajax({
         type: "POST",
         url: "pobierzuczestnicywszyscy_112014_bigtable.php",
-        data: teststring,
         cache: true,
         error: function (xhr, status, error) {
             let wiadomosc = 'Nie udało się pobrać danych użytkowników. Błąd servera. '+error;

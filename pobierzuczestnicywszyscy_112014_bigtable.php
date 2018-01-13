@@ -1,17 +1,10 @@
-<?php error_reporting(2); 
+<?php error_reporting(E_ALL); 
   set_time_limit(0);
   ini_set('memory_limit','256M');
   if(session_status()!=2){     session_start(); };
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-  R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo','Testdane7005*');
-  $firma = $_POST['firmanazwa'];
-  if ($firma != "" && $firma != 'null' && $firma != "wybierz bieżącą firmę" && $firma != "wszystkiefirmy") {
-      $sql = "/*" . MYSQLND_QC_ENABLE_SWITCH . "*/" . "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'";
-  } else if ($firma == "wszystkiefirmy"){
-      $sql = "/*" . MYSQLND_QC_ENABLE_SWITCH . "*/" . "SELECT * FROM zakladpracy INNER JOIN uczestnicy ON `uczestnicy`.`firma` = `zakladpracy`.`nazwazakladu` WHERE `zakladpracy`.`firmaaktywna` = 1 ORDER BY `uczestnicy`.`id` DESC";
-  } else {
-      echo "brak";
-  } 
+  R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+  $sql = "SELECT *  FROM uczestnicy";
   $uczestnicy = R::getAll($sql);
   $czlonkowie = array();
    foreach ($uczestnicy as $val) {
@@ -21,6 +14,7 @@
         $tab = array();
         array_push($tab, "<span class='doedycji'>" . $val['id'] . "</span>");
         array_push($tab, "<span class='doedycji'>" . $val['email'] . "</span>");
+        //echo "<span class='doedycji'>" . $val['email'] . "</span>";
         array_push($tab, "<span class='doedycji'>" . $val['imienazwisko'] . "</span>");
         array_push($tab, "<span class='doedycji'>" . $val['plec'] . "</span>");
         array_push($tab, "<span class='doedycji'>" . $val['firma'] . "</span>");

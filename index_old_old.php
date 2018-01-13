@@ -10,15 +10,15 @@ if (session_status() == 2) {
     session_start(); 
     ini_set('session.gc_probability', 1);
     $_SESSION = array();
-    session_destroy();//kk
+    session_destroy(); 
 }
-error_reporting(E_ALL);
+error_reporting(2);
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot . '/resources/php/Rb.php');
 require_once($sciezkaroot . '/resources/php/Zerowanieciastek.php');
 date_default_timezone_set('Europe/Warsaw');
 //inicjujemy clase do lazczenia sie z baza danych
-R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
 //Zerowanieciastek::usunciastka(); 
 if (isset($_GET['mail'])) {
     $mail = filter_input(INPUT_GET, 'mail', FILTER_VALIDATE_EMAIL);
@@ -61,21 +61,6 @@ if (isset($_GET['mail'])) {
                  <script src="https://html5shim.googlecode.com/svn/trunk/html5.js?v220817a"></script>
          <![endif]-->
         <title>Testy Dane Wrażliwe</title>
-        <script>
-            MYAPP = {};
-            $(document).ready(function () {
-                $("#email").keyup(function () {
-                    validate();
-                })
-                $('#email').focus();
-            });
-            $(document).ajaxStart(function () {
-                $("#wiadomoscajax").text("Trwa logowanie");
-            });
-            $(document).ajaxStop(function () {
-                $("#wiadomoscajax").text("Skończono logowanie. Trwa weryfikacja danych");
-            });
-        </script>
     </head>
     <body>
         <div class="box">
@@ -84,29 +69,14 @@ if (isset($_GET['mail'])) {
                     <h2>E-szkolenia: Ochrona Danych Osobowych, Systemy Zarządzania Jakością, Bezpieczeństwo Informacji</h2> 
                 </div>
                 <div id="logininfo">
-                    <h2>W celu zalogowania wpisz swój email</h2>
+                    <h2>Strona e-szkoleń została czasowo wyłączona. Trwają prace konserwacyjne do 15.01.2018</h2>
+                    <h2>Przepraszamy za utrudnienia.</h2>
                 </div>
-                <form id="loginform" >
-                    <input type="text" id="email" name="mail" value="" style="color: rgb(74,26,15); padding-left: 10px;"  autocomplete="off"
-                           title="Wpisz nazwę adresu email, na który został wysłana informacja o szkoleniu"><br/>
-                    <div id="polepin" style="display: none; margin-left: 24.5%;" >
-                        <label for="pin">podaj pin</label>
-                        <input id="pin" name="pin" type="text" onkeyup="sprawdzpin();" style="color: rgb(74,26,15);" />
-                    </div>
-                    <br/>
-                    <div class="margin1" style="height: 20px; margin-top: 1%;">
-                        <span id="result" style="font-size: 80%;"></span>
-                    </div> 
-                    <button id="buttonlogowanie" type="submit"  title="Kliknij celem rozpoczęcia szkolenia" 
-                            formaction="sprawdzlogin_1.php" formmethod="POST">
-                        <span class="spanszkolenie" >zaloguj</span></button>
-                </form>
+                
                 <div class="margin2" style="height: 10px; text-align: left;">
                     <span id="wiadomoscajax"></span>
                 </div>
-                <div class="margin1" style="margin-top: 5%; text-align: left;">
-                    <span>Szkolenie rozpoczyna się pod warunkiem wpisania właściwego adresu email</span>
-                </div>
+                
             </div>
         </div>
         <div id="notify"></div>

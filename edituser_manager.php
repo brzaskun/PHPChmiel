@@ -2,7 +2,7 @@
 use R;
   if(session_status()!=2){     session_start(); };
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-  R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo','Testdane7005*');
+  R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $id = $_POST['iduser'];
   $email = $_POST['email'];
   $imienazwisko = $_POST['imienazwisko'];

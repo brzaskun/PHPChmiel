@@ -9,17 +9,22 @@
 // Report all errors
 error_reporting(E_ERROR);
 ini_set('max_execution_time', 300);
-//R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+//R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 /**
  * Define database parameters here
  */
-define("DB_USER", 'tb152026_madrylo');
-define("DB_PASSWORD", 'Testdane7005*');
-define("DB_NAME", 'tb152026_testdane');
-define("DB_HOST", 'localhost');
+//define("DB_USER", 'tb152026_madrylo');
+//define("DB_PASSWORD", 'Testdane7005*');
+//define("DB_NAME", 'tb152026_testdane');
+//define("DB_HOST", 'localhost');
+//define("OUTPUT_DIR",  '.');
+//define("TABLES", '*');
+define("DB_USER", 'p6273_odomg');
+define("DB_PASSWORD", 'Pi3knyK@tek');
+define("DB_NAME", 'p6273_odomg');
+define("DB_HOST", '172.16.0.6');
 define("OUTPUT_DIR",  '.');
 define("TABLES", '*');
-
 /**
  * Instantiate Backup_Database and perform backup
  */

@@ -5,7 +5,7 @@ if (session_status() != 2) {
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/CertyfikatGenerowanie.php');
 $nazwazaswiadczenia = $_GET["nazwazaswiadczenia"];
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $uczestnik = $_SESSION['uczestnik'];
 $id = $_SESSION['uczestnik']['id'];
 $plec = $_SESSION['uczestnik']['plec'];

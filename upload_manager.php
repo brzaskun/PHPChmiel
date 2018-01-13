@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
 $tablicapobranychpracownikow = $_SESSION['tablicapobranychpracownikow'];
 $firmabaza = $_SESSION['uczestnik']['firma'];
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo','Testdane7005*');
+R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 foreach ($tablicapobranychpracownikow  as $wierszbaza) {
   try {
   $sql = "INSERT INTO  `uczestnicy` (`id`, `email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,

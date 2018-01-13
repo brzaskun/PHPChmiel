@@ -3,10 +3,10 @@ session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() != 2) {
     session_start();
 };
-error_reporting(0);
+error_reporting(E_ALL);
 $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
 require_once('resources/php/Rb.php');
-R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $iduczestnika = $_COOKIE['iduczestnika'];
 setcookie("iduczestnika", "", time() - 3600);
 $mail = "";
