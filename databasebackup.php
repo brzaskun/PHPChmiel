@@ -20,7 +20,7 @@ ini_set('max_execution_time', 300);
 //define("OUTPUT_DIR",  '.');
 //define("TABLES", '*');
 define("DB_USER", 'p6273_odomg');
-define("DB_PASSWORD", 'Pi3knyK@tek');
+define("DB_PASSWORD", 'P3rsKy_K@tek1');
 define("DB_NAME", 'p6273_odomg');
 define("DB_HOST", '172.16.0.6');
 define("OUTPUT_DIR",  '.');
@@ -190,7 +190,7 @@ class Backup_Database {
 
         try
         {
-            $handle = fopen($outputDir.'/backup/db-backup-'.$this->dbName.'-'.date("Ymd-His", time()).'.sql','w+');
+            $handle = fopen('/databackup/db-backup-'.$this->dbName.'-'.date("Ymd-His", time()).'.sql','w+');
             fwrite($handle, $sql);
             fclose($handle);
         }

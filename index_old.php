@@ -69,7 +69,7 @@ if (isset($_GET['mail'])) {
                     <h2>E-szkolenia: Ochrona Danych Osobowych, Systemy Zarządzania Jakością, Bezpieczeństwo Informacji</h2> 
                 </div>
                 <div id="logininfo">
-                    <h2>Strona e-szkoleń została czasowo wyłączona. Trwają prace konserwacyjne do 15.01.2018</h2>
+                    <h2>Strona e-szkoleń została czasowo wyłączona. Trwają prace konserwacyjne do 16.01.2018</h2>
                     <h2>Przepraszamy za utrudnienia.</h2>
                 </div>
                 
