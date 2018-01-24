@@ -17,7 +17,7 @@ class Excelwygeneruj {
             session_start();
         };
         require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-        R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+        R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         $firmamanagera = $_SESSION['uczestnik']['firma'];
         $mailmanager = $_SESSION['uczestnik']['email'];
         $sql = "SELECT * FROM uczestnicy WHERE firma = '$firmamanagera' AND NOT email = '$mailmanager'";
@@ -134,7 +134,7 @@ class Excelwygeneruj {
             session_start();
         };
         require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-        R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+        R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         if ($firma != 'null') {
             if ($uczestnicyrodzaj == "wszyscy") {
                 $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma' ORDER BY `uczestnicy`.`email` ASC";
@@ -281,7 +281,7 @@ class Excelwygeneruj {
             session_start();
         };
         require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-        R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+        R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         $mailmanager = $_SESSION['uczestnik']['email'];
         $creator = $_SESSION['uczestnik']['imienazwisko'];
         $creatorid = $_SESSION['uczestnik']['id'];

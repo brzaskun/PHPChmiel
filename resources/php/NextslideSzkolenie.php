@@ -29,7 +29,7 @@ class NextslideSzkolenie {
         } else {
             $nazwaszkolenia = $_SESSION['uczestnik']['nazwaszkolenia'];
             require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-            R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+            R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
             self::$opisszkolenia = R::getCell("SELECT opis FROM szkoleniewykaz WHERE nazwa = '$nazwaszkolenia'");
             $_SESSION['opisszkolenia'] = self::$opisszkolenia;
             $_SESSION['szkolenie'] = R::getAll("SELECT * FROM szkolenie where `nazwaszkolenia`='$nazwaszkolenia' ORDER BY `id` ASC");

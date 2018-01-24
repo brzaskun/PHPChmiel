@@ -1,7 +1,7 @@
 <?php error_reporting(0);
   if(session_status()!=2){     session_start(); };
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-  R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+  R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $email = $_POST['Nemail'];
   $imienazwisko = $_POST['Nimienazwisko'];
   $firma = $_POST['Nfirmauser'];
@@ -48,10 +48,9 @@ switch ($szkolenieuser) {
   //wysylanie maila dla nowododanego
   require_once $_SERVER['DOCUMENT_ROOT'].'/resources/swiftmailer/swift_required.php';
   try {
-  $transport = Swift_SmtpTransport::newInstance('az0066.srv.az.pl', 465);
-    $transport->setEncryption('ssl');
-    $transport->setUsername('e-szkolenia@odomg.pl');
-    $transport->setPassword('Odo1234*');
+        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 587);
+        $transport->setUsername('e-szkolenia@odomg.pl');
+        $transport->setPassword('Moj@Poczta_');
     // Create the Mailer using your created Transport
     $mailer = Swift_Mailer::newInstance($transport);
     // Create a message

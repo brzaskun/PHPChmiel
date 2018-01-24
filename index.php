@@ -1,10 +1,11 @@
 <?php
 //force the page to use ssl 
-//if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443) {
-//    $redir = "Location: https://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-//    header($redir);
-//    exit();
-//}
+if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443) {
+    $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
+    $redir = "Location: https://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']."?$zm";
+    header($redir);
+    exit();
+}
 session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() == 2) {
     session_start(); 
@@ -12,18 +13,21 @@ if (session_status() == 2) {
     $_SESSION = array();
     session_destroy();//kk
 }
+$_SESSION['host'] = 'mysql:host=172.16.0.6;';
 error_reporting(E_ALL);
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot . '/resources/php/Rb.php');
 require_once($sciezkaroot . '/resources/php/Zerowanieciastek.php');
 date_default_timezone_set('Europe/Warsaw');
+
 //inicjujemy clase do lazczenia sie z baza danych
-R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 //Zerowanieciastek::usunciastka(); 
 if (isset($_GET['mail'])) {
     $mail = filter_input(INPUT_GET, 'mail', FILTER_VALIDATE_EMAIL);
     session_start();
     $_SESSION = array();
+    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
     $_SESSION['automail'] = $mail;
     $url = 'sprawdzlogin_1.php';
     header("Location: $url"); 

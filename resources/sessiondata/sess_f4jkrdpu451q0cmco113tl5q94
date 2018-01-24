@@ -1,0 +1,163 @@
+uczestnik|a:32:{s:2:"id";s:5:"17263";s:5:"email";s:14:"brzaskun@wp.pl";s:12:"imienazwisko";s:18:"Grzegorz Grzelczyk";s:4:"plec";s:1:"m";s:5:"firma";s:58:"Laboratoria Medyczne Bruss Grupa Alab Sp. z o.o. (Kwidzyn)";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:11:"uprawnienia";s:10:"uzytkownik";s:14:"wyslanymailupr";s:1:"0";s:12:"sessionstart";s:19:"2018-01-24 21:18:32";s:10:"sessionend";N;s:10:"wyniktestu";s:1:"0";s:11:"wyslanycert";s:1:"0";s:12:"ilosclogowan";s:1:"0";s:15:"iloscpoprawnych";s:1:"0";s:13:"iloscblednych";s:1:"0";s:15:"iloscodpowiedzi";s:1:"0";s:14:"nrupowaznienia";N;s:13:"indetyfikator";N;s:11:"datanadania";N;s:11:"dataustania";N;s:9:"wyslaneup";s:1:"0";s:9:"utworzony";s:19:"2018-01-24 20:32:31";s:13:"zmodyfikowany";N;s:23:"dataostatniegologowania";s:19:"2018-01-24 21:14:38";s:11:"iplogowania";s:7:"Unknown";s:17:"zaswiadczeniedata";N;s:16:"upowaznieniedata";N;s:12:"ostatnireset";s:19:"2018-01-24 21:18:11";s:16:"wcisnietyklawisz";N;s:7:"kontakt";s:21:"Magdalena Frankiewicz";s:3:"BCC";s:25:"wioletta.rojek@lmbruss.pl";s:10:"iloscpytan";s:1:"2";}progzdawalnosciuczestnik|s:2:"60";maxpracownikow|s:2:"30";managerlimit|s:1:"0";test|a:18:{i:0;a:13:{s:2:"id";s:1:"1";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:63:"PODSTAWOWE POJĘCIA
+
+Administrator danych osobowych to:
+
+
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:35:"Administrator Danych Osobowych, to:";s:4:"odp1";s:52:"swojego rodzaju „właściciel” danych osobowych ";s:4:"odp2";s:60:"decyduje o środkach i celach przetwarzania danych osobowych";s:4:"odp3";s:18:"firmowy informatyk";s:4:"odp4";s:88:"wyznaczona przez podmiot osoba, która nadzoruje przestrzeganie ochrony danych osobowych";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:5:"false";s:13:"odp4walidacja";s:5:"false";}i:1;a:13:{s:2:"id";s:1:"2";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:35:"GIODO to skrótowe określenie:
+
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:30:"GIODO to skrótowe okreslenie:";s:4:"odp1";s:77:"organu administracji publicznej, który pełni nadzór nad stosowaniem ustawy";s:4:"odp2";s:47:"Generalnego Inspektora Ochrony Danych Osobowych";s:4:"odp3";s:49:"Generała Informatycznej Ochrony Danych Osobowych";s:4:"odp4";s:35:"jednego z sądów administracyjnych";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:5:"false";s:13:"odp4walidacja";s:5:"false";}i:2;a:13:{s:2:"id";s:1:"3";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:24:"Dane osobowe wrażliwe
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:22:"Dane osobowe wrażliwe";s:4:"odp1";s:44:"ujawniają informacje o stanie zdrowia osoby";s:4:"odp2";s:40:"ujawniają informację o nałogach osoby";s:4:"odp3";s:38:"to informacja o tym, ile osoba zarabia";s:4:"odp4";s:50:" określane są inaczej mianem danych sensytywnych";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:5:"false";s:13:"odp4walidacja";s:4:"true";}i:3;a:13:{s:2:"id";s:1:"6";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:55:"KIEDY DANE SĄ „OSOBOWE”
+
+Dane osobowe wrażliwe
+
+
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:22:"Dane osobowe wrażliwe";s:4:"odp1";s:60:"można przetwarzać, gdy osoba wyraziła na to zgodę ustnie";s:4:"odp2";s:52:"można przetwarzać, gdy pozwala na to przepis prawa";s:4:"odp3";s:62:"można przetwarzać, gdy osoba wyraziła na to zgodę pisemnie";s:4:"odp4";s:78:"można przetwarzać, gdy zostały upublicznione przez osobę, której dotyczą";s:13:"odp1walidacja";s:5:"false";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:4:"true";}i:4;a:13:{s:2:"id";s:1:"7";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:52:"Zaznacz te informacje, które stanowią dane osobowe";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:52:"Zaznacz te informacje, które stanowią dane osobowe";s:4:"odp1";s:15:"rozmiar ubrania";s:4:"odp2";s:15:"numer telefonu	";s:4:"odp3";s:11:"numer PESEL";s:4:"odp4";s:26:"informacja o wynagrodzeniu";s:13:"odp1walidacja";s:5:"false";s:13:"odp2walidacja";s:5:"false";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:5:"false";}i:5;a:13:{s:2:"id";s:1:"8";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:17:"Dane osobowe to
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:17:"Dane osobowe, to:";s:4:"odp1";s:55:"tylko te dane, które pozwalają zidentyfikować osobę";s:4:"odp2";s:58:"wszelkie informacje dotyczące osoby już zidentyfikowanej";s:4:"odp3";s:66:"wszelkie informacje dotyczące osoby możliwej do zidentyfikowania";s:4:"odp4";s:38:"także dane dotyczące osób zmarłych";s:13:"odp1walidacja";s:5:"false";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:5:"false";}i:6;a:13:{s:2:"id";s:1:"9";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:55:"Zaznacz te adresy e-mail, które są danymi osobowymi
+
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:53:"Zaznacz te adresy e-mail, które są danymi osobowymi";s:4:"odp1";s:20:"misiaczek832@tlen.pl";s:4:"odp2";s:19:"jan.nowak@gmail.com";s:4:"odp3";s:28:"karolina.wisniewska@odomg.pl";s:4:"odp4";s:12:"biuro@zoz.pl";s:13:"odp1walidacja";s:5:"false";s:13:"odp2walidacja";s:5:"false";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:5:"false";}i:7;a:13:{s:2:"id";s:2:"10";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:21:"Wymagania ustawowe:
+
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:55:"wymagania ustawowe w zakresie ochrony danych osobowych:";s:4:"odp1";s:59:"należy spełnić, gdy zatrudnia się więcej niż 10 osób";s:4:"odp2";s:66:"należy spełnić, gdy przetwarza się dane więcej niż 100 osób";s:4:"odp3";s:84:"należy spełnić tylko wtedy, gdy zarejestruje się zbiór danych osobowych w GIODO";s:4:"odp4";s:71:"należy spełnić w każdym przypadku, gdy przetwarza się dane osobowe";s:13:"odp1walidacja";s:5:"false";s:13:"odp2walidacja";s:5:"false";s:13:"odp3walidacja";s:5:"false";s:13:"odp4walidacja";s:4:"true";}i:8;a:13:{s:2:"id";s:2:"11";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:4:"
+
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:44:"Generalny Inspektor Ochrony Danych Osobowych";s:4:"odp1";s:63:"kontroluje zgodność przetwarzania danych z przepisami ustawy ";s:4:"odp2";s:40:"prowadzi rejestr zbioru danych osobowych";s:4:"odp3";s:17:"rozpatruje skargi";s:4:"odp4";s:30:"wydaje decyzje administracyjne";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:4:"true";}i:9;a:13:{s:2:"id";s:2:"12";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:0:"";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:40:"Administrator Bezpieczeństwa Informacji";s:4:"odp1";s:41:"nadzoruje zasady ochrony danych osobowych";s:4:"odp2";s:48:"musi być w firmie wskazany z imienia i nazwiska";s:4:"odp3";s:56:"musi być pracownikiem firmy, w której pełni tę rolę";s:4:"odp4";s:48:"nie może prowadzić działalności gospodarczej";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:5:"false";s:13:"odp4walidacja";s:5:"false";}i:10;a:13:{s:2:"id";s:2:"17";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:2:"
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:15:"Klient ma prawo";s:4:"odp1";s:84:"dowiedzieć się, czy jego dane osobowe przetwarzane są przez administratora danych";s:4:"odp2";s:49:"dowiedzieć się jakie jego dane są przetwarzane";s:4:"odp3";s:54:"dowiedzieć się komu są lub mogą być udostępniane";s:4:"odp4";s:65:"uzyskać informację, od kiedy jego dane osobowe są przetwarzane";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:4:"true";}i:11;a:13:{s:2:"id";s:2:"20";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:0:"";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:69:"Dostęp do systemu informatycznego (podłączonego do sieci internet)";s:4:"odp1";s:48:"wymaga hasła o długości co najmniej 8 znaków";s:4:"odp2";s:48:"wymaga hasła o długości co najmniej 9 znaków";s:4:"odp3";s:36:"hasło musi być zmieniane co 30 dni";s:4:"odp4";s:46:"hasło musi być zmieniane co 30 dni roboczych";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:5:"false";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:5:"false";}i:12;a:13:{s:2:"id";s:2:"21";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:0:"";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:39:"Komputer podłączony do sieci internet";s:4:"odp1";s:48:"powinien być wyposażony w program antywirusowy";s:4:"odp2";s:57:"jeśli jest przenośny, to dane należy na nim szyfrować";s:4:"odp3";s:46:"nie może mieć sieciowej karty bezprzewodowej";s:4:"odp4";s:44:"powinien mieć włączoną zaporę sieciową";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:5:"false";s:13:"odp4walidacja";s:4:"true";}i:13;a:13:{s:2:"id";s:2:"22";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:0:"";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:67:"Przesyłając pocztą elektroniczną bazę klientów w pliku excela";s:4:"odp1";s:52:"wystarczy w tytule wiadomości napisać „poufne”";s:4:"odp2";s:45:"wystarczy zmienić rozszerzenie pliku na inne";s:4:"odp3";s:29:"należy zabezpieczyć hasłem";s:4:"odp4";s:58:"nie wolno pocztą elektroniczną przesyłać takich danych";s:13:"odp1walidacja";s:5:"false";s:13:"odp2walidacja";s:5:"false";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:5:"false";}i:14;a:13:{s:2:"id";s:2:"27";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:2:"
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:53:"Generalny Inspektor Ochrony Danych Osobowych ma prawo";s:4:"odp1";s:64:"skontrolować każdy podmiot na terenie Rzeczpospolitej Polskiej";s:4:"odp2";s:66:"skontrolować tylko te podmioty, które przetwarzają dane osobowe";s:4:"odp3";s:72:"skontrolować tylko te podmioty, które zgłosiły zbiory do rejestracji";s:4:"odp4";s:46:"wstępu do pomieszczeń w godz. 6:00 – 22:00";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:5:"false";s:13:"odp3walidacja";s:5:"false";s:13:"odp4walidacja";s:4:"true";}i:15;a:13:{s:2:"id";s:2:"28";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:0:"";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:23:"Kontrola GIODO sprawdza";s:4:"odp1";s:54:"czy podmiot ma prawo przetwarzać zebrane dane osobowe";s:4:"odp2";s:25:"czy powołany został ABI";s:4:"odp3";s:46:"czy dane osobowe są odpowiednio zabezpieczone";s:4:"odp4";s:43:"czy kierujący organizacją nie był karany";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:5:"false";}i:16;a:13:{s:2:"id";s:2:"29";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:2:"
+
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:34:"GIODO ma prawo nałożyć grzywnę";s:4:"odp1";s:79:"gdy zostaną wykryte nieprawidłowości, a administrator danych ich nie poprawi";s:4:"odp2";s:63:"wielokrotnie, ale w wysokości nie większej niż 200 tys. zł ";s:4:"odp3";s:86:"gdy wykryje, że w organizacji nie powołano Administratora Bezpieczeństwa Informacji";s:4:"odp4";s:51:"gdy hasła do systemów są krótsze niż 8 znaków";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:4:"true";}i:17;a:13:{s:2:"id";s:2:"30";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:2:"
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:26:"Ustawa przewiduje kary za:";s:4:"odp1";s:48:"przetwarzanie danych przez osobę nieuprawnioną";s:4:"odp2";s:43:"udostępnianie danych osobom nieuprawnionym";s:4:"odp3";s:38:"brak zgłoszenia zbioru do rejestracji";s:4:"odp4";s:43:"utrudnianie lub udaremnianie kontroli GIODO";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:4:"true";}}szkolenietrwa|s:3:"nie";opisszkolenia|s:44:"szkolenie z zakresu ochrony danych osobowych";szkolenie|a:17:{i:0;a:5:{s:2:"id";s:2:"42";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:9:"Powitanie";s:5:"temat";s:0:"";s:5:"tresc";s:937:"<p style="text-align:justify">Dbając o spełnienie wymogów Ustawy o Ochronie Danych Osobowych zapraszamy do udziału w szkoleniu, które w łatwy i szybki sposób przybliży Państwu podstawowe zagadnienia z tego zakresu.</p>
+
+<p style="text-align:justify">Szkolenie z Ochrony Danych Osobowych składa się z merytorycznych slajdów i kończy testem wiedzy. Niezaliczenie testu powoduje konieczność ponownego przejścia szkolenia. Dlatego też, w każdej chwili możliwy jest powrót do poprzedniego slajdu.</p>
+
+<p style="text-align:justify">Szkolenie ma na celu zaznajomienie jego uczestników z podstawowymi informacjami niezbędnymi do bezpiecznego i świadomego przetwarzania danych osobowych w zakresie swoich obowiązków pracowniczych i stanowi jedno z najważniejszych, organizacyjnych zabezpieczeń w każdym systemie ochrony danych osobowych. </p>
+
+<p style="text-align:justify"><strong>Życzymy powodzenia!</strong></p>
+";}i:1;a:5:{s:2:"id";s:2:"44";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:11:"AKTY PRAWNE";s:5:"temat";s:0:"";s:5:"tresc";s:675:"<p style="text-align: justify;"><strong>1. Konstytucja Rzeczpospolitej Polskiej: </strong><br />
+Art.47 – Prawo do prywatności. <br />
+Art.51 – Nikt nie może być obowiązany inaczej niż na podstawie ustawy do ujawniania informacji dotyczących jego osoby. </p>
+
+<p style="text-align: justify;"><strong>2. Ustawa o Ochronie Danych Osobowych: </strong><br />
+Art.1 – Każdy ma prawo do ochrony dotyczących go danych osobowych. <br />
+Art.32 – Każdej osobie przysługuje prawo do kontroli przetwarzania danych, które jej dotyczą […] <br />
+Art. 37 – Do przetwarzania danych mogą być dopuszczone wyłącznie osoby posiadające upoważnienie […]</p>
+";}i:2;a:5:{s:2:"id";s:2:"45";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:19:"PODSTAWOWE POJĘCIA";s:5:"temat";s:0:"";s:5:"tresc";s:638:"<p><strong>Administrator Danych Osobowych (ADO</strong>) - &bdquo;właściciel&rdquo; zebranych danych, organ, jednostka organizacyjna, podmiot lub osoba, [...] decydująca o celach i środkach przetwarzania danych osobowych.&nbsp;</p>
+
+<p><span style="line-height:1.6em"><strong>Administrator Bezpieczeństwa Informacji (ABI) </strong>- wyznaczona przez podmiot (ADO) osoba, kt&oacute;ra nadzoruje przestrzeganie zasad ochrony danych osobowych.&nbsp;</span></p>
+
+<p><strong>Generalny Inspektor Ochrony Danych Osobowych (GIODO) </strong>- organ administracji publicznej, kt&oacute;ry pełni nadz&oacute;r nad stosowaniem ustawy.</p>
+";}i:3;a:5:{s:2:"id";s:2:"46";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:27:"JAK ROZPOZNAĆ DANE OSOBOWE";s:5:"temat";s:0:"";s:5:"tresc";s:490:"<p><strong>Dane osobowe</strong> – są to wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej. </p>
+
+<p><strong>Osoba zidentyfikowana</strong> - znana z imienia i nazwiska np. Jan Kowalski, ul. Praktyczna 2A, Warszawa. </p>
+
+<p><strong>Osoba możliwa do zidentyfikowania -</strong> autor książki „Jak przetwarzać dane osobowe w firmie”, właściciel firmy „Kaczeniec” w Sosnowcu, posiadacz polisy ubezpieczeniowej nr AZ07-11</p>
+";}i:4;a:5:{s:2:"id";s:2:"47";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:27:"PRZYKŁADY DANYCH OSOBOWYCH";s:5:"temat";s:0:"";s:5:"tresc";s:711:"<p>numer PESEL: – jest daną osobową  (indywidualny numer identyfikacyjny).</p>
+
+<p>numer polisy ubezpieczeniowej: - dla osób, które nie są pracownikami zakładu ubezpieczeń nie stanowi danych osobowych (wymaga nadmiernych kosztów, czasu i działań), - ale dla pracowników firmy ubezpieczeniowej są to dane osobowe.</p>
+
+<p>adres e-mail: - balu84@wp.pl. – nie stanowi danej osobowej (jest to tylko adres) - wojciech.zabawny@wp.pl – stanowi daną osobową (adres poczty elektronicznej   imię i nazwisko).</p>
+
+<p>numer telefonu: - tel. 22 350 70 52 - nie stanowi danej osobowej – Wojciech Zabawny, tel. 22 350 70 52 – (numer telefonu   imię i nazwisko), może stanowić daną osobową.</p>
+";}i:5;a:5:{s:2:"id";s:2:"48";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:36:"DANE OSOBOWE WRAŻLIWE  (SENSYTYWNE)";s:5:"temat";s:0:"";s:5:"tresc";s:732:"<p><strong>Ujawniają</strong></p>
+
+<p>- pochodzenie rasowe lub etniczne,<br />
+- poglądy polityczne,<br />
+- przekonania religijne lub filozoficzne,<br />
+- przynależność wyznaniową, partyjną lub związkową,<br />
+- informacje o stanie zdrowia, kodzie genetycznym,<br />
+- informacje o nałogach lub życiu seksualnym,<br />
+- o wyrokach sądowych dot.: skazań, orzeczeń o ukaraniu, mandatach karnych, orzeczeniach wydanych w postępowaniu sądowym lub administracyjnym </p>
+
+<p><strong>Dane te można przetwarzać wyłącznie wtedy, gdy:</strong></p>
+
+<p>- pozwala na to przepis prawa  <br />
+- osoba wyraziła na to zgodę na piśmie <br />
+- dane wrażliwe dotyczące tej osoby zostały przez nią upublicznione</p>
+";}i:6;a:5:{s:2:"id";s:2:"49";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:39:"PODSTAWA PRZETWARZANIA DANYCH OSOBOWYCH";s:5:"temat";s:0:"";s:5:"tresc";s:790:"<p style="text-align:justify">DANE OSOBOWE MOGĄ PRZETWARZAĆ TYLKO osoby do tego upoważnione przez Administratora Danych Osobowych! Aby otrzymać upoważnienie należy zaliczyć test kończący to szkolenie.</p>
+
+<p style="text-align:justify">Aby przetwarzać dane osobowe trzeba bezwzględnie posiadać zgodę na ich przetwarzanie od osoby, której dane dotyczą. Zgoda nie jest wymagana jeżeli istnieje podstawa prawna określona np.: w ustawie lub gdy powołujemy konkretny przepis pozwalający na przetwarzanie danych tej osoby. </p>
+
+<p style="text-align:justify">Zgoda na przetwarzanie danych musi być wyrażona w formie pisemnej jeśli przetwarzamy dane wrażliwe lub przekazujemy je do państwa spoza Europejskiego Obszaru Gospodarczego (tzw.: państwo trzecie)</p>
+
+<p> </p>
+";}i:7;a:5:{s:2:"id";s:2:"50";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:23:"OBOWIĄZEK INFORMACYJNY";s:5:"temat";s:0:"";s:5:"tresc";s:547:"<p>to konieczność poinformowania osoby, której dane zamierzamy przetwarzać, o:<br />
+- pełnej nazwie administratora danych<br />
+- adresie siedziby administratora danych<br />
+- prawie dostępu osoby do treści jej danych i możliwości ich aktualizowania.<br />
+- dobrowolnym podaniu danych osobowych lub obowiązku ich podania na podst. przepisu prawa (jeśli istnieje).</p>
+
+<p> </p>
+
+<p>Z powyższych obowiązków zwalnia jedynie konkretny przepis prawa lub fakt, że osoba której dane dotyczą posiada już powyższe informacje. </p>
+";}i:8;a:5:{s:2:"id";s:2:"51";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:40:"ZABEZPIECZENIA FIZYCZNE DANYCH OSOBOWYCH";s:5:"temat";s:0:"";s:5:"tresc";s:408:"<p>- biurka i szafy zamykane na klucz <br />
+- karty dostępu do pomieszczeń, w których znajdują się dane osobowe <br />
+- drzwi do pomieszczeń wyposażone w zamek <br />
+- monitoring <br />
+- ochrona fizyczna osób i mienia <br />
+- system alarmowy </p>
+
+<p> </p>
+
+<p>Jeśli którekolwiek z powyższych zabezpieczeń nie działa prawidłowo, należy niezwłocznie poinformować ABI lub ADO.</p>
+";}i:9;a:5:{s:2:"id";s:2:"52";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:42:"ZABEZPIECZENIA TECHNICZNE DANYCH OSOBOWYCH";s:5:"temat";s:0:"";s:5:"tresc";s:461:"<p>- oprogramowanie antywirusowe <br />
+- włączony firewall <br />
+- zasilacze awaryjne <br />
+- listwy przepięciowe <br />
+- aktualizacja programów poczty elektronicznej <br />
+- aktualizacja przeglądarek internetowych <br />
+- automatyczne skanowanie zewnętrznych nośników danych, podczas rozpoczęcia korzystania z nich w obrębie systemu informatycznego tj. laptop, pendrive, smartfon,tablet, dysk zewnętrzny, płyta CD, DVD, karty flash</p>
+";}i:10;a:5:{s:2:"id";s:2:"53";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:36:"ZABEZPIECZENIA ORGANIZACYJNE DANYCH ";s:5:"temat";s:0:"";s:5:"tresc";s:531:"<p>- szkolenia pracowników (nowozatrudnionych) zanim przystąpią do przetwarzania danych osobowych<br />
+- szkolenia przypominające (raz na rok) dla pracowników upoważnionych do przetwarzania danych osobowych<br />
+- polityka czystego biurka – wszystkie dokumenty zawierające dane osobowe muszą być chowane gdy pracownik opuszcza stanowisko pracy<br />
+- polityka czystego ekranu – ustawienie monitora komputera w taki sposób, aby klienci lub inni pracownicy nie mieli możliwości zobaczenia danych  na ekranie.</p>
+";}i:11;a:5:{s:2:"id";s:2:"54";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:35:" ZABEZPIECZENIA ORGANIZACYJNE  - CD";s:5:"temat";s:0:"";s:5:"tresc";s:683:"<p>- polityka kluczy – rejestr wejść i wyjść osób upoważnionych, pobierających klucze do pomieszczeń, w których przetwarzane są dane osobowe.<br />
+- instrukcja alarmowa – zasady postępowania w przypadku próby wyłudzenia danych lub wycieku danych.<br />
+- procedura rozpoczęcia, przerwania i zakończenia pracy w systemie informatycznym<br />
+- procedura korzystania z Internetu i poczty elektronicznej<br />
+- polityka haseł – sposób nadawania i odbierania uprawnień do systemu informatycznego wraz z terminami ich obowiązywania. </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>WAŻNE! Zakaz udostępniania indywidualnych haseł do systemu informatycznego innym osobom!</p>
+";}i:12;a:5:{s:2:"id";s:2:"55";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:44:"KONTROLA GIODO I PAŃSTWOWEJ INSPEKCJI PRACY";s:5:"temat";s:0:"";s:5:"tresc";s:883:"<p>Porozumienie dotyczące wspólnych kontroli zostało zawarte 14 grudnia 2012 roku. W wyniku tego porozumienia inspektorzy PIP mogą kontrolować dokumentacje ochrony danych osobowych oraz procedury ochrony danych osobowych w firmach i instytucjach.</p>
+
+<p>Kontrola przeprowadzana jest zawsze w obecności ADO lub ABI, a inspektorzy muszą posiadać ważną legitymację służbową oraz imienne upoważnienie do przeprowadzenia kontroli.</p>
+
+<p>Inspektorzy mają prawo:<br />
+- kontroli zgodności zakresu danych osobowych z celem ich przetwarzania<br />
+- wstępu do wszystkich pomieszczeń, w których przetwarzane są dane osobowe<br />
+- kontroli systemu informatycznego i każdego urządzenia (komputer, laptop, dysk zewnętrzny) wchodzącego w jego skład<br />
+- zadawania pracownikom pytań związanych z procedurami ochrony danych osobowych</span></span>.</p>
+";}i:13;a:5:{s:2:"id";s:2:"56";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:24:"ODPOWIEDZIALNOŚĆ KARNA";s:5:"temat";s:0:"";s:5:"tresc";s:197:"<p><strong>Sankcje związane z nie przestrzeganiem Ustawy o Ochronie Danych Osobowych, to:</strong></p>
+
+<p>- grzywna</p>
+
+<p>- kara ograniczenia wolności</p>
+
+<p>- kara pozbawienia wolności</p>
+";}i:14;a:5:{s:2:"id";s:2:"57";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:29:"ODPOWIEDZIALNOŚĆ KARNA - CD";s:5:"temat";s:0:"";s:5:"tresc";s:713:"<p><strong>Sankcje nakładane są  w przypadku: </strong><br />
+- bezprawnego lub bezpodstawnego przetwarzania danych osobowych    <br />
+- bezprawnego lub bezpodstawnego przetwarzania wrażliwych danych osobowych (podwyższenie sankcji do 3lat pozbawienia wolności)<br />
+- utrudnianie kontroli Inspektorom GIODO (jest czynem karalnym - w przeprowadzaniu kontroli może asystować Policja)<br />
+- umyślne bądź nieumyślne udostępnienie zbioru danych osobom nieupoważnionym<br />
+- brak zabezpieczenia danych osobowych – np.: nie zastosowanie się do polityki czystego biurka lub zostawienie danych w miejscu ogólnie dostępnym<br />
+- niedopełnienie obowiązku informacyjnego    </p>
+
+<p> </p>
+";}i:15;a:5:{s:2:"id";s:2:"58";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:44:"ODPOWIEDZIALNOŚĆ ADMINISTRACYJNA - SANKCJE";s:5:"temat";s:0:"";s:5:"tresc";s:478:"<p>Grzywna w celu przymuszenia wykonania decyzji GIODO, nakładana jest w trybie postępowania egzekucyjnego w przypadku, do:</p>
+
+<p>- <strong>osób fizycznych</strong> (pracowników i współpracowników), to grzywna w wysokości 10 tys. zł. w jednym postępowaniu, maksymalnie jednak do 50 tys. zł.</p>
+
+<p>- <strong>osób prawnych</strong> (także firm współpracujących), to grzywna w wysokości 50 tys. zł w jednym postępowaniu, maksymalnie do 200 tys. zł.</p>
+";}i:16;a:5:{s:2:"id";s:2:"60";s:14:"nazwaszkolenia";s:10:"szkolenie1";s:8:"naglowek";s:34:"Dziękujemy za udział w Szkoleniu";s:5:"temat";s:0:"";s:5:"tresc";s:630:"<p>Teraz zapraszamy do krótkiego, składającego się z dwóch pytań<strong> </strong></p>
+
+<p><strong>TESTU WIELOKROTNEGO WYBORU</strong> co oznacza, że możliwa jest więcej niż jedna prawidłowa odpowiedź.</p>
+
+<p>W przypadku niezaliczenia testu za pierwszym razem system poprosi o powtórzenie szkolenia i ponowne przystąpienie do testu.</p>
+
+<p>Masz cztery próby, aby zdać test i odebrać zaświadczenie o jego ukończeniu. Na tej podstawie Administrator Bezpieczeństwa Informacji będzie mógł nadać Ci upoważnienie do przetwarzania danych osobowych.</p>
+
+<p><strong>Życzymy powodzenia!</strong></p>
+
+<p> </p>
+";}}szkoleniesize|i:17;ilosc|i:0;pokaznext|i:1;pokazprevious|i:1;testrozpoczety|s:3:"tak";opis|s:31:"Test z ochrony danych osobowych";testsize|i:18;wybranepytania|a:2:{i:0;a:13:{s:2:"id";s:2:"17";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:2:"
+";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:15:"Klient ma prawo";s:4:"odp1";s:84:"dowiedzieć się, czy jego dane osobowe przetwarzane są przez administratora danych";s:4:"odp2";s:49:"dowiedzieć się jakie jego dane są przetwarzane";s:4:"odp3";s:54:"dowiedzieć się komu są lub mogą być udostępniane";s:4:"odp4";s:65:"uzyskać informację, od kiedy jego dane osobowe są przetwarzane";s:13:"odp1walidacja";s:4:"true";s:13:"odp2walidacja";s:4:"true";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:4:"true";}i:1;a:13:{s:2:"id";s:1:"7";s:9:"nazwatest";s:5:"test1";s:5:"tresc";s:52:"Zaznacz te informacje, które stanowią dane osobowe";s:6:"rodzaj";s:1:"0";s:7:"pytanie";s:52:"Zaznacz te informacje, które stanowią dane osobowe";s:4:"odp1";s:15:"rozmiar ubrania";s:4:"odp2";s:15:"numer telefonu	";s:4:"odp3";s:11:"numer PESEL";s:4:"odp4";s:26:"informacja o wynagrodzeniu";s:13:"odp1walidacja";s:5:"false";s:13:"odp2walidacja";s:5:"false";s:13:"odp3walidacja";s:4:"true";s:13:"odp4walidacja";s:5:"false";}}pytaniasize|i:2;testodpowiedzi|a:1:{i:0;a:4:{i:0;s:5:"false";i:1;s:5:"false";i:2;s:5:"false";i:3;s:5:"false";}}host|s:21:"mysql:host=localhost;";

@@ -1,7 +1,7 @@
 <?php
 error_reporting(2);  
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $_wynik = R::getAll('select * from uczestnicy');
 $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy ORDER BY `zakladpracy`.`nazwazakladu` ASC');
 $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.`nazwa` ASC');

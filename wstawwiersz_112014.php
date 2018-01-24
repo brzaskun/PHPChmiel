@@ -2,7 +2,7 @@
 $slidenr = $_POST['slidenr'];
 $nazwaszkolenia = $_POST['Nnazwaszkolenia'];
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $tabelaszkolen = R::getAll('SELECT * FROM szkolenie ORDER BY `id` DESC');
 foreach ($tabelaszkolen as $kolejnyslide) {
     $wybraneszkolenienr = ($kolejnyslide['id']);

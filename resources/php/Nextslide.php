@@ -30,7 +30,7 @@ class NextslideTest {
             self::$opis = $_SESSION['opis']; 
         } else {
             require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-            R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+            R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
             $nazwaszkolenia = $_SESSION['uczestnik']['nazwaszkolenia'];
             //pobieramy nazwy przyporzadkowanych testow
             $sqltesty = "SELECT * FROM szkolenietest WHERE szkolenie = '$nazwaszkolenia'";

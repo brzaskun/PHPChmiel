@@ -3,7 +3,7 @@
   if(session_status()!=2){     session_start(); };
   date_default_timezone_set('Europe/Warsaw');
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-  R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+  R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   //brzaksun@wp.pl
   $id = 16186;
   $data = date("Y-m-d H:i:s");

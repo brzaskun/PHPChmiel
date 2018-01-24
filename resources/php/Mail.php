@@ -308,7 +308,7 @@ class Mail {
 //        $transport->setPassword('qwerty1234');
         $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 587);
         $transport->setUsername('e-szkolenia@odomg.pl');
-        $transport->setPassword('odo1234');
+        $transport->setPassword('Moj@Poczta_');
         // Create the Mailer using your created Transport
         return Swift_Mailer::newInstance($transport);
     }

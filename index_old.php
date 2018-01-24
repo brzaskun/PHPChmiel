@@ -18,7 +18,7 @@ require_once($sciezkaroot . '/resources/php/Rb.php');
 require_once($sciezkaroot . '/resources/php/Zerowanieciastek.php');
 date_default_timezone_set('Europe/Warsaw');
 //inicjujemy clase do lazczenia sie z baza danych
-R::setup('mysql:host=localhost;dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
+R::setup($_SESSION['host'].'dbname=tb152026_testdane', 'tb152026_madrylo', 'Testdane7005*');
 //Zerowanieciastek::usunciastka(); 
 if (isset($_GET['mail'])) {
     $mail = filter_input(INPUT_GET, 'mail', FILTER_VALIDATE_EMAIL);

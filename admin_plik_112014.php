@@ -4,7 +4,7 @@ if (session_status() != 2) {
 };
 error_reporting(0);
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
-R::setup('mysql:host=172.16.0.6;dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
 ?>
 <div id="panelladowaniapliku" style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 10px; background-color: #e9e9e9;">
