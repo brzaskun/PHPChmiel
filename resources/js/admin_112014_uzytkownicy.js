@@ -437,6 +437,8 @@ var generujnazwykolumn = function (uczestnicyrodzaj) {
     zwrot.push(o1);
     o1 = {"sTitle": ""};
     zwrot.push(o1);
+    o1 = {"sTitle": "mail"};
+    zwrot.push(o1);
     o1 = {"sTitle": "edytuj"};
     zwrot.push(o1);
     o1 = {"sTitle": "reset"};
@@ -781,6 +783,7 @@ var uzupelnijtabele = function (id) {
         "<span>0</span>",
         "<span>0</span>",
         "<input type='checkbox' class='czekbox'/>",
+        "<input title='mail' name='mail' value='mail' type='checkbox'  onclick='mailuser(this);' class='czekedycja' style=\"display: none;\"/>",
         "<input title='edytuj' name='edytuj' value='edytuj' type='checkbox'  onclick='edituser(this);' class='czekedycja' style=\"display: none;\"/>",
         "<input title=\"reset\" name=\"reset\" value=\"reset\" type=\"checkbox\" onclick=\"resetujuser(this);\" class='czekedycja' style=\"display: none;\"/>",
         "<input title='usuń' name='usun' value='usuń' type='checkbox'  onclick='usunwiersz(this);' class='czekedycja' style=\"display: none;\"/>"
@@ -796,6 +799,44 @@ var uzupelnijtabele = function (id) {
     rj("Nemail").value = "";
     rj("Nimienazwisko").value = "";
 };
+
+var mailuser = function (button) {
+    $("#ajax_sun").puidialog({
+        height: 120,
+        width: 200,
+        resizable: false,
+        closable: false,
+        location: 'center',
+        modal: true
+    });
+    $("#ajax_sun").puidialog('show');
+    $('#notify').puigrowl('show', [{severity: 'info', summary: 'Przygotowuje wysyłkę mail do użytkownika z zaświadczeniem i upo'}]);
+    var trescwiersza = pobierzelementybutton(button.parentElement.parentElement);
+    var id = trescwiersza[1].textContent;
+    $.ajax({
+        type: "POST",
+        url: "remailuzytkownik_022018.php",
+        data: "id=" + id,
+        cache: false,
+        success: function(result){
+            button.checked = false;
+            var butony = $(button).closest("td").siblings().find(".czekedycja");
+            $(button).hide();
+            $(butony[0]).hide();
+            $(butony[1]).hide();
+            $(butony[2]).hide();
+            var butonedit = $(button).closest("td").siblings().find(".czekbox")[0];
+            butonedit.checked = false;
+            $("#ajax_sun").puidialog('hide');
+            $('#notify').puigrowl('show', [{severity: 'info', summary: 'Udało się wysłąc mail'}]);
+        },
+        error: function (result) {
+            $("#ajax_sun").puidialog('hide');
+            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Wystąpił błąd, nie wysłano maila'}]);
+        }
+    });
+};
+
 
 var resetujuser = function (button) {
     var przesuniecie = $('#tabuser').DataTable().page.info().page;
@@ -822,6 +863,7 @@ var resetujuser = function (button) {
             $(button).hide();
             $(butony[0]).hide();
             $(butony[1]).hide();
+            $(butony[2]).hide();
             var butonedit = $(button).closest("td").siblings().find(".czekbox")[0];
             butonedit.checked = false;
             $('#notify').puigrowl('show', [{severity: 'info', summary: 'Zresetowano dane użytkownika'}]);
