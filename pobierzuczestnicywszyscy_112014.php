@@ -44,6 +44,7 @@
       array_push($tab, "<span>".$val['wyniktestu']."</span>");
       array_push($tab, "<span>".$val['wyslanycert']."</span>");
       array_push($tab,"<input type='checkbox' class=\"czekbox\"/>");
+      array_push($tab,"<input title=\"mail\" name=\"mail\" type='checkbox' class='czekedycja' onclick=\"mailuser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
       array_push($tab,"<input title=\"edytuj\" name=\"edytuj\" type='checkbox' class='czekedycja' onclick=\"edituser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
       array_push($tab,"<input title=\"reset\" name=\"reset\" type='checkbox' class='czekedycja' onclick=\"resetujuser(this);\" style=\"display: none;\"/>"); 
       if ($val['email'] == "mchmielewska@interia.pl" || $value['email'] == "brzaskun@o2.pl") {
