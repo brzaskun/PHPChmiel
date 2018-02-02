@@ -18,14 +18,12 @@
         array_push($tab, "<span>" . $val['id'] . "</span>");
         array_push($tab, "<span>" . $val['email'] . "</span>");
         array_push($tab, "<span>" . $val['imienazwisko'] . "</span>");
-        array_push($tab, "<span>" . $val['plec'] . "</span>");
         array_push($tab, "<span>" . $val['firma'] . "</span>");
         array_push($tab, "<span>" . $val['nazwaszkolenia'] . "</span>");
         //array_push($tab, "<span>" . $val['uprawnienia'] . "</span>");
-        array_push($tab, "<span>" . $val['ilosclogowan'] . "</span>");
         array_push($tab, "<span>" . $val['wyslanymailupr'] . "</span>");
-        array_push($tab, "<span>" . $od . "</span>");
-        array_push($tab, "<span>" . $do . "</span>");
+//        array_push($tab, "<span>" . $od . "</span>");
+//        array_push($tab, "<span>" . $do . "</span>");
 //        array_push($tab, "<span>" . $val['wyniktestu'] . "</span>");
 //        array_push($tab, "<span>" . $val['wyslanycert'] . "</span>");
 //        array_push($tab, "<input type='checkbox' class=\"czekbox\"/>");
