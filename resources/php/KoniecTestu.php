@@ -16,7 +16,7 @@ class KoniecTestu {
         try {
             require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
             R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
-        } catch (exception $e) {
+        } catch (Exception $e) {
             
         };
         $id = $_SESSION['uczestnik']['id'];
@@ -27,7 +27,7 @@ class KoniecTestu {
                 $sql = "UPDATE  `uczestnicy` SET  `wcisnietyklawisz` = '$data' WHERE  `uczestnicy`.`id` = $id;";
                 R::exec($sql);
             }
-        } catch (exception $e) {
+        } catch (Exception $e) {
             
         };
         try {
@@ -39,7 +39,7 @@ class KoniecTestu {
                     R::exec($sql);
                 }
             }
-        } catch (exception $e) {
+        } catch (Exception $e) {
             
         };
     }
@@ -49,7 +49,8 @@ class KoniecTestu {
         try {
             require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
             R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
-        } catch (exception $e) {};
+        } catch (Exception $e) {
+        };
         $id = $_SESSION['uczestnik']['id'];
         $val = R::getRow("SELECT * FROM uczestnicy WHERE id='$id'");
         $wyslanycert = $val['wyslanycert'];
@@ -69,7 +70,7 @@ class KoniecTestu {
         date_default_timezone_set('Europe/Warsaw');
         $data = date("Y-m-d H:i:s");
         $nazwaszkolenia = $val['nazwaszkolenia'];
-        $sql = "INSERT INTO `tb152026_testdane`.`uczestnicyarchiwum`
+        $sql = "INSERT INTO `p6273_odomg`.`uczestnicyarchiwum`
         (`id_uzytkownik`,`wyslanymailupr`,`sessionstart`,`sessionend`,`wyniktestu`,`wyslanycert`,
         `ilosclogowan`,`iloscpoprawnych`,`iloscblednych`,`iloscodpowiedzi`,`nrupowaznienia`,
         `indetyfikator`,`datanadania`,`dataustania`,`wyslaneup`,`data`,`nazwaszkolenia`)
