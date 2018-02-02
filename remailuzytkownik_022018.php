@@ -3,8 +3,7 @@
     if (session_status() != 2) {
         session_start();
     };
-    $_SESSION['host'] = 'mysql:host=localhost;';
-    error_reporting(2);
+    error_reporting(0);
         require_once('resources/php/CertyfikatGenerowanie.php');
         require_once('resources/php/UpowaznienieGenerowanie.php');
 //CertyfikatGenerowanie::generuj();
