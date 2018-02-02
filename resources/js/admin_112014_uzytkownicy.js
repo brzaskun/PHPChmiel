@@ -705,8 +705,10 @@ var tak_usunwiersz = function () {
             }
         }
     });
-    //trzeba pobrac maile bo inaczej po usunieciu dalej bedzie informowal ze jest podatnik;
-    MYAPP.emaile.remove(aData[1]);
+    try {
+        //trzeba pobrac maile bo inaczej po usunieciu dalej bedzie informowal ze jest podatnik;
+        MYAPP.emaile.remove(aData[1]);
+    } catch(e){}
     delete MYAPP.button;
     $('#Nemail').css({
         color: "black"
