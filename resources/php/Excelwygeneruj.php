@@ -317,15 +317,15 @@ class Excelwygeneruj {
         }
         //zaplenianie danymi z tabeli
         $objPHPExcel->getActiveSheet()->fromArray($wiersze, NULL, 'A2');
-        $objPHPExcel->getActiveSheet()->removeColumn("I");
+        //$objPHPExcel->getActiveSheet()->removeColumn("I");
         //wysokosc pierwszego rzędu
         $objPHPExcel->getActiveSheet()->getRowDimension(1)->setRowHeight(40);
         //pozycjonowanie pierwszego rzedu
-        $ostatniacol = PHPExcel_Cell::stringFromColumnIndex($colnumer - 2);
+        $ostatniacol = PHPExcel_Cell::stringFromColumnIndex($colnumer - 1);
         $objPHPExcel->getActiveSheet()->getStyle('A1:' . $ostatniacol . '1')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
         $objPHPExcel->getActiveSheet()->getStyle('I1:' . $ostatniacol . '1')->getAlignment()->setTextRotation(90);
         $objPHPExcel->getActiveSheet()->getStyle('A1:H1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_JUSTIFY);
-        $objPHPExcel->getActiveSheet()->getStyle('I1:' . $ostatniacol . '1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+        $objPHPExcel->getActiveSheet()->getStyle('I1:' . $ostatniacol . '1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         $objPHPExcel->getActiveSheet()->getRowDimension(1)->setRowHeight(-1);
 
         // Set autofilter
@@ -360,7 +360,8 @@ class Excelwygeneruj {
         $objPHPExcel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
         $objPHPExcel->getActiveSheet()->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
         $objPHPExcel->getActiveSheet()->getPageSetup()->setFitToPage(true);
- 
+        $ostatniwiersz = sizeof($wiersze)+1;
+        $objPHPExcel->getActiveSheet()->getStyle('H1:' . $ostatniacol . $ostatniwiersz)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         // Rename sheet 
         if (strlen($nazwafirmy) > 31) {
             $nazwafirmy = substr($nazwafirmy, 0, 30);
