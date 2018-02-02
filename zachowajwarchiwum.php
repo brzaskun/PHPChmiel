@@ -35,7 +35,7 @@ foreach ($uczestnicy as $val) {
         $wyslaneup = $val['wyslaneup'];
         $data = date("Y-m-d H:i:s");
         $nazwaszkolenia = $val['nazwaszkolenia'];
-        $sql = "INSERT INTO `tb152026_testdane`.`uczestnicyarchiwum`
+        $sql = "INSERT INTO `p6273_odomg`.`uczestnicyarchiwum`
         (`id_uzytkownik`,`wyslanymailupr`,`sessionstart`,`sessionend`,`wyniktestu`,`wyslanycert`,
         `ilosclogowan`,`iloscpoprawnych`,`iloscblednych`,`iloscodpowiedzi`,`nrupowaznienia`,
         `indetyfikator`,`datanadania`,`dataustania`,`wyslaneup`,`data`,`nazwaszkolenia`)
