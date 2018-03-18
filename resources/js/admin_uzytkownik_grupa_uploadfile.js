@@ -16,7 +16,11 @@ $(document).ready(function () {
             });
         }
     });
-    $('#rodzajdanych').puidropdown();
+    $('#rodzajdanych').puidropdown({
+        change: function (e) {
+            pokazprzyciskladowania();
+        }
+    });
     podswietlmenu(rj('menuupowaznieniagrupa'));
 });
 
@@ -37,18 +41,35 @@ var uploadfile_uzyt_grupa = function () {
         modal: true
     });
     $("#ajax_sun").puidialog('show');
-    var rodzajdanych = document.getElementById("rodzajdanych").value;
-    var rodzajdanych = "rodzajdanych=" + rodzajdanych;
      $.ajax({
         type: "POST",
         url: "upload_uzytkownik_grupa.php",
-        data: rodzajdanych,
         cache: false,
         success: function(result){
-            window.location.href = "admin112014_uzytkownik_grupy.php";
+            $("#ajax_sun").puidialog('hide');
+            $('#glownydiv').empty();
+            $('#notify').puigrowl('show', [{severity: 'info', summary: 'Udało się nanieść zmiany w upgrupy.'}]);
+            var odpowiedz = "<p style=\"color:blue;font-size:large;\">Udało się nanieść zmiany dla: </p>";
+            var tabela = JSON.parse(result);
+            var sukces = tabela[0];
+            var niesukces = tabela[1];
+            var i = 1;
+            sukces.forEach(function (item) {
+                odpowiedz = odpowiedz+"<p>"+i+" "+item+"</p>";
+                i++;
+            });
+            odpowiedz = odpowiedz+"<br/>";
+            odpowiedz = odpowiedz+"<p style=\"color:red;font-size:large;\">Nieudało się nanieść zmiany dla: </p>";
+            var i = 1;
+            niesukces.forEach(function (item) {
+                odpowiedz = odpowiedz+"<p>"+i+" "+item+"</p>";
+                i++;
+            });
+            $("#glownydiv").append(odpowiedz);
+            //window.location.href = "admin112014_uzytkownik_grupy.php";
         },
         error: function(xhr, status, error) { 
-            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się pobrać listy zaświadczeń.'}]);
+            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się nanieśc upoważnień.'}]);
         },
     });
 }
