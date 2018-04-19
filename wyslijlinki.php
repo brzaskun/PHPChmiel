@@ -3,13 +3,13 @@
     if (session_status() != 2) {
         session_start();
     };
-    error_reporting(E_ALL & ~E_DEPRECATED);
     try {
         require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
     } catch (Exception $em) {
  
     }
     require_once('resources/php/Rb.php');
+    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
     R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
     date_default_timezone_set('Europe/Warsaw');
     $parametr = "wyslanymailupr=0 AND id > 16180";
