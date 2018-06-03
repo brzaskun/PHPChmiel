@@ -91,22 +91,30 @@ class UpowaznienieGenerowanie {
                                     '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
                                     '<p align="center"><b>UPOWAŻNIENIE nr ' . $nrupowaznienia . '</p>' .
                                     '<p align="center"><b>do przetwarzania danych osobowych<br/>' .
-                                    '<p align="center"> w <span>' . $sqlfirma . ' z siedzibą w ' . $miejscowosc . ' ' . $ulica . '(dalej "Administrator")</span></p>' .
+                                    'w systemie informatycznym lub w zbiorze w wersji papierowej</b></p>' .
+                                    '<p align="center"> w <span>' . $sqlfirma . ' z siedzibą w ' . $miejscowosc . ' ' . $ulica . '</span></p>' .
                                     '<p></p>' .
-                                    '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator upoważnia:</p>' .
-                                    '<p></p>' .
-                                    '<p style="font-size: large;">z dniem ' . $datanadania . '</p>' .
-                                    '<p style="font-size: large;">Panią ' . $imienaz . '</p>' .
-                                    '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest'. $sqlfirma .'</p>' .
-                                    '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
+                                    '<p style="font-size: large;">Z dniem ' . $datanadania . 'r. Pani ' . $imienaz . '</p>' .
+                                    '<p>otrzymuje upoważnienie do przetwarzania danych osobowych w następujących zbiorach danych:</p>' .
                                     '<p><b>' . $grupy . '</b></p>' .
-                                    '<p><b>wyłącznie w zakresie wynikającym z poleceń przełożonego (Administratora).</b></p>' .
-                                    '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
+                                    '<p align="justify">Zobowiązuję Panią do przestrzegania przepisów dotyczących ochrony danych osobowych oraz wprowadzonych i wdrożonych do stosowania przez Administratora Danych „Polityki Bezpieczeństwa Informacji” oraz „Instrukcji zarządzania systemem informatycznym służącym do przetwarzania danych osobowych.”</p>' .
+                                    '<p align="justify">Upoważnienie obowiązuje do dnia zakończenia wykonywania obowiązków służbowych względem Administratora Danych świadczonych na podstawie umowy o pracę lub umowy cywilnoprawnej.</p>' .
+                                    '<p align="center"><b>OŚWIADCZENIE</b></p>' .
+                                    '<p align="justify" style="font-size: small;">Oświadczam, iż zostałam zapoznana z przepisami dotyczących ochrony danych osobowych, w szczególności ustawy z dnia 29 sierpnia 1997r. o ochronie danych osobowych (tj. Dz.U. z 2016r., poz. 922 z późn.zm.), wydanych na jej podstawie aktów wykonawczych oraz wprowadzonych i wdrożonych do stosowania przez Administratora Danych „Polityki Bezpieczeństwa Informacji” oraz „Instrukcji zarządzania systemem informatycznym służącym do przetwarzania danych osobowych.”</p>' .
+                                    '<p>Zobowiązuję się do:</p>' .
+                                    '<ul>' .
+                                    '<li><p>zachowania w tajemnicy danych osobowych, do których mam lub będę miała dostęp w związku z wykonywaniem zadań służbowych lub obowiązków pracowniczych</p></li>' .
+                                    '<li><p>niewykorzystywania danych osobowych w celach pozasłużbowych o ile nie są one jawne</p></li>' .
+                                    '<li><p>zachowania w tajemnicy sposobów zabezpieczenia danych osobowych o ile nie są one jawne</p></li>' .
+                                    '<li><p>korzystania ze sprzętu IT oraz oprogramowania wyłącznie w związku z wykonywaniem obowiązków pracowniczych</p></li>' .
+                                    '<li><p>wykorzystywania jedynie legalnego oprogramowania pochodzącego od Pracodawcy</p></li>' .
+                                    '<li><p>należytej dbałości o sprzęt i oprogramowanie zgodnie z dokumentacją ochrony danych osobowych</p></li>' .
+                                    '<li><p>korzystania z komputerów przenośnych zgodnie z dokumentacją ochrony danych osobowych</p></li>' .
+                                    '</ul>' .
+                                    '<p align="justify">Przyjmuję do wiadomości, iż postępowanie sprzeczne z powyższymi zobowiązaniami, może być uznane przez Pracodawcę za ciężkie naruszenie obowiązków pracowniczych w rozumieniu art. 52 § 1 pkt 1 Kodeksu Pracy lub za naruszenie przepisów karnych ww. ustawy o ochronie danych osobowych.</p>' .
                                     '<p></p>' .
-                                    '<p>Ja niżej podpisana zobowiązuję się do zachowania w tajemnicy danych osobowych, wszelkich procedur, zabezpieczeń i innych informacji i danych pozyskanych podczas świadczenia pracy (usług) również po ustaniu stosunku umownego.</p>' .
-                                    '<p></p>' .
-                                    '<p>...................................................</p>' .
-                                    '<p><i> podpis osoby otrzymującej upoważnienie</i></p>' .
+                                    '<p>………………………</p>' .
+                                    '<p><i> podpis pracownika</i></p>' .
                                     '</body></html>';
                         } else {
                             $html = '<!DOCTYPE html><html lang="pl">' .
@@ -114,22 +122,30 @@ class UpowaznienieGenerowanie {
                                     '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
                                     '<p align="center"><b>UPOWAŻNIENIE nr ' . $nrupowaznienia . '</p>' .
                                     '<p align="center"><b>do przetwarzania danych osobowych<br/>' .
-                                    '<p align="center"> w <span>' . $sqlfirma . ' z siedzibą w ' . $miejscowosc . ' ' . $ulica . '(dalej "Administrator")</span></p>' .
+                                    'w systemie informatycznym lub w zbiorze w wersji papierowej</b></p>' .
+                                    '<p align="center"> w <span>' . $sqlfirma . ' z siedzibą w ' . $miejscowosc . ' ' . $ulica . '</span></p>' .
                                     '<p></p>' .
-                                    '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator upoważnia:</p>' .
-                                    '<p></p>' .
-                                    '<p style="font-size: large;">z dniem ' . $datanadania . '</p>' .
-                                    '<p style="font-size: large;">Pana ' . $imienaz . '</p>' .
-                                    '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest'. $sqlfirma .'</p>' .
-                                    '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
+                                    '<p style="font-size: large;">Z dniem ' . $datanadania . 'r. Pan ' . $imienaz . '</p>' .
+                                    '<p>otrzymuje upoważnienie do przetwarzania danych osobowych w następujących zbiorach danych:</p>' .
                                     '<p><b>' . $grupy . '</b></p>' .
-                                    '<p><b>wyłącznie w zakresie wynikającym z poleceń przełożonego (Administratora).</b></p>' .
-                                    '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
+                                    '<p align="justify">Zobowiązuję Pana do przestrzegania przepisów dotyczących ochrony danych osobowych oraz wprowadzonych i wdrożonych do stosowania przez Administratora Danych „Polityki Bezpieczeństwa Informacji” oraz „Instrukcji zarządzania systemem informatycznym służącym do przetwarzania danych osobowych.”</p>' .
+                                    '<p align="justify">Upoważnienie obowiązuje do dnia zakończenia wykonywania obowiązków służbowych względem Administratora Danych świadczonych na podstawie umowy o pracę lub umowy cywilnoprawnej.</p>' .
+                                    '<p align="center"><b>OŚWIADCZENIE</b></p>' .
+                                    '<p align="justify" style="font-size: small;">Oświadczam, iż zostałem zapoznany z przepisami dotyczących ochrony danych osobowych, w szczególności ustawy z dnia 29 sierpnia 1997r. o ochronie danych osobowych (tj. Dz.U. z 2016r., poz. 922 z późn.zm.), wydanych na jej podstawie aktów wykonawczych oraz wprowadzonych i wdrożonych do stosowania przez Administratora Danych „Polityki Bezpieczeństwa Informacji” oraz „Instrukcji zarządzania systemem informatycznym służącym do przetwarzania danych osobowych.”</p>' .
+                                    '<p>Zobowiązuję się do:</p>' .
+                                    '<ul>' .
+                                    '<li><p>zachowania w tajemnicy danych osobowych, do których mam lub będę miała dostęp w związku z wykonywaniem zadań służbowych lub obowiązków pracowniczych</p></li>' .
+                                    '<li><p>niewykorzystywania danych osobowych w celach pozasłużbowych o ile nie są one jawne</p></li>' .
+                                    '<li><p>zachowania w tajemnicy sposobów zabezpieczenia danych osobowych o ile nie są one jawne</p></li>' .
+                                    '<li><p>korzystania ze sprzętu IT oraz oprogramowania wyłącznie w związku z wykonywaniem obowiązków pracowniczych</p></li>' .
+                                    '<li><p>wykorzystywania jedynie legalnego oprogramowania pochodzącego od Pracodawcy</p></li>' .
+                                    '<li><p>należytej dbałości o sprzęt i oprogramowanie zgodnie z dokumentacją ochrony danych osobowych</p></li>' .
+                                    '<li><p>korzystania z komputerów przenośnych zgodnie z dokumentacją ochrony danych osobowych</p></li>' .
+                                    '</ul>' .
+                                    '<p align="justify">Przyjmuję do wiadomości, iż postępowanie sprzeczne z powyższymi zobowiązaniami, może być uznane przez Pracodawcę za ciężkie naruszenie obowiązków pracowniczych w rozumieniu art. 52 § 1 pkt 1 Kodeksu Pracy lub za naruszenie przepisów karnych ww. ustawy o ochronie danych osobowych.</p>' .
                                     '<p></p>' .
-                                    '<p>Ja niżej podpisany zobowiązuję się do zachowania w tajemnicy danych osobowych, wszelkich procedur, zabezpieczeń i innych informacji i danych pozyskanych podczas świadczenia pracy (usług) również po ustaniu stosunku umownego.</p>' .
-                                    '<p></p>' .
-                                    '<p>...................................................</p>' .
-                                    '<p><i> podpis osoby otrzymującej upoważnienie</i></p>' .
+                                    '<p>………………………</p>' .
+                                    '<p><i> podpis pracownika</i></p>' .
                                     '</body></html>';
                         }
                         $mpdf = new mPDF();
