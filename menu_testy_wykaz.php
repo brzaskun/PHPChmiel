@@ -25,5 +25,6 @@
     <li id="menubackup"><a data-icon="ui-icon-suitcase" href="/admin072017_backup.php"  style="width: 120px;">Backup</a></li>
     <li id="menubackup"><a data-icon="ui-icon-suitcase" href="/admin072017_backup.php"  style="width: 120px;">Backup</a></li>
     <li id="menuupowaznienia"><a data-icon="ui-icon-suitcase" href="/admin072017_upowaznienia.php"  style="width: 120px;">Upoważnienia</a></li>
+    <li id="menuzaswiadczenia"><a data-icon="ui-icon-suitcase" href="/admin062018_zaswiadczenia.php"  style="width: 120px;">Zaświadczenia</a></li>
 </ul>   
 
