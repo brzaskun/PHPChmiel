@@ -77,7 +77,13 @@ var pobierzfirmy = function () {
 
 var weryfikujzaklad = function() {
     var zaklad = $('#Nnazwazakladu').val();
-    if (MYAPP.nazwyzakladu.toLocaleLowerCase().indexOf(zaklad.toLocaleLowerCase())>0) {
+    if (zaklad.indexOf("\"") > -1) {
+        $('#notify').puigrowl('show', [{severity: 'info', summary: 'Nazwa zakłądu zawiera niedowzolone znaki' }]);
+        $('#Nnazwazakladu').css({
+            color: "red"
+        });
+        $("#dodajzaklad").hide();
+    } else if (MYAPP.nazwyzakladu.toLocaleLowerCase().indexOf(zaklad.toLocaleLowerCase())>0) {
         $('#notify').puigrowl('show', [{severity: 'info', summary: 'Nazwa zakłądu '+zaklad+' istnieje już w bazie' }]);
         $('#Nnazwazakladu').css({
             color: "red"
@@ -116,13 +122,14 @@ var pobierzelementy = function (event) {
 
  var nowyzaklad = function() {
     $("#newzaklad").puidialog({
-        height: 400,
+        height: 420,
         width: 450,
         resizable: false,
         showEffect: 'fade',
         hideEffect: 'fade',
         location: "center", 
-        modal: true 
+        modal: true,
+        closable: true
     });
     $("#newzaklad").puidialog('show');
 };

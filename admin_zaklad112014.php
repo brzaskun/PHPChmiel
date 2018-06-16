@@ -149,7 +149,7 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
         <input value="rezygnuj" type="button" onclick="canceledytujtabelezaklad();" style="padding: 5px;width: 120px; margin-left: 15%;">
     </form>
 </div>
-<div id='newzaklad' style='margin-top: 10px; display: none;' title="Nowa firma">
+<div id='newzaklad' style='margin-top: 10px; display: none;' title="Dodaj nową firmę">
     <form id="forminsertzaklad" >
         <table  style="margin-bottom: 15px;">
             <tr>

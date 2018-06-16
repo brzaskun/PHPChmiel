@@ -88,6 +88,53 @@
 
 }
 
+@media all and (max-width: 3500px) {
+.box{
+	position: relative;
+	width: 1200px;		/* desired width */
+        margin: auto;
+        margin-top: 3%;
+}
+
+#szkolenienaglowek, #loginnaglowek, #testnaglowek {
+    font-size: 150%;
+}
+.pytanietest, .odpowiedzitest {
+    font-size: 135%;
+}
+.odpowiedzitest {
+    height: 210px;
+}
+.trescszkolenia {
+    font-size: 130%;
+    height: 340px;
+}
+.buttonszkolenie {
+    width: 160px;
+    height: 30px;
+    font-size: 140%;
+}
+.zakonczylesszkolenie {
+    font-weight: normal; 
+    font-size: 150%;
+    height: 25px; 
+}
+#logininfo {
+    display: block;
+    margin-left: 31%;
+    font-size: 150%;
+}
+.margin1, #email, #buttonlogowanie {
+    margin-left: 30%;
+}
+.margin2 {
+    margin-left: 31%;
+}
+
+}
+
+
+
 @media all and (max-width: 1500px) {
 .box{
 	position: relative;
