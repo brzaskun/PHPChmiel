@@ -126,7 +126,7 @@
                                     '<p></p>' .
                                     '<p style="font-size: large;">z dniem ' . $datanadania . '</p>' .
                                     '<p style="font-size: large;">Panią ' . $imienaz . '</p>' .
-                                    '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest'. $sqlfirma .'</p>' .
+                                    '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'</p>' .
                                     '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
                                     '<p><b>' . $grupy . '</b></p>' .
                                     '<p><b>wyłącznie w zakresie wynikającym z poleceń przełożonego (Administratora).</b></p>' .
@@ -149,7 +149,7 @@
                                     '<p></p>' .
                                     '<p style="font-size: large;">z dniem ' . $datanadania . '</p>' .
                                     '<p style="font-size: large;">Pana ' . $imienaz . '</p>' .
-                                    '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest'. $sqlfirma .'</p>' .
+                                    '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'</p>' .
                                     '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
                                     '<p><b>' . $grupy . '</b></p>' .
                                     '<p><b>wyłącznie w zakresie wynikającym z poleceń przełożonego (Administratora).</b></p>' .
