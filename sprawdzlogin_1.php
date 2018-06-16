@@ -3,8 +3,11 @@ session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() != 2) {
     session_start();
 };
-$_SESSION['host'] = 'mysql:host=172.16.0.6;';
-//$_SESSION['host'] = 'mysql:host=localhost;';
+if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443) {
+    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+} else {
+    $_SESSION['host'] = 'mysql:host=localhost;';
+}
 error_reporting(E_ALL);
 $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
 require_once('resources/php/Rb.php');

@@ -6,6 +6,11 @@ if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443)
     header($redir);
     exit();
 }
+if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443) {
+    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+} else {
+    $_SESSION['host'] = 'mysql:host=localhost;';
+}
 session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() == 2) {
     session_start(); 
@@ -13,7 +18,6 @@ if (session_status() == 2) {
     $_SESSION = array();
     session_destroy();//kk
 }
-$_SESSION['host'] = 'mysql:host=172.16.0.6;';
 error_reporting(E_ALL);
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot . '/resources/php/Rb.php');
@@ -27,7 +31,6 @@ if (isset($_GET['mail'])) {
     $mail = filter_input(INPUT_GET, 'mail', FILTER_VALIDATE_EMAIL);
     session_start();
     $_SESSION = array();
-    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
     $_SESSION['automail'] = $mail;
     $url = 'sprawdzlogin_1.php';
     header("Location: $url"); 

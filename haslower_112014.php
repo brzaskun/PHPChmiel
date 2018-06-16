@@ -1,7 +1,10 @@
 <?php
 error_reporting(2);
-$_SESSION['host'] = 'mysql:host=172.16.0.6;';
-//$_SESSION['host'] = 'mysql:host=localhost;';
+if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443) {
+    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+} else {
+    $_SESSION['host'] = 'mysql:host=localhost;';
+}
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $email = filter_input(INPUT_POST, "mail", FILTER_SANITIZE_EMAIL);
