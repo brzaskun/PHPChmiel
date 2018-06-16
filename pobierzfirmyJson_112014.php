@@ -7,7 +7,8 @@
   $output = array();
   array_push($output, "wybierz bieżącą firmę");
   foreach ($maile as $val) {
-      array_push($output, array_shift($val));
+      $stryng = htmlspecialchars($val[nazwazakladu]);
+      array_push($output, $stryng);
   }
   echo json_encode($output);
 ?>
