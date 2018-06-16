@@ -39,14 +39,30 @@
       $id = $val['id'];
       $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'";
       $zapisanegrupy = R::getCol($sql);
-      if ($bezgrup == "true" && sizeof($zapisanegrupy)== 0) {
+      if ($bezgrup == "tak" && sizeof($zapisanegrupy)== 0) {
          foreach ($grupy as $value) {
              array_push($tab,"<input type='checkbox' class='czekgrupy'/>");
                 array_push($tab_wiersze,'');
            }
           array_push($czlonkowie, $tab);
           array_push($czlonkowie_wiersze, $tab_wiersze); 
-      } else if ($bezgrup == "false"){
+      } else if ($bezgrup == "nie"  && sizeof($zapisanegrupy) > 0){
+        $zapisanegrupysmall = array();
+        foreach ($zapisanegrupy as $value) { 
+            array_push($zapisanegrupysmall, strtolower($value)); 
+        }
+        foreach ($grupy as $value) {
+           if (in_array(strtolower($value['nazwagrupy']), $zapisanegrupysmall, true)) {
+              array_push($tab,"<input type='checkbox' checked class='czekgrupy'/>");
+              array_push($tab_wiersze,1);
+           } else {
+              array_push($tab,"<input type='checkbox' class='czekgrupy'/>");
+              array_push($tab_wiersze,'');
+           }
+        } 
+          array_push($czlonkowie, $tab);
+          array_push($czlonkowie_wiersze, $tab_wiersze);
+      } else if ($bezgrup == "wszyscy") {
         $zapisanegrupysmall = array();
         foreach ($zapisanegrupy as $value) { 
             array_push($zapisanegrupysmall, strtolower($value)); 

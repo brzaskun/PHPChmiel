@@ -13,13 +13,21 @@
                 <div class="ui-grid-col-5 selectbar">
                     <select id="aktywnafirma" name="aktywnafirma"></select>
                 </div>
-                <div class="ui-grid-col-3" id="warunekdiv">
+<!--                <div class="ui-grid-col-3" id="warunekdiv">
                     <input id="warunek" type="checkbox" />
                     <span id="waruneklable">użytkownicy bez grup</span>
+                </div>-->
+                 <div class="ui-grid-col-3 selectbar1" id="warunekdiv">
+                    <select id="warunek" name="warunek">
+                        <option selected="wszyscy" value="wszyscy">z grupami + bez grup</option>
+                        <option value="nie">przyporządkowani</option>
+                        <option value="tak">nie przyporządkowani</option>
+                    </select>
+
                 </div>
                 <div class="ui-grid-col-3 selectbar1" id="warunek1div">
                     <select id="warunek1" name="warunek1">
-                        <option selected="wszyscy" value="wszyscy">wszyscy</option>
+                        <option selected="wszyscy" value="wszyscy">aktywni + archiwalni</option>
                         <option value="aktywni">aktywni</option>
                         <option value="archiwalni">archiwalni</option>
                     </select>

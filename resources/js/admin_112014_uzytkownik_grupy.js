@@ -35,10 +35,19 @@ $(document).ready(function () {
     $('#eksportbutton').hide();
     $('#zachowajbutton').hide();
    
-    $('#warunek').puicheckbox({
+//    $('#warunek').puicheckbox({
+//        change: function (e) {
+//         wybierzaktywnafirme();
+//         $(notf).hide();
+//        }
+//     });
+      $('#warunek').puidropdown({
         change: function (e) {
          wybierzaktywnafirme();
          $(notf).hide();
+        },
+        style: {
+            "width": "540px;"
         }
      });
      $('#warunek1').puidropdown({
@@ -72,7 +81,7 @@ var wybierzaktywnafirme = function () {
     var nazwafirmy = $("#aktywnafirma").val();
     MYAPP.nazwafirmy = nazwafirmy;
     if (nazwafirmy !== "wybierz bieżącą firmę") {
-        var bezgrup = document.getElementById("warunek").checked;
+        var bezgrup = document.getElementById("warunek").value;
         var uczestnicyrodzaj = document.getElementById("warunek1").value;
         var teststring = "firmanazwa=" + nazwafirmy + "&bezgrup=" +bezgrup + "&uczestnicyrodzaj=" +uczestnicyrodzaj;
         $("#ajax_sun").puidialog('show');
