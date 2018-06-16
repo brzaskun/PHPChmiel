@@ -89,6 +89,14 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.
                 <tr>
                     <td><span>data zalogowania: </span></td><td><input id="datazalogowania" name="datazalogowania" style="width: 250px;"></td>
                 </tr>
+                <tr>
+                <td><span>wysłano zaświadczenie: </span></td><td>
+                    <select id="zaswiadczenieuser" name="zaswiadczenieuser" style="width: 100px;">
+                        <option value="1">wysłano</option>
+                        <option value="0">nie wysłano</option>
+                    </select>
+                </td>
+            </tr>
             </tbody>
         </table> 
 <!--        <input id="editbutton" name="edytujuser" value="edytuj" type="submit"  style="padding: 5px;width: 120px; margin-left: 35%;">-->
@@ -145,6 +153,7 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.
                     </select>
                 </td>
             </tr>
+            
         </table>
         <input id="Ndodajuser" name="Ndodajuser" value="dodaj" type="button"  onclick="dodajnowyuser();" style="padding: 5px; width: 120px; margin-left: 15%;">
         <input value="rezygnuj" type="button" onclick="canceluser()"  style="padding: 5px; width: 120px; margin-left: 5%;">

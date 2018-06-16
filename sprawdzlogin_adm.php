@@ -3,7 +3,7 @@ if(session_status()!=2){     session_start(); };
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot.'/resources/php/Rb.php');
 require_once($sciezkaroot.'/resources/php/Nextslide.php');
-if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443) {
+if ($_SERVER["HTTP_HOST"] != "localhost:8000") {
     $_SESSION['host'] = 'mysql:host=172.16.0.6;';
 } else {
     $_SESSION['host'] = 'mysql:host=localhost;';

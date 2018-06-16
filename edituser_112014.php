@@ -18,14 +18,15 @@ $nazwaszkolenia = $_POST['szkolenieuser'];
 $uprawnienia = $_POST['uprawnieniauser'];
 $firma = $_POST['firmausernazwa'];
 $plec = $_POST['plecuser'];
+$zaswiadczenieuser = $_POST['zaswiadczenieuser']; 
 $nic = NULL;
 $zwrot = 0;
 date_default_timezone_set('Europe/Warsaw');
 $czasbiezacy = date("Y-m-d H:i:s");
 try {
     //musza byc dwa bo wpisywal 0 a nie null jak bylo nic w stringu a musi byc null bo tylko wtedy generuje rozpoczecie sesji
-    $sql = "UPDATE  `uczestnicy` SET  `email` =  '$email', `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = '$sessionstart' , `uprawnienia`='$uprawnienia', zmodyfikowany = '$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';";
-    $sqlnull = "UPDATE  `uczestnicy` SET  `email` =  '$email', `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = NULL, `uprawnienia`='$uprawnienia', zmodyfikowany = '$czasbiezacy' WHERE  `uczestnicy`.`id` =  '$id'";
+    $sql = "UPDATE  `uczestnicy` SET  `email` =  '$email', `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = '$sessionstart' , `uprawnienia`='$uprawnienia', zmodyfikowany = '$czasbiezacy', wyslanycert = '$zaswiadczenieuser' WHERE  `uczestnicy`.`id` = '$id';";
+    $sqlnull = "UPDATE  `uczestnicy` SET  `email` =  '$email', `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = NULL, `uprawnienia`='$uprawnienia', zmodyfikowany = '$czasbiezacy', wyslanycert = '0' WHERE  `uczestnicy`.`id` =  '$id'";
     R::exec($sessionstart == null ? $sqlnull : $sql);
 } catch (Exception $e) {
     $zwrot = 1;

@@ -42,7 +42,7 @@
         array_push($tab, "<span>".$do."</span>");
       }
       array_push($tab, "<span>".$val['wyniktestu']."</span>");
-      array_push($tab, "<span>".$val['wyslanycert']."</span>");
+      array_push($tab, "<span class='doedycji'>".$val['wyslanycert']."</span>");
       array_push($tab,"<input type='checkbox' class=\"czekbox\"/>");
       array_push($tab,"<input title=\"mail\" name=\"mail\" type='checkbox' class='czekedycja' onclick=\"mailuser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
       array_push($tab,"<input title=\"edytuj\" name=\"edytuj\" type='checkbox' class='czekedycja' onclick=\"edituser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
