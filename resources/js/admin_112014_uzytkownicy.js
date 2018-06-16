@@ -478,7 +478,7 @@ var canceluser = function () {
 
 var edituser = function (obj) {
     $("#edituser").puidialog({
-        height: 370,
+        height: 400,
         width: 420,
         resizable: false,
         showEffect: 'fade',
@@ -501,6 +501,7 @@ var edytujtabeleuser = function () {
     $(MYAPP.pola[4]).html($('#szkolenieuser').val());
     $(MYAPP.pola[5]).html($('#uprawnieniauser').val());
     $(MYAPP.pola[8]).html($('#datazalogowania').val());
+    $(MYAPP.pola[11]).html($('#zaswiadczenieuser').val());
     var wynikwalidacji = validateEmail($('#email').val());
     if (wynikwalidacji === false) {
         $('#notify').puigrowl('show', [{severity: 'error', summary: 'Zły mail ' + $("#email").val() + ''}]);
