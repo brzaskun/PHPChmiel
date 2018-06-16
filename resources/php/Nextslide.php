@@ -55,6 +55,9 @@ class NextslideTest {
                 $numery = [];
                 $i = 0;
                 $maxliczbapytan = $_SESSION['uczestnik']['iloscpytan'];
+                if ($maxliczbapytan != 0) {
+                    $maxliczbapytan = 2;
+                }
                 while ($i < $maxliczbapytan){
                     $numerlosowy = rand(0, $_SESSION['testsize']-1);
                     if (in_array($numerlosowy, $numery)==false){
