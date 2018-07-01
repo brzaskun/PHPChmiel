@@ -1,68 +1,43 @@
 <?php error_reporting(E_ALL); 
 //  set_time_limit(0);
-//  
+//
 //  ini_set('memory_limit','256M');
   if(session_status()!=2){     session_start(); };
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
   R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
-  $sql = "SELECT *  FROM uczestnicy";
-  $uczestnicy = R::getAll($sql);
-  $czlonkowie = array();
-  //echo "start "+sizeof($uczestnicy);
-   foreach ($uczestnicy as $val) {
-//       try {
-        $od = $val['sessionstart'] != "" ? substr($val['sessionstart'], 0, 10) : "";
-        $do = $val['sessionend'] != "" ? substr($val['sessionend'], 0, 10) : "";
-        $tab = array();
-        //echo $val['email'];
-        array_push($tab, "<span>" . $val['id'] . "</span>");
-        array_push($tab, "<span>" . $val['email'] . "</span>");
-        array_push($tab, "<span>" . $val['imienazwisko'] . "</span>");
-        array_push($tab, "<span>" . $val['firma'] . "</span>");
-        array_push($tab, "<span>" . $val['nazwaszkolenia'] . "</span>");
-        //array_push($tab, "<span>" . $val['uprawnienia'] . "</span>");
-        array_push($tab, "<span>" . $val['wyslanymailupr'] . "</span>");
-//        array_push($tab, "<span>" . $od . "</span>");
-//        array_push($tab, "<span>" . $do . "</span>");
-//        array_push($tab, "<span>" . $val['wyniktestu'] . "</span>");
-//        array_push($tab, "<span>" . $val['wyslanycert'] . "</span>");
-//        array_push($tab, "<input type='checkbox' class=\"czekbox\"/>");
-//        array_push($tab, "<input title=\"edytuj\" name=\"edytuj\" type='checkbox' class='czekedycja' onclick=\"edituser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
-//        array_push($tab, "<input title=\"reset\" name=\"reset\" type='checkbox' class='czekedycja' onclick=\"resetujuser(this);\" style=\"display: none;\"/>");
-//        if ($val['email'] == "mchmielewska@interia.pl" || $val['email'] == "brzaskun@o2.pl") {
-//            array_push($tab, " ");
-//        } else {
-//            array_push($tab, "<input title=\"usuń\" name=\"usun\" type='checkbox' class='czekedycja' onclick=\"usunwiersz(this);\"  style=\"display: none;\"/>");
-//        }
-        array_push($czlonkowie, $tab);
-//    } catch (Exception $e) {
-//        echo $e;
-//    }
-} 
-    $output = json_encode($czlonkowie); 
-    //echo "koniec";
-   echo $output;
-  
- 
-  
-  //tablice primeui
-//   foreach ($uczestnicy as $val) {
-//      $od = $val['sessionstart'] != "" ?  $val['sessionstart'] : "";
-//      $do = $val['sessionend'] != "" ? $val['sessionend'] : "";
-//      $tab = array('id' => $val['id'],'email' => $val['email'],'imieinazwisko' => $val['imienazwisko'], 'plec' => $val['plec'], 'firma' => $val['firma'], 'szkolenie' => $val['nazwaszkolenia'], 'uprawnienia' => $val['uprawnienia'], 'illog' => $val['ilosclogowan'], 'link' => $val['wyslanymailupr'], 'rozpoczecie' => $od, 'zakonczenie' => $do,'test' => $val['wyniktestu'], 'certyfikat' => $val['wyslanycert']);
-//      $t1 = '<input type=\'checkbox\' class=\'czekboks\'/>';
-//      $tab['zaznacz'] =$t1;
-//      $t2 = "<input title=\"edytuj\" name=\"edytuj\" value=\"edytuj\" type=\"button\"  onclick=\"edituser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>";
-//      $tab['edytuj'] =$t2;
-//      $t3 = "<input title=\"reset\" name=\"reset\" value=\"reset\" type=\"button\"  onclick=\"resetujuser(this);\" style=\"display: none;\"/>";
-//      $tab['reset'] =$t3;
-//      if ($val['email'] == "mchmielewska@interia.pl" || $value['email'] == "brzaskun@o2.pl") {
-//        $t4 = "";
-//        $tab['usun'] =$t4;
-//      } else {
-//        $t4 = "<input title=\"usuń\" name=\"usun\" value=\"usuń\" type=\"button\" onclick=\"usunwiersz(this);\"  style=\"display: none;\"/>";
-//        $tab['usun'] =$t4;
-//      }
-//      array_push($czlonkowie, $tab);
-//  }   
+  $nazwisko = $_POST['nazwisko'];
+  $mail = $_POST['mail'];
+  $firma = $_POST['firma'];
+  if (strlen ($nazwisko)>3) {
+        $sql = "SELECT *  FROM uczestnicy WHERE `imienazwisko` LIKE '%$nazwisko%'";
+  } else if (strlen ($mail)>3) {
+        $sql = "SELECT *  FROM uczestnicy WHERE `email` LIKE '%$mail%'";
+  } else if (strlen ($firma)>3) {
+        $sql = "SELECT *  FROM uczestnicy WHERE `firma` LIKE '%$firma%'";
+  } 
+  if (strlen ($nazwisko)>3 || strlen ($mail)>3 || strlen ($firma)>3) {
+        $uczestnicy = R::getAll($sql);
+        $czlonkowie = array();
+        //echo "start "+sizeof($uczestnicy);
+         foreach ($uczestnicy as $val) {
+      //       try {
+              $od = $val['sessionstart'] != "" ? substr($val['sessionstart'], 0, 10) : "";
+              $do = $val['sessionend'] != "" ? substr($val['sessionend'], 0, 10) : "";
+              $tab = array();
+              array_push($tab, "<span>" . $val['id'] . "</span>");
+              array_push($tab, "<span>" . $val['email'] . "</span>");
+              array_push($tab, "<span>" . $val['imienazwisko'] . "</span>");
+              array_push($tab, "<span>" . $val['firma'] . "</span>");
+              array_push($tab, "<span>" . $val['nazwaszkolenia'] . "</span>");
+              array_push($tab, "<span>" . $val['wyslanymailupr'] . "</span>");
+              array_push($tab, "<span>" . $od . "</span>");
+              array_push($tab, "<span>" . $do . "</span>");
+              array_push($tab, "<span>" . $val['wyniktestu'] . "</span>");
+              array_push($tab, "<span>" . $val['wyslanycert'] . "</span>");
+              array_push($czlonkowie, $tab);
+      } 
+          $output = json_encode($czlonkowie); 
+          echo $output;
+  }
+
 ?> 

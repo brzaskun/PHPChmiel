@@ -1,28 +1,74 @@
 window.onload = function () {
-    $("#ajax_sun").show();
+    
 };
 $(document).ready(function () {
-    generujtabliceuzytkownikow();
     podswietlmenu(rj('menuduzatablica'));
+    $("#ajax_sun").hide();
     $('#notify').puigrowl({
         life: 6000
     });
     $('#mb1').puimenubar({
         autoDisplay: true
     });
+    $("#ajax_sun").hide();
+    $('#szukacnazwisko').keyup(function() {
+        if ($('#szukacnazwisko').val().length>3) {
+           setTimeout(generujtabliceuzytkownikow(), 5000);
+           $('#szukacmail').val(null);
+           $('#szukacfirma').val(null);
+        }
+    });
+    $('#szukacmail').keyup(function() {
+        if ($('#szukacmail').val().length>3) {
+            setTimeout(generujtabliceuzytkownikow(), 5000);
+            $('#szukacnazwisko').val(null);
+            $('#szukacfirma').val(null);
+        }
+    });
+    $('#szukacfirma').keyup(function() {
+       if ($('#szukacfirma').val().length>3) {
+            setTimeout(generujtabliceuzytkownikow(), 5000);
+            $('#szukacnazwisko').val(null);
+            $('#szukacmail').val(null);
+        }
+    });
+    
+    //    $('#coszukac').autocomplete({
+//        source:function(request, response) {
+//                //in a real application, make a call to a remote url by passing the request.query as parameter
+//                $.ajax({
+//                    type: "POST",
+//                    data: "szukane="+request['term'],
+//                    url: 'pobierzuczestnicywszyscy_112014_bigtable_test.php',
+//                    context: this,
+//                    error: function (xhr, status, error) {
+//                        let wiadomosc = 'Nie udało się pobrać danych użytkowników. Błąd servera. '+error;
+//                        $('#notify').puigrowl('show', [{severity: 'error', summary: wiadomosc}]);
+//                    },
+//                    success: function(data) {
+//                          response.call(this, JSON.parse(data));
+//                          generujtabliceuzytkownikow();
+//                    }
+//                });
+//            },
+//	minLength:2
+//    });
 });
 
 var generujtabliceuzytkownikow = function () {
     $.ajax({
         type: "POST",
         url: "pobierzuczestnicywszyscy_112014_bigtable.php",
+        data: "nazwisko="+$('#szukacnazwisko').val()+"&mail="+$('#szukacmail').val()+"&firma="+$('#szukacfirma').val(),
         cache: true,
         error: function (xhr, status, error) {
             let wiadomosc = 'Nie udało się pobrać danych użytkowników. Błąd servera. '+error;
             $('#notify').puigrowl('show', [{severity: 'error', summary: wiadomosc}]);
         },
         success: function (response) {
-            if (response !== "brak") {
+            if (response === "") {
+                $('#tbl').append("Wystąpił błąd po stronie serwera. Nie pobrano danych"); 
+            } else if (response !== "brak") {
                 $('#notify').puigrowl('show', [{severity: 'info', summary: 'Pobrano dane użytkowników'}]);
                 var tablice = $.parseJSON(decodeURIComponent(response));
                 $('#tabuser').remove();
@@ -86,14 +132,14 @@ var generujnazwykolumn = function () {
 //    zwrot.push(o1);
     o1 = {"sTitle": "wysł. link"};
     zwrot.push(o1);
-//    o1 = {"sTitle": "rozpoczęcie"};
-//    zwrot.push(o1);
-//    o1 = {"sTitle": "zakończenie"};
-//    zwrot.push(o1);
-//    o1 = {"sTitle": "wyn. test"};
-//    zwrot.push(o1);
-//    o1 = {"sTitle": "wysł. cert."};
-//    zwrot.push(o1);
+    o1 = {"sTitle": "rozpoczęcie"};
+    zwrot.push(o1);
+    o1 = {"sTitle": "zakończenie"};
+    zwrot.push(o1);
+    o1 = {"sTitle": "wyn. test"};
+    zwrot.push(o1);
+    o1 = {"sTitle": "wysł. cert."};
+    zwrot.push(o1);
 //    o1 = {"sTitle": ""};
 //    zwrot.push(o1);
 //    o1 = {"sTitle": "edytuj"};
