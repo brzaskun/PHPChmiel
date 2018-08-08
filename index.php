@@ -94,16 +94,17 @@ if (isset($_GET['mail'])) {
                     <h2>W celu zalogowania wpisz swój email</h2>
                 </div>
                 <form id="loginform" >
-                    <input type="text" id="email" name="mail" value="" style="color: rgb(74,26,15); padding-left: 10px;"  autocomplete="off"
+                    <input type="text" id="email" name="mail" value="" style="color: rgb(74,26,15); padding-left: 10px;width: 390px;"  autocomplete="off"
                            title="Wpisz nazwę adresu email, na który został wysłana informacja o szkoleniu"><br/>
+                    <div class="margin1" style="height: 20px;">
+                        <span id="result" style="font-size: 80%;"></span>
+                    </div>
                     <div id="polepin" style="display: none; margin-left: 24.5%;" >
                         <label for="pin">podaj pin</label>
                         <input id="pin" name="pin" type="text" onkeyup="sprawdzpin();" style="color: rgb(74,26,15);" />
                     </div>
                     <br/>
-                    <div class="margin1" style="height: 20px; margin-top: 1%;">
-                        <span id="result" style="font-size: 80%;"></span>
-                    </div> 
+                    
                     <button id="buttonlogowanie" type="submit"  title="Kliknij celem rozpoczęcia szkolenia" 
                             formaction="sprawdzlogin_1.php" formmethod="POST">
                         <span class="spanszkolenie" >zaloguj</span></button>
