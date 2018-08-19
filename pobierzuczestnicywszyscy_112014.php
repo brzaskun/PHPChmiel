@@ -33,7 +33,11 @@
       array_push($tab, "<span class='doedycji'>".$val['nazwaszkolenia']."</span>");
       array_push($tab, "<span class='doedycji'>".$val['uprawnienia']."</span>");
       array_push($tab, "<span>".$val['ilosclogowan']."</span>");
-      array_push($tab, "<span>".$val['wyslanymailupr']."</span>");
+       if ($val['wyslanymailupr']==0) {
+        array_push($tab, "<span></span>");
+      } else {
+        array_push($tab, "<span style='background-color: #44c70e24;'>&#x2713;</span>"); 
+      }
       if ($uczestnicyrodzaj == "archiwalni") {
           array_push($tab, "<span class='doedycji'>".$val['datanadania']."</span>");
           array_push($tab, "<span>".$val['dataustania']."</span>");
@@ -57,7 +61,16 @@
   $output = json_encode($czlonkowie);
   echo $output;
   
- 
+// if ($val['wyslanymailupr']==0) {
+//        array_push($tab, "<span></span>");
+//      } else {
+//        array_push($tab, "<span><center style='background-color: #44c70e24'>&#x2713;</center></span>"); 
+//      }
+//  if ($val['wyslanycert']==0) {
+//          array_push($tab, "<span class='doedycji'></span>");
+//      } else {
+//          array_push($tab, "<span class='doedycji'><center style='background-color: #44c70e24'>&#x2713;</center></span>"); 
+//      }
   
   //tablice primeui
 //   foreach ($uczestnicy as $val) {

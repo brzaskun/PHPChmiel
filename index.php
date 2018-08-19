@@ -99,7 +99,7 @@ if (isset($_GET['mail'])) {
                     <div class="margin1" style="height: 20px;">
                         <span id="result" style="font-size: 80%;"></span>
                     </div>
-                    <div id="polepin" style="display: none; margin-left: 24.5%;" >
+                    <div id="polepin" style="display: none; margin-left: 25.8%;" >
                         <label for="pin">podaj pin</label>
                         <input id="pin" name="pin" type="text" onkeyup="sprawdzpin();" style="color: rgb(74,26,15);" />
                     </div>

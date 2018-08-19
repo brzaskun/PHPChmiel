@@ -512,9 +512,9 @@ var edytujtabeleuser = function () {
     $("#edituser").puidialog('hide');
     var teststring;
     if ($('#datazalogowania').val() !== null && $('#datazalogowania').val() !== "") {
-        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&datazalogowania=" + $('#datazalogowania').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val();
+        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&datazalogowania=" + $('#datazalogowania').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val()+ "&zaswiadczenieuser=" + $('#zaswiadczenieuser').val();
     } else {
-        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val();
+        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val() + $('#zaswiadczenieuser').val();
     }
     $.ajax({
         type: "POST",
