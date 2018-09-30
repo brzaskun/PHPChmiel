@@ -126,6 +126,9 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                 for ($col = 0; $col < $highestColumnIndex; ++$col) {
                     $cell = $worksheet->getCellByColumnAndRow($col, 1);
                     $val = $cell->getValue();
+                    if (get_class($val) == "PHPExcel_RichText") {
+                        $val = $cell->getValue()->getPlainText();
+                    }
                     echo '<th>' . $val . '</th>';
                     array_push($wiersz, $val);
                 }
@@ -141,6 +144,9 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                     for ($col = 0; $col < $highestColumnIndex; ++$col) {
                         $cell = $worksheet->getCellByColumnAndRow($col, $row);
                         $val = $cell->getValue();
+                        if (get_class($val) == "PHPExcel_RichText") {
+                            $val = $cell->getValue()->getPlainText();
+                        }
                         $dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
                         echo '<td>' . $val . '</td>';
                         //walidacja adresu mail
