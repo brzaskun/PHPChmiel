@@ -39,9 +39,11 @@ $liczbadobrzedodanych = 0;
 foreach ($tablicapobranychpracownikow  as $wierszbaza) {
         try {
         if (isset($dataszkolenia) && strlen($dataszkolenia)=="10") {
+            $datanadania = explode("-", $dataszkolenia);
+            $datanadania = $datanadania[2].".".$datanadania[1].".".$datanadania[0];
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
-            `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
-            VALUES ('$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1);";
+            `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`,`datanadania`)
+            VALUES ('$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
         } else {
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)

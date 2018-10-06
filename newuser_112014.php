@@ -15,8 +15,8 @@ date_default_timezone_set('Europe/Warsaw');
 $czasbiezacy = date("Y-m-d H:i:s");
 try {
     $sql = "INSERT INTO  `uczestnicy` (`id`, `email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
-      `sessionend` ,`wyniktestu` ,`wyslanycert`, `utworzony`)
-      VALUES (0, '$email',  '$imienazwisko', '$plec', '$firma', '$szkolenieuser', '$uprawnienia' , 0, NULL , NULL , 0 , 0, '$czasbiezacy');";
+      `sessionend` ,`wyniktestu` ,`wyslanycert`, `utworzony`,`stacjonarny`)
+      VALUES (0, '$email',  '$imienazwisko', '$plec', '$firma', '$szkolenieuser', '$uprawnienia' , 0, NULL , NULL , 0 , 0, '$czasbiezacy',0);";
     R::exec($sql);
     $id = R::getInsertID();
     $sql = "SELECT `managerlimit` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$firma';";

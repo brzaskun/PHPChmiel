@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <meta charset="utf-8">
     <?php error_reporting(0);
     if(session_status()!=2){     session_start(); };
     if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {

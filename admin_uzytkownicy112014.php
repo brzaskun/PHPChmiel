@@ -19,6 +19,7 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.
             <select id="aktywnafirma" name="aktywnafirma"></select>
         </div>
         <div class="ui-grid-col-1 selectbar1" id="warunek2div">
+            <span>stacjonarni/online</span>
             <select id="warunek2" name="warunek2" >
                         <option selected="wszyscy">wszyscy</option>
                         <option value="stacjonarni">stacjonarni</option>
@@ -27,6 +28,7 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.
 
         </div>
         <div class="ui-grid-col-1 selectbar1" id="warunek1div">
+            <span>aktywni/archiwalni</span>
             <select id="warunek1" name="warunek1" >
                         <option selected="wszyscy">wszyscy</option>
                         <option value="aktywni">aktywni</option>
