@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);  
+error_reporting(0);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy ORDER BY `zakladpracy`.`nazwazakladu` ASC');
