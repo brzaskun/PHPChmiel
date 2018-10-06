@@ -5,12 +5,13 @@
         });  
      });
     
-</script> 
+</script>
 <ul id="mb1">
-    <li id="menuuzytkownicy"> <a data-icon=" ui-icon-person" href="/admin112014_uzytkownicy.php"  style="width: 120px;">Użytkownicy</a>  
+    <li id="menuuzytkownicy"> <a data-icon=" ui-icon-person" href="/admin112014_uzytkownicy.php" >Użytkownicy</a>  
         <ul>    
             <li id="lidodaj" style="display: none;"><a data-icon="ui-icon-plus" onclick="nowyuser();">Dodaj użytkownika</a></li>   
-            <li><a data-icon="ui-icon-circle-arrow-n" href="/admin112014_uploadfile.php">Import z pliku</a></li>   
+            <li><a data-icon="ui-icon-circle-arrow-n" href="/admin112014_uploadfile.php?stac=none">Import z pliku</a></li>
+            <li><a data-icon="ui-icon-circle-arrow-n" href="/admin112014_uploadfile.php?stac=inline">Import - szkolenie stacj.</a></li>
             <li><a data-icon="ui-icon-calculator" onclick="$('#tabelaeksport').click();">Eksport do .xls</a></li> 
         </ul>  
     </li>  

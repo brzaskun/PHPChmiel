@@ -7,11 +7,13 @@ ini_set('memory_limit','256M');
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/SprawdzWprowadzanyWiersz.php'); 
 $firmabaza = urldecode($_COOKIE['firmadoimportu']);
+$dataszkolenia = $_COOKIE['dataszkolenia'];
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $tablicapobranychpracownikow = $_SESSION['tablicapobranychpracownikow'];
 $nazwygrup = array();
 $czasbiezacy = date("Y-m-d H:i:s");
+$dataszkoleniastamp = date($dataszkolenia);
 $pierwszywiersz = array_shift($tablicapobranychpracownikow);
 $dl = count((array)$pierwszywiersz);
 $start = $dl-6;
@@ -36,9 +38,15 @@ if ($start > 0) {
 $liczbadobrzedodanych = 0;
 foreach ($tablicapobranychpracownikow  as $wierszbaza) {
         try {
+        if (isset($dataszkolenia) && strlen($dataszkolenia)=="10") {
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
-            `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`)
-            VALUES ('$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy');";
+            `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
+            VALUES ('$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1);";
+        } else {
+            $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
+            `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
+            VALUES ('$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
+        }
             R::exec($sql);
             $id_uzytkownik = R::getInsertID();
             if ($id_uzytkownik > 0) {
@@ -73,5 +81,9 @@ foreach ($tablicapobranychpracownikow  as $wierszbaza) {
 }
 array_push($dobrzedodani, $liczbadobrzedodanych);
 $output = json_encode(array($listadodanychgrup,$listagrupniedodanych,$bledydodawanieuzytkownikow,$niewyslanymail, $zleoznaczeni, $dobrzedodani));
+if (isset($_COOKIE['dataszkolenia'])) {
+    unset($_COOKIE['dataszkolenia']);
+    setcookie('dataszkolenia', '', time() - 3600, '/'); // empty value and old timestamp
+}
 echo $output;
 ?>
