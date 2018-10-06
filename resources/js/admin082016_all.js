@@ -35,6 +35,9 @@ $(document).ready(function () {
     $('#szukacwarunek').change(function() {
         setTimeout(generujtabliceuzytkownikow(), 5000);
     });
+    $('#warunek2').change(function() {
+        setTimeout(generujtabliceuzytkownikow(), 5000);
+    });
     
     //    $('#coszukac').autocomplete({
 //        source:function(request, response) {
@@ -62,7 +65,7 @@ var generujtabliceuzytkownikow = function () {
     $.ajax({
         type: "POST",
         url: "pobierzuczestnicywszyscy_112014_bigtable.php",
-        data: "nazwisko="+$('#szukacnazwisko').val()+"&mail="+$('#szukacmail').val()+"&firma="+$('#szukacfirma').val()+"&warunek="+$('#szukacwarunek').val(),
+        data: "nazwisko="+$('#szukacnazwisko').val()+"&mail="+$('#szukacmail').val()+"&firma="+$('#szukacfirma').val()+"&warunek="+$('#szukacwarunek').val()+"&warunek2="+$('#warunek2').val(),
         cache: true,
         error: function (xhr, status, error) {
             let wiadomosc = 'Nie udało się pobrać danych użytkowników. Błąd servera. '+error;

@@ -21,6 +21,12 @@
             <option value="1">aktywni</option>
             <option value="2">nieaktywni</option>
          </select>
+        <span>stacjonarni/online</span>
+         <select id="warunek2" name="warunek2" >
+            <option selected="wszyscy">wszyscy</option>
+            <option value="stacjonarni">stacjonarni</option>
+            <option value="online">online</option>
+        </select>
         <div id="tbl" style="max-width: 1465px;">
 <!--            nie ma tabeli, jest generowana w całości-->
         </div>

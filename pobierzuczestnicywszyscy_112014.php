@@ -4,6 +4,7 @@
   R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $firma = $_POST['firmanazwa'];
   $uczestnicyrodzaj = $_POST['uczestnicyrodzaj'];
+  $uczestnicystaconline = $_POST['uczestnicystaconline'];
   if ($firma != "" && $firma != 'null' && $firma != "wybierz bieżącą firmę" && $firma != "wszystkiefirmy") {
       if ($uczestnicyrodzaj == "wszyscy") {
           $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'";
@@ -12,12 +13,16 @@
       } else {
           $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'  AND (`uczestnicy`.`dataustania` IS NOT NULL AND CHAR_LENGTH(`uczestnicy`.`dataustania`) = 10) ";
       }
-      
   } else if ($firma == "wszystkiefirmy"){
       $sql = "SELECT * FROM zakladpracy INNER JOIN uczestnicy ON `uczestnicy`.`firma` = `zakladpracy`.`nazwazakladu` WHERE `zakladpracy`.`firmaaktywna` = 1 ORDER BY `uczestnicy`.`id` DESC";
   } else {
       echo "brak";
   } 
+  if ($uczestnicystaconline=="stacjonarni") {
+      $sql = $sql." AND `uczestnicy`.`stacjonarny`=1";
+  } else if ($uczestnicystaconline=="online"){
+      $sql = $sql." AND `uczestnicy`.`stacjonarny`=0";
+  }
   $uczestnicy = R::getAll($sql);
   $czlonkowie = array();
    foreach ($uczestnicy as $val) {
@@ -45,7 +50,11 @@
         array_push($tab, "<span class='doedycji'>".$od."</span>");
         array_push($tab, "<span>".$do."</span>");
       }
-      array_push($tab, "<span>".$val['wyniktestu']."</span>");
+      if ($val['wyniktestu']=="101") {
+        array_push($tab, "<span style=\"color: blue;\">stacj.</span>");
+      } else {
+        array_push($tab, "<span>".$val['wyniktestu']."</span>");
+      }
       array_push($tab, "<span class='doedycji'>".$val['wyslanycert']."</span>");
       array_push($tab,"<input type='checkbox' class=\"czekbox\"/>");
       array_push($tab,"<input title=\"mail\" name=\"mail\" type='checkbox' class='czekedycja' onclick=\"mailuser(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");

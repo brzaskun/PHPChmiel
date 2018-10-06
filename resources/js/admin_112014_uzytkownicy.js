@@ -33,7 +33,7 @@ $(document).ready(function () {
     });
     $('#zachowajbutton').puibutton();
     $('#eksportbutton').puibutton();
-     $('#warunek1').puidropdown({
+    $('#warunek1').puidropdown({
         change: function (e) {
           generujtabliceuzytkownikow();
         },
@@ -42,6 +42,15 @@ $(document).ready(function () {
         }
      });
     $('#warunek1div').hide();
+    $('#warunek2').puidropdown({
+        change: function (e) {
+          generujtabliceuzytkownikow();
+        },
+        style: {
+            "width": "340px;"
+        }
+     });
+    $('#warunek2div').hide();
 });
 
 //var dopelnijtabele = function () {
@@ -179,8 +188,9 @@ var czyscinnewiersze = function (parent) {
 var generujtabliceuzytkownikow = function () {
     var nazwafirmy = $("#aktywnafirma").val();
     var uczestnicyrodzaj = document.getElementById("warunek1").value;
+    var uczestnicystaconline = document.getElementById("warunek2").value;
     MYAPP.uczestnicyrodzaj = uczestnicyrodzaj;
-    var teststring = {"firmanazwa": nazwafirmy, "uczestnicyrodzaj":uczestnicyrodzaj};
+    var teststring = {"firmanazwa": nazwafirmy, "uczestnicyrodzaj":uczestnicyrodzaj, "uczestnicystaconline":uczestnicystaconline};
     $.ajax({
         type: "POST",
         url: "pobierzuczestnicywszyscy_112014.php",
@@ -192,6 +202,7 @@ var generujtabliceuzytkownikow = function () {
         success: function (response) {
             if (response !== "brak") {
                 $('#warunek1div').show();
+                $('#warunek2div').show();
                 $('#notify').puigrowl('show', [{severity: 'info', summary: 'Pobrano dane użytkowników'}]);
                 var tablice = $.parseJSON(decodeURIComponent(response));
                 $('#tabuser').remove();
@@ -312,7 +323,7 @@ var wiersz = function(w, i) {
         '<td>' + w['sessionstart'] + '</td>' +
         '<td>' + w['sessionend'] + '</td>' +
         '<td style="text-align:center">' + w['ilosclogowan'] + '</td>' +
-        '<td style="text-align:center">' + w['wyniktestu'] + '</td>' +
+        wyniktestu(w['wyniktestu']) +
         '<td style="text-align:center">' + w['iloscodpowiedzi'] + '</td>' +
         '<td style="text-align:center">' + w['iloscpoprawnych'] + '</td>' +
         '<td style="text-align:center">' + w['iloscblednych'] + '</td>' +
@@ -326,6 +337,14 @@ var wiersz = function(w, i) {
         '</tr>';
   return wiersz;
 };
+
+var wyniktestu = function(wynik) {
+    var zwrot = '<td style="text-align:center">' + wynik + '</td>';
+    if (wynik==="101") {
+        zwrot = '<td style="text-align:center; color: green;">' + wynik + '</td>';
+    }
+    return zwrot;
+}
 
 var usunwierszsub =function(td, id) {
     $(td).closest("tr").remove();

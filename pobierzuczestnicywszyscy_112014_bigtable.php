@@ -9,6 +9,7 @@
   $mail = $_POST['mail'];
   $firma = $_POST['firma'];
   $warunek = $_POST['warunek'];
+  $uczestnicystaconline = $_POST['warunek2'];
   if (strlen ($nazwisko)>3) {
         $sql = "SELECT *  FROM uczestnicy WHERE `imienazwisko` LIKE '%$nazwisko%'";
   } else if (strlen ($mail)>3) {
@@ -20,6 +21,11 @@
       $sql = $sql." AND (`dataustania` IS NULL OR `dataustania`='')";
   } else if ($warunek == 2) {
       $sql = $sql." AND `dataustania` IS NOT NULL AND `dataustania`!=''";
+  }
+  if ($uczestnicystaconline=="stacjonarni") {
+      $sql = $sql." AND `uczestnicy`.`stacjonarny`=1";
+  } else if ($uczestnicystaconline=="online"){
+      $sql = $sql." AND `uczestnicy`.`stacjonarny`=0";
   }
   if (strlen ($nazwisko)>3 || strlen ($mail)>3 || strlen ($firma)>3) {
         $uczestnicy = R::getAll($sql);
@@ -42,7 +48,11 @@
               array_push($tab, "<span>" . $do . "</span>");
               array_push($tab, "<span>" . $datanadania . "</span>");
               array_push($tab, "<span>" . $dataustania . "</span>");
-              array_push($tab, "<span>" . $val['wyniktestu'] . "</span>");
+              if ($val['wyniktestu']=="101") {
+                array_push($tab, "<span style=\"color: blue;\">stacj.</span>");
+              } else {
+                array_push($tab, "<span>".$val['wyniktestu']."</span>");
+              }
               array_push($tab, "<span>" . $val['wyslanycert'] . "</span>");
               array_push($czlonkowie, $tab);
       } 
