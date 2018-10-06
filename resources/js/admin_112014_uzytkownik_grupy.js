@@ -59,8 +59,18 @@ $(document).ready(function () {
             "width": "540px;"
         }
      });
+     $('#warunek2').puidropdown({
+        change: function (e) {
+         wybierzaktywnafirme();
+         $(notf).hide();
+        },
+        style: {
+            "width": "540px;"
+        }
+     });
     $('#warunekdiv').hide();
     $('#warunek1div').hide();
+    $('#warunek2div').hide();
     
     $('#polegorne').mouseover(function() {
         let nazwafirmy1 = $("#aktywnafirma").val();
@@ -83,7 +93,8 @@ var wybierzaktywnafirme = function () {
     if (nazwafirmy !== "wybierz bieżącą firmę") {
         var bezgrup = document.getElementById("warunek").value;
         var uczestnicyrodzaj = document.getElementById("warunek1").value;
-        var teststring = "firmanazwa=" + nazwafirmy + "&bezgrup=" +bezgrup + "&uczestnicyrodzaj=" +uczestnicyrodzaj;
+        var stacjonarnionline = document.getElementById("warunek2").value;
+        var teststring = "firmanazwa=" + nazwafirmy + "&bezgrup=" +bezgrup + "&uczestnicyrodzaj=" +uczestnicyrodzaj+ "&stacjonarnionline=" +stacjonarnionline;
         $("#ajax_sun").puidialog('show');
         $.ajax({
             type: "POST",
@@ -159,12 +170,17 @@ var wybierzaktywnafirme = function () {
                     $("#eksportbutton").show();
                     $('#warunekdiv').show();
                     $('#warunek1div').show();
+                    $('#warunek2div').show();
+                    while ($('#komunikatobraku').length) {
+                        $('#komunikatobraku').remove();
+                    }
                 } catch (e) {
                     $("#ajax_sun").puidialog('hide');
                     $('#tabuser').remove();
                     $('#tabuser_wrapper').remove();
-                    $('#tbl').append("<p id='komunikatobraku'><span> Brak nieprzyporzadkowanych uczestników</span></p>");
-                    $('#eksportbutton').hide();
+                    var info = teststring.replace(/\&/g," ");
+                    $('#tbl').append("<p id='komunikatobraku' name='komunikatobraku' style='color: red'><span> Żaden rekord nie spełnia warunków zapytania: "+info+"</span></p>");
+                    $('#eksportbutton').hide()
                     $('#zachowajbutton').hide();
                 }
             }
@@ -179,6 +195,7 @@ var wybierzaktywnafirme = function () {
         $('#zachowajbutton').hide();
         $('#warunekdiv').hide();
         $('#warunek1div').hide();
+        $('#warunek2div').hide();
     }
 };
 

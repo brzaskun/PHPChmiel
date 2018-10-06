@@ -112,7 +112,15 @@ var generujtabliceuzytkownikow = function () {
                         $(".dt-buttons").show();
                         uTable.fnSort([[1, 'asc']]);
                     }
-                }
+                    while ($('#komunikatobraku').length) {
+                        $('#komunikatobraku').remove();
+                    }
+                } else {
+                    $('#komunikatobraku').remove();
+                    var aktywni = $('#szukacwarunek').val() == 0 ? 'wszyscy' : ($('#szukacwarunek').val() == 1 ? 'aktywni' : 'archiwalni');
+                    var info = "nazwisko: "+$('#szukacnazwisko').val()+" mail: "+$('#szukacmail').val()+"firma: "+$('#szukacfirma').val()+"aktywni/nieaktywni: "+aktywni+" stacjon/online: "+$('#warunek2').val()
+                    $('#tbl').append("<p id='komunikatobraku' name='komunikatobraku' style='color: red'><span> Żaden rekord nie spełnia warunków zapytania: " + info + "</span></p>");
+                };
                 //naniesclickzbiorcze("#tabuser","#tabelaedituser","email");
             }
             $("#ajax_sun").hide();

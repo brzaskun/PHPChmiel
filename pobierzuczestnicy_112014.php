@@ -5,14 +5,21 @@
   $firmanazwa = $_POST['firmanazwa'];
   $bezgrup = $_POST['bezgrup'];
   $uczestnicyrodzaj = $_POST['uczestnicyrodzaj'];
+  $stacjonarnionline = $_POST['stacjonarnionline'];
+  $dodatek = "";
+  if ($stacjonarnionline=="stacjonarni") {
+      $dodatek = " AND `stacjonarny` = 1 " ;
+  } else if ($stacjonarnionline=="online") {
+      $dodatek = " AND `stacjonarny` = 0 " ;
+  }
   if ($uczestnicyrodzaj == "wszyscy") {
-        $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' ORDER BY `uczestnicy`.`email` ASC";
+        $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' ".$dodatek." ORDER BY `uczestnicy`.`email` ASC";
         $uczestnicy = R::getAll($sql);
   } else if ($uczestnicyrodzaj == "aktywni"){
-       $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' AND (dataustania IS NULL OR CHAR_LENGTH(dataustania) < 1) ORDER BY `uczestnicy`.`email` ASC";
+       $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' AND (dataustania IS NULL OR CHAR_LENGTH(dataustania) < 1) ".$dodatek." ORDER BY `uczestnicy`.`email` ASC";
        $uczestnicy = R::getAll($sql);
   } else {
-       $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' AND (dataustania IS NOT NULL AND CHAR_LENGTH(dataustania) = 10) ORDER BY `uczestnicy`.`email` ASC";
+       $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' AND (dataustania IS NOT NULL AND CHAR_LENGTH(dataustania) = 10) " . $dodatek ." ORDER BY `uczestnicy`.`email` ASC";
        $uczestnicy = R::getAll($sql);
   }
   $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma = '$firmanazwa'";

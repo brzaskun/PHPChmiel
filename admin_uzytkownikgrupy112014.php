@@ -33,6 +33,14 @@
                     </select>
 
                 </div>
+                <div class="ui-grid-col-3 selectbar1" id="warunek2div">
+                    <select id="warunek2" name="warunek2">
+                        <option selected="wszyscy">stacjon. + online</option>
+                        <option value="stacjonarni">stacjonarni</option>
+                        <option value="online">online</option>
+                    </select>
+
+                </div>
                 <div class="ui-grid-col-2">
                     <button id="zachowajbutton" type="button" name="zachowajbutton" onclick="pobierzwierszetabeli()" style="width: 120px;">zachowaj</button>
                 </div>

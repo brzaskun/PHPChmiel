@@ -190,98 +190,108 @@ var generujtabliceuzytkownikow = function () {
     var uczestnicyrodzaj = document.getElementById("warunek1").value;
     var uczestnicystaconline = document.getElementById("warunek2").value;
     MYAPP.uczestnicyrodzaj = uczestnicyrodzaj;
-    var teststring = {"firmanazwa": nazwafirmy, "uczestnicyrodzaj":uczestnicyrodzaj, "uczestnicystaconline":uczestnicystaconline};
+    var teststring = {"firmanazwa": nazwafirmy, "uczestnicyrodzaj": uczestnicyrodzaj, "uczestnicystaconline": uczestnicystaconline};
+    var info = "firmanazwa: " + nazwafirmy + " uczestnicyrodzaj: " + uczestnicyrodzaj + " uczestnicystaconline: " + uczestnicystaconline;
     $.ajax({
         type: "POST",
         url: "pobierzuczestnicywszyscy_112014.php",
         data: teststring,
         cache: false,
         error: function (xhr, status, error) {
-            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się pobraćd danych użytkowników. '+status}]);
+            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się pobraćd danych użytkowników. ' + status}]);
         },
         success: function (response) {
-            if (response !== "brak") {
-                $('#warunek1div').show();
-                $('#warunek2div').show();
-                $('#notify').puigrowl('show', [{severity: 'info', summary: 'Pobrano dane użytkowników'}]);
-                var tablice = $.parseJSON(decodeURIComponent(response));
-                $('#tabuser').remove();
-                $('#tabuser_wrapper').remove();
-                var cont = "<table id=\"tabuser\" class=\"compact \"  style=\"margin: 0px; width: 1460px;\"></table>";
-                $('#tbl').append(cont);
-                if (tablice.length > 0) {
-                    var uTable = $('#tabuser').dataTable({
-                        "bDestroy": true,
-                        "bJQueryUI": true,
-                        "sPaginationType": "full_numbers",
-                        "aoColumns": generujnazwykolumn(uczestnicyrodzaj),
-                        "keys": true,
-                        "select": "single",
-                        "language": {
-                            "url": "resources/dataTableNew/Polish.json"
-                        },
-                        "dom": 'lfrBtip',
-                        "buttons": [
-                            'copyHtml5',
-                            'excelHtml5',
-                            'csvHtml5',
-                            {
-                                extend: 'pdfHtml5',
-                                orientation: 'landscape',
-                                pageSize: 'A4'
-                            }
-                        ]
-                    });
-                    uTable.fnAddData(tablice);
-                    $(uTable).addClass("compact");
-                    if ($("#aktywnafirma").val() === null || $("#aktywnafirma").val() === "wybierz bieżącą firmę") {
-                        $(".dt-buttons").hide();
-                        uTable.fnSort([[1, 'desc']]);
-                    } else {
-                        $(".dt-buttons").show();
-                        uTable.fnSort([[2, 'asc']]);
-                    }
-                    uTable.on( 'search.dt', function () {
+            try {
+                if (response !== "brak") {
+                    $('#warunek1div').show();
+                    $('#warunek2div').show();
+                    $('#notify').puigrowl('show', [{severity: 'info', summary: 'Pobrano dane użytkowników'}]);
+                    var tablice = $.parseJSON(decodeURIComponent(response));
+                    $('#tabuser').remove();
+                    $('#tabuser_wrapper').remove();
+                    var cont = "<table id=\"tabuser\" class=\"compact \"  style=\"margin: 0px; width: 1460px;\"></table>";
+                    $('#tbl').append(cont);
+                    if (tablice.length > 0) {
+                        var uTable = $('#tabuser').dataTable({
+                            "bDestroy": true,
+                            "bJQueryUI": true,
+                            "sPaginationType": "full_numbers",
+                            "aoColumns": generujnazwykolumn(uczestnicyrodzaj),
+                            "keys": true,
+                            "select": "single",
+                            "language": {
+                                "url": "resources/dataTableNew/Polish.json"
+                            },
+                            "dom": 'lfrBtip',
+                            "buttons": [
+                                'copyHtml5',
+                                'excelHtml5',
+                                'csvHtml5',
+                                {
+                                    extend: 'pdfHtml5',
+                                    orientation: 'landscape',
+                                    pageSize: 'A4'
+                                }
+                            ]
+                        });
+                        uTable.fnAddData(tablice);
+                        $(uTable).addClass("compact");
+                        if ($("#aktywnafirma").val() === null || $("#aktywnafirma").val() === "wybierz bieżącą firmę") {
+                            $(".dt-buttons").hide();
+                            uTable.fnSort([[1, 'desc']]);
+                        } else {
+                            $(".dt-buttons").show();
+                            uTable.fnSort([[2, 'asc']]);
+                        }
+                        uTable.on('search.dt', function () {
+                            nanieszdarzenieclick1('#tabuser', 'email');
+                            nanieszdarzenieclick2('#tabelaedituser');
+                        });
+                        uTable.on('draw.dt', function () {
+                            nanieszdarzenieclick1('#tabuser', 'email');
+                            nanieszdarzenieclick2('#tabelaedituser');
+                        });
                         nanieszdarzenieclick1('#tabuser', 'email');
-                        nanieszdarzenieclick2('#tabelaedituser'); 
-                    });
-                    uTable.on( 'draw.dt', function () {
-                        nanieszdarzenieclick1('#tabuser', 'email');
-                        nanieszdarzenieclick2('#tabelaedituser'); 
-                    });
-                    nanieszdarzenieclick1('#tabuser', 'email');
-                    nanieszdarzenieclick2('#tabelaedituser');
-                    $('#tabuser tbody').on('mouseover', 'td.details-control', function () {
-                        var tr = $(this).closest('tr');
-                        var row = uTable.api().row(tr);
-                        var id_uz = $(row.data()[1]).text();
-                        $.ajax({
-                            type: "POST",
-                            url: "pobierzuczestnikarchiwum.php",
-                            data: "id=" + id_uz,
-                            context: this,
-                            success: function (response) {
-                                var tab = $.parseJSON(response);
-                                if (row.child.isShown()) {
-                                    // This row is already open - close it
-                                    row.child.hide();
-                                    tr.removeClass('shown');
-                                } else {
-                                    // Open this row
-                                    if (tab.length > 0) {
-                                        var tavlica = format(tab);
-                                        row.child(tavlica).show();
-                                        tr.addClass('shown');
-                                        $('#notify').puigrowl('show', [{severity: 'info', summary: 'Pobrano archiwalne szkolenia użytkownika'}]);
+                        nanieszdarzenieclick2('#tabelaedituser');
+                        $('#tabuser tbody').on('mouseover', 'td.details-control', function () {
+                            var tr = $(this).closest('tr');
+                            var row = uTable.api().row(tr);
+                            var id_uz = $(row.data()[1]).text();
+                            $.ajax({
+                                type: "POST",
+                                url: "pobierzuczestnikarchiwum.php",
+                                data: "id=" + id_uz,
+                                context: this,
+                                success: function (response) {
+                                    var tab = $.parseJSON(response);
+                                    if (row.child.isShown()) {
+                                        // This row is already open - close it
+                                        row.child.hide();
+                                        tr.removeClass('shown');
                                     } else {
-                                        $('#notify').puigrowl('show', [{severity: 'error', summary: 'Użytkownik nie ukończył jeszcze żadnego szkolenia'}]);
+                                        // Open this row
+                                        if (tab.length > 0) {
+                                            var tavlica = format(tab);
+                                            row.child(tavlica).show();
+                                            tr.addClass('shown');
+                                            $('#notify').puigrowl('show', [{severity: 'info', summary: 'Pobrano archiwalne szkolenia użytkownika'}]);
+                                        } else {
+                                            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Użytkownik nie ukończył jeszcze żadnego szkolenia'}]);
+                                        }
                                     }
                                 }
-                            }
-                        }); 
-                    });
-                    //dopelnijtabele();
-                }
+                            });
+                        });
+                        //dopelnijtabele();
+                        while ($('#komunikatobraku').length) {
+                            $('#komunikatobraku').remove();
+                        }
+                    } else {
+                        $('#tbl').append("<p id='komunikatobraku' name='komunikatobraku' style='color: red'><span> Żaden rekord nie spełnia warunków zapytania: " + info + "</span></p>");
+                    };
+                };
+            } catch (e) {
+                $('#tbl').append("<p id='komunikatobraku' name='komunikatobraku'><span> Żaden rekord nie spełnia warunków zapytania: " + info + "</span></p>");
             }
         }
     });
