@@ -15,6 +15,12 @@
         <input id="szukacmail" name="szukacmail" type="text" style="width: 200px;"/>
         <span>pobierz po firmie</span>
         <input id="szukacfirma" name="szukacfirma" type="text" style="width: 200px;"/>
+        <span>aktywni/nieaktywni</span>
+        <select id="szukacwarunek" name="szukacwarunek">
+            <option value="0">wszyscy</option>
+            <option value="1">aktywni</option>
+            <option value="2">nieaktywni</option>
+         </select>
         <div id="tbl" style="max-width: 1465px;">
 <!--            nie ma tabeli, jest generowana w całości-->
         </div>

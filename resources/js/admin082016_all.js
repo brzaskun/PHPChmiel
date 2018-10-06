@@ -32,6 +32,9 @@ $(document).ready(function () {
             $('#szukacmail').val(null);
         }
     });
+    $('#szukacwarunek').change(function() {
+        setTimeout(generujtabliceuzytkownikow(), 5000);
+    });
     
     //    $('#coszukac').autocomplete({
 //        source:function(request, response) {
@@ -59,7 +62,7 @@ var generujtabliceuzytkownikow = function () {
     $.ajax({
         type: "POST",
         url: "pobierzuczestnicywszyscy_112014_bigtable.php",
-        data: "nazwisko="+$('#szukacnazwisko').val()+"&mail="+$('#szukacmail').val()+"&firma="+$('#szukacfirma').val(),
+        data: "nazwisko="+$('#szukacnazwisko').val()+"&mail="+$('#szukacmail').val()+"&firma="+$('#szukacfirma').val()+"&warunek="+$('#szukacwarunek').val(),
         cache: true,
         error: function (xhr, status, error) {
             let wiadomosc = 'Nie udało się pobrać danych użytkowników. Błąd servera. '+error;
@@ -135,6 +138,10 @@ var generujnazwykolumn = function () {
     o1 = {"sTitle": "rozpoczęcie"};
     zwrot.push(o1);
     o1 = {"sTitle": "zakończenie"};
+    zwrot.push(o1);
+     o1 = {"sTitle": "data nadania"};
+    zwrot.push(o1);
+    o1 = {"sTitle": "data ustania"};
     zwrot.push(o1);
     o1 = {"sTitle": "wyn. test"};
     zwrot.push(o1);
