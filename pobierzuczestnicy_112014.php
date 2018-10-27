@@ -32,13 +32,13 @@
       $tab = array("",$val['id'],$val['email'],$val['imienazwisko']);
 //      tab wiersze sa do eksportu danych w formacie XLS 
       $tab_wiersze = array($val['id'],$val['email'],$val['imienazwisko']);
-      array_push($tab,"<input type='text' value='".$val['nrupowaznienia']."' style='width: 150px;'/>");
+      array_push($tab,"<input type='text' value='".$val['nrupowaznienia']."' style='width: 150px;'  onchange='oznaczzmiany(this)'/>");
       array_push($tab_wiersze, $val['nrupowaznienia']);
-      array_push($tab,"<input type='text' value='".$val['indetyfikator']."' style='width: 100px;'/>");
+      array_push($tab,"<input type='text' value='".$val['indetyfikator']."' style='width: 100px;'  onchange='oznaczzmiany(this)'/>");
       array_push($tab_wiersze, $val['indetyfikator']);
-      array_push($tab,"<input type='text' value='".$val['datanadania']."' style='width: 60px;' maxlength='10' placeholder='dd.mm.rrrr'/>");
+      array_push($tab,"<input type='text' value='".$val['datanadania']."' style='width: 60px;' maxlength='10' placeholder='dd.mm.rrrr' onchange='oznaczzmiany(this)'/>");
       array_push($tab_wiersze, $val['datanadania']);
-      array_push($tab,"<input type='text' value='".$val['dataustania']."' style='width: 60px;'maxlength='10' placeholder='dd.mm.rrrr'/>");
+      array_push($tab,"<input type='text' value='".$val['dataustania']."' style='width: 60px;'maxlength='10' placeholder='dd.mm.rrrr'  onchange='oznaczzmiany(this)'/>");
       array_push($tab_wiersze, $val['dataustania']);
       array_push($tab,"<input type='text' value='".$val['wyslaneup']."' style='width: 10px;'maxlength='1' onchange='oznaczzmiany(this)'/>");
 //      array_push($tab,"<span style='width: 10px;'>".$val['wyslaneup']."</span>");
