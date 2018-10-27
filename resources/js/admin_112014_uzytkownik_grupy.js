@@ -398,7 +398,9 @@ var pobierzwierszetabeli = function () {
             $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się zmienić danych użytkownikagrupa.'}]);
         },
         success: function (response) {
-            $('#notify').puigrowl('show', [{severity: 'info', summary: 'Edytowano nowego użytkownikagrupa'}]);
+            $('#notify').puigrowl('show', [{severity: 'info', summary: 'Zachowano zmiany w talebli użytkownikagrupa'}]);
+            r("wiadomosczmiany").text("");
+            MYAPP.liczbazmian =  0;
         }
 
     });
