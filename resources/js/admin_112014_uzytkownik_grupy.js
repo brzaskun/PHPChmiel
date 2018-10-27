@@ -399,6 +399,8 @@ var pobierzwierszetabeli = function () {
         },
         success: function (response) {
             $('#notify').puigrowl('show', [{severity: 'info', summary: 'Zachowano zmiany w talebli użytkownikagrupa'}]);
+            r("zachowajbutton").css("color", "initial");
+            r("zachowajbutton").css("font-weight", "initial");
             r("wiadomosczmiany").text("");
             MYAPP.liczbazmian =  0;
         }
@@ -457,7 +459,7 @@ var oznaczzmiany = function(e) {
        r("wiadomosczmiany").text("Uwaga, naniesiono "+MYAPP.liczbazmian+" zmian, aby je zachować wciśnij przycisk 'zachowaj'");
    }
   $('#notify').puigrowl('show', [{severity: 'warning', summary: "Uwaga, naniesiono zmiany, aby je zachować wciśnij przycisk 'zachowaj'"}]);
-  $(e).parent("td").css("background-color","#cce6ff");
+  $(e).closest("td").css("background-color","#cce6ff");
   r("zachowajbutton").css("color", "blue");
   r("zachowajbutton").css("font-weight", "bold");
 };

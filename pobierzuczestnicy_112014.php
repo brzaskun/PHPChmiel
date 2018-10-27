@@ -40,7 +40,7 @@
       array_push($tab_wiersze, $val['datanadania']);
       array_push($tab,"<input type='text' value='".$val['dataustania']."' style='width: 60px;'maxlength='10' placeholder='dd.mm.rrrr'/>");
       array_push($tab_wiersze, $val['dataustania']);
-      array_push($tab,"<input type='text' value='".$val['wyslaneup']."' style='width: 10px;'maxlength='1' onchange='oznaczzmiany()'/>");
+      array_push($tab,"<input type='text' value='".$val['wyslaneup']."' style='width: 10px;'maxlength='1' onchange='oznaczzmiany(this)'/>");
 //      array_push($tab,"<span style='width: 10px;'>".$val['wyslaneup']."</span>");
       array_push($tab_wiersze, $val['wyslaneup']);
       $id = $val['id'];
@@ -48,7 +48,7 @@
       $zapisanegrupy = R::getCol($sql);
       if ($bezgrup == "tak" && sizeof($zapisanegrupy)== 0) {
          foreach ($grupy as $value) {
-             array_push($tab,"<input type='checkbox' class='czekgrupy' onchange='oznaczzmiany()'/>");
+             array_push($tab,"<input type='checkbox' class='czekgrupy' onchange='oznaczzmiany(this)'/>");
                 array_push($tab_wiersze,'');
            }
           array_push($czlonkowie, $tab);
@@ -60,10 +60,10 @@
         }
         foreach ($grupy as $value) {
            if (in_array(strtolower($value['nazwagrupy']), $zapisanegrupysmall, true)) {
-              array_push($tab,"<input type='checkbox' checked class='czekgrupy'  onchange='oznaczzmiany()'/>");
+              array_push($tab,"<input type='checkbox' checked class='czekgrupy'  onchange='oznaczzmiany(this)'/>");
               array_push($tab_wiersze,1);
            } else {
-              array_push($tab,"<input type='checkbox' class='czekgrupy'  onchange='oznaczzmiany()'/>");
+              array_push($tab,"<input type='checkbox' class='czekgrupy'  onchange='oznaczzmiany(this)'/>");
               array_push($tab_wiersze,'');
            }
         } 
@@ -76,7 +76,7 @@
         }
         foreach ($grupy as $value) {
            if (in_array(strtolower($value['nazwagrupy']), $zapisanegrupysmall, true)) {
-              array_push($tab,"<input type='checkbox' checked class='czekgrupy'  onchange='oznaczzmiany()'/>");
+              array_push($tab,"<input type='checkbox' checked class='czekgrupy'  onchange='oznaczzmiany(this)'/>");
               array_push($tab_wiersze,1);
            } else {
               array_push($tab,"<input type='checkbox' class='czekgrupy'  onchange='oznaczzmiany(this)'/>");
