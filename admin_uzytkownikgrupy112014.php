@@ -49,6 +49,9 @@
                 </div> 
             </div>
         </div>
+        <div>
+            <span id="wiadomosczmiany" style="color: red;"></span>
+        </div>
         <div id="tbl" style="width: 1400px; margin-top: 10px;">
             <table id="tabuser" style="margin: 0px; width: 1400px;">
 <!--                tu miesci sie tabela z wierszami wygenerowanymi upowaznien-->

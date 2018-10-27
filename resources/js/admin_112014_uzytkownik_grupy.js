@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    MYAPP.liczbazmian =  0;
     var notf = $('#notify').puinotify({
         easing: 'easeInOutCirc',
         position: 'bottom'
@@ -444,6 +445,19 @@ var generujtabeleugxls = function () {
             $("#ajax_sun").puidialog('hide');
         }
     });
+};
+
+var oznaczzmiany = function(e) {
+  MYAPP.liczbazmian = parseInt(MYAPP.liczbazmian)+1;
+  if (MYAPP.liczbazmian < 5) {
+        r("wiadomosczmiany").text("Uwaga, naniesiono "+MYAPP.liczbazmian+" zmiany, aby je zachować wciśnij przycisk 'zachowaj'");
+   } else {
+       r("wiadomosczmiany").text("Uwaga, naniesiono "+MYAPP.liczbazmian+" zmian, aby je zachować wciśnij przycisk 'zachowaj'");
+   }
+  $('#notify').puigrowl('show', [{severity: 'warning', summary: "Uwaga, naniesiono zmiany, aby je zachować wciśnij przycisk 'zachowaj'"}]);
+  $(e).parent("td").css("background-color","#cce6ff");
+  r("zachowajbutton").css("color", "blue");
+  r("zachowajbutton").css("font-weight", "bold");
 };
 
 //var generujtabeleugxlspuste = function () {
