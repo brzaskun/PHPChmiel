@@ -346,7 +346,7 @@ class Mail {
                                 . '<p> email zalogowanej osoby: '.$_SESSION['uczestnik']['email'].'</p>'
                                 . '<p> szkolenie: '.$_SESSION['uczestnik']['nazwaszkolenia'].'</p>'
                                 . '<p> etap: '.$etap.'</p>'
-                                . '<p> nie wysłano maila do: : '.$niewyslano.'</p>'
+                                . '<p> nie wysłano maila do: '.$niewyslano.'</p>'
                                 . '</div>
                         <div>
                         <span>treść loggera</span>
