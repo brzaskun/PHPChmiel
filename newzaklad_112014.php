@@ -9,6 +9,7 @@
   $progzdawalnosci = $_POST['Nprogzdawalnosci'];
   $kontakt = $_POST['Nkontakt'];
   $email = $_POST['Nemail'];
+  $email = trim($email);
   $maxpracownikow = $_POST['Nmaxpracownikow'];
   $managerlimit = $_POST['Nmanagerlimit'];
   $sql = "INSERT INTO  `zakladpracy` (`id` ,`nazwazakladu` ,`ulica` ,`miejscowosc`,`progzdawalnosci`, `kontakt`, `maxpracownikow`, `managerlimit`, `email`) VALUES ('$id', '$nazwazakladu',  '$ulica', '$miejscowosc', '$progzdawalnosci', '$kontakt', '$maxpracownikow', '$managerlimit', '$email');";

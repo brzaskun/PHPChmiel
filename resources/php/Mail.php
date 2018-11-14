@@ -3,6 +3,7 @@
 class Mail {
 
     public static function mailautomat($imienazwisko, $plec, $email, $szkolenieuser, $id_uzytkownik) {
+        $email = trim($email);
         require_once 'resources/swiftmailer/swift_required.php';
         $poziomzaswiadczenie = Mail::pobierzPoziomZaswiadczenia($szkolenieuser);
         $instrukcja = R::getCell("SELECT instrukcja FROM szkoleniewykaz WHERE  nazwa = '$szkolenieuser'");
@@ -70,7 +71,7 @@ class Mail {
             // Send the message
             $numSent = $mailer->send($message, $failedRecipients);
             if (stripos($logger->dump(), "250 OK id") == 0) {
-                Mail::mailniewyslano($email,$logger);
+                Mail::mailniewyslano($email,$logger, "rejestracja automatyczna");
                 return $email;
             } else if ($numSent == 1) {
                 $sql = "UPDATE  `uczestnicy` SET  `wyslanymailupr` = '1' WHERE  `uczestnicy`.`id` = $id_uzytkownik;";
@@ -109,6 +110,8 @@ class Mail {
     }
            
     public static function mailzaswiadczenie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenieuser, $id) {
+        $kontakt = trim($kontakt);
+        $bcc = trim($bcc);
         $wiadomosc = "nie";
         require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -195,7 +198,7 @@ class Mail {
             }
             if ($numSent == 0) {//ZMIENIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 $niewyslano = $failedRecipients[0];
-                Mail::mailniewyslano($niewyslano, $logger);
+                Mail::mailniewyslano($niewyslano, $logger, "ukończenie szkolenia");
             } else {
                 $sql = "UPDATE uczestnicy SET wyslanycert = 1 WHERE id = '$id'";
                 $res = R::exec($sql);
@@ -206,6 +209,8 @@ class Mail {
     }
 
     public static function mailupowaznienie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $id) {
+        $kontakt = trim($kontakt);
+        $bcc = trim($bcc);
 //        $bcc = "brzaskun@o2.pl";
 //        $kontakt = "Grzegorz";
         $wiadomosc = "nie";
@@ -289,7 +294,7 @@ class Mail {
                     $wiadomosc = "tak";
                     if ($numSent == 1) {
                         $niewyslano = $failedRecipients[0];
-                        Mail::mailniewyslano($niewyslano,$logger);
+                        Mail::mailniewyslano($niewyslano,$logger, "wysyłka upoważnienia");
                     }
                     $sql = "UPDATE uczestnicy SET  wyslaneup = 1 WHERE id = '$id'";
                     $res = R::exec($sql);
@@ -322,7 +327,7 @@ class Mail {
         return $logger;
     }
     
-    public static function mailniewyslano($niewyslano,$logger) {
+    public static function mailniewyslano($niewyslano,$logger, $etap) {
         require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
@@ -340,6 +345,7 @@ class Mail {
                                 . '<p> id: '.$_SESSION['uczestnik']['id'].'</p>'
                                 . '<p> email zalogowanej osoby: '.$_SESSION['uczestnik']['email'].'</p>'
                                 . '<p> szkolenie: '.$_SESSION['uczestnik']['nazwaszkolenia'].'</p>'
+                                . '<p> etap: '.$etap.'</p>'
                                 . '<p> nie wysłano maila do: : '.$niewyslano.'</p>'
                                 . '</div>
                         <div>

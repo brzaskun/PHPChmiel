@@ -6,6 +6,7 @@ error_reporting(0);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $email = $_POST['Nemail'];
+$email = trim($email);
 $imienazwisko = $_POST['Nimienazwisko'];
 $firma = $_POST['Nfirmauser'];
 $uprawnienia = $_POST['Nuprawnieniauser'];
@@ -151,7 +152,7 @@ try {
         $numSent = $mailer->send($message, $failedRecipients);
         if ($numSent == 0) {
             $niewyslano = $failedRecipients[0];
-            Mail::mailniewyslano($niewyslano,$logger);
+            Mail::mailniewyslano($niewyslano,$logger, "rejestracja");
             echo "link";
             exit();
         } else if ($numSent == 1) { 
