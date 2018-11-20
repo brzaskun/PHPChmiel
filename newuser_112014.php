@@ -31,7 +31,7 @@ try {
     try {
         $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 587);
         $transport->setUsername('e-szkolenia@odomg.pl');
-        $transport->setPassword('Moj@Poczta_');
+        $transport->setPassword('QY50z8JeNlMu');
         // Create the Mailer using your created Transport
         $mailer = Swift_Mailer::newInstance($transport);
         $logger = Mail::loggerFactory($mailer);
