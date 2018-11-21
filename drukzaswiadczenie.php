@@ -124,7 +124,7 @@
                                     '<p></p>' .
                                     '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator upoważnia:</p>' .
                                     '<p></p>' .
-                                    '<p style="font-size: large;">z dniem ' . $datanadania . '</p>' .
+                                    '<p style="font-size: large;">z dniem ' . $datanadania . 'r.</p>' .
                                     '<p style="font-size: large;">Panią ' . $imienaz . '</p>' .
                                     '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'</p>' .
                                     '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
@@ -147,7 +147,7 @@
                                     '<p></p>' .
                                     '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator upoważnia:</p>' .
                                     '<p></p>' .
-                                    '<p style="font-size: large;">z dniem ' . $datanadania . '</p>' .
+                                    '<p style="font-size: large;">z dniem ' . $datanadania . 'r.</p>' .
                                     '<p style="font-size: large;">Pana ' . $imienaz . '</p>' .
                                     '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'</p>' .
                                     '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
