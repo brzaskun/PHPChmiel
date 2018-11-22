@@ -1,4 +1,4 @@
-<?php error_reporting(2);
+<?php error_reporting(0);
 $slidenr = $_POST['slidenr'];
 $nazwaszkolenia = $_POST['Nnazwaszkolenia'];
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');

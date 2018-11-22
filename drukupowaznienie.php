@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
-<?php error_reporting(2);
+<?php error_reporting(0);
 if(session_status()!=2){     
     session_start(); 
 };
@@ -45,7 +45,7 @@ UpowaznienieGenerowanie::generuj();
             
         </div>
         </div>
-<?php error_reporting(2);
+<?php error_reporting(0);
 if(session_status()!=2){     
     session_start(); 
 };

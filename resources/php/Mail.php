@@ -122,7 +122,7 @@ class Mail {
             // Create a message
             $message = null;
             if ($plec === "k") {
-                $message = Swift_Message::newInstance('Zaświadczenie ukończenia e-szkolenia - ' . $linia1)
+                $message = Swift_Message::newInstance($imienazwisko.' - zaświadczenie ukończenia e-szkolenia - ' . $linia1)
                         ->setContentType('text/plain')
                         ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
@@ -154,7 +154,7 @@ class Mail {
                 ', 'text/html');
             } else {
 
-                $message = Swift_Message::newInstance('Zaświadczenie ukończenia e-szkolenia - ' . $linia1)
+                $message = Swift_Message::newInstance($imienazwisko.' - zaświadczenie ukończenia e-szkolenia - ' . $linia1)
                         ->setContentType('text/plain')
                         ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
@@ -222,7 +222,7 @@ class Mail {
                 // Create a message
                 $message = null;
                 if ($plec === "k") {
-                    $message = Swift_Message::newInstance('Upoważnienie do przetwarzania danych osobowych')
+                    $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
                             ->setContentType('text/plain')
                             ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
                             ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
@@ -252,7 +252,7 @@ class Mail {
         ', 'text/html');
                 } else {
 
-                    $message = Swift_Message::newInstance('Upoważnienie do przetwarzania danych osobowych')
+                    $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
                             ->setContentType('text/plain')
                             ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))

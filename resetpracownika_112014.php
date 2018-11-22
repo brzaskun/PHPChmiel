@@ -1,5 +1,5 @@
 <?php
-  error_reporting(2);
+  error_reporting(0);
   if(session_status()!=2){     session_start(); };
   date_default_timezone_set('Europe/Warsaw');
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
