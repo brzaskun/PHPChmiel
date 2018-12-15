@@ -367,7 +367,7 @@ class Mail {
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
             // Create a message 
-            $message = Swift_Message::newInstance('Wysłano awaryjnie zaświadczenia i upoważnienia dla następujących osób') 
+            $message = Swift_Message::newInstance('Wysłano automatycznie zaświadczenia i upoważnienia dla następujących osób') 
                         ->setContentType('text/plain')
                         ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
