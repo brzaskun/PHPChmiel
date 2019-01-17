@@ -80,7 +80,7 @@ if ($wykrytobladkolumny === 0) {
     $datado = null;
     for ($row = 1; $row <= $highestRow; ++$row) {
         $cell = $worksheet->getCellByColumnAndRow(6, $row);
-        $val = $cell->getValue();
+        $val = trim($cell->getValue());
         if ($val!="") {
             try {
                 echo '<tr>';
