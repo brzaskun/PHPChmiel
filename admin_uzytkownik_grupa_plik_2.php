@@ -91,17 +91,32 @@ if ($wykrytobladkolumny === 0) {
                     if (PHPExcel_Shared_Date::isDateTime($cell) && $val == "") {
                         $val = NULL;
                     }
-                    if (PHPExcel_Shared_Date::isDateTime($cell) && $val != NULL) {
-                        $val = PHPExcel_Style_NumberFormat::toFormattedString($cell->getValue(), 'DD.MM.YYYY');
+                    if (PHPExcel_Cell_DataType::dataTypeForValue($val)=="s" && ($col===5 || $col===6) && $val != NULL){
+                        $dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
+                        $lewy='((?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d])';
+                        $prawy='((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d])[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))';
+                        $jestlewy = preg_match_all ("/".$lewy."/is", $val);
+                        $jestprawy = preg_match_all ("/".$prawy."/is", $val);
                         $val = str_replace('/', '.', $val);
                         $val = str_replace('-', '.', $val);
                         $vartab = explode(".", $val);
-                        for ($i = 0; $i < 3; $i++) {
-                            if (strlen($vartab[$i]) == 1) {
-                                $vartab[$i] = "0" . $vartab[$i];
-                            } else if ($i == 2 && strlen($vartab[$i]) == 2) {
-                                $vartab[$i] = "20" . $vartab[$i];
+                        if ($jestlewy) {
+                            for ($i = 0; $i < 3; $i++) {
+                                if (strlen($vartab[$i]) == 1) {
+                                    $vartab[$i] = "0" . $vartab[$i];
+                                } else if ($i == 2 && strlen($vartab[$i]) == 2) {
+                                    $vartab[$i] = "20" . $vartab[$i];
+                                }
                             }
+                        } else if ($jestprawy) {
+                            for ($i = 0; $i < 3; $i++) {
+                                if (strlen($vartab[$i]) == 1) {
+                                    $vartab[$i] = "0" . $vartab[$i];
+                                } else if ($i == 0 && strlen($vartab[$i]) == 2) {
+                                    $vartab[$i] = "20" . $vartab[$i];
+                                }
+                            }
+                            $vartab = array_reverse($vartab);
                         }
                         $val = implode(".", $vartab);
                     }
@@ -110,7 +125,6 @@ if ($wykrytobladkolumny === 0) {
                     } else if ($col === 6) {
                         $datado = $val;
                     }
-                    $dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
                     if ($col==0 || $col==1 || $col==6) {
                         echo '<td>' . $val . '</td>';
                     }
