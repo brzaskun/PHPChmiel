@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="pl">
 <?php
     error_reporting(0); 
     if (session_status() != 2) {
@@ -7,10 +9,8 @@
         die("Nie jesteś upoważniony do przeglądania zasobu");
     }
     ?>
-<!DOCTYPE html>
-<html lang="pl">
-    <meta charset="utf-8">
     <head>
+        <meta charset="utf-8">
         <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v180118" />
         <link rel="stylesheet" href="/resources/dataTableNew/media/css/jquery.dataTables.css?v180118"/>
         <link href="resources/dataTableNew/extensions/KeyTable/css/keyTable.dataTables.css?v180118" rel="stylesheet" type="text/css"/>
@@ -54,7 +54,6 @@
         <?php
         include_once './menu_duza_tablica.php';
         ?>
-
         <?php
         include_once './admin082016_all_sub.php'; 
         ?>

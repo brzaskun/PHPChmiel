@@ -2,6 +2,7 @@
 if (session_status() != 2) {
     session_start();
 };
+error_reporting(0);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/CertyfikatGenerowanie.php');
 $nazwazaswiadczenia = $_GET["nazwazaswiadczenia"];
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');

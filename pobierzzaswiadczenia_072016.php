@@ -16,9 +16,9 @@
       array_push($tab, "<span class='doedycji'>".$val['linia2']."</span>");
       array_push($tab, "<span class='doedycji'>".$val['linia3']."</span>");
       array_push($tab, "<span class='doedycji'>".$val['pdf']."</span>");
-      array_push($tab, "<textarea rows='4' cols='50' disabled class='doedycji'>".$val['trescM']."</textarea>");
-      array_push($tab, "<textarea rows='4' cols='50' disabled class='doedycji'>".$val['trescK']."</textarea>"); 
-      array_push($tab, "<input type='button' value='podgląd' onclick='podgladzaswiadczenia(this);'/>"); 
+      array_push($tab, "<textarea rows='8' cols='50' disabled class='doedycji'>".$val['trescM']."</textarea>");
+      array_push($tab, "<textarea rows='8' cols='50' disabled class='doedycji'>".$val['trescK']."</textarea>"); 
+      array_push($tab, "<input type='button' value='podgląd' onclick='podgladzaswiadczenia(this);'/>");
       array_push($tab, "<input type='checkbox' class='czekedycja' onclick='editzaswiadczenie(event);' style='display: none;'/>");
       array_push($tab, "<input type='checkbox' class='czekedycja' onclick='usunzaswiadczenie(this);' style='display: none;'/>");
       array_push($wiersze, $tab);

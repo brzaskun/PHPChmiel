@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <meta charset="utf-8">
-    <?php error_reporting(0);
+    <?php
     if(session_status()!=2){     session_start(); };
+    error_reporting(0);
     if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         die("Nie jesteś upoważniony do przeglądania zasobu");
     }
@@ -45,7 +45,7 @@
         ?>
         <div style="box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
             <form >
-                <button id='potwierdz' type='button' value="archiwizuj" onclick="archiwizuj();" style="width: 120px; margin-top: 1%; margin-left: 3%;">archiwizuj</button>
+                <button id='potwierdz' type='button' value="archiwizuj" onclick="archiwizuj();" style="width: 160px; margin-top: 1%; margin-left: 3%;">archiwizuj dane</button>
             </form>
             <p id="pole1"  style="display: none; color: blue; margin-left: 3%; font-weight: 900;">Rozpoczynam archiwizację</p>
             <p id="pole2"  style="display: none; color: blue; margin-left: 3%; font-weight: 900;">Zakończyłem archiwizację</p>
