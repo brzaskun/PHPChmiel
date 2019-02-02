@@ -69,12 +69,12 @@ class UpowaznienieText {
                 '<p align="center"><b> w Sądzie Rejonowym w Myśliborzu</b></p>' .
                 '<p align="center">(dalej "Administrator")</p>' .
                 '<p></p>' .
-                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>upoważnia</b>:</p>' .
+                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b>:</p>' .
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
-                '<p style="font-size: larger;">Panią ' . $imienaz . '</p>' .
+                '<p style="font-size: larger;">Pani ' . $imienaz . '</p>' .
                 '<p style="font-size: larger;">Na stanowisku ' . $grupy . '</p>' .
-                '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Myśliborzu.</p>' .
+                '<p>zostaje upoważniona do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Myśliborzu.</p>' .
                 '<p align="justify">Upoważnienie dotyczy przetwarzania danych osobowych w ramach otrzymanego zakresu obowiązków, odpowiedzialności i uprawnień  oraz  w zakresie wynikającym z poleceń przełożonego.</p>' .
                 '<p></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
@@ -98,12 +98,12 @@ class UpowaznienieText {
                 '<p align="center"><b> w Sądzie Rejonowym w Myśliborzu</b></p>' .
                 '<p align="center">(dalej "Administrator")</p>' .
                 '<p></p>' .
-                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>upoważnia</b>:</p>' .
+                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b>:</p>' .
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
-                '<p style="font-size: larger;">Pania ' . $imienaz . '</p>' .
+                '<p style="font-size: larger;">Pan ' . $imienaz . '</p>' .
                 '<p style="font-size: larger;">Na stanowisku ' . $grupy . '</p>' .
-                '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Myśliborzu.</p>' .
+                '<p>zostaje upoważniony do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Myśliborzu.</p>' .
                 '<p align="justify">Upoważnienie dotyczy przetwarzania danych osobowych w ramach otrzymanego zakresu obowiązków, odpowiedzialności i uprawnień  oraz  w zakresie wynikającym z poleceń przełożonego.</p>' .
                 '<p></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
@@ -127,12 +127,12 @@ class UpowaznienieText {
                 '<p align="center"><b> w Sądzie Rejonowym w Pułtusku</b></p>' .
                 '<p align="center">(dalej "Administrator")</p>' .
                 '<p></p>' .
-                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>upoważnia</b>:</p>' .
+                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b>:</p>' .
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
-                '<p style="font-size: larger;">Panią ' . $imienaz . '</p>' .
+                '<p style="font-size: larger;">Pani ' . $imienaz . '</p>' .
                 '<p style="font-size: larger;">Na stanowisku ' . $grupy . '</p>' .
-                '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Pułtusku.</p>' .
+                '<p>zostaje upoważniona do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Pułtusku.</p>' .
                 '<p align="justify">Upoważnienie dotyczy przetwarzania danych osobowych w ramach otrzymanego zakresu obowiązków, odpowiedzialności i uprawnień  oraz  w zakresie wynikającym z poleceń przełożonego.</p>' .
                 '<p></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
@@ -157,12 +157,12 @@ class UpowaznienieText {
 
                 '<p align="center">(dalej "Administrator")</p>' .
                 '<p></p>' .
-                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>upoważnia</b>:</p>' .
+                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b>:</p>' .
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
-                '<p style="font-size: larger;">Pania ' . $imienaz . '</p>' .
+                '<p style="font-size: larger;">Pan ' . $imienaz . '</p>' .
                 '<p style="font-size: larger;">Na stanowisku ' . $grupy . '</p>' .
-                '<p>do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Pułtusku.</p>' .
+                '<p>zostaje upoważniony do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w Pułtusku.</p>' .
                 '<p align="justify">Upoważnienie dotyczy przetwarzania danych osobowych w ramach otrzymanego zakresu obowiązków, odpowiedzialności i uprawnień  oraz  w zakresie wynikającym z poleceń przełożonego.</p>' .
                 '<p></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
