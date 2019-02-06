@@ -117,21 +117,21 @@
                     require_once('resources/php/UpowaznienieText.php');
                     if ($sqlfirma=="Sąd Rejonowy w Myśliborzu") {
                         if ($plec == "k") {
-                            $html = UpowaznienieText::upowaznienie_kobieta_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy);
+                            $html = UpowaznienieText::upowaznienie_kobieta_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         } else {
-                            $html = UpowaznienieText::upowaznienie_mezczyzna_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy);
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         }
                     } else if ($sqlfirma=="Sąd Rejonowy w Pułtusku") {
                         if ($plec == "k") {
-                            $html = UpowaznienieText::upowaznienie_kobieta_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy);
+                            $html = UpowaznienieText::upowaznienie_kobieta_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         } else {
-                            $html = UpowaznienieText::upowaznienie_mezczyzna_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy);
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         }
                     } else {
                         if ($plec == "k") {
-                            $html = UpowaznienieText::upowaznienie_kobieta_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy);
+                            $html = UpowaznienieText::upowaznienie_kobieta_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         } else {
-                            $html = UpowaznienieText::upowaznienie_mezczyzna_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy);
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         }
                     }
                     $mpdf = new mPDF();

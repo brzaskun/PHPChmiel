@@ -7,7 +7,7 @@
  */
 class UpowaznienieText {
        
-    public final static function upowaznienie_kobieta_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy) {
+    public final static function upowaznienie_kobieta_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
@@ -32,7 +32,7 @@ class UpowaznienieText {
                 '</body></html>';
     }
     
-    public final static function upowaznienie_mezczyzna_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy) {
+    public final static function upowaznienie_mezczyzna_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
@@ -57,7 +57,7 @@ class UpowaznienieText {
                 '</body></html>';
     }
     
-     public final static function upowaznienie_kobieta_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy) {
+     public final static function upowaznienie_kobieta_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
@@ -86,7 +86,7 @@ class UpowaznienieText {
                 '</body></html>';
     }
     
-     public final static function upowaznienie_mezczyzna_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy) {
+     public final static function upowaznienie_mezczyzna_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
@@ -115,7 +115,7 @@ class UpowaznienieText {
                 '</body></html>';
     }
     
-    public final static function upowaznienie_kobieta_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy) {
+    public final static function upowaznienie_kobieta_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
@@ -144,7 +144,7 @@ class UpowaznienieText {
                 '</body></html>';
     }
     
-     public final static function upowaznienie_mezczyzna_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $sqlfirma, $grupy) {
+     public final static function upowaznienie_mezczyzna_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
