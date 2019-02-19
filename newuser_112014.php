@@ -8,6 +8,7 @@ R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1')
 $email = $_POST['Nemail'];
 $email = trim($email);
 $imienazwisko = $_POST['Nimienazwisko'];
+$imienazwisko = addslashes($imienazwisko);
 $firma = $_POST['Nfirmauser'];
 $uprawnienia = $_POST['Nuprawnieniauser'];
 $plec = $_POST['Nplecuser'];

@@ -6,6 +6,7 @@ use R;
   $id = $_POST['iduser'];
   $email = $_POST['email'];
   $imienazwisko = $_POST['imienazwisko'];
+  $imienazwisko = addslashes($imienazwisko);
   $sessionstart = NULL;
   if ($_POST['datazalogowania']==""){
    $sessionstart = NULL;   

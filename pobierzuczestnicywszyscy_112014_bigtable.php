@@ -6,6 +6,7 @@
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
   R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $nazwisko = $_POST['nazwisko'];
+  $nazwisko = addslashes($nazwisko);
   $mail = $_POST['mail'];
   $firma = $_POST['firma'];
   $warunek = $_POST['warunek'];

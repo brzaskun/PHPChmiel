@@ -8,6 +8,7 @@ R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1')
 $id = $_POST['iduser'];
 $email = $_POST['email'];
 $imienazwisko = $_POST['imienazwisko'];
+$imienazwisko = addslashes($imienazwisko);
 $sessionstart = NULL;
 if ($_POST['datazalogowania'] == "") {
     $sessionstart = NULL;

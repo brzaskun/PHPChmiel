@@ -41,13 +41,15 @@ foreach ($tablicapobranychpracownikow  as $wierszbaza) {
         if (isset($dataszkolenia) && strlen($dataszkolenia)=="10") {
             $datanadania = explode("-", $dataszkolenia);
             $datanadania = $datanadania[2].".".$datanadania[1].".".$datanadania[0];
+            $imienazwisko = addslashes($wierszbaza[1]);
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`,`datanadania`)
-            VALUES ('$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
+            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
         } else {
+            $imienazwisko = addslashes($wierszbaza[1]);
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
-            VALUES ('$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
+            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
         }
             R::exec($sql);
             $id_uzytkownik = R::getInsertID();
@@ -60,7 +62,7 @@ foreach ($tablicapobranychpracownikow  as $wierszbaza) {
                     $wartoscpola = $wierszbaza[$value];
                     if ($wartoscpola == 1) {
                         try {
-                            $sql = "INSERT INTO uczestnikgrupy (email,nazwiskoiimie,grupa,id_uczestnik) VALUES ('$wierszbaza[0]','$wierszbaza[1]','$key', '$id_uzytkownik');";
+                            $sql = "INSERT INTO uczestnikgrupy (email,nazwiskoiimie,grupa,id_uczestnik) VALUES ('$wierszbaza[0]','$imienazwisko','$key', '$id_uzytkownik');";
                             R::exec($sql);
                         } catch (Exception $e) {
                             array_push($zleoznaczeni, $wierszbaza[0]);

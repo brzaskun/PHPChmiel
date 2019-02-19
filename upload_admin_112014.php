@@ -14,17 +14,18 @@ $czasbiezacy = date("Y-m-d H:i:s");
 foreach ($tablicapobranychpracownikow  as $wierszbaza) {
     if (SprawdzWprowadzanyWiersz::sprawdz2($wierszbaza)) {
         try {
+           $imienazwisko = addslashes($wierszbaza[1]);
           $sql = "INSERT INTO  `uczestnicy` (`id`, `email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`)
-            VALUES (0, '$wierszbaza[0]',  '$wierszbaza[1]', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy');";
+            VALUES (0, '$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy');";
             R::exec($sql);
             $id_uzytkownik = R::getInsertID();
-            Mail::mailautomat($wierszbaza[1], $wierszbaza[2], $wierszbaza[0], $wierszbaza[3], $id_uzytkownik);
+            Mail::mailautomat($imienazwisko, $wierszbaza[2], $wierszbaza[0], $wierszbaza[3], $id_uzytkownik);
           foreach ($nazwygrup as $key=>$value) {
                $wartoscpola = $wierszbaza[$value];
                 if ($wartoscpola == 1) {
                     try {
-                      $sql = "INSERT INTO uczestnikgrupy (email,nazwiskoiimie,grupa,id_uczestnik) VALUES ('$wierszbaza[0]','$wierszbaza[1]','$key', '$id_uzytkownik');";
+                      $sql = "INSERT INTO uczestnikgrupy (email,nazwiskoiimie,grupa,id_uczestnik) VALUES ('$wierszbaza[0]','$$imienazwisko','$key', '$id_uzytkownik');";
                       R::exec($sql);
                     } catch (Exception $e) {
 
