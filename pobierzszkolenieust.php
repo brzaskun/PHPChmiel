@@ -12,6 +12,7 @@
       array_push($tab, "<span class='doedycji'>".$val['nazwaszkolenia']."</span>");
       array_push($tab, "<span class='doedycji'>".$val['iloscpytan']."</span>");
       array_push($tab, "<span class='doedycji'>".$val['email']."</span>");
+      array_push($tab, "<span class='doedycji'>".$val['upowaznienie']."</span>");
       array_push($tab, "<span class='doedycji'>".$val['progzdawalnosci']."</span>");
       array_push($tab,"<input title=\"edytuj\" name=\"edytuj\" type='checkbox' class='czekedycja' onclick=\"editszkolenieust(this);\" class=\"buttonedytujuser\" style=\"display: none;\"/>");
       array_push($tab,"<input title=\"usuń\" name=\"usun\" type='checkbox' class='czekedycja' onclick=\"usunwiersz(this);\"  style=\"display: none;\"/>");

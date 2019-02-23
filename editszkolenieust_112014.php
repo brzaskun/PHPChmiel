@@ -8,8 +8,11 @@
   $iloscpytanust= $_POST['iloscpytanust'];
   $emailust= $_POST['emailust'];
   $progzdawalnosciust= $_POST['progzdawalnosciust'];
+  $nazwaupowaznienia= $_POST['nazwaupowaznienia'];
   //unescape danych ktore wczesniej escape javascript
   $sql = "UPDATE  `szkolenieust` SET `iloscpytan` = '$iloscpytanust' WHERE `firma`='$firmaszkoleniaust' AND `nazwaszkolenia`='$nazwaszkoleniaust';";
+  R::exec($sql);
+  $sql = "UPDATE  `szkolenieust` SET `upowaznienie` = '$nazwaupowaznienia' WHERE `firma`='$firmaszkoleniaust' AND `nazwaszkolenia`='$nazwaszkoleniaust';";
   R::exec($sql);
   if (isset($emailust)) {
       if ($emailust != "") {

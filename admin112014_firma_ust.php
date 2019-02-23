@@ -41,7 +41,7 @@
         <script src="/resources/primeui-4.1.12/primeui.min.js?v180118"></script>
         <script src="/resources/js/admin_112014_firma_ust.js?v180118"></script>
         <script src="./resources/js/common_generowanietabeli.js?v180118"></script>
-        <title>Testy Dane Wrażliwe</title>
+        <title>Testy Dane Wrażliwe</title> 
        <script>
               $(document).ready(function() {
                 $('#notify').puigrowl({

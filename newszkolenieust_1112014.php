@@ -4,8 +4,9 @@
   R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $firmaszkolenia = filter_input(INPUT_POST, 'Nfirmaszkoleniaust', FILTER_SANITIZE_STRING);
   $nazwaszkolenia = filter_input(INPUT_POST, 'Nnazwaszkoleniaust', FILTER_SANITIZE_STRING);
+  $upowaznienie = filter_input(INPUT_POST, 'Nnazwaupowaznienia', FILTER_SANITIZE_STRING);
   $iloscpytan = filter_input(INPUT_POST, 'Niloscpytanust', FILTER_SANITIZE_NUMBER_INT);
-  $sql = "INSERT INTO `szkolenieust` (`firma` ,`nazwaszkolenia` ,`iloscpytan`) VALUES ('$firmaszkolenia','$nazwaszkolenia','$iloscpytan');";
+  $sql = "INSERT INTO `szkolenieust` (`firma` ,`nazwaszkolenia` ,`iloscpytan`, `upowaznienie`) VALUES ('$firmaszkolenia','$nazwaszkolenia','$iloscpytan', '$upowaznienie');";
   R::exec($sql);
   echo R::getInsertID();
 ?>

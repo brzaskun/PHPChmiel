@@ -78,7 +78,7 @@ var generujtabliceuzytkownikow = function () {
                 var tablice = $.parseJSON(decodeURIComponent(response));
                 $('#tabuser').remove();
                 $('#tabuser_wrapper').remove();
-                var cont = "<table id=\"tabuser\" class=\"compact context-menu-one box menu-1\"  style=\"margin: 0px; width: 850px;\"></table>";
+                var cont = "<table id=\"tabuser\" class=\"compact context-menu-one box menu-1\"  style=\"margin: 0px; width: 950px;\"></table>";
                 $('#tbl').append(cont);
                 if (tablice.length > 0) {
                     var uTable = $('#tabuser').dataTable({
@@ -128,6 +128,8 @@ var generujnazwykolumn = function () {
     zwrot.push(o1);
     o1 = {"sTitle": "email", "sClass": "tabela_email"};
     zwrot.push(o1);
+    o1 = {"sTitle": "upoważnienie", "sClass": "tabela_email"};
+    zwrot.push(o1);
     o1 = {"sTitle": "próg zdawalności"};
     zwrot.push(o1);
     o1 = {"sTitle": "edytuj"};
@@ -139,7 +141,7 @@ var generujnazwykolumn = function () {
 
  var noweszkolenieust = function() {
     $("#newszkolenieust").puidialog({
-        height: 200,
+        height: 300,
         width: 410, 
         scrollbars: false,
         resizable: false,
@@ -152,7 +154,7 @@ var generujnazwykolumn = function () {
 };
 
 var dodajnoweszkolenieust = function() {
-    var teststring = "Nfirmaszkoleniaust="+rj("Nfirmaszkoleniaust").value+"&Nnazwaszkoleniaust="+rj("Nnazwaszkoleniaust").value+"&Niloscpytanust="+rj("Niloscpytanust").value+"&plik=admin112014_firma_ust.php";
+    var teststring = "Nfirmaszkoleniaust="+rj("Nfirmaszkoleniaust").value+"&Nnazwaszkoleniaust="+rj("Nnazwaszkoleniaust").value+"&Nnazwaupowaznienia="+rj("Nnazwaupowaznienia").value+"&Niloscpytanust="+rj("Niloscpytanust").value+"&plik=admin112014_firma_ust.php";
     $.ajax({
         type: "POST",
         url: "newszkolenieust_1112014.php",
@@ -175,6 +177,7 @@ var dodajwierszdotabeli = function (tablename, ostatninumer) {
     "<span class='doedycji' style='text-align: center;'>"+rj("Nnazwaszkoleniaust").value+"</span>",
     "<span class='doedycji' style='text-align: center;'>"+rj("Niloscpytanust").value+"</span>",
     "<span></span>",
+    "<span class='doedycji' style='text-align: center;'>"+rj("Nnazwaupowaznienia").value+"</span>",
     "<span></span>",
     "<input title='edytuj' name='edytuj' value='edytuj' type='button'  onclick='editszkolenieust(this);'  class='czekedycja' style=\"display: none;\"/>",
     "<input title='usuń' name='usun' value='usuń' type='button'  onclick='usunszkolenieust(this);' class='czekedycja' style=\"display: none;\"/>"
@@ -277,7 +280,7 @@ var nie_usunwiersz = function () {
 
 var editszkolenieust = function(obj) {
     $("#editszkolenieust").puidialog({
-        height: 300,
+        height: 400,
         width: 410, 
         scrollbars: false,
         resizable: false,
@@ -309,10 +312,11 @@ var pobierzdanebutton = function (rzad){
 var edytujtabeleszkolenieust = function (){
        $(MYAPP.pola[3]).html($('#iloscpytanust').val());
        $(MYAPP.pola[4]).html($('#emailust').val());
-       $(MYAPP.pola[5]).html($('#progzdawalnosciust').val());
+       $(MYAPP.pola[5]).html($('#nazwaupowaznienia').val());
+       $(MYAPP.pola[6]).html($('#progzdawalnosciust').val());
        $('#notify').puigrowl('show', [{severity: 'info', summary: 'Dane szkolenia ' + $("#firmaszkoleniaust").val()+ ' ' + $("#nazwaszkoleniaust").val() + ' zmienione' }]);
        $("#editszkolenieust").puidialog('hide');
-       var teststring = "emailust="+$('#emailust').val()+"&progzdawalnosciust="+$('#progzdawalnosciust').val()+"&iloscpytanust="+$('#iloscpytanust').val()+"&firmaszkoleniaust="+$('#firmaszkoleniaust').val()+"&nazwaszkoleniaust="+$('#nazwaszkoleniaust').val();
+       var teststring = "emailust="+$('#emailust').val()+"&progzdawalnosciust="+$('#progzdawalnosciust').val()+"&iloscpytanust="+$('#iloscpytanust').val()+"&firmaszkoleniaust="+$('#firmaszkoleniaust').val()+"&nazwaszkoleniaust="+$('#nazwaszkoleniaust').val()+"&nazwaupowaznienia="+$('#nazwaupowaznienia').val();
        $.ajax({
         type: "POST",
         url: "editszkolenieust_112014.php",

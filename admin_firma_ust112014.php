@@ -37,6 +37,14 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
                 <tr>
                     <td><span>email: </span></td><td><input id="emailust" name="emailust" style="width: 240px;"></td>
                 </tr>
+                 <tr>
+                    <td><span>nazwa upoważnienia: </span></td><td>
+                        <select id="nazwaupowaznienia" name="nazwaupowaznienia" style="width: 240px;">
+                            <option value="standard">standard</option>
+                            <option value="sąd">sąd</option>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <td><span>próg zdawalności: </span></td><td><input id="progzdawalnosciust" name="progzdawalnosciust" style="width: 40px;"></td>
                 </tr>
@@ -91,6 +99,14 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
             <tr>
                 <td><span>ilość pytań: </span></td><td><input id="Niloscpytanust" name="Niloscpytanust" style="width: 100px;"></td>
             </tr>
+             <tr>
+                    <td><span>nazwa upoważnienia: </span></td><td>
+                        <select id="Nnazwaupowaznienia" name="Nnazwaupowaznienia" style="width: 240px;">
+                            <option value="standard">standard</option>
+                            <option value="sąd">sąd</option>
+                        </select>
+                    </td>
+                </tr>
         </table>
         <input id="Ndodajszkolenieust" name="Ndodajszkolenieust" value="dodaj" type="button" onclick="dodajnoweszkolenieust();"  style="padding: 5px; width: 120px; margin-left: 35%;">
     </form>

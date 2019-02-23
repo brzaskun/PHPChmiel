@@ -86,17 +86,12 @@ class UpowaznienieGenerowanie {
                         }
                         require_once("resources/MPDF57/mpdf.php");
                         require_once('resources/php/UpowaznienieText.php');
-                        if ($sqlfirma=="Sąd Rejonowy w Myśliborzu") {
+                        if (strpos($sqlfirma, 'Sąd Rejonowy') !== false) {
+                            $miejscowosc = substr($sqlfirma,16);
                             if ($plec == "k") {
-                                $html = UpowaznienieText::upowaznienie_kobieta_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                                $html = UpowaznienieText::upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                             } else {
-                                $html = UpowaznienieText::upowaznienie_mezczyzna_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
-                            }
-                        } else if ($sqlfirma=="Sąd Rejonowy w Pułtusku") {
-                            if ($plec == "k") {
-                                $html = UpowaznienieText::upowaznienie_kobieta_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
-                            } else {
-                                $html = UpowaznienieText::upowaznienie_mezczyzna_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                                $html = UpowaznienieText::upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                             }
                         } else {
                             if ($plec == "k") {
@@ -148,6 +143,8 @@ class UpowaznienieGenerowanie {
         $output = mb_strtolower(implode(", ",$zapisanegrupy),'UTF-8');
         return $output;
     }
+    
+     
 }
 ?>
 

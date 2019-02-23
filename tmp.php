@@ -53,10 +53,15 @@
         //print_r($_COOKIE);
         //echo $_COOKIE["TestCookie"];
 error_reporting(2);
-    date_default_timezone_set('Europe/Warsaw');
-    $data = date("Y-m-d H:i:s");
-    echo $data;
-    $datadozapisu =  date("d.m.Y");
-    echo date('d.m.Y', strtotime($data));
-    
+//    date_default_timezone_set('Europe/Warsaw');
+//    $data = date("Y-m-d H:i:s");
+//    echo $data;
+//    $datadozapisu =  date("d.m.Y");
+//    echo date('d.m.Y', strtotime($data));
+    $sqlfirma="Sąd Rejonowy w Myśliborzu";
+    if (strpos($sqlfirma, 'Sąd Rejonowy') !== false) {
+     $nazwa = substr($sqlfirma,16);
+    }
+    //echo $sqlfirma;
+    echo $nazwa;
 ?>
