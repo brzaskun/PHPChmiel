@@ -33,7 +33,8 @@ class CertyfikatGenerowanie {
                 if (isset($_SESSION['uczestnik']['kontakt'])) {
                     $kontakt = $_SESSION['uczestnik']['kontakt'];
                 }
-                $bcc = self::pobierzBCC();
+                $bcc = "brzaskun@o2.pl";
+                //$bcc = self::pobierzBCC();
                 $datadozapisu = R::getCell("SELECT `sessionend` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
                 $datadozapisu = date('d.m.Y', strtotime($datadozapisu));
                 $poziomzaswiadczenie = self::pobierzPoziomZaswiadczenia();

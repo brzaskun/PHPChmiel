@@ -354,7 +354,8 @@ class Mail {
                         </div>
                         </body></html>
                         ', 'text/html');
-            $mailer->send($message);
+            $failedRecipients = array();
+            $mailer->send($message, $failedRecipients);
     }
     
     public static function mailwyslanoawaryjnie($uzerywyslane) {
@@ -382,7 +383,8 @@ class Mail {
                         . '</div>
                         </body></html>
                         ', 'text/html');
-            $mailer->send($message);
+            $failedRecipients = array();
+            $mailer->send($message, $failedRecipients);
     }
     
     public static function mailwyslanolinki($maile,$maileniewyslane) {
@@ -421,7 +423,8 @@ class Mail {
                         . '</div>
                         </body></html>
                         ', 'text/html');
-            $mailer->send($message);
+            $failedRecipients = array();
+            $mailer->send($message, $failedRecipients);
     }
     
     public static function mailerror($error) {
@@ -452,9 +455,10 @@ class Mail {
                                 . '</div>
                         </body></html>
                         ', 'text/html');
-            $mailer->send($message);
+            $failedRecipients = array();
+            $mailer->send($message, $failedRecipients);
     }
-    
+        
     public static function mailerror2($error, $email, $szkolenie) {
         require_once 'resources/swiftmailer/swift_required.php';
             // Create the Mailer using your created Transport
@@ -483,7 +487,8 @@ class Mail {
                                 . '</div>
                         </body></html>
                         ', 'text/html');
-            $mailer->send($message);
+            $failedRecipients = array();
+            $mailer->send($message, $failedRecipients);
     }
 
     
