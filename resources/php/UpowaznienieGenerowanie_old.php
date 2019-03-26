@@ -152,8 +152,9 @@ class UpowaznienieGenerowanie {
                         $mpdf->WriteHTML($html);
                         require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/ConvertNames.php');
                         $imienazplik = ConvertNames::cn($imienaz);
+                        $stacjonarny = $_SESSION['uczestnik']['stacjonarny'];
                         $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
-                        $nazwapliku = 'resources/upowaznienia/upowaznienie' . $id . '-' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
+                        $nazwapliku = 'resources/upowaznienia/upowaznienie' . $id . '-' . $imienazplik . '.' . $id_szkolenia .'-'.$stacjonarny.'.'.'pdf'; 
                         $mpdf->Output($nazwapliku, 'F');
                         Mail::mailupowaznienie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $id);
                         //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 

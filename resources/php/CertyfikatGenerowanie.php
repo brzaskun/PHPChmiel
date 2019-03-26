@@ -23,6 +23,7 @@ class CertyfikatGenerowanie {
         try {
             $id = $_SESSION['uczestnik']['id'];
             if ($id > 0) {
+                $stacjonarny = $_SESSION['uczestnik']['stacjonarny'];
                 $email = $_SESSION['uczestnik']['email'];
                 $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
                 $uczestnik = $_SESSION['uczestnik'];
@@ -53,7 +54,7 @@ class CertyfikatGenerowanie {
                 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/ConvertNames.php');
                 $imienazplik = ConvertNames::cn($imienaz);
                 $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
-                $nazwapliku = 'resources/zaswiadczenia/zaswiadczenie'.$id.'-'.$imienazplik.'.'.$id_szkolenia.'.'.'pdf'; 
+                $nazwapliku = 'resources/zaswiadczenia/zaswiadczenie'.$id.'-'.$imienazplik.'.'.$id_szkolenia.'-'.$stacjonarny.'.'.'pdf'; 
                 $mpdf->Output($nazwapliku, 'F');
                 Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
                 //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
