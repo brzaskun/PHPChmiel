@@ -76,7 +76,9 @@ class CertyfikatGenerowanie {
         $bcc = "e-szkolenia@odomg.pl";
         $sqlfirma = $_SESSION['uczestnik']['firma'];
         $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
-        $_SESSION['uczestnik']['BCC'] = R::getCell($sql);
+        if (isset($sql)){
+            $_SESSION['uczestnik']['BCC'] = R::getCell($sql);
+        }
         if (isset($_SESSION['uczestnik']['BCC']) && !empty($_SESSION['uczestnik']['BCC'])) {
             $bcc = $_SESSION['uczestnik']['BCC'];
         }
