@@ -71,6 +71,7 @@ class UpowaznienieGenerowanie {
                         $kontakt = $_SESSION['uczestnik']['kontakt'];
                     }
                     $bcc = UpowaznienieGenerowanie::pobierzBCC();
+                    //echo "adrez zbiorczy ".$bcc;
                     $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
                     $datanadania = R::getCell("SELECT  `datanadania` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
                     $dataustania = $_SESSION['uczestnik']['dataustania'];
@@ -124,6 +125,9 @@ class UpowaznienieGenerowanie {
     
      public final static function pobierzBCC() {
         $bcc = "e-szkolenia@odomg.pl";
+        $sqlfirma = $_SESSION['uczestnik']['firma'];
+        $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
+        $_SESSION['uczestnik']['BCC'] = R::getCell($sql);
         if (isset($_SESSION['uczestnik']['BCC'])) {
             $bcc = $_SESSION['uczestnik']['BCC'];
         }
