@@ -30,19 +30,16 @@ try {
     //wysylanie maila dla nowododanego
     require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/swiftmailer/swift_required.php';
     try {
-        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 587);
-        $transport->setUsername('e-szkolenia@odomg.pl');
-        $transport->setPassword('QY50z8JeNlMu');
         // Create the Mailer using your created Transport
-        $mailer = Swift_Mailer::newInstance($transport);
+        $mailer = Mail::mailerFactory();
         $logger = Mail::loggerFactory($mailer);
         // Create a message
         $message = null;
         if ($uprawnienia === "manager" && $plec === "m") {
             $message = Swift_Message::newInstance('Rejestracja do e-szkolenia - menadżer '.$linia1)
                     ->setContentType('text/plain')
-                    ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                    ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                    ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                    ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                     ->setTo(array($email => $imienazwisko))
                     ->setBody('
         <h4>Szanowny Panie Menadżerze ' . $imienazwisko . '</h4>
@@ -70,8 +67,8 @@ try {
         } else if ($uprawnienia === "manager" && $plec === "k") {
             $message = Swift_Message::newInstance('Rejestracja do e-szkolenia - menadżer '.$linia1)
                     ->setContentType('text/plain')
-                    ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                    ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                    ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                    ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                     ->setTo(array($email => $imienazwisko))
                     ->setBody('
         <h4>Szanowna Pani Menadżer ' . $imienazwisko . '</h4>
@@ -98,8 +95,8 @@ try {
         } else if ($plec === "k") {
             $message = Swift_Message::newInstance('Rejestracja do e-szkolenia - ' . $linia1)
                     ->setContentType('text/plain')
-                    ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                    ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                    ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                    ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                     ->setTo(array($email => $imienazwisko))
                     ->setBody('
         <h4>Dzień dobry,</h4>
@@ -123,9 +120,9 @@ try {
         } else {
             $message = Swift_Message::newInstance('Rejestracja do e-szkolenia - ' . $linia1)
                     ->setContentType('text/plain')
-                    ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                    ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
                     ->setTo(array($email => $imienazwisko))
-                    ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                    ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                     ->setBody('
         <h4>Dzień dobry,</h4>
         <div style="width: 550px; text-align: justify;">

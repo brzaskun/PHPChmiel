@@ -16,8 +16,8 @@ class Mail {
             if ($plec === "k") {
                 $message = Swift_Message::newInstance('Rejestracja do e-szkolenia ' . $linia1) 
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
                         ->setBody('
          <h4>Dzień dobry,</h4>
@@ -42,9 +42,9 @@ class Mail {
             } else {
                 $message = Swift_Message::newInstance('Rejestracja do e-szkolenia ' . $linia1)
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setBody('
         <h4>Dzień dobry,</h4>
         <div style="width: 550px; text-align: justify;">
@@ -124,8 +124,8 @@ class Mail {
             if ($plec === "k") {
                 $message = Swift_Message::newInstance($imienazwisko.' - zaświadczenie ukończenia e-szkolenia - ' . $linia1)
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
                         ->setBcc(array($bcc => $kontakt));
                 $message->setBody('
@@ -156,10 +156,10 @@ class Mail {
 
                 $message = Swift_Message::newInstance($imienazwisko.' - zaświadczenie ukończenia e-szkolenia - ' . $linia1)
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
                         ->setBcc(array($bcc => $kontakt))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'));
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'));
                 $message->setBody('
                     <!DOCTYPE html><html lang="pl">
                     <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -224,8 +224,8 @@ class Mail {
                 if ($plec === "k") {
                     $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
                             ->setContentType('text/plain')
-                            ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                            ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                            ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                            ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
                             ->setBcc(array($bcc => $kontakt));
                     $message->setBody('
@@ -254,10 +254,10 @@ class Mail {
 
                     $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
                             ->setContentType('text/plain')
-                            ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                            ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
                             ->setBcc(array($bcc => $kontakt))
-                            ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'));
+                            ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'));
                     $message->setBody('
             <!DOCTYPE html><html lang="pl">
             <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -311,9 +311,9 @@ class Mail {
 //        $transport->setEncryption('ssl');
 //        $transport->setUsername('odomg@taxman.biz.pl');
 //        $transport->setPassword('qwerty1234');
-        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 587);
-        $transport->setUsername('e-szkolenia@odomg.pl');
-        $transport->setPassword('QY50z8JeNlMu');
+        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 465, 'ssl');
+        $transport->setUsername('mail@odomg.pl');
+        $transport->setPassword('EBpf6He4x@5eht36*M*y&uzhE');
         // Create the Mailer using your created Transport
         return Swift_Mailer::newInstance($transport);
     }
@@ -334,8 +334,8 @@ class Mail {
             // Create a message 
             $message = Swift_Message::newInstance('Odo raport o błędach') 
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
                         ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
@@ -370,8 +370,8 @@ class Mail {
             // Create a message 
             $message = Swift_Message::newInstance('Wysłano automatycznie zaświadczenia i upoważnienia dla następujących osób') 
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
                         ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
@@ -406,8 +406,8 @@ class Mail {
             // Create a message 
             $message = Swift_Message::newInstance('Informacja o wysłanych linkach') 
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
                         ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
@@ -434,8 +434,8 @@ class Mail {
             // Create a message 
             $message = Swift_Message::newInstance('Odo raport o błędach') 
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
                         ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
@@ -466,8 +466,8 @@ class Mail {
             // Create a message 
             $message = Swift_Message::newInstance('Odo raport o błędach') 
                         ->setContentType('text/plain')
-                        ->setFrom(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('e-szkolenia@odomg.pl' => 'ODO Management Group'))
+                        ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
                         ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
