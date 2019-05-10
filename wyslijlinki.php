@@ -3,6 +3,7 @@
     if (session_status() != 2) {
         session_start();
     };
+//    error_reporting(E_ALL & ~E_DEPRECATED);
     try {
         require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
     } catch (Exception $em) {
@@ -23,7 +24,10 @@
         $parameter = "id=".$value['id'];
         $znaleziony_ucz = R::findOne('uczestnicy', $parameter);
         $ws = $value->getProperties();
+        echo $ws['id']."<br />\n";
+        echo $ws['email']."<br />\n";
         $wynik = Mail::mailautomat($ws['imienazwisko'], $ws['plec'], $ws['email'], $ws['nazwaszkolenia'], $ws['id']);
+        echo $ws['imienazwisko']."<br />\n";
         if (strpos($wynik, "@") !== false) {
             array_push($uzeryniewyslane, $ws);
         }

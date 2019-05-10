@@ -5,7 +5,7 @@ class Mail {
     public static function mailautomat($imienazwisko, $plec, $email, $szkolenieuser, $id_uzytkownik) {
         $email = trim($email);
         require_once 'resources/swiftmailer/swift_required.php';
-        $poziomzaswiadczenie = Mail::pobierzPoziomZaswiadczenia($szkolenieuser);
+        $poziomzaswiadczenie = Mail::pobierzPoziomZaswiadczenia($szkolenieuser, $plec);
         $instrukcja = R::getCell("SELECT instrukcja FROM szkoleniewykaz WHERE  nazwa = '$szkolenieuser'");
         $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
             // Create the Mailer using your created Transport 

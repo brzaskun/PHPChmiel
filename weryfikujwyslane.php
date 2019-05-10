@@ -3,7 +3,7 @@
     if (session_status() != 2) {
         session_start();
     };
-    error_reporting(E_ALL & ~E_DEPRECATED);
+  //  error_reporting(E_ALL & ~E_DEPRECATED);
     require_once('resources/php/Rb.php');
     $_SESSION['host'] = 'mysql:host=172.16.0.6;';
     //$_SESSION['host'] = 'mysql:host=localhost;';
