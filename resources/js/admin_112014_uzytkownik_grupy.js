@@ -36,12 +36,15 @@ $(document).ready(function () {
     $('#eksportbutton').hide();
     $('#zachowajbutton').hide();
    
-//    $('#warunek').puicheckbox({
-//        change: function (e) {
-//         wybierzaktywnafirme();
-//         $(notf).hide();
-//        }
-//     });
+    $('#warunek0').puidropdown({
+        change: function (e) {
+         wybierzaktywnafirme();
+         $(notf).hide();
+        },
+        style: {
+            "width": "540px;"
+        }
+     });
       $('#warunek').puidropdown({
         change: function (e) {
          wybierzaktywnafirme();
@@ -69,6 +72,7 @@ $(document).ready(function () {
             "width": "540px;"
         }
      });
+    $('#warunek0div').hide();
     $('#warunekdiv').hide();
     $('#warunek1div').hide();
     $('#warunek2div').hide();
@@ -92,10 +96,11 @@ var wybierzaktywnafirme = function () {
     var nazwafirmy = $("#aktywnafirma").val();
     MYAPP.nazwafirmy = nazwafirmy;
     if (nazwafirmy !== "wybierz bieżącą firmę") {
+        var jakiegrupy = document.getElementById("warunek0").value;
         var bezgrup = document.getElementById("warunek").value;
         var uczestnicyrodzaj = document.getElementById("warunek1").value;
         var stacjonarnionline = document.getElementById("warunek2").value;
-        var teststring = "firmanazwa=" + nazwafirmy + "&bezgrup=" +bezgrup + "&uczestnicyrodzaj=" +uczestnicyrodzaj+ "&stacjonarnionline=" +stacjonarnionline;
+        var teststring = "firmanazwa=" + nazwafirmy + "&bezgrup=" +bezgrup + "&uczestnicyrodzaj=" +uczestnicyrodzaj+ "&stacjonarnionline=" +stacjonarnionline+ "&jakiegrupy=" +jakiegrupy;
         $("#ajax_sun").puidialog('show');
         $.ajax({
             type: "POST",
@@ -169,6 +174,7 @@ var wybierzaktywnafirme = function () {
                     $("#ajax_sun").puidialog('hide');
                     $("#zachowajbutton").show();
                     $("#eksportbutton").show();
+                    $('#warunek0div').show();
                     $('#warunekdiv').show();
                     $('#warunek1div').show();
                     $('#warunek2div').show();
@@ -194,6 +200,7 @@ var wybierzaktywnafirme = function () {
         $('#eksportbutton').puibutton();
         $('#eksportbutton').hide();
         $('#zachowajbutton').hide();
+        $('#warunek0div').hide();
         $('#warunekdiv').hide();
         $('#warunek1div').hide();
         $('#warunek2div').hide();
@@ -389,10 +396,11 @@ var pobierzwierszetabeli = function () {
         tabelauzgrupa.push(tworztabeleuzytkownikgrupa(wiersze[i], nazwygrup));
     }
     var dane = JSON.stringify(tabelauzgrupa);
+    var jakiegrupy = document.getElementById("warunek0").value;
     $.ajax({
         type: "POST",
         url: "edituzytkownikgrupy_112014.php",
-        data: "dane=" + dane,
+        data: "dane=" + dane+ "&jakiegrupy=" +jakiegrupy,
         cache: false,
         error: function (xhr, status, error) {
             $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się zmienić danych użytkownikagrupa.'}]);

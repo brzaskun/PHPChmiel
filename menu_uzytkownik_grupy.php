@@ -2,7 +2,7 @@
     $(document).ready(function() {
         $('#mb1').puimenubar({
             autoDisplay: true
-        }); 
+        });
      });
 </script>
 <ul id="mb1"> 
@@ -12,7 +12,8 @@
     <li><a data-icon="ui-icon-circle-check" href="/admin112014_testy.php"  style="width: 110px;">Testy</a></li>  
     <li id="menuupowaznieniagrupa"><a data-icon="ui-icon-folder-collapsed" href="/admin112014_uzytkownik_grupy.php"  style="width: 110px;">Up.Grupy</a>
           <ul>
-                <li><a data-icon="ui-icon-circle-arrow-n" href="./admin_uzytkownik_grupa_uploadfile.php">Import z pliku</a></li>   
+                <li><a data-icon="ui-icon-circle-arrow-n" href="./admin_uzytkownik_grupa_uploadfile.php">Import z pliku</a></li>
+                <li><a data-icon="ui-icon-circle-arrow-n" href="./admin_uzytkownik_grupa_uploadfiledw.php">Import dane wrażliwe</a></li>
                 <li><a data-icon="ui-icon-circle-arrow-n" href="./admin112014_upowaznienie_grupy.php">Upoważnienie - grupy</a></li>   
         </ul>
     </li>

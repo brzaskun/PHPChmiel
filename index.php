@@ -18,7 +18,7 @@ if (session_status() == 2) {
     $_SESSION = array();
     session_destroy();//kk
 }
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot . '/resources/php/Rb.php');
 require_once($sciezkaroot . '/resources/php/Zerowanieciastek.php');
@@ -32,6 +32,7 @@ if (isset($_GET['mail'])) {
     session_start();
     $_SESSION = array();
     $_SESSION['automail'] = $mail;
+    $_SESSION['danewrazliwe'] = "dane szczególnej kategorii";
     $url = 'sprawdzlogin_1.php';
     header("Location: $url"); 
     exit();

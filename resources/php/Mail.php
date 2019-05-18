@@ -306,14 +306,124 @@ class Mail {
         return $wiadomosc;
     }
     
+    
+     public static function mailupowaznienieDW($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $id) {
+        $kontakt = trim($kontakt);
+        $bcc = trim($bcc);
+//        $bcc = "brzaskun@o2.pl";
+//        $kontakt = "Grzegorz";
+        $wiadomosc = "nie";
+        require_once 'resources/swiftmailer/swift_required.php';
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                // Create the Mailer using your created Transport
+                $mailer = Mail::mailerFactory();
+                $logger = Mail::loggerFactory($mailer);
+                // Create a message
+                $message = null;
+                if ($plec === "k") {
+                    $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
+                            ->setContentType('text/plain')
+                            ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                            ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
+                            ->setTo(array($email => $imienazwisko))
+                            ->setBcc(array($bcc => $kontakt));
+                    $message->setBody('
+            <!DOCTYPE html><html lang="pl">
+            <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
+            <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
+            <p>Dzień dobry.</p>
+            <p>W załączniku tej wiadomości znajduje się upoważnienie do przetwarzania danych osobowych (plik PDF), należy je niezwłocznie wydrukować oraz podpisać w miejscu oznaczonym i przekazać przełożonemu lub innej osobie zgodnie z przyjętą w twojej firmie procedurą nadawania upoważnień.</p>
+            <br/>
+            <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
+            <p>Zespół ODO Management Group</p><br/>
+            <img src="' . // Embed the file
+                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
+                            '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
+            <img src="' . // Embed the file
+                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
+                            '" width="152" height="32" margin-left="5">
+            <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
+            </div>
+            <div style="height: 40px;">
+            </div>
+            </body></html> 
+        ', 'text/html');
+                } else {
+
+                    $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
+                            ->setContentType('text/plain')
+                            ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+                            ->setTo(array($email => $imienazwisko))
+                            ->setBcc(array($bcc => $kontakt))
+                            ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'));
+                    $message->setBody('
+            <!DOCTYPE html><html lang="pl">
+            <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+            <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
+            <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
+            <p>Dzień dobry.</p>
+            <p>W załączniku tej wiadomości znajduje się upoważnienie do przetwarzania danych osobowych (plik PDF), należy je niezwłocznie wydrukować oraz podpisać w miejscu oznaczonym i przekazać przełożonemu lub innej osobie zgodnie z przyjętą w twojej firmie procedurą nadawania upoważnień.</p>
+            <br/>
+            <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
+            <p>Zespół ODO Management Group</p><br/>
+            <img src="' . // Embed the file
+                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
+                            '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
+            <img src="' . // Embed the file
+                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
+                            '" width="152" height="32">
+            <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
+            </div>
+            <div style="height: 40px;">
+            </div>
+            </body></html>
+        ', 'text/html');
+                }
+                //zalacz plik
+                $message->attach(Swift_Attachment::fromPath($filename));
+                $failedRecipients = array();
+                $numSent = 0;
+                // Send the message 
+                $numSent = $mailer->send($message, $failedRecipients);
+                if ($numSent == 0) {
+                    throw new Exception("Wystąpił błąd. Nie wysłano upoważnienia do użytkownika $email");
+                } else if ($numSent > 0) {
+                    $niewyslano = NULL;
+                    $wiadomosc = "tak";
+                    if ($numSent == 1) {
+                        $niewyslano = $failedRecipients[0];
+                        Mail::mailniewyslano($niewyslano,$logger, "wysyłka upoważnienia");
+                    }
+                    $sql = "UPDATE uczestnicy SET  wyslaneupdanewrazliwe = 1 WHERE id = '$id'";
+                    $res = R::exec($sql);
+    //                if ($res == 1) {
+    //                    throw new Exception("Wysłano mail z upoważnieniem na adres $email, ale nie udało się zaznaczyć tego w tabeli");
+    //                }
+                }
+        }
+        return $wiadomosc;
+    }
+    
     private static function mailerFactory() {
 //        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 465);
 //        $transport->setEncryption('ssl');
 //        $transport->setUsername('odomg@taxman.biz.pl');
 //        $transport->setPassword('qwerty1234');
-        $transport = Swift_SmtpTransport::newInstance('futurehost.pl', 465, 'ssl');
-        $transport->setUsername('mail@odomg.pl');
-        $transport->setPassword('EBpf6He4x@5eht36*M*y&uzhE');
+        $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+        //$_SESSION['host'] = 'mysql:host=localhost;';
+        try {
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
+            R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+        } catch (Exception $e) {
+            
+        };
+        $parametr = "id = 1";
+        $dane = R::findOne('x', $parametr);
+        $p = $dane->getProperties();
+        $transport = Swift_SmtpTransport::newInstance($p['host'], $p['port'], $p['tryb']);
+        $transport->setUsername($p['adres']);
+        $transport->setPassword($p['pas']);
         // Create the Mailer using your created Transport
         return Swift_Mailer::newInstance($transport);
     }

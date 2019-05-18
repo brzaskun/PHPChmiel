@@ -64,4 +64,9 @@ error_reporting(2);
     }
     //echo $sqlfirma;
     echo $nazwa;
+    $numer = "19.SCANIA.0001";
+    $pocz = substr($numer,0,3);
+    $koniec = substr($numer,2);
+    $nowynumer = $pocz."DSK".$koniec;
+    echo 'koniec';
 ?>

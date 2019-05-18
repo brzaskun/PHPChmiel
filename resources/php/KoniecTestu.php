@@ -37,6 +37,8 @@ class KoniecTestu {
                     $datanadania = date("d.m.Y");
                     $sql = "UPDATE  `uczestnicy` SET  `datanadania` = '$datanadania' WHERE  `uczestnicy`.`id` = $id;";
                     R::exec($sql);
+                    $sql = "UPDATE  `uczestnicy` SET  `datanadaniadsk` = '$datanadania' WHERE  `uczestnicy`.`id` = $id;";
+                    R::exec($sql);
                 }
             }
         } catch (Exception $e) {

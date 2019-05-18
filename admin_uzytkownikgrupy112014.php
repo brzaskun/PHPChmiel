@@ -8,7 +8,7 @@
 </style>
 <div style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 2px; background-color: gainsboro;">
     <form id="tabelauserow" >
-        <div  class="ui-grid ui-grid-fixed" style="width: 1100px;"> 
+        <div  class="ui-grid ui-grid-fixed" style="width: 1100px;">
             <div class="ui-grid-row" id="polegorne">
                 <div class="ui-grid-col-5 selectbar">
                     <select id="aktywnafirma" name="aktywnafirma"></select>
@@ -16,7 +16,13 @@
 <!--                <div class="ui-grid-col-3" id="warunekdiv">
                     <input id="warunek" type="checkbox" />
                     <span id="waruneklable">użytkownicy bez grup</span>
-                </div>-->
+                </div>--> <div class="ui-grid-col-3 selectbar1" id="warunek0div">
+                    <select id="warunek0" name="warunek0">
+                        <option selected="grupy" value="tak">wszystkie grupy</option>
+                        <option value="nie">tylko dane wrażliwe</option>
+                    </select>
+
+                </div>
                  <div class="ui-grid-col-3 selectbar1" id="warunekdiv">
                     <select id="warunek" name="warunek">
                         <option selected="wszyscy" value="wszyscy">z grupami + bez grup</option>

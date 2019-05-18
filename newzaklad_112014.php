@@ -12,10 +12,14 @@
   $email = trim($email);
   $maxpracownikow = $_POST['Nmaxpracownikow'];
   $managerlimit = $_POST['Nmanagerlimit'];
+  $grupanazwa = $_SESSION['danewrazliwe'];
   $sql = "INSERT INTO  `zakladpracy` (`id` ,`nazwazakladu` ,`ulica` ,`miejscowosc`,`progzdawalnosci`, `kontakt`, `maxpracownikow`, `managerlimit`, `email`) VALUES ('$id', '$nazwazakladu',  '$ulica', '$miejscowosc', '$progzdawalnosci', '$kontakt', '$maxpracownikow', '$managerlimit', '$email');";
   try {
     R::exec($sql);
-    echo R::getCell("SELECT `id` FROM  `zakladpracy` WHERE  (`nazwazakladu` = '$nazwazakladu')");
+    $idzakladu = R::getCell("SELECT `id` FROM  `zakladpracy` WHERE  (`nazwazakladu` = '$nazwazakladu')");
   } catch (Exception $ex) {
   }
+  $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`nazwagrupy`) VALUES ('$firmanazwa',  '$grupanazwa');";
+  R::exec($sql); 
+  echo $idzakladu;
 ?>

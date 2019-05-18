@@ -6,6 +6,7 @@
   $bezgrup = $_POST['bezgrup'];
   $uczestnicyrodzaj = $_POST['uczestnicyrodzaj'];
   $stacjonarnionline = $_POST['stacjonarnionline'];
+  $jakiegrupy = $_POST['jakiegrupy'];
   $dodatek = "";
   if ($stacjonarnionline=="stacjonarni") {
       $dodatek = " AND `stacjonarny` = 1 " ;
@@ -22,7 +23,12 @@
        $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' AND (dataustania IS NOT NULL AND CHAR_LENGTH(dataustania) = 10) " . $dodatek ." ORDER BY `uczestnicy`.`email` ASC";
        $uczestnicy = R::getAll($sql);
   }
-  $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma = '$firmanazwa'";
+  $grupanazwa = $_SESSION['danewrazliwe'];
+  if ($jakiegrupy=="tak") {
+      $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma = '$firmanazwa' AND nazwagrupy!='$grupanazwa'";
+  } else {
+      $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma = '$firmanazwa' AND nazwagrupy='$grupanazwa'";
+  }
   $grupy = R::getAll($sql);
   $czlonkowie = array(); 
   $czlonkowie_wiersze = array(); 
@@ -32,17 +38,41 @@
       $tab = array("",$val['id'],$val['email'],$val['imienazwisko']);
 //      tab wiersze sa do eksportu danych w formacie XLS 
       $tab_wiersze = array($val['id'],$val['email'],$val['imienazwisko']);
-      array_push($tab,"<input type='text' value='".$val['nrupowaznienia']."' style='width: 150px;'  onchange='oznaczzmiany(this)'/>");
-      array_push($tab_wiersze, $val['nrupowaznienia']);
-      array_push($tab,"<input type='text' value='".$val['indetyfikator']."' style='width: 100px;'  onchange='oznaczzmiany(this)'/>");
-      array_push($tab_wiersze, $val['indetyfikator']);
-      array_push($tab,"<input type='text' value='".$val['datanadania']."' style='width: 60px;' maxlength='10' placeholder='dd.mm.rrrr' onchange='oznaczzmiany(this)'/>");
-      array_push($tab_wiersze, $val['datanadania']);
-      array_push($tab,"<input type='text' value='".$val['dataustania']."' style='width: 60px;'maxlength='10' placeholder='dd.mm.rrrr'  onchange='oznaczzmiany(this)'/>");
-      array_push($tab_wiersze, $val['dataustania']);
-      array_push($tab,"<input type='text' value='".$val['wyslaneup']."' style='width: 10px;'maxlength='1' onchange='oznaczzmiany(this)'/>");
+      if ($jakiegrupy=="tak") {
+        array_push($tab,"<input type='text' value='".$val['nrupowaznienia']."' style='width: 150px;'  onchange='oznaczzmiany(this)'/>");
+        array_push($tab_wiersze, $val['nrupowaznienia']);
+        array_push($tab,"<input type='text' value='".$val['indetyfikator']."' style='width: 100px;'  onchange='oznaczzmiany(this)'/>");
+        array_push($tab_wiersze, $val['indetyfikator']);
+        array_push($tab,"<input type='text' value='".$val['datanadania']."' style='width: 60px;' maxlength='10' placeholder='dd.mm.rrrr' onchange='oznaczzmiany(this)'/>");
+        array_push($tab_wiersze, $val['datanadania']);
+        array_push($tab,"<input type='text' value='".$val['dataustania']."' style='width: 60px;'maxlength='10' placeholder='dd.mm.rrrr'  onchange='oznaczzmiany(this)'/>");
+        array_push($tab_wiersze, $val['dataustania']);
+        array_push($tab,"<input type='text' value='".$val['wyslaneup']."' style='width: 10px;'maxlength='1' onchange='oznaczzmiany(this)'/>");
+        array_push($tab_wiersze, $val['wyslaneup']);
+      } else {
+        $uponumer = $val['nrupowaznienia'];
+        if ($uponumer!="") {
+            $pocz = substr($uponumer,0,3);
+            $koniec = substr($uponumer,2);
+            $uponumer = $pocz."DSK".$koniec;
+        }
+        array_push($tab,"<input type='text' value='$uponumer' style='width: 150px;' readonly/>");
+        array_push($tab_wiersze, $uponumer);
+        array_push($tab,"<input type='text' value='".$val['indetyfikator']."' style='width: 100px;' readonly/>");
+        array_push($tab_wiersze, $val['indetyfikator']);
+        if (isset($val['datanadaniadsk']) && strlen($val['datanadaniadsk'])==10) {
+            array_push($tab,"<input type='text' value='".$val['datanadaniadsk']."' style='width: 60px;' maxlength='10'  readonly/>");
+            array_push($tab_wiersze, $val['datanadaniadsk']);
+        } else {
+            array_push($tab,"<input type='text' value='".$val['datanadania']."' style='width: 60px;' maxlength='10'  readonly/>");
+            array_push($tab_wiersze, $val['datanadania']);
+        }
+        array_push($tab,"<input type='text' value='".$val['dataustania']."' style='width: 60px;'maxlength='10'  readonly/>");
+        array_push($tab_wiersze, $val['dataustania']);
+        array_push($tab,"<input type='text' value='".$val['wyslaneupdanewrazliwe']."' style='width: 10px;'maxlength='1' onchange='oznaczzmiany(this)'/>");
+        array_push($tab_wiersze, $val['wyslaneupdanewrazliwe']);
+      }
 //      array_push($tab,"<span style='width: 10px;'>".$val['wyslaneup']."</span>");
-      array_push($tab_wiersze, $val['wyslaneup']);
       $id = $val['id'];
       $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'";
       $zapisanegrupy = R::getCol($sql);

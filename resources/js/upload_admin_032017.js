@@ -47,6 +47,40 @@ var uploadusers = function() {
     });
 };
 
+var uploadusersdw = function() {
+    $("#panelladowaniapliku").remove();
+    $("#zaladuj").remove();
+    $("#rezultat_text").html("Ładuje dane");
+    $('<div>').attr('id', 'progressbar').appendTo('#rezultat');
+    $("#progressbar").width(300);
+    pbar(37,2000);
+    $('<p>').appendTo('#rezultat').html("Wysyłam dane do bazy danych");
+    $("#panelprzyciskladowanie").css({
+        "margin-top": "10px"
+    });
+//    var dane = JSON.stringify(tabelauzgrupa);
+//    var tablice = $.parseJSON(decodeURIComponent(response));
+    $.ajax({
+        type: "POST",
+        url: "upload_admin_dw_052019.php",
+        //data: "dane="+dane,
+        cache: false,
+        error: function (xhr, status, error) {
+            $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się dodać użytkowników'}]);
+        },
+        success: function (response) {
+            var tablice = $.parseJSON(response);
+            var zleoznaczeni = tablice[0];
+            pbar(67,3000);
+            pbar(100,4000);
+            sleep(20000);
+            pokazzleoznaczenidw(zleoznaczeni);
+            $('#notify').puigrowl('show', [{severity: 'info', summary: 'Dodano użytkowników'}]);
+            $("#rezultat_text").html("Załadowano dane. Dodano osób: "+tablice[1][0]);
+        }
+    });
+};
+
 var pbar = function(proc,time) {
    setTimeout(function(){
         $("#progressbar").progressbar({
@@ -100,11 +134,33 @@ var pokazzleoznaczeni = function (zleoznaczeni) {
     }
 };
 
+var pokazzleoznaczenidw = function (zleoznaczeni) {
+    if (Boolean(Array.isArray(zleoznaczeni) && zleoznaczeni.length)) {
+        $('<p>').attr('id', 'zleoznaczeni').appendTo('#rezultat');
+        var wartosci = przetworztabele(zleoznaczeni);
+        dolacztabele("zleoznaczeni","tabpokazzleoznaczeni","400");
+        tworztabelezdanymi("tabpokazzleoznaczeni",["Użytkownik był już tak oznaczony, bądź nie udało się prawidłowo przyporządkować do grupy dane wrażliwe następujących użytkowników:"], wartosci);
+    }
+};
+
 var sleep = function (milliseconds) {
     var start = new Date().getTime();
     for (var i = 0; i < 1e7; i++) {
         if ((new Date().getTime() - start) > milliseconds) {
             break;
         }
+    }
+};
+
+var dataustaldsk = function() {
+    var ciasteczko = new Cookie("datadsk");
+    var re = /^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))$/;
+    var testw = $('#datadsk').val();
+    if (!testw.match(re)){
+        $('#datadsk').val("b\u0142ędna data");
+        $('#datadsk').select();
+    } else {
+        ciasteczko.value = testw.replace(/\./g,"-");
+        ciasteczko.save();
     }
 };

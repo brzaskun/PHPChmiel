@@ -5,6 +5,7 @@
   $wiersze = json_decode($_POST["dane"]);
   date_default_timezone_set('Europe/Warsaw');
   $czasbiezacy = date("Y-m-d H:i:s");
+  $jakiegrupy = $_POST['jakiegrupy'];
   foreach ($wiersze as $wiersz) {
       $aktywne = array();
       $nieaktywne = array();
@@ -12,8 +13,13 @@
       $datnad = str_replace('-', '.', $datnad);
       $datust = str_replace('/', '.', $wiersz->dataustania);
       $datust = str_replace('-', '.', $datust);
-      $sql = "UPDATE  `uczestnicy` SET wyslaneup = '$wiersz->wyslaneup', nrupowaznienia = '$wiersz->nrupowaznienia', indetyfikator = '$wiersz->indetyfikator', datanadania = '$datnad', dataustania = '$datust', zmodyfikowany = '$czasbiezacy'  WHERE  `uczestnicy`.`id` = '$wiersz->id'";
-      R::exec($sql);
+      if ($jakiegrupy=="tak") {
+        $sql = "UPDATE  `uczestnicy` SET wyslaneup = '$wiersz->wyslaneup', nrupowaznienia = '$wiersz->nrupowaznienia', indetyfikator = '$wiersz->indetyfikator', datanadania = '$datnad', dataustania = '$datust', zmodyfikowany = '$czasbiezacy'  WHERE  `uczestnicy`.`id` = '$wiersz->id'";
+        R::exec($sql);
+      } else {
+          $sql = "UPDATE  `uczestnicy` SET wyslaneupdanewrazliwe = '$wiersz->wyslaneup', zmodyfikowany = '$czasbiezacy'  WHERE  `uczestnicy`.`id` = '$wiersz->id'";
+        R::exec($sql);
+      }
       foreach ($wiersz as $key=>$value) {
         if ($key != "id" && $key != "email" && $key != "imienazwisko" && $key != "nrupowaznienia" && $key != "indetyfikator" && $key != "datanadania" && $key != "dataustania") {
             if ($value == 1) {

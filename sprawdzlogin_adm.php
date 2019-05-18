@@ -14,6 +14,7 @@ $_COOKIE['mail'] = $mail;
 setcookie("mail", $mail, time()+3600);
 $parametr = "email = '$mail'";
 $uczestnik = R::findOne('uczestnicy', $parametr);
+$_SESSION['danewrazliwe'] = "dane szczególnej kategorii";
 if (!isset($uczestnik)) {
     $url = 'index.php';
     header("Location: $url"); 

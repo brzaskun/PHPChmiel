@@ -5,7 +5,7 @@
   $id = $_POST['Nid'];
   $firmanazwa = $_POST['Nfirmauser'];
   $grupanazwa = $_POST['Nnazwagrupy'];
-  $sql = "INSERT INTO `grupyupowaznien` (`id` ,`firma` ,`nazwagrupy`) VALUES ('$id', '$firmanazwa',  '$grupanazwa');";
-  R::exec($sql); 
+  $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`nazwagrupy`) VALUES ('$firmanazwa',  '$grupanazwa');";
+  R::exec($sql);
   echo R::getCell("SELECT `id` FROM  `grupyupowaznien` WHERE  (`grupyupowaznien`.`firma` = '$firmanazwa' AND  `grupyupowaznien`.`nazwagrupy` =  '$grupanazwa')");
 ?>
