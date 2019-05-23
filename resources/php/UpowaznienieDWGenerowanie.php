@@ -121,7 +121,7 @@ class UpowaznienieDWGenerowanie {
     }
     
      public final static function pobierzBCC() {
-        $bcc = "mail@odomg.pl";
+        $bcc = "mail@odomg.com.pl";
         $sqlfirma = $_SESSION['uczestnik']['firma'];
         $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
         if (isset($sql)){

@@ -172,7 +172,7 @@ class UpowaznienieGenerowanie {
     }
     
      public final static function pobierzBCC() {
-        $bcc = "mail@odomg.pl";
+        $bcc = "mail@odomg.com.pl";
         if (isset($_SESSION['uczestnik']['BCC'])) {
             $bcc = $_SESSION['uczestnik']['BCC'];
         }

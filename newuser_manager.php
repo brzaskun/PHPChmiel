@@ -56,8 +56,8 @@ switch ($szkolenieuser) {
     if ($plec=="k") {
     $message = Swift_Message::newInstance('Rejestracja do e-szkolenia '.$poziomzaswiadczenie)
     ->setContentType('text/plain')
-    ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
-    ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
+    ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
+    ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
     ->setTo(array($email => $imienazwisko))
     ->setBody('
         <h4>Szanowna Pani '.$imienazwisko.'</h4>
@@ -83,9 +83,9 @@ switch ($szkolenieuser) {
     } else {
       $message = Swift_Message::newInstance('Rejestracja do e-szkolenia '.$poziomzaswiadczenie)
     ->setContentType('text/plain')
-    ->setFrom(array('mail@odomg.pl' => 'ODO Management Group'))
+    ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
     ->setTo(array($email => $imienazwisko))
-    ->setReplyTo(array('mail@odomg.pl' => 'ODO Management Group'))
+    ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
     ->setBody('
         <h4>Dzień dobry,</h4>
         <div style="width: 550px; text-align: justify;">
