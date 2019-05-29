@@ -83,7 +83,6 @@ class UpowaznienieDWGenerowanie {
                     $dataustania = $_SESSION['uczestnik']['dataustania'];
                     if ($dataustania == null || $dataustania == "") {
                         $sqlfirma = $_SESSION['uczestnik']['firma'];
-                        $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
                         $sql = "SELECT `miejscowosc` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
                         $miejscowosc = R::getCell($sql);
                         $sql = "SELECT `ulica` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
