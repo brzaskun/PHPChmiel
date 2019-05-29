@@ -17,33 +17,33 @@
     ?>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v180118" />
-        <link rel="stylesheet" href="/resources/css/tablecss.css?v180118"/>
-        <link rel="stylesheet" href="/resources/css/main.css?v180118"/>
-        <link rel="stylesheet" href="/resources/contextmenu/jquery.contextMenu.css?v180118"/>
-        <link rel="stylesheet" href="/resources/primeui-4.1.12/primeui.min.css?v180118"/>
-        <link href="resources/font-awesome/css/font-awesome.min.css?v180118" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="/resources/primeui-4.1.12/themes/bootstrap/theme.css?v180118"/>
+        <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v190529" />
+        <link rel="stylesheet" href="/resources/css/tablecss.css?v190529"/>
+        <link rel="stylesheet" href="/resources/css/main.css?v190529"/>
+        <link rel="stylesheet" href="/resources/contextmenu/jquery.contextMenu.css?v190529"/>
+        <link rel="stylesheet" href="/resources/primeui-4.1.12/primeui.min.css?v190529"/>
+        <link href="resources/font-awesome/css/font-awesome.min.css?v190529" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="/resources/primeui-4.1.12/themes/bootstrap/theme.css?v190529"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/resources/css/images/ODOLogoVector.png"/>
-        <script src="/resources/js/jquery-1.12.3.js?v180118"></script>
-        <script src="/resources/dataTable/jquery-ui-1.10.3.custom.js?v180118"></script>
-        <script src="/resources/js/jquery.form.js?v180118"></script>
-        <script src="/resources/js/globales.js?v180118"></script>
-        <script src="/resources/contextmenu/jquery.contextMenu.js?v180118"></script>
-        <script src="/resources/contextmenu/jquery.ui.position.js?v180118"></script>
-        <script src="/resources/js/main.js?v180118"></script>
-        <script src="/resources/js/potwierdzenia.js?v180118"></script>
-        <script src="/resources/primeui-4.1.12/primeui.min.js?v180118"></script>
-        <script src="/resources/js/admin_072017_backup.js?v180118"></script>
-        <link rel="stylesheet" href="/resources/dataTableNew/media/css/jquery.dataTables.css?v180118"/>
-         <link href="resources/dataTableNew/extensions/KeyTable/css/keyTable.dataTables.css?v180118" rel="stylesheet" type="text/css"/>
-        <link href="resources/dataTableNew/extensions/Select/css/select.dataTables.css?v180118" rel="stylesheet" type="text/css"/>
-        <link href="resources/dataTableNew/extensions/Buttons/css/buttons.dataTables.css?v180118" rel="stylesheet" type="text/css"/>
-        <script src="/resources/dataTableNew/media/js/jquery.dataTables.js?v180118"></script>
-        <script src="resources/jszip.min/jszip.min.js?v180118" type="text/javascript"></script>
-        <script src="resources/PDFMAKE_files/pdfmake.min.js?v180118" type="text/javascript"></script>
-        <script src="resources/PDFMAKE_files/vfs_fonts.js?v180118" type="text/javascript"></script>
-        <script src="resources/dataTableNew/extensions/Buttons/js/buttons.html5.min.js?v180118" type="text/javascript"></script>
+        <script src="/resources/js/jquery-1.12.3.js?v190529"></script>
+        <script src="/resources/dataTable/jquery-ui-1.10.3.custom.js?v190529"></script>
+        <script src="/resources/js/jquery.form.js?v190529"></script>
+        <script src="/resources/js/globales.js?v190529"></script>
+        <script src="/resources/contextmenu/jquery.contextMenu.js?v190529"></script>
+        <script src="/resources/contextmenu/jquery.ui.position.js?v190529"></script>
+        <script src="/resources/js/main.js?v190529"></script>
+        <script src="/resources/js/potwierdzenia.js?v190529"></script>
+        <script src="/resources/primeui-4.1.12/primeui.min.js?v190529"></script>
+        <script src="/resources/js/admin_072017_backup.js?v190529"></script>
+        <link rel="stylesheet" href="/resources/dataTableNew/media/css/jquery.dataTables.css?v190529"/>
+         <link href="resources/dataTableNew/extensions/KeyTable/css/keyTable.dataTables.css?v190529" rel="stylesheet" type="text/css"/>
+        <link href="resources/dataTableNew/extensions/Select/css/select.dataTables.css?v190529" rel="stylesheet" type="text/css"/>
+        <link href="resources/dataTableNew/extensions/Buttons/css/buttons.dataTables.css?v190529" rel="stylesheet" type="text/css"/>
+        <script src="/resources/dataTableNew/media/js/jquery.dataTables.js?v190529"></script>
+        <script src="resources/jszip.min/jszip.min.js?v190529" type="text/javascript"></script>
+        <script src="resources/PDFMAKE_files/pdfmake.min.js?v190529" type="text/javascript"></script>
+        <script src="resources/PDFMAKE_files/vfs_fonts.js?v190529" type="text/javascript"></script>
+        <script src="resources/dataTableNew/extensions/Buttons/js/buttons.html5.min.js?v190529" type="text/javascript"></script>
         <title>Testy Dane Wrażliwe</title>
         <style>
             .center {

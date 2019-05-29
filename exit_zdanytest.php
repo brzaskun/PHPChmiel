@@ -11,17 +11,17 @@ $_SESSION['testrozpoczety']= "nie";
 ?>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v180118" />
-        <link rel="stylesheet" href="/resources/css/main.css?v180118"/>
-        <link rel="stylesheet" href="/resources/css/details.css?v180118"/>
-        <link rel="stylesheet" href="/resources/contextmenu/jquery.contextMenu.css?v180118"/>
-        <script src="/resources/js/jquery-1.12.3.js?v180118"></script>
-        <script src="/resources/dataTable/jquery-ui-1.10.3.custom.js?v180118"></script>
-        <script src="/resources/js/jquery.form.js?v180118"></script>
-        <script src="/resources/contextmenu/jquery.ui.position.js?v180118"></script>
-        <script src="/resources/primeui-4.1.12/primeui.min.js?v180118"></script>
-        <script src="/resources/js/main.js?v180118"></script>
-        <script src="/resources/js/ciasteczka.js?v180118"></script>
+        <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v190529" />
+        <link rel="stylesheet" href="/resources/css/main.css?v190529"/>
+        <link rel="stylesheet" href="/resources/css/details.css?v190529"/>
+        <link rel="stylesheet" href="/resources/contextmenu/jquery.contextMenu.css?v190529"/>
+        <script src="/resources/js/jquery-1.12.3.js?v190529"></script>
+        <script src="/resources/dataTable/jquery-ui-1.10.3.custom.js?v190529"></script>
+        <script src="/resources/js/jquery.form.js?v190529"></script>
+        <script src="/resources/contextmenu/jquery.ui.position.js?v190529"></script>
+        <script src="/resources/primeui-4.1.12/primeui.min.js?v190529"></script>
+        <script src="/resources/js/main.js?v190529"></script>
+        <script src="/resources/js/ciasteczka.js?v190529"></script>
         <title>Testy Dane Wrażliwe</title>
        </head>
     <body>

@@ -10,21 +10,21 @@ $opis = $_GET['opis'];
 <html lang="pl">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v180118" />
-        <link rel="stylesheet" href="/resources/dataTableNew/media/css/jquery.dataTables.css?v180118"/>
-        <link rel="stylesheet" href="/resources/css/tablecss.css?v180118"/>
-        <link rel="stylesheet" href="/resources/css/main.css?v180118"/>
-        <link rel="stylesheet" href="/resources/css/details.css?v180118"/>
-        <link rel="stylesheet" href="/resources/contextmenu/jquery.contextMenu.css?v180118"/>
+        <link rel="stylesheet" href="/resources/dataTable/start/jquery-ui-1.10.3.custom.css?v190529" />
+        <link rel="stylesheet" href="/resources/dataTableNew/media/css/jquery.dataTables.css?v190529"/>
+        <link rel="stylesheet" href="/resources/css/tablecss.css?v190529"/>
+        <link rel="stylesheet" href="/resources/css/main.css?v190529"/>
+        <link rel="stylesheet" href="/resources/css/details.css?v190529"/>
+        <link rel="stylesheet" href="/resources/contextmenu/jquery.contextMenu.css?v190529"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/resources/css/images/ODOLogoVector.png"/>
-        <script src="/resources/js/jquery-1.12.3.js?v180118"></script>
-        <script src="/resources/dataTable/jquery-ui-1.10.3.custom.js?v180118"></script>
-        <script src="/resources/js/jquery.form.js?v180118"></script>
-        <script src="/resources/dataTableNew/media/js/jquery.dataTables.js?v180118"></script>
-        <script src="/resources/contextmenu/jquery.contextMenu.js?v180118"></script>
-        <script src="/resources/contextmenu/jquery.ui.position.js?v180118"></script>
-        <script src="/resources/js/main.js?v180118"></script>
-        <script src="/resources/js/ciasteczka.js?v180118"></script>
+        <script src="/resources/js/jquery-1.12.3.js?v190529"></script>
+        <script src="/resources/dataTable/jquery-ui-1.10.3.custom.js?v190529"></script>
+        <script src="/resources/js/jquery.form.js?v190529"></script>
+        <script src="/resources/dataTableNew/media/js/jquery.dataTables.js?v190529"></script>
+        <script src="/resources/contextmenu/jquery.contextMenu.js?v190529"></script>
+        <script src="/resources/contextmenu/jquery.ui.position.js?v190529"></script>
+        <script src="/resources/js/main.js?v190529"></script>
+        <script src="/resources/js/ciasteczka.js?v190529"></script>
         <title>Testy Dane Wrażliwe</title>
 
     </head>
