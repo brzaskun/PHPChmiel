@@ -21,7 +21,7 @@
     echo "start dane szczególej kategorii";
     echo "<br />\n";
     foreach ($sarekordybezupowaznieniaDW as $value) {
-        if (strtotime($value['sessionend']) > strtotime("2017-10-01")) {
+        if (strtotime($value['sessionend'])) {
             $parameter = "id=".$value['id'];
 //            echo "Zaczynam przetwarzanie".$value['imienazwisko'];
 //            echo "<br />\n";

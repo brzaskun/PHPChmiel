@@ -11,7 +11,7 @@ class UpowaznienieDWText {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
-                '<p align="center"><b>UPOWAŻNIENIE nr DW/' . $nrupowaznienia . '</p>' .
+                '<p align="center"><b>UPOWAŻNIENIE nr ' . $nrupowaznienia . '</p>' .
                 '<p align="center"><b>do przetwarzania danych osobowych<br/>' .
                 '<p align="center"> w <span>' . $sqlfirma . ' z siedzibą w ' . $miejscowosc . ' ' . $ulica . ' (dalej "Administrator")</span></p>' .
                 '<p></p>' .
@@ -34,7 +34,7 @@ class UpowaznienieDWText {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
-                '<p align="center"><b>UPOWAŻNIENIE nr DW/' . $nrupowaznienia . '</p>' .
+                '<p align="center"><b>UPOWAŻNIENIE nr ' . $nrupowaznienia . '</p>' .
                 '<p align="center"><b>do przetwarzania danych osobowych<br/>' .
                 '<p align="center"> w <span>' . $sqlfirma . ' z siedzibą w ' . $miejscowosc . ' ' . $ulica . ' (dalej "Administrator")</span></p>' .
                 '<p></p>' .
