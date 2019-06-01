@@ -15,13 +15,12 @@
     $ilemaili = 0;
     $maile = array();
     $uzerywyslane = array();
-    $parametr3 = "sessionend IS NOT NULL AND datanadania IS NOT NULL AND (dataustania IS NULL OR dataustania='') AND wyslanycert=1 AND wyslaneup=1 AND wyslaneupdanewrazliwe=0";
-    $sarekordybezupowaznieniaDW = R::findAll("uczestnicy", $parametr3);
+    $sql = "Select DISTINCT s.id FROM uczestnicy s LEFT OUTER JOIN uczestnikgrupy o ON o.id_uczestnik=s.id WHERE s.sessionend IS NOT NULL AND s.datanadania IS NOT NULL AND (s.dataustania IS NULL OR s.dataustania='') AND s.wyslanycert=1 AND s.wyslaneup=1 AND s.wyslaneupdanewrazliwe=0 AND o.grupa='dane szczególnej kategorii';";
+    $sarekordybezupowaznieniaDW = R::getAll($sql);
     echo "Ilosc niewyslanych upowaznien DANE SZCZEGÓLNEJ KATEGORII w bazie".sizeof($sarekordybezupowaznieniaDW);
     echo "start dane szczególej kategorii";
     echo "<br />\n";
     foreach ($sarekordybezupowaznieniaDW as $value) {
-        if (strtotime($value['sessionend'])) {
             $parameter = "id=".$value['id'];
 //            echo "Zaczynam przetwarzanie".$value['imienazwisko'];
 //            echo "<br />\n";
@@ -49,7 +48,6 @@
                         }
                     }
             }
-        }
     }
     echo "<br />\n";
     if ($ilemaili > 0) {
