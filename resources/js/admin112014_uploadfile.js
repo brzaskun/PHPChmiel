@@ -40,6 +40,7 @@ var dataszkoleniazachowaj = function() {
     } else {
         ciasteczko.value = testw.replace(/\./g,"-");
         ciasteczko.save();
+        $('#przyciskladowanie').show();
     }
 };
 

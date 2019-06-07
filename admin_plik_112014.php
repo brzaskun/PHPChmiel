@@ -358,7 +358,7 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                     });
                     uTable.fnSort([[0, 'asc']]);
             if (<?php error_reporting(0);
-    echo sizeof($wykrytoblad) ?> === 0 && <?php echo isset($_FILES["file"]) ?> === 1) {
+    echo sizeof($wykrytoblad) ?> === 0 && <?php echo isset($_FILES["file"]) ? isset($_FILES["file"]):0?> === 1) {
                 
                       $('#wyborfirmydiv').show();
             }

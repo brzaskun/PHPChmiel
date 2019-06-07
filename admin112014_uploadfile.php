@@ -65,8 +65,17 @@
                                        $vara = "inline";
                                        $_SESSION["stac"] = null;
                                    }
-                                   echo $vara;?>">
+                                   echo $vara;?>" >
             <form>
+                <script>
+                    $().ready(function() {
+                        <?php $varas = $_GET["stac"];
+                                if($varas=="inline") {
+                                    echo "$('#przyciskladowanie').hide()";
+                                }
+                        ?>
+                    });
+                </script>
                 <div style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 10px; background-color: #e9e9e9;">
                     <span>data szkolenia stacjonarnego</span>
                     <input id="dataszkolenia" name="dataszkolenia" 
