@@ -462,7 +462,9 @@ var generujnazwykolumn = function (uczestnicyrodzaj) {
     }
     o1 = {"sTitle": "wyn. test"};
     zwrot.push(o1);
-    o1 = {"sTitle": "wysł. cert."};
+    o1 = {"sTitle": "wysł. zaś."};
+    zwrot.push(o1);
+    o1 = {"sTitle": "wysł. upow."};
     zwrot.push(o1);
     o1 = {"sTitle": ""};
     zwrot.push(o1);
@@ -507,8 +509,8 @@ var canceluser = function () {
 
 var edituser = function (obj) {
     $("#edituser").puidialog({
-        height: 400,
-        width: 420,
+        height: 450,
+        width: 450,
         resizable: false,
         showEffect: 'fade',
         hideEffect: 'fade',
@@ -531,6 +533,7 @@ var edytujtabeleuser = function () {
     $(MYAPP.pola[5]).html($('#uprawnieniauser').val());
     $(MYAPP.pola[8]).html($('#datazalogowania').val());
     $(MYAPP.pola[11]).html($('#zaswiadczenieuser').val());
+    $(MYAPP.pola[12]).html($('#upowaznienieuser').val());
     var wynikwalidacji = validateEmail($('#email').val());
     if (wynikwalidacji === false) {
         $('#notify').puigrowl('show', [{severity: 'error', summary: 'Zły mail ' + $("#email").val() + ''}]);
@@ -541,9 +544,9 @@ var edytujtabeleuser = function () {
     $("#edituser").puidialog('hide');
     var teststring;
     if ($('#datazalogowania').val() !== null && $('#datazalogowania').val() !== "") {
-        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&datazalogowania=" + $('#datazalogowania').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val()+ "&zaswiadczenieuser=" + $('#zaswiadczenieuser').val();
+        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&datazalogowania=" + $('#datazalogowania').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val()+ "&zaswiadczenieuser=" + $('#zaswiadczenieuser').val()+ "&upowaznienieuser=" + $('#upowaznienieuser').val();
     } else {
-        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val() + $('#zaswiadczenieuser').val();
+        teststring = "iduser=" + $('#iduser').val() + "&email=" + $('#email').val() + "&imienazwisko=" + $('#imienazwisko').val() + "&szkolenieuser=" + $('#szkolenieuser').val() + "&uprawnieniauser=" + $('#uprawnieniauser').val() + "&firmausernazwa=" + $('#aktywnafirma').val() + "&plecuser=" + $('#plecuser').val() + $('#zaswiadczenieuser').val()+ "&upowaznienieuser=" + $('#upowaznienieuser').val();
     }
     $.ajax({
         type: "POST",

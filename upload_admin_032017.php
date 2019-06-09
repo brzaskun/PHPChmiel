@@ -36,11 +36,18 @@ if ($start > 0) {
     }
 }
 $liczbadobrzedodanych = 0;
-foreach ($tablicapobranychpracownikow  as $wierszbaza) {
-        try {
-        if (isset($dataszkolenia) && strlen($dataszkolenia)=="10") {
-            $datanadania = explode("-", $dataszkolenia);
-            $datanadania = $datanadania[2].".".$datanadania[1].".".$datanadania[0];
+$czytomabycstacjonarne = $_SESSION["stac"];
+if (isset($czytomabycstacjonarne) == true && isset($dataszkolenia) == false) {
+    return;
+}
+$datanadania = "";
+if (isset($dataszkolenia) && strlen($dataszkolenia) == "10") {
+    $datanadania = explode("-", $dataszkolenia);
+    $datanadania = $datanadania[2] . "." . $datanadania[1] . "." . $datanadania[0];
+}
+foreach ($tablicapobranychpracownikow as $wierszbaza) {
+    try {
+        if (isset($dataszkolenia) && strlen($dataszkolenia) == "10") {
             $imienazwisko = addslashes($wierszbaza[1]);
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`,`datanadania`)
@@ -51,37 +58,37 @@ foreach ($tablicapobranychpracownikow  as $wierszbaza) {
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
             VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
         }
-            R::exec($sql);
-            $id_uzytkownik = R::getInsertID();
-            if ($id_uzytkownik > 0) {
-                //$wynik = Mail::mailautomat($wierszbaza[1], $wierszbaza[2], $wierszbaza[0], $wierszbaza[3], $id_uzytkownik);
-                if (strpos($wynik, "@") !== false) {
-                    array_push($niewyslanymail, $wynik);
-                }
-                foreach ($nazwygrup as $key => $value) {
-                    $wartoscpola = $wierszbaza[$value];
-                    if ($wartoscpola == 1) {
-                        try {
-                            $sql = "INSERT INTO uczestnikgrupy (email,nazwiskoiimie,grupa,id_uczestnik) VALUES ('$wierszbaza[0]','$imienazwisko','$key', '$id_uzytkownik');";
-                            R::exec($sql);
-                        } catch (Exception $e) {
-                            array_push($zleoznaczeni, $wierszbaza[0]);
-                        }
-                    } else {
-                        try {
-                            $sql = "DELETE FROM uczestnikgrupy WHERE grupa='$key' AND id_uczestnik='$id_uzytkownik'";
-                            R::exec($sql);
-                        } catch (Exception $e) {
-                            array_push($zleoznaczeni, $wierszbaza[0]);
-                        }
+        R::exec($sql);
+        $id_uzytkownik = R::getInsertID();
+        if ($id_uzytkownik > 0) {
+            //$wynik = Mail::mailautomat($wierszbaza[1], $wierszbaza[2], $wierszbaza[0], $wierszbaza[3], $id_uzytkownik);
+            if (strpos($wynik, "@") !== false) {
+                array_push($niewyslanymail, $wynik);
+            }
+            foreach ($nazwygrup as $key => $value) {
+                $wartoscpola = $wierszbaza[$value];
+                if ($wartoscpola == 1) {
+                    try {
+                        $sql = "INSERT INTO uczestnikgrupy (email,nazwiskoiimie,grupa,id_uczestnik) VALUES ('$wierszbaza[0]','$imienazwisko','$key', '$id_uzytkownik');";
+                        R::exec($sql);
+                    } catch (Exception $e) {
+                        array_push($zleoznaczeni, $wierszbaza[0]);
                     }
+                } else {
+                    try {
+                        $sql = "DELETE FROM uczestnikgrupy WHERE grupa='$key' AND id_uczestnik='$id_uzytkownik'";
+                        R::exec($sql);
+                    } catch (Exception $e) {
+                        array_push($zleoznaczeni, $wierszbaza[0]);
+                    }
+                }
             }
             $liczbadobrzedodanych++;
         }
-    } catch (Exception $e){
-            array_push($bledydodawanieuzytkownikow, $wierszbaza[1]);
-            array_push($niewyslanymail, $wierszbaza[0]);
-        }
+    } catch (Exception $e) {
+        array_push($bledydodawanieuzytkownikow, $wierszbaza[1]);
+        array_push($niewyslanymail, $wierszbaza[0]);
+    }
 }
 array_push($dobrzedodani, $liczbadobrzedodanych);
 $output = json_encode(array($listadodanychgrup,$listagrupniedodanych,$bledydodawanieuzytkownikow,$niewyslanymail, $zleoznaczeni, $dobrzedodani));

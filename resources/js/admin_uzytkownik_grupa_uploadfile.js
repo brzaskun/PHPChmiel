@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $('#IMPfirmauser').puidropdown({
         filter: true,
+        scrollHeight: 400,
+        filterMatchMode: "contains",
         change: function (e) {
             firmadoimportu();
         },

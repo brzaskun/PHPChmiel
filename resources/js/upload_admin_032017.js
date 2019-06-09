@@ -26,22 +26,30 @@ var uploadusers = function() {
             $('#notify').puigrowl('show', [{severity: 'error', summary: 'Nie udało się dodać użytkowników'}]);
         },
         success: function (response) {
-            var tablice = $.parseJSON(response);
-            var dodanegrupy = tablice[0];
-            var niedodanegrupy = tablice[1];
-            var niedodani = tablice[2];
-            var niewyslani = tablice[3];
-            var zleoznaczeni = tablice[4];
-            pbar(67,3000);
-            pbar(100,4000);
-            sleep(20000);
-            pokaznowegrupy(dodanegrupy);
-            pokazniedodanegrupy(niedodanegrupy);
-            pokazniedodani(niedodani);
-            pokazniewyslani(niewyslani);
-            pokazzleoznaczeni(zleoznaczeni);
-            $('#notify').puigrowl('show', [{severity: 'info', summary: 'Dodano użytkowników'}]);
-            $("#rezultat_text").html("Załadowano dane. Dodano osób: "+tablice[5][0]);
+            var tablice;
+            try {
+                tablice = $.parseJSON(response);
+            } catch(e){}
+            if (tablice != null) {
+                var dodanegrupy = tablice[0];
+                var niedodanegrupy = tablice[1];
+                var niedodani = tablice[2];
+                var niewyslani = tablice[3];
+                var zleoznaczeni = tablice[4];
+                pbar(67,3000);
+                pbar(100,4000);
+                sleep(20000);
+                pokaznowegrupy(dodanegrupy);
+                pokazniedodanegrupy(niedodanegrupy);
+                pokazniedodani(niedodani);
+                pokazniewyslani(niewyslani);
+                pokazzleoznaczeni(zleoznaczeni);
+                $('#notify').puigrowl('show', [{severity: 'info', summary: 'Dodano użytkowników'}]);
+                $("#rezultat_text").html("Załadowano dane. Dodano osób: "+tablice[5][0]);
+            } else {
+                $('#notify').puigrowl('show', [{severity: 'error', summary: 'Dodano użytkowników'}]);
+                $("#rezultat_text").html("Niezaładowano dane. Brak daty szkolenia stacjonarnego");
+            }
             
         }
     });

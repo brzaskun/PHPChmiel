@@ -166,7 +166,7 @@ var generujnazwykolumn = function () {
     zwrot.push(o1);
     o1 = {"sTitle": "wyn. test"};
     zwrot.push(o1);
-    o1 = {"sTitle": "wysł. cert."};
+    o1 = {"sTitle": "wysł. zaś."};
     zwrot.push(o1);
 //    o1 = {"sTitle": ""};
 //    zwrot.push(o1);

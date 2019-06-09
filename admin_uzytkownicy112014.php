@@ -106,6 +106,14 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz ORDER BY `szkoleniewykaz`.
                         <option value="0">nie wysłano</option>
                     </select>
                 </td>
+                </tr>
+                <tr>
+                <td><span>wysłano upoważnienie: </span></td><td>
+                    <select id="upowaznienieuser" name="upowaznienieuser" style="width: 100px;">
+                        <option value="1">wysłano</option>
+                        <option value="0">nie wysłano</option>
+                    </select>
+                </td>
             </tr>
             </tbody>
         </table> 
