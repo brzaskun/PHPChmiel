@@ -20,7 +20,9 @@ class Excelwygeneruj {
         R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         $firmamanagera = $_SESSION['uczestnik']['firma'];
         $mailmanager = $_SESSION['uczestnik']['email'];
-        $sql = "SELECT * FROM uczestnicy WHERE firma = '$firmamanagera' AND NOT email = '$mailmanager'";
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+        $firma_id = FirmaNazwaToId::wyszukaj($firmamanagera);
+        $sql = "SELECT * FROM uczestnicy WHERE firma_id = '$firma_id' AND NOT email = '$mailmanager'";
         $tabela = R::getAll($sql);
         $creator = $_SESSION['uczestnik']['imienazwisko'];
         $creatorid = $_SESSION['uczestnik']['id'];

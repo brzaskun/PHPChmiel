@@ -23,7 +23,7 @@ try {
       VALUES (0, '$email',  '$imienazwisko', '$plec', '$firma', '$firma_id', '$szkolenieuser', '$uprawnienia' , 0, NULL , NULL , 0 , 0, '$czasbiezacy',0);";
     R::exec($sql);
     $id = R::getInsertID();
-    $sql = "SELECT `managerlimit` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$firma';";
+    $sql = "SELECT `managerlimit` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
     $_SESSION['managerlimit'] = R::getCell($sql);
     require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
     $instrukcja = R::getCell("SELECT instrukcja FROM szkoleniewykaz WHERE  nazwa = '$szkolenieuser'");
