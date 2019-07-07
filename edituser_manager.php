@@ -16,11 +16,13 @@ use R;
   $nazwaszkolenia = $_POST['szkolenieuser'];
   $uprawnienia = $_POST['uprawnieniauser'];
   $firma = $_POST['firmausernazwa'];
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+  $firma_id = FirmaNazwaToId::wyszukaj($firma);
   $plec = $_POST['plecuser'];
   if(isset($_POST['edytujuser'])){
     //musza byc dwa bo wpisywal 0 a nie null jak bylo nic w stringu a musi byc null bo tylko wtedy generuje rozpoczecie sesji
-    $sql = "UPDATE  `uczestnicy` SET  `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = '$sessionstart' , `uprawnienia`='$uprawnienia' WHERE  `uczestnicy`.`id` = $id;";
-    $sqlnull = "UPDATE  `uczestnicy` SET  `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = null, `uprawnienia`='$uprawnienia' WHERE  `uczestnicy`.`id` = $id;";
+    $sql = "UPDATE  `uczestnicy` SET  `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `firma_id` = '$firma_id', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = '$sessionstart' , `uprawnienia`='$uprawnienia' WHERE  `uczestnicy`.`id` = $id;";
+    $sqlnull = "UPDATE  `uczestnicy` SET  `imienazwisko` =  '$imienazwisko', `plec` = '$plec', `firma` = '$firma', `firma_id` = '$firma_id', `nazwaszkolenia` = '$nazwaszkolenia', `sessionstart` = null, `uprawnienia`='$uprawnienia' WHERE  `uczestnicy`.`id` = $id;";
     R::exec($sessionstart == null ? $sqlnull : $sql);
     //header("Location: admin.php?info=Dane pracownika zaktualizowane");  
   } else if (!isset ($sessionstart)){

@@ -19,7 +19,7 @@
     $idzakladu = R::getCell("SELECT `id` FROM  `zakladpracy` WHERE  (`nazwazakladu` = '$nazwazakladu')");
   } catch (Exception $ex) {
   }
-  $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`nazwagrupy`) VALUES ('$firmanazwa',  '$grupanazwa');";
+  $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`firma_id` ,`nazwagrupy`) VALUES ('$firmanazwa', '$idzakladu', '$grupanazwa');";
   R::exec($sql); 
   echo $idzakladu;
 ?>

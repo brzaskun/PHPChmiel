@@ -5,15 +5,13 @@
   $id = filter_input(INPUT_POST,'id', FILTER_SANITIZE_STRING);
   $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien WHERE `id`='$id'";
   $nazwagrupy = R::getRow($sql);
-  $sql = "SELECT grupyupowaznien.firma FROM grupyupowaznien WHERE `id`='$id'";
-  $firmanazwa = R::getRow($sql);
+  $sql = "SELECT grupyupowaznien.firma_id FROM grupyupowaznien WHERE `id`='$id'";
+  $firma_id = R::getRow($sql);
   $uczestnicy = array();
-  $sql = "SELECT uczestnicy.email FROM uczestnicy WHERE `firma`='$firmanazwa[firma]'";
-  $uczestnicy = R::getCol($sql);
-  foreach ($uczestnicy as $value) {
-      $sql = "SELECT uczestnikgrupy.id FROM uczestnikgrupy WHERE `grupa`='$nazwagrupy[nazwagrupy]' AND email = '$value'";
-      $iduczestnikgrupa = R::getRow($sql);
-      $sql = "DELETE FROM `uczestnikgrupy` WHERE `id`='$iduczestnikgrupa[id]';";
+  $sql = "SELECT uczestnicy.id FROM uczestnicy WHERE `firma_id`='$firma_id[firma_id]'";
+  $uczestnicy_id = R::getCol($sql);
+  foreach ($uczestnicy_id as $value) {
+      $sql = "DELETE FROM `uczestnikgrupy` WHERE `id_uczestnik`='$value' AND `grupa`='$nazwagrupy[nazwagrupy]';";
       R::exec($sql);
   }
   $sql = "DELETE FROM `grupyupowaznien` WHERE id=$id";

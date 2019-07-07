@@ -1,5 +1,6 @@
 <?php error_reporting(0);
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $_wynikzaklad = R::getAll('SELECT * FROM zakladpracy');
 $_szkolenia = R::getAll('select * from szkoleniewykaz');
@@ -29,12 +30,13 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
         <?php error_reporting(1); 
         foreach ($_wynikzaklad as $value) {
             $_nazwazakladu = $value['nazwazakladu'];
-            $_coszukac = "SELECT * FROM `uczestnicy` WHERE `uczestnicy`.`firma` = '$_nazwazakladu'";
+            $firma_id = FirmaNazwaToId::wyszukajTablica($_nazwazakladu, $_wynikzaklad);
+            $_coszukac = "SELECT * FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id'";
             $_iloscpracownikowzakladu = R::getAll($_coszukac);
             $_iloscwszkoleniu = array();
             $int = 1;
             foreach ($_szkolenia as $value1) {
-                $_coszukac = "SELECT * FROM `uczestnicy` WHERE `uczestnicy`.`firma` = '$_nazwazakladu' AND `uczestnicy`.`nazwaszkolenia` = '$value1[nazwa]'";
+                $_coszukac = "SELECT * FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id' AND `uczestnicy`.`nazwaszkolenia` = '$value1[nazwa]'";
                 $_ilosc = count(R::getAll($_coszukac));
                 if ($_ilosc > 0) {
                     $_iloscwszkoleniu[$value1[skrot]] = $_ilosc;
@@ -112,7 +114,7 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
                     <td><span>id: </span></td><td><input type="text" id="idzaklad" name="idzaklad" style="width: 350px;"></td>
                 </tr>
                 <tr>
-                    <td><span>nazwa zakładu: </span></td><td><input type="text" id="nazwazakladu" name="nazwazakladu" style="width: 350px;" readonly></td>
+                    <td><span>nazwa zakładu: </span></td><td><input type="text" id="nazwazakladu" name="nazwazakladu" style="width: 350px;"></td>
                 </tr>
                 <tr>
                     <td><span>ulica: </span></td><td><input id="ulica" name="ulica" style="width: 350px;"></td>

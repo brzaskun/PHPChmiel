@@ -10,7 +10,11 @@
  
     }
     require_once('resources/php/Rb.php');
-    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+    if ($_SERVER["HTTP_HOST"] != "localhost:8000") {
+        $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+    } else {
+        $_SESSION['host'] = 'mysql:host=localhost;';
+    }
     R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
     date_default_timezone_set('Europe/Warsaw');
     $parametr = "wyslanymailupr=0 AND id > 16180";

@@ -485,7 +485,11 @@ var pobierzmaile = function () {
         url: "pobierzmaile_112014.php",
         cache: false,
         success: function (result) {
-            MYAPP.emaile = $.parseJSON(decodeURIComponent(result));
+            try {
+                MYAPP.emaile = $.parseJSON(decodeURIComponent(result));
+            } catch (e) {
+                
+            }
         }
     });
 };

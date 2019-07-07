@@ -392,7 +392,8 @@ var pobierzwierszetabeli = function () {
     var wiersze = $("#tabuser").find("tr");
     var nazwygrup = pobierznazwygrup(wiersze[0]);
     var tabelauzgrupa = [];
-    for (var i = 1; i < wiersze.length; i++) {
+    var dl = wiersze.length;
+    for (var i = 1; i < dl; i++) {
         tabelauzgrupa.push(tworztabeleuzytkownikgrupa(wiersze[i], nazwygrup));
     }
     var dane = JSON.stringify(tabelauzgrupa);
@@ -420,7 +421,8 @@ var pobierzwierszetabeli = function () {
 var pobierznazwygrup = function (wiersz) {
     var children = wiersz.children; 
     var tabela = [];
-    for (var i = 9; i < children.length; i++) {
+    var dl = children.length
+    for (var i = 9; i < dl; i++) {
         tabela[i - 9] = children[i].textContent;
     }
     return tabela;

@@ -7,6 +7,8 @@ ini_set('memory_limit','256M');
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/SprawdzWprowadzanyWiersz.php'); 
 $firmabaza = urldecode($_COOKIE['firmadoimportu']);
+require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+$firma_id = FirmaNazwaToId::wyszukaj($firmabaza);
 $dataszkolenia = $_COOKIE['dataszkolenia'];
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
@@ -27,7 +29,7 @@ if ($start > 0) {
     for ($i = 6; $i < $dl; $i++) {
         try {
            $nazwygrup[$pierwszywiersz[$i]] = $i;
-            $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`nazwagrupy`) VALUES ('$firmabaza',  '$pierwszywiersz[$i]');";
+            $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`firma_id` ,`nazwagrupy`) VALUES ('$firmabaza', '$firma_id',  '$pierwszywiersz[$i]');";
             R::exec($sql);
             array_push($listadodanychgrup,$pierwszywiersz[$i]);
         } catch (Exception $e){
@@ -49,14 +51,14 @@ foreach ($tablicapobranychpracownikow as $wierszbaza) {
     try {
         if (isset($dataszkolenia) && strlen($dataszkolenia) == "10") {
             $imienazwisko = addslashes($wierszbaza[1]);
-            $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
+            $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` ,`firma_id` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`,`datanadania`)
-            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
+            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
         } else {
             $imienazwisko = addslashes($wierszbaza[1]);
-            $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
+            $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` ,`firma_id` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
-            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
+            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
         }
         R::exec($sql);
         $id_uzytkownik = R::getInsertID();

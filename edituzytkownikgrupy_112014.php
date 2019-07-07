@@ -21,7 +21,7 @@
         R::exec($sql);
       }
       foreach ($wiersz as $key=>$value) {
-        if ($key != "id" && $key != "email" && $key != "imienazwisko" && $key != "nrupowaznienia" && $key != "indetyfikator" && $key != "datanadania" && $key != "dataustania") {
+        if ($key != "id" && $key != "email" && $key != "imienazwisko" && $key != "nrupowaznienia" && $key != "indetyfikator" && $key != "datanadania" && $key != "dataustania" && $key != "wyslaneup") {
             if ($value == 1) {
                 array_push($aktywne, $key);
             } else {

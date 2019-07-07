@@ -7,6 +7,8 @@
   $imienazwisko = $_POST['Nimienazwisko'];
   $imienazwisko = addslashes($imienazwisko);
   $firma = $_POST['Nfirmauser'];
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+  $firma_id = FirmaNazwaToId::wyszukaj($firma);
   $uprawnienia = $_POST['Nuprawnieniauser'];
   $plec = $_POST['Nplecuser'];
   $szkolenieuser = $_POST['Nszkolenieuser'];
@@ -23,9 +25,9 @@
         exit();
    }
   try {
-  $sql = "INSERT INTO  `uczestnicy` (`id`, `email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
+  $sql = "INSERT INTO  `uczestnicy` (`id`, `email` ,`imienazwisko` ,`plec` ,`firma` ,`firma_id` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
     `sessionend` ,`wyniktestu` ,`wyslanycert`)
-    VALUES (0, '$email',  '$imienazwisko', '$plec', '$firma', '$szkolenieuser', '$uprawnienia' , 0, NULL , NULL , 0 , 0);";
+    VALUES (0, '$email',  '$imienazwisko', '$plec', '$firma', '$firma_id', '$szkolenieuser', '$uprawnienia' , 0, NULL , NULL , 0 , 0);";
   R::exec($sql);
   } catch (Exception $e){
       header("Location: manager.php?error=Błąd! Istnieje już taki email w bazie danych!");

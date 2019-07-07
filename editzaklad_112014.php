@@ -15,8 +15,8 @@
   if ($_POST['firmaaktywna'] == 'aktywna') {
     $firmaaktywna = '1';
   }
-  $sql = "UPDATE  `zakladpracy` SET  `ulica` = '$ulica', `miejscowosc` = '$miejscowosc', `progzdawalnosci`='$progzdawalnosci' ,"
+  $sql = "UPDATE  `zakladpracy` SET  `nazwazakladu` = '$nazwazakladu', `ulica` = '$ulica', `miejscowosc` = '$miejscowosc', `progzdawalnosci`='$progzdawalnosci' ,"
           . " `firmaaktywna` = '$firmaaktywna', `kontakt` = '$kontakt', `email` = '$email', `maxpracownikow` = $maxpracownikow, `managerlimit` = $managerlimit"
-          . " WHERE  `zakladpracy`.`nazwazakladu` = '$nazwazakladu'"; 
+          . " WHERE  `zakladpracy`.`id` = '$id'"; 
   R::exec($sql);
 ?>

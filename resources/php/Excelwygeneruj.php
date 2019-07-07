@@ -136,12 +136,14 @@ class Excelwygeneruj {
         require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
         R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         if ($firma != 'null') {
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+            $firma_id = FirmaNazwaToId::wyszukaj($firma);
             if ($uczestnicyrodzaj == "wszyscy") {
-                $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma' ORDER BY `uczestnicy`.`email` ASC";
+                $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma_id` = '$firma_id' ORDER BY `uczestnicy`.`email` ASC";
             } else if ($uczestnicyrodzaj == "aktywni") {
-                $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'  AND (`uczestnicy`.`dataustania` IS NULL OR CHAR_LENGTH(`uczestnicy`.`dataustania`) < 1)  ORDER BY `uczestnicy`.`email` ASC";
+                $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma_id` = '$firma_id'  AND (`uczestnicy`.`dataustania` IS NULL OR CHAR_LENGTH(`uczestnicy`.`dataustania`) < 1)  ORDER BY `uczestnicy`.`email` ASC";
             } else {
-                $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'  AND (`uczestnicy`.`dataustania` IS NOT NULL AND CHAR_LENGTH(`uczestnicy`.`dataustania`) = 10)  ORDER BY `uczestnicy`.`email` ASC";
+                $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma_id` = '$firma_id'  AND (`uczestnicy`.`dataustania` IS NOT NULL AND CHAR_LENGTH(`uczestnicy`.`dataustania`) = 10)  ORDER BY `uczestnicy`.`email` ASC";
             }
         } else {
             $sql = "SELECT * FROM uczestnicy";

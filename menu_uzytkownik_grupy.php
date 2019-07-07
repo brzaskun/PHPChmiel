@@ -14,7 +14,7 @@
           <ul>
                 <li><a data-icon="ui-icon-circle-arrow-n" href="./admin_uzytkownik_grupa_uploadfile.php">Import z pliku</a></li>
                 <li><a data-icon="ui-icon-circle-arrow-n" href="./admin_uzytkownik_grupa_uploadfiledw.php">Import dane wrażliwe</a></li>
-                <li><a data-icon="ui-icon-circle-arrow-n" href="./admin112014_upowaznienie_grupy.php">Upoważnienie - grupy</a></li>   
+                <li><a data-icon="ui-icon-circle-arrow-n" href="./admin112014_upowaznienie_grupy.php">Firma - grupy</a></li>   
         </ul>
     </li>
     <li><a data-icon="ui-icon-locked" href="/admin082016_all.php"  style="width: 110px;">Duża tabela</a></li>

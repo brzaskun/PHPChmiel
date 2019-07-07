@@ -1,11 +1,13 @@
 <?php error_reporting(0); 
 if (session_status()!=2) {
     session_start();
-    }; 
+    };
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/SprawdzWprowadzanyWiersz.php'); 
 $tablicapobranychpracownikow = $_SESSION['tablicapobranychpracownikow'];
 $firmabaza = urldecode($_COOKIE['firmadoimportu']);
+require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+$firma_id = FirmaNazwaToId::wyszukaj($firmabaza);
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $nazwygrup = array();
@@ -15,9 +17,9 @@ foreach ($tablicapobranychpracownikow  as $wierszbaza) {
     if (SprawdzWprowadzanyWiersz::sprawdz2($wierszbaza)) {
         try {
            $imienazwisko = addslashes($wierszbaza[1]);
-          $sql = "INSERT INTO  `uczestnicy` (`id`, `email` ,`imienazwisko` ,`plec` ,`firma` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
+          $sql = "INSERT INTO  `uczestnicy` (`id`, `email` ,`imienazwisko` ,`plec` ,`firma` ,`firma_id` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`)
-            VALUES (0, '$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy');";
+            VALUES (0, '$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy');";
             R::exec($sql);
             $id_uzytkownik = R::getInsertID();
             Mail::mailautomat($imienazwisko, $wierszbaza[2], $wierszbaza[0], $wierszbaza[3], $id_uzytkownik);
@@ -50,7 +52,7 @@ foreach ($tablicapobranychpracownikow  as $wierszbaza) {
             for ($i = 6; $i < $dl; $i++) {
                 try {
                    $nazwygrup[$wierszbaza[$i]] = $i;
-                    $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`nazwagrupy`) VALUES ('$firmabaza',  '$wierszbaza[$i]');";
+                    $sql = "INSERT INTO `grupyupowaznien` (`firma`, `firma_id` ,`nazwagrupy`) VALUES ('$firmabaza', '$firma_id',  '$wierszbaza[$i]');";
                     R::exec($sql);
                 } catch (Exception $e){
                     

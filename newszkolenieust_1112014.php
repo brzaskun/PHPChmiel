@@ -6,7 +6,9 @@
   $nazwaszkolenia = filter_input(INPUT_POST, 'Nnazwaszkoleniaust', FILTER_SANITIZE_STRING);
   $upowaznienie = filter_input(INPUT_POST, 'Nnazwaupowaznienia', FILTER_SANITIZE_STRING);
   $iloscpytan = filter_input(INPUT_POST, 'Niloscpytanust', FILTER_SANITIZE_NUMBER_INT);
-  $sql = "INSERT INTO `szkolenieust` (`firma` ,`nazwaszkolenia` ,`iloscpytan`, `upowaznienie`) VALUES ('$firmaszkolenia','$nazwaszkolenia','$iloscpytan', '$upowaznienie');";
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+  $firma_id = FirmaNazwaToId::wyszukaj($firmaszkolenia);
+  $sql = "INSERT INTO `szkolenieust` (`firma` ,`nazwaszkolenia` ,`iloscpytan`, `upowaznienie`, `firma_id`) VALUES ('$firmaszkolenia','$nazwaszkolenia','$iloscpytan', '$upowaznienie', '$firma_id');";
   R::exec($sql);
   echo R::getInsertID();
 ?>

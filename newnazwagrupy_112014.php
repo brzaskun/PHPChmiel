@@ -5,7 +5,9 @@
   $id = $_POST['Nid'];
   $firmanazwa = $_POST['Nfirmauser'];
   $grupanazwa = $_POST['Nnazwagrupy'];
-  $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`nazwagrupy`) VALUES ('$firmanazwa',  '$grupanazwa');";
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+  $firma_id = FirmaNazwaToId::wyszukaj($firmanazwa);
+  $sql = "INSERT INTO `grupyupowaznien` (`firma` ,`nazwagrupy`, `firma_id`) VALUES ('$firmanazwa',  '$grupanazwa', '$firma_id');";
   R::exec($sql);
-  echo R::getCell("SELECT `id` FROM  `grupyupowaznien` WHERE  (`grupyupowaznien`.`firma` = '$firmanazwa' AND  `grupyupowaznien`.`nazwagrupy` =  '$grupanazwa')");
+  echo R::getCell("SELECT `id` FROM  `grupyupowaznien` WHERE  (`grupyupowaznien`.`firma_id` = '$firma_id' AND  `grupyupowaznien`.`nazwagrupy` =  '$grupanazwa')");
 ?>

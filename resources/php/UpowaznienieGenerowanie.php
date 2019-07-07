@@ -76,11 +76,13 @@ class UpowaznienieGenerowanie {
                     $datanadania = R::getCell("SELECT  `datanadania` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
                     $dataustania = $_SESSION['uczestnik']['dataustania'];
                     if ($dataustania == null || $dataustania == "") {
-                        $sqlfirma = $_SESSION['uczestnik']['firma'];
+                        $firma_id = $_SESSION['uczestnik']['firma_id'];
+                        require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+                        $sqlfirma = FirmaNazwaToId::wyszukajNazwa($firma_id);
                         $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
-                        $sql = "SELECT `miejscowosc` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
+                        $sql = "SELECT `miejscowosc` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
                         $miejscowosc = R::getCell($sql);
-                        $sql = "SELECT `ulica` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
+                        $sql = "SELECT `ulica` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
                         $ulica = R::getCell($sql);
                         if ($bcc == "") {
                             $bcc = "mchmielewska@interia.pl";
@@ -125,8 +127,8 @@ class UpowaznienieGenerowanie {
     
      public final static function pobierzBCC() {
         $bcc = "mail@odomg.com.pl";
-        $sqlfirma = $_SESSION['uczestnik']['firma'];
-        $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
+        $sqlfirma = $_SESSION['uczestnik']['id'];
+        $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$sqlfirma';";
         if (isset($sql)){
             $_SESSION['uczestnik']['BCC'] = R::getCell($sql);
         }

@@ -5,13 +5,15 @@
   $firma = $_POST['firmanazwa'];
   $uczestnicyrodzaj = $_POST['uczestnicyrodzaj'];
   $uczestnicystaconline = $_POST['uczestnicystaconline'];
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+  $firma_id = FirmaNazwaToId::wyszukaj($firma);
   if ($firma != "" && $firma != 'null' && $firma != "wybierz bieżącą firmę" && $firma != "wszystkiefirmy") {
       if ($uczestnicyrodzaj == "wszyscy") {
-          $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma' GROUP BY `imienazwisko` ORDER BY `imienazwisko`";
+          $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma_id` = '$firma_id' GROUP BY `imienazwisko` ORDER BY `imienazwisko`";
       } else if ($uczestnicyrodzaj == "aktywni") {
-          $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'  AND (`uczestnicy`.`dataustania` IS NULL OR CHAR_LENGTH(`uczestnicy`.`dataustania`) < 1)  GROUP BY `imienazwisko` ORDER BY `imienazwisko`";
+          $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma_id` = '$firma_id'  AND (`uczestnicy`.`dataustania` IS NULL OR CHAR_LENGTH(`uczestnicy`.`dataustania`) < 1)  GROUP BY `imienazwisko` ORDER BY `imienazwisko`";
       } else {
-          $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma` = '$firma'  AND (`uczestnicy`.`dataustania` IS NOT NULL AND CHAR_LENGTH(`uczestnicy`.`dataustania`) = 10) GROUP BY `imienazwisko`  ORDER BY `imienazwisko`";
+          $sql = "SELECT * FROM uczestnicy WHERE `uczestnicy`.`firma_id` = '$firma_id'  AND (`uczestnicy`.`dataustania` IS NOT NULL AND CHAR_LENGTH(`uczestnicy`.`dataustania`) = 10) GROUP BY `imienazwisko`  ORDER BY `imienazwisko`";
       }
   } 
   if ($uczestnicystaconline=="stacjonarni") {

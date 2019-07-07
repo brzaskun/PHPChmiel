@@ -353,7 +353,7 @@ var edytujtabelezaklad = function (){
        $(MYAPP.pola[11]).html($('#managerlimit').val());
        $('#notify').puigrowl('show', [{severity: 'info', summary: 'Dane firmy '+$("#nazwazakladu").val()+' zmienione' }]);
        $("#editzaklad").puidialog('hide');
-       var teststring = "nazwazakladu="+$('#nazwazakladu').val()+"&ulica="+$('#ulica').val()+"&miejscowosc="+$('#miejscowosc').val()+"&kontakt="+$('#kontakt').val()+"&email="+$('#email').val()+"&progzdawalnosci="+$('#progzdawalnosci').val()+"&firmaaktywna="+$('#firmaaktywna').val()+"&maxpracownikow="+$('#maxpracownikow').val()+"&managerlimit="+$('#managerlimit').val();
+       var teststring = "idzaklad="+$('#idzaklad').val()+"&nazwazakladu="+$('#nazwazakladu').val()+"&ulica="+$('#ulica').val()+"&miejscowosc="+$('#miejscowosc').val()+"&kontakt="+$('#kontakt').val()+"&email="+$('#email').val()+"&progzdawalnosci="+$('#progzdawalnosci').val()+"&firmaaktywna="+$('#firmaaktywna').val()+"&maxpracownikow="+$('#maxpracownikow').val()+"&managerlimit="+$('#managerlimit').val();
        $.ajax({
         type: "POST",
         url: "editzaklad_112014.php",

@@ -74,8 +74,8 @@ class CertyfikatGenerowanie {
     
     public final static function pobierzBCC() {
         $bcc = "mail@odomg.com.pl";
-        $sqlfirma = $_SESSION['uczestnik']['firma'];
-        $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
+        $sqlfirma = $_SESSION['uczestnik']['firma_id'];
+        $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$sqlfirma';";
         if (isset($sql)){
             $_SESSION['uczestnik']['BCC'] = R::getCell($sql);
         }
