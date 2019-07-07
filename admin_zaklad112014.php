@@ -31,13 +31,13 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
         foreach ($_wynikzaklad as $value) {
             $_nazwazakladu = $value['nazwazakladu'];
             $firma_id = FirmaNazwaToId::wyszukajTablica($_nazwazakladu, $_wynikzaklad);
-            $_coszukac = "SELECT * FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id'";
-            $_iloscpracownikowzakladu = R::getAll($_coszukac);
+            $_coszukac = "SELECT id FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id'";
+            $_iloscpracownikowzakladu = R::getCol($_coszukac);
             $_iloscwszkoleniu = array();
             $int = 1;
             foreach ($_szkolenia as $value1) {
-                $_coszukac = "SELECT * FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id' AND `uczestnicy`.`nazwaszkolenia` = '$value1[nazwa]'";
-                $_ilosc = count(R::getAll($_coszukac));
+                $_coszukac = "SELECT id FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id' AND `uczestnicy`.`nazwaszkolenia` = '$value1[nazwa]'";
+                $_ilosc = count(R::getCol($_coszukac));
                 if ($_ilosc > 0) {
                     $_iloscwszkoleniu[$value1[skrot]] = $_ilosc;
                     $int++;

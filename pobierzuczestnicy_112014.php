@@ -3,6 +3,8 @@
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
   R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $firmanazwa = $_POST['firmanazwa'];
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/FirmaNazwaToId.php');
+  $firma_id = FirmaNazwaToId::wyszukaj($firmanazwa);
   $bezgrup = $_POST['bezgrup'];
   $uczestnicyrodzaj = $_POST['uczestnicyrodzaj'];
   $stacjonarnionline = $_POST['stacjonarnionline'];
@@ -14,20 +16,20 @@
       $dodatek = " AND `stacjonarny` = 0 " ;
   }
   if ($uczestnicyrodzaj == "wszyscy") {
-        $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' ".$dodatek." ORDER BY `uczestnicy`.`email` ASC";
+        $sql = "SELECT * FROM uczestnicy where firma_id = '$firma_id' ".$dodatek." ORDER BY `uczestnicy`.`email` ASC";
         $uczestnicy = R::getAll($sql);
   } else if ($uczestnicyrodzaj == "aktywni"){
-       $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' AND (dataustania IS NULL OR CHAR_LENGTH(dataustania) < 1) ".$dodatek." ORDER BY `uczestnicy`.`email` ASC";
+       $sql = "SELECT * FROM uczestnicy where firma_id = '$firma_id' AND (dataustania IS NULL OR CHAR_LENGTH(dataustania) < 1) ".$dodatek." ORDER BY `uczestnicy`.`email` ASC";
        $uczestnicy = R::getAll($sql);
   } else {
-       $sql = "SELECT * FROM uczestnicy where firma = '$firmanazwa' AND (dataustania IS NOT NULL AND CHAR_LENGTH(dataustania) = 10) " . $dodatek ." ORDER BY `uczestnicy`.`email` ASC";
+       $sql = "SELECT * FROM uczestnicy where firma_id = '$firma_id' AND (dataustania IS NOT NULL AND CHAR_LENGTH(dataustania) = 10) " . $dodatek ." ORDER BY `uczestnicy`.`email` ASC";
        $uczestnicy = R::getAll($sql);
   }
   $grupanazwa = $_SESSION['danewrazliwe'];
   if ($jakiegrupy=="tak") {
-      $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma = '$firmanazwa' AND nazwagrupy!='$grupanazwa'";
+      $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma_id = '$firma_id' AND nazwagrupy!='$grupanazwa'";
   } else {
-      $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma = '$firmanazwa' AND nazwagrupy='$grupanazwa'";
+      $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien where firma_id = '$firma_id' AND nazwagrupy='$grupanazwa'";
   }
   $grupy = R::getAll($sql);
   $czlonkowie = array(); 
