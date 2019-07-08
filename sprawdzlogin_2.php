@@ -22,7 +22,7 @@ $_SESSION['managerlimit'] = R::getCell($sql);
 $sql = "SELECT `kontakt` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
 $_SESSION['uczestnik']['kontakt'] = R::getCell($sql);
 $nazwaszkolenia = $_SESSION['uczestnik']['nazwaszkolenia'];
-$sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id'0;";
+$sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
 $_SESSION['uczestnik']['BCC'] = R::getCell($sql);
 $sql = "SELECT `iloscpytan` FROM `szkolenieust` WHERE `szkolenieust`.`firma_id`='$firma_id' AND `szkolenieust`.`nazwaszkolenia`='$nazwaszkolenia';";
 $_SESSION['uczestnik']['iloscpytan'] = R::getCell($sql);
