@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl">
     <?php error_reporting(0);
-    if(session_status()!=2){     session_start(); };
+    session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+    if(session_status()!=2){
+        session_start(); 
+        
+    };
     if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         die("Nie jesteś upoważniony do przeglądania zasobu");
     }
@@ -57,39 +61,11 @@
             include_once './menu_upload_file.php';
         ?>
         <div id="notify"></div>
-        <div style="display: <?php $vara = $_GET["stac"];
-                                   if($vara=="inline") {
-                                       $_SESSION["stac"] = "vara";
-                                   }
-                                   if ($vara=="inline" || $_SESSION["stac"]=="inline") {
-                                       $vara = "inline";
-                                       $_SESSION["stac"] = null;
-                                   }
-                                   echo $vara;?>" >
-            <form>
-                <script>
-                    $().ready(function() {
-                        <?php $varas = $_GET["stac"];
-                                if($varas=="inline") {
-                                    echo "$('#przyciskladowanie').hide()";
-                                }
-                        ?>
-                    });
-                </script>
-                <div style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 10px; background-color: #e9e9e9;">
-                    <span>data szkolenia stacjonarnego</span>
-                    <input id="dataszkolenia" name="dataszkolenia" 
-                           value="<?php
-                           $dataszkolenia = $_COOKIE['dataszkolenia'];
-                           if (strlen($dataszkolenia)==10) {
-                               echo $dataszkolenia;
-                           }
-                           ?>"
-                           type="text" onchange="dataszkoleniazachowaj()" maxlength="10" placeholder="rrrr-mm-dd" style="width: 80px;"/>
-                </div>
-            </form>
+        <div id="panelinfo1" style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 10px; background-color: #e9e9e9;">
+            <span style="font-weight: bold">moduł wczytywania szkoleń z pliku</span>
         </div>
         <?php
+            unset($_SESSION["stac"]);
             include_once './admin_plik_112014.php';
         ?>
     </body>

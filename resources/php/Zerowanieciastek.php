@@ -15,6 +15,7 @@ class Zerowanieciastek {
     static private $ciastka = array('bledne', 'iloscpytan', 'zadanepytania', 'editslajd', 'liczbapracownikow', 'firmadoimportu');
 
     public final static function usunciastka() {
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
         if (session_status() != 2) {
             session_start();
         };

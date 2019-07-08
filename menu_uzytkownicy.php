@@ -11,8 +11,8 @@
         <ul>
             <li id="lidodaj" style="display: none;"><a data-icon="ui-icon-plus" onclick="nowyuser();">Dodaj użytkownika</a></li>
             <li><a data-icon="ui-icon-circle-arrow-n" href="/admin022019_przeniesuzytkownika.php">Przenieś użytkownika</a></li>
-            <li><a data-icon="ui-icon-circle-arrow-n" href="/admin112014_uploadfile.php?stac=none">Import z pliku</a></li>
-            <li><a data-icon="ui-icon-circle-arrow-n" href="/admin112014_uploadfile.php?stac=inline">Import - szkolenie stacj.</a></li>
+            <li><a data-icon="ui-icon-circle-arrow-n" href="/admin112014_uploadfile.php">Import z pliku</a></li>
+            <li><a data-icon="ui-icon-circle-arrow-n" href="/admin112014_uploadfile_stac.php">Import - szkolenie stacj.</a></li>
             <li><a data-icon="ui-icon-calculator" onclick="$('#tabelaeksport').click();">Eksport do .xls</a></li> 
         </ul>  
     </li>  

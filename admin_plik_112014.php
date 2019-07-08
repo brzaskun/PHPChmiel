@@ -1,4 +1,5 @@
 <?php 
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() != 2) {
     session_start();
 };
@@ -12,7 +13,7 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
         <a href="/resources/wzorcowy.xls">pobierz plik wzorcowy, żeby zobaczyć jak powinien wyglądać wykaz pracowników do załadowania</a>
     </div>
     <div>
-        <span style="color: red; margin-top: 10px;">Uwaga! Program pozwalana na ponowne dodanie istiejącego użytkownika z istniejącym szkoleniem, jeżeli w poprzednim rekordzie istnieje data ustania uprawnień.</span>
+        <span style="color: red; margin-top: 10px;">Uwaga! Program pozwalana na ponowne dodanie istniejącego użytkownika z istniejącym szkoleniem, jeżeli w poprzednim rekordzie istnieje data ustania uprawnień.</span>
     </div>
     <form id="form1" enctype="multipart/form-data" method="post" action="admin112014_uploadfile.php"> 
         <div style="height: 220px; width: 500px; margin-top: 10px;">

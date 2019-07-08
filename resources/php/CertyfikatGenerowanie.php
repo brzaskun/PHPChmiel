@@ -4,6 +4,7 @@
 class CertyfikatGenerowanie {
        
     public final static function generuj() {
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
         if (session_status() != 2) {
             session_start();
         };

@@ -1,5 +1,9 @@
 <?php error_reporting(0);
-if(session_status()!=2){     session_start(); };
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+if(session_status()!=2){     
+    session_start(); 
+    
+};
 $sciezkaroot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT');
 require_once($sciezkaroot.'/resources/php/Rb.php');
 require_once($sciezkaroot.'/resources/php/Nextslide.php');

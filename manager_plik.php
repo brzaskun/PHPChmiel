@@ -1,4 +1,9 @@
-
+<?php error_reporting(0);
+require_once $_SERVER['DOCUMENT_ROOT'].'/resources/PHPExcel-1.8.1/Classes/PHPExcel/IOFactory.php';
+if (session_status()!=2) {
+    session_start();
+    };
+?>
     <script type="text/javascript">
       var fileSelected = function() {
         var file = document.getElementById('file').files[0];
@@ -55,10 +60,6 @@
     
   </form>
 <?php error_reporting(0);
-require_once $_SERVER['DOCUMENT_ROOT'].'/resources/PHPExcel-1.8.1/Classes/PHPExcel/IOFactory.php';
-if (session_status()!=2) {
-    session_start();
-    };
 if (isset($_FILES["file"])){
 if ($_FILES["file"]["error"] > 0)
   {

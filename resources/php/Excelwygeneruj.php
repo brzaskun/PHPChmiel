@@ -13,6 +13,7 @@
 class Excelwygeneruj {
 
     public static function excel() {
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
         if (session_status() != 2) {
             session_start();
         };
@@ -132,6 +133,7 @@ class Excelwygeneruj {
     }
 
     public static function exceladmin($firma, $uczestnicyrodzaj) {
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
         if (session_status() != 2) {
             session_start();
         };
@@ -281,6 +283,7 @@ class Excelwygeneruj {
 
     public static function excel_uzytkownik_grupy($naglowki,$tab2,$nazwafirmy) {
         $wiersze = json_decode($tab2);
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
         if (session_status() != 2) {
             session_start();
         };
