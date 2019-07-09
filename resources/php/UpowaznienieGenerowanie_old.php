@@ -12,7 +12,7 @@
 class UpowaznienieGenerowanie {
 
     public final static function sprawdzupo() {
-        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
         if (session_status() != 2) {
             session_start();
         };
@@ -40,7 +40,7 @@ class UpowaznienieGenerowanie {
     
     
     public final static function generuj() {
-        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
         if (session_status() != 2) {
             session_start();
         };
@@ -176,7 +176,7 @@ class UpowaznienieGenerowanie {
     }
     
      public final static function pobierzBCC() {
-        $bcc = "mail@odomg.com.pl";
+        $bcc = "";
         if (isset($_SESSION['uczestnik']['BCC'])) {
             $bcc = $_SESSION['uczestnik']['BCC'];
         }

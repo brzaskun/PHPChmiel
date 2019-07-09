@@ -447,7 +447,7 @@ class Mail {
                         ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
-                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
+//                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
@@ -483,7 +483,7 @@ class Mail {
                         ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
-                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
+//                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
@@ -519,7 +519,7 @@ class Mail {
                         ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
-                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
+//                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
@@ -547,7 +547,7 @@ class Mail {
                         ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
-                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
+//                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
@@ -579,7 +579,7 @@ class Mail {
                         ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array("brzaskun@gmail.com" => "Grzegorz Grzelczyk"))
-                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
+//                        ->setBcc(array("mchmielewska@interia.pl" => "Magdalena Chmielewska"))
                         ->setBody('<!DOCTYPE html><html lang="pl">
                         <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                         <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>

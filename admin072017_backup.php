@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
     <?php
-    if(session_status()!=2){     session_start(); };
+    session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');   if(session_status()!=2){     session_start(); };
     error_reporting(0);
     if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         die("Nie jesteś upoważniony do przeglądania zasobu");

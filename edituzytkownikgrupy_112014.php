@@ -1,5 +1,5 @@
 <?php error_reporting(0); 
-  if(session_status()!=2){     session_start(); };
+  session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');   if(session_status()!=2){     session_start(); };
   require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
   R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
   $wiersze = json_decode($_POST["dane"]);
@@ -13,13 +13,15 @@
       $datnad = str_replace('-', '.', $datnad);
       $datust = str_replace('/', '.', $wiersz->dataustania);
       $datust = str_replace('-', '.', $datust);
-      if ($jakiegrupy=="tak") {
-        $sql = "UPDATE  `uczestnicy` SET wyslaneup = '$wiersz->wyslaneup', nrupowaznienia = '$wiersz->nrupowaznienia', indetyfikator = '$wiersz->indetyfikator', datanadania = '$datnad', dataustania = '$datust', zmodyfikowany = '$czasbiezacy'  WHERE  `uczestnicy`.`id` = '$wiersz->id'";
-        R::exec($sql);
-      } else {
-          $sql = "UPDATE  `uczestnicy` SET wyslaneupdanewrazliwe = '$wiersz->wyslaneup', zmodyfikowany = '$czasbiezacy'  WHERE  `uczestnicy`.`id` = '$wiersz->id'";
-        R::exec($sql);
-      }
+      try {
+        if ($jakiegrupy=="tak") {
+          $sql = "UPDATE  `uczestnicy` SET wyslaneup = '$wiersz->wyslaneup', nrupowaznienia = '$wiersz->nrupowaznienia', indetyfikator = '$wiersz->indetyfikator', datanadania = '$datnad', dataustania = '$datust', zmodyfikowany = '$czasbiezacy'  WHERE  `uczestnicy`.`id` = '$wiersz->id'";
+          R::exec($sql);
+        } else {
+            $sql = "UPDATE  `uczestnicy` SET wyslaneupdanewrazliwe = '$wiersz->wyslaneup', zmodyfikowany = '$czasbiezacy'  WHERE  `uczestnicy`.`id` = '$wiersz->id'";
+          R::exec($sql);
+        }
+      } catch (Exception $e){}
       foreach ($wiersz as $key=>$value) {
         if ($key != "id" && $key != "email" && $key != "imienazwisko" && $key != "nrupowaznienia" && $key != "indetyfikator" && $key != "datanadania" && $key != "dataustania" && $key != "wyslaneup") {
             if ($value == 1) {

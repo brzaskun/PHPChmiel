@@ -5,7 +5,7 @@ ini_set('memory_limit', '1024M');
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
 if (session_status() != 2) {
         session_start(); 
 };

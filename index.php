@@ -6,7 +6,7 @@ if ($_SERVER["HTTP_HOST"] != "localhost:8000" && $_SERVER["SERVER_PORT"] != 443)
     header($redir);
     exit();
 }
-session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
 if (session_status() == 2) {
     session_start(); 
     ini_set('session.gc_probability', 1);

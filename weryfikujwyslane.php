@@ -1,5 +1,5 @@
 <?php
-    session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+    session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
     if (session_status() != 2) {
         session_start();
     };
@@ -60,6 +60,7 @@
         echo "<br />\n";
         echo "Wyslano mail dla admina";
     }
+    $ilemaili = 0;
     $parametr2 = "sessionend IS NOT NULL AND datanadania IS NOT NULL AND wyslanycert=1 AND wyslaneup=0";
     $sarekordybezupowaznienia = R::findAll("uczestnicy", $parametr2);
     echo "Ilosc niewyslanych upowaznien w bazie".sizeof($sarekordybezupowaznienia);
@@ -101,16 +102,6 @@
         echo "<br />\n";
         echo "Wyslano mail dla admina";
     }
-    if ($ilemaili > 0) {
-        echo "Ilosc maili tylko upowaznienie wyslanych w sumie".$ilemaili;
-        try {
-            require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Mail.php');
-        } catch (Exception $em) {
- 
-        }
-        Mail::mailwyslanoawaryjnie($uzerywyslane);
-        echo "<br />\n";
-        echo "Wyslano mail dla admina";
-    }
+    
 ?>
 

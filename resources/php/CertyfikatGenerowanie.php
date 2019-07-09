@@ -74,7 +74,7 @@ class CertyfikatGenerowanie {
     }
     
     public final static function pobierzBCC() {
-        $bcc = "mail@odomg.com.pl";
+        $bcc = "";
         $sqlfirma = $_SESSION['uczestnik']['firma_id'];
         $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$sqlfirma';";
         if (isset($sql)){

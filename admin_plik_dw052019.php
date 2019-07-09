@@ -1,5 +1,5 @@
 <?php 
-session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
 if (session_status() != 2) {
     session_start();
 };error_reporting(0);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <?php error_reporting(0);
-if(session_status()!=2){     
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');   if(session_status()!=2){     
     session_start(); 
 };
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/UpowaznienieGenerowanie.php');
@@ -46,7 +46,7 @@ UpowaznienieGenerowanie::generuj();
         </div>
         </div>
 <?php error_reporting(0);
-if(session_status()!=2){     
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');   if(session_status()!=2){     
     session_start(); 
 };
 $_SESSION['szkolenietrwa'] = "nie";

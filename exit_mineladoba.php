@@ -1,5 +1,5 @@
 <?php
-session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
+session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
 if (session_status() != 2) {
     session_start();
 }
@@ -37,7 +37,7 @@ if (session_status() != 2) {
             <form id="form" action="" method="post" >
                 <div class="odpowiedzitest">
                     <span>Zgodnie z regulaminem szkoleń do serwisu można logować się w ciągu 24 godzin od czasu pierwszego zalogowania.</span><br/><br/>
-                    <span>Pierwsze zalogowanie z użyciem adresu <?php error_reporting(0); if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> miało miejsce
+                    <span>Pierwsze zalogowanie z użyciem adresu <?php error_reporting(0); session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');   if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> miało miejsce
                         <?php error_reporting(0);  echo $_SESSION['uczestnik']['sessionstart'];?></span><br/><br/>
                     <span>Jeżeli pierwsze zalogowanie nastąpiło omyłkowo prosimy, w celu reaktywacji konta, skontaktować się z osobą odpowiedzialną za szkolenia.</span><br/>
                     <p> W twojej firmie jest to: <?php error_reporting(0); echo $_SESSION['uczestnik']['kontakt'];?>.</p>
