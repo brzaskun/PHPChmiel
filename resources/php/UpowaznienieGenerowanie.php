@@ -140,9 +140,9 @@ class UpowaznienieGenerowanie {
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
         $firma = $_SESSION['uczestnik']['firma'];
         $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
-        $email = R::getCell($sql);
-        if (isset($email)) {
-            $bcc = $email;
+        $email2 = R::getCell($sql);
+        if (isset($email2) && $email2!="") {
+            $bcc = $email2;
         }
         return $bcc;
     }
