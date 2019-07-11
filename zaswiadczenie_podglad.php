@@ -15,9 +15,6 @@ $imienaz = $_SESSION['uczestnik']['imienazwisko'];
 $kontakt = $_SESSION['uczestnik']['kontakt'];
 $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
 $bcc = $_SESSION['uczestnik']['BCC'];
-if ($bcc == "") {
-    $bcc = "mchmielewska@interia.pl";
-}
 $dataukonczeniatmp = substr($_SESSION['uczestnik']['sessionend'], 0, 10); 
 $dataukonczenia = substr($dataukonczeniatmp, 8, 2) . substr($dataukonczeniatmp, 4, 4) . substr($dataukonczeniatmp, 0, 4);
 $poziomzaswiadczenie = CertyfikatGenerowanie::pobierzPoziomZaswiadczeniaPodglad($nazwazaswiadczenia);

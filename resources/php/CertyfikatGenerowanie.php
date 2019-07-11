@@ -74,23 +74,22 @@ class CertyfikatGenerowanie {
     }
     
     public final static function pobierzBCC() {
+        session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
+        if (session_status() != 2) {
+            session_start();
+        };
         $bcc = "";
-        $sqlfirma = $_SESSION['uczestnik']['firma_id'];
-        $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$sqlfirma';";
-        if (isset($sql)){
-            $_SESSION['uczestnik']['BCC'] = R::getCell($sql);
-        }
-        if (isset($_SESSION['uczestnik']['BCC']) && !empty($_SESSION['uczestnik']['BCC'])) {
-            $bcc = $_SESSION['uczestnik']['BCC'];
-        }
-        //email inny dla szkolenia ustawiany w firma-szkolenie 
+        $firma_id = $_SESSION['uczestnik']['firma_id'];
+        $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
+        $bcc = R::getCell($sql);
+        $_SESSION['uczestnik']['BCC'] = $bcc;
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
         $firma = $_SESSION['uczestnik']['firma'];
-        $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
-        $email2 = R::getCell($sql);
-        if (isset($email2) && $email2!="") {
-            $bcc = $email2;
-        }
+//        $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
+//        $email2 = R::getCell($sql);
+//        if (isset($email2) && $email2!="") {
+//            $bcc = $email2;
+//        }
         return $bcc;
     }
 

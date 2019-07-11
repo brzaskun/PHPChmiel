@@ -27,6 +27,11 @@
         require_once('resources/php/UpowaznienieGenerowanie.php');
 //CertyfikatGenerowanie::generuj();
         require_once('resources/php/Rb.php');
+        if ($_SERVER["HTTP_HOST"] != "localhost:8000") {
+            $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+        } else {
+            $_SESSION['host'] = 'mysql:host=localhost;';
+        }
 //        echo "R setup" . "\r\n";
         R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 //        echo "Mail setup" ."\r\n";
@@ -110,9 +115,6 @@
                     $miejscowosc = R::getCell($sql);
                     $sql = "SELECT `ulica` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
                     $ulica = R::getCell($sql);
-                    if ($bcc == "") {
-                        $bcc = "mchmielewska@interia.pl";
-                    }
                     require_once("resources/MPDF57/mpdf.php");
                     require_once('resources/php/UpowaznienieText.php');
                     if ($sqlfirma=="Sąd Rejonowy w Myśliborzu") {

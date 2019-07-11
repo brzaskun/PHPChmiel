@@ -97,9 +97,6 @@
                     $miejscowosc = R::getCell($sql);
                     $sql = "SELECT `ulica` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
                     $ulica = R::getCell($sql);
-                    if ($bcc == "") {
-                        $bcc = "mchmielewska@interia.pl";
-                    }
                     require_once("resources/MPDF57/mpdf.php");
                     require_once('resources/php/UpowaznienieText.php');
                     if ($sqlfirma=="Sąd Rejonowy w Myśliborzu") {

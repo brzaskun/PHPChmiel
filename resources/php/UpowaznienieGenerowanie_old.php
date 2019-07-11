@@ -85,9 +85,6 @@ class UpowaznienieGenerowanie {
                         $miejscowosc = R::getCell($sql);
                         $sql = "SELECT `ulica` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
                         $ulica = R::getCell($sql);
-                        if ($bcc == "") {
-                            $bcc = "mchmielewska@interia.pl";
-                        }
                         require_once("resources/MPDF57/mpdf.php");
                         if ($plec == "k") {
                             $html = '<!DOCTYPE html><html lang="pl">' .
