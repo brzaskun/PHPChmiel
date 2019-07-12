@@ -32,17 +32,17 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
             $_nazwazakladu = $value['nazwazakladu'];
             $firma_id = FirmaNazwaToId::wyszukajTablica($_nazwazakladu, $_wynikzaklad);
             $_coszukac = "SELECT id FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id'";
-            $_iloscpracownikowzakladu = R::getCol($_coszukac);
-            $_iloscwszkoleniu = array();
-            $int = 1;
-            foreach ($_szkolenia as $value1) {
-                $_coszukac = "SELECT id FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id' AND `uczestnicy`.`nazwaszkolenia` = '$value1[nazwa]'";
-                $_ilosc = count(R::getCol($_coszukac));
-                if ($_ilosc > 0) {
-                    $_iloscwszkoleniu[$value1[skrot]] = $_ilosc;
-                    $int++;
-                }
-            }
+//            $_iloscpracownikowzakladu = R::getCol($_coszukac);
+//            $_iloscwszkoleniu = array();
+//            $int = 1;
+//            foreach ($_szkolenia as $value1) {
+//                $_coszukac = "SELECT id FROM `uczestnicy` WHERE `uczestnicy`.`firma_id` = '$firma_id' AND `uczestnicy`.`nazwaszkolenia` = '$value1[nazwa]'";
+//                $_ilosc = count(R::getCol($_coszukac));
+//                if ($_ilosc > 0) {
+//                    $_iloscwszkoleniu[$value1[skrot]] = $_ilosc;
+//                    $int++;
+//                }
+//            }
             ?>
             <tr id="<?php error_reporting(0); echo $value['id'] ?>" class="wierszezaklad" >
                 <td class="czekboks"><input type="checkbox"/></td>
@@ -71,7 +71,7 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
                             padding: 1px;
                         }
                     </style>
-                    <table  >
+<!--                    <table  >
                         <thead>
                             <tr >
                                 <th style="text-align: center">suma</th>
@@ -92,7 +92,7 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
                                 } ?>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>-->
                 </td>
                 <td style="text-align: center"><?php error_reporting(0); echo $value['managerlimit'] ?></td>
                 <td style="width: 10px;">

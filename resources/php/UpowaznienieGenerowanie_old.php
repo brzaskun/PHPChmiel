@@ -9,7 +9,7 @@
  *
  * @author Osito
  */
-class UpowaznienieGenerowanie {
+class UpowaznienieGenerowanie_old {
 
     public final static function sprawdzupo() {
         session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 

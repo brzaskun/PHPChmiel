@@ -14,7 +14,7 @@
     R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1'); 
     date_default_timezone_set('Europe/Warsaw');
     //chodzi o niewyslane zaswiadczenie
-    $parametr = "sessionend IS NOT NULL AND wyslanycert=0";
+    $parametr = "sessionend IS NOT NULL AND wyslanycert=0 ";
     $jestwbazie = R::findAll("uczestnicy", $parametr);
     echo "Ilosc niewyslanych zaswiadczen w bazie".sizeof($jestwbazie);
     echo "<br />\n";
@@ -61,7 +61,7 @@
         echo "Wyslano mail dla admina";
     }
     $ilemaili = 0;
-    $parametr2 = "sessionend IS NOT NULL AND datanadania IS NOT NULL AND wyslanycert=1 AND wyslaneup=0";
+    $parametr2 = "sessionend > '2017-10-01' AND datanadania IS NOT NULL AND wyslanycert=1 AND wyslaneup=0";
     $sarekordybezupowaznienia = R::findAll("uczestnicy", $parametr2);
     echo "Ilosc niewyslanych upowaznien w bazie".sizeof($sarekordybezupowaznienia);
     echo "start upoważnienia";
@@ -76,6 +76,9 @@
             $id = $_SESSION['uczestnik']['id'];
             $sagrupy = UpowaznienieGenerowanie::pobierzgrupy($id);
                 if (strlen($sagrupy) > 0) {
+                    if ($_SESSION['uczestnik']['email']=="brzaskun@gmail.com") {
+                        $razdwa = true;
+                    }
                     $wynik2 = UpowaznienieGenerowanie::generuj();
                     if ($wynik2) {
                         $ilemaili = $ilemaili+1;
