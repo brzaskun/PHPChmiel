@@ -11,8 +11,8 @@ require_once($sciezkaroot . '/resources/php/Zerowanieciastek.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $mail = $_SESSION['mail'];
 $parametr = "email = '$mail'";
-$uczestnicy = R::findAll('uczestnicy', $parametr);
-
+$uczestnicy = R::findOne('uczestnicy', $parametr);
+$_SESSION['uczestnik']['firma'] = $uczestnicy['firma'];
 $sqlfirma = $_SESSION['uczestnik']['firma'];
 $sql = "SELECT `firmaaktywna` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
 $firmaaktywna = R::getCell($sql);
