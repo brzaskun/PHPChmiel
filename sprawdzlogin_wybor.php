@@ -12,6 +12,16 @@ R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1')
 $mail = $_SESSION['mail'];
 $parametr = "email = '$mail'";
 $uczestnicy = R::findAll('uczestnicy', $parametr);
+$sqlfirma = $_SESSION['uczestnik']['firma'];
+$sql = "SELECT `firmaaktywna` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
+$firmaaktywna = R::getCell($sql);
+//jezeli uczestnik jest z firmy nieaktywnej to przekieruj na specjalny slide
+if ($firmaaktywna==0) {
+    $url = "exit_.php?$zm";
+    header("Location: $url");
+    $_SESSION['wyjdz'] = 'tak';
+    exit();
+}
 $szkolenianowe = array();
 $szkoleniazdane = array();
 foreach (array_values($uczestnicy) as $val) {
