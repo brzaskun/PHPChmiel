@@ -25,6 +25,7 @@ if ($firmaaktywna==0) {
 }
 $szkolenianowe = array();
 $szkoleniazdane = array();
+$uczestnicy = R::findAll('uczestnicy', $parametr);
 foreach (array_values($uczestnicy) as $val) {
     if ($val->wyslanycert == 1) {
         $szkoleniazdane[$val->nazwaszkolenia] = $val->id;
