@@ -1,6 +1,11 @@
 <?php
 error_reporting(2);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
+if ($_SERVER["HTTP_HOST"] != "localhost:8000") {
+    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+} else {
+    $_SESSION['host'] = 'mysql:host=localhost;';
+}
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $email = filter_input(INPUT_POST, "mail", FILTER_SANITIZE_EMAIL);
 $haslo = filter_input(INPUT_POST, "haslo", FILTER_SANITIZE_STRING);
