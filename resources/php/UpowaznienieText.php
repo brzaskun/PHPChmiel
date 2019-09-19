@@ -19,13 +19,13 @@ class UpowaznienieText {
                 '<p></p>' .
                 '<p style="font-size: large;">z dniem ' . $datanadania . 'r.</p>' .
                 '<p style="font-size: large;">Pani ' . $imienaz . '</p>' .
-                '<p>zostaje upoważniona do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'</p>' .
+                '<p>zostaje upoważniona do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'.</p>' .
                 '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
                 '<p><b>' . $grupy . '</b></p>' .
                 '<p><b>wyłącznie w zakresie wynikającym z poleceń przełożonego (Administratora).</b></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
                 '<p></p>' .
-                '<p>Ja niżej podpisana zobowiązuję się do zachowania w tajemnicy danych osobowych, wszelkich procedur, zabezpieczeń i innych informacji i danych pozyskanych podczas świadczenia pracy (usług) również po ustaniu stosunku umownego.</p>' .
+                '<p>Ja niżej podpisana, zobowiązuję się do zachowania w tajemnicy danych osobowych, wszelkich procedur, zabezpieczeń i innych informacji i danych pozyskanych podczas świadczenia pracy (usług) również po ustaniu stosunku umownego.</p>' .
                 '<p></p>' .
                 '<p>...................................................</p>' .
                 '<p><i> podpis osoby otrzymującej upoważnienie</i></p>' .
@@ -44,13 +44,13 @@ class UpowaznienieText {
                 '<p></p>' .
                 '<p style="font-size: large;">z dniem ' . $datanadania . '</p>' .
                 '<p style="font-size: large;">Pan ' . $imienaz . '</p>' .
-                '<p>zostaje upoważniony do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'</p>' .
+                '<p>zostaje upoważniony do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '. $sqlfirma .'.</p>' .
                 '<p>Upoważnienie dotyczy przetwarzania danych osobowych w ramach następujących zbiorów danych osobowych z wykorzystaniem określonego sposobu dostępu do danych:</p>' .
                 '<p><b>' . $grupy . '</b></p>' .
                 '<p><b>wyłącznie w zakresie wynikającym z poleceń przełożonego (Administratora).</b></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
                 '<p></p>' .
-                '<p>Ja niżej podpisany zobowiązuję się do zachowania w tajemnicy danych osobowych, wszelkich procedur, zabezpieczeń i innych informacji i danych pozyskanych podczas świadczenia pracy (usług) również po ustaniu stosunku umownego.</p>' .
+                '<p>Ja niżej podpisany, zobowiązuję się do zachowania w tajemnicy danych osobowych, wszelkich procedur, zabezpieczeń i innych informacji i danych pozyskanych podczas świadczenia pracy (usług) również po ustaniu stosunku umownego.</p>' .
                 '<p></p>' .
                 '<p>...................................................</p>' .
                 '<p><i> podpis osoby otrzymującej upoważnienie</i></p>' .
@@ -61,7 +61,6 @@ class UpowaznienieText {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
-                '<p align="left" style="color: grey">Załącznik      do Polityki bezpieczeństwa</p>'.
                 '<p></p>' .
                 '<p></p>' .
                 '<p align="center"><b>UPOWAŻNIENIE ' . $nrupowaznienia . '/2018</p>' .
@@ -90,7 +89,6 @@ class UpowaznienieText {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
-                '<p align="left" style="color: grey">Załącznik      do Polityki bezpieczeństwa</p>'.
                 '<p></p>' .
                 '<p></p>' .
                 '<p align="center"><b>UPOWAŻNIENIE ' . $nrupowaznienia . '/2018</p>' .
