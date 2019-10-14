@@ -90,8 +90,10 @@ if ($wykrytobladkolumny === 0) {
                     $val = $cell->getValue();
                     if (PHPExcel_Shared_Date::isDateTime($cell) && $val == "") {
                         $val = NULL;
-                    }
-                    if (PHPExcel_Cell_DataType::dataTypeForValue($val)=="s" && ($col===5 || $col===6) && $val != NULL){
+                    } 
+                    if (PHPExcel_Shared_Date::isDateTime($cell) && ($col===5 || $col===6) && $val != "") {
+                        $val = PHPExcel_Style_NumberFormat::toFormattedString($val, 'DD.MM.YYYY');
+                    } else if (PHPExcel_Cell_DataType::dataTypeForValue($val)=="s" && ($col===5 || $col===6) && $val != NULL){
                         $dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
                         $lewy='((?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d])';
                         $prawy='((?:(?:[1]{1}\\d{1}\\d{1}\\d{1})|(?:[2]{1}\\d{3})))(?![\\d])[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))';
