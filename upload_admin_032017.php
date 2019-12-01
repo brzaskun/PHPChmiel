@@ -54,14 +54,15 @@ foreach ($tablicapobranychpracownikow as $wierszbaza) {
     try {
         if (isset($dataszkolenia) && strlen($dataszkolenia) == "10") {
             $imienazwisko = addslashes($wierszbaza[1]);
+            $plec = strtolower($wierszbaza[2]);
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` ,`firma_id` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`,`datanadania`)
-            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
+            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$plec', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
         } else {
             $imienazwisko = addslashes($wierszbaza[1]);
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` ,`firma_id` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
-            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$wierszbaza[2]', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
+            VALUES ('$wierszbaza[0]',  '$imienazwisko', '$plec', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";
         }
         R::exec($sql);
         $id_uzytkownik = R::getInsertID();
@@ -71,7 +72,7 @@ foreach ($tablicapobranychpracownikow as $wierszbaza) {
                 array_push($niewyslanymail, $wynik);
             }
             foreach ($nazwygrup as $key => $value) {
-                $wartoscpola = $wierszbaza[$value];
+                $wartoscpola = $wierszbaza[$value]; 
                 if ($wartoscpola == 1) {
                     try {
                         $sql = "INSERT INTO uczestnikgrupy (email,nazwiskoiimie,grupa,id_uczestnik) VALUES ('$wierszbaza[0]','$imienazwisko','$key', '$id_uzytkownik');";
