@@ -64,7 +64,7 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
             }
             chdir($sciezka);
             $nazwapliku = $_FILES["file"]["name"];
-            $locale = 'pl_PL';
+            $locale = 'pl_PL'; 
             $validLocale = PHPExcel_Settings::setLocale($locale);
             if (!$validLocale) {
                 echo 'Nie mogę ustawić lokalizacji pliku na  ' . $locale . " - wracam do wersji angielskojęzycznej<br />\n";
@@ -188,7 +188,8 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                         }
                         //walidacja pci
                         if ($col === 2 && $row != 1) {
-                            if ($val !== 'k' && $val !== 'm') {
+                                $val_tmp = strtolower($val);
+                            if ($val_tmp !== 'k' && $val_tmp !== 'm') {
                                 $blad = array($val, "nieprawidłowy symbol płci", "w wierszu " . $lp);
                                 array_push($wykrytoblad, $blad);
                             }
