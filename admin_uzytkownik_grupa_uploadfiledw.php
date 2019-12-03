@@ -69,7 +69,7 @@
         </div>
         <form>
                 <div style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 10px; background-color: #e9e9e9;">
-                    <span>data upoważnienia dane szczególnej kategorii stacjonarnego</span>
+                    <span>data upoważnienia dane szczególnej kategorii stacjonarnego. OBOWIĄZKOWA!</span>
                     <input id="datadsk" name="datadsk" 
                            value="<?php
                            $dataszkolenia = $_COOKIE['datadsk'];

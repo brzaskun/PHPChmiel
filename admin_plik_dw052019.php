@@ -9,12 +9,12 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
 ?>
 <div id="panelladowaniapliku" style="box-shadow: 10px 10px 5px #888; padding: 20px;  margin-top: 10px; background-color: #e9e9e9;">
     <div id="plikwzorcowy" style="height: 40px;">
-        <a href="/resources/wzorcowydw.xls">pobierz plik wzorcowy, żeby zobaczyć jak powinien wyglądać wykaz uczestników do załadowania</a>
+        <a href="/resources/wzorcowydsk.xls">pobierz plik wzorcowy, żeby zobaczyć jak powinien wyglądać wykaz uczestników do załadowania</a>
     </div>
     <div>
         <span style="color: red; margin-top: 10px;">Uwaga! Ta strona służy jedynie do ładowania oznaczeń grupy dane wrażliwe.</span>
     </div>
-    <form id="form1" enctype="multipart/form-data" method="post" action="admin_uzytkownik_grupa_uploadfiledw.php"> 
+    <form id="form1" enctype="multipart/form-data" method="post" action="admin_uzytkownik_grupa_uploadfiledw.php">
         <div style="height: 220px; width: 500px; margin-top: 10px;">
             <div id="przyciskladowanie" style="cursor:pointer; text-align: center; vertical-align: middle; display: table-cell;">
                 <label for="file" style="font-weight: 800; padding: 10px;" onmouseover="$(this).css('background', '#339bb9');" onmouseout="$(this).css('background', 'gainsboro');">Wybierz plik formatu Excel do wczytania</label><br/>
@@ -136,10 +136,12 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                 echo '</tr>';
                 echo '</thead>';
                 echo '<tbody>';
-                for ($row = 2; $row <= $highestRow; ++$row) {
-                    echo '<tr>';
+                for ($row = 1; $row <= $highestRow; ++$row) {
                     $lp = $row-1;
-                    echo '<td>' . $lp . '</td>';
+                    if ($row>1) {
+                        echo '<tr>';
+                        echo '<td>' . $lp . '</td>';
+                    }
                     $wiersz = array();
                     for ($col = 0; $col < $highestColumnIndex; ++$col) {
                         $cell = $worksheet->getCellByColumnAndRow($col, $row);
@@ -148,7 +150,9 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                             $val = $cell->getValue()->getPlainText();
                         }
                         $dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
-                        echo '<td>' . $val . '</td>';
+                        if ($row>1) {
+                            echo '<td>' . $val . '</td>';
+                        }
                         //walidacja adresu mail
                         if ($col === 0 && $row == 1) { 
                             if ($val != "adres e-mail" && $val != "adres email") {
@@ -206,9 +210,17 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                             }
                         }
                         array_push($wiersz, $val);
+                   }
+                    if ($row>1) {
+                        echo '</tr>';
+                        array_push($tablicapobranychpracownikow, $wiersz);
+                        $sql = "SELECT id FROM `uczestnicy` WHERE imienazwisko='$wiersz[1]' AND email='$wiersz[0]' AND nazwaszkolenia='$wiersz[2]';";
+                        $id_uzytkownik = (int) R::getCell($sql);
+                        if ($id_uzytkownik==0) {
+                            $blad = array($val, "dana osoba nie jest przyporządkowana do takiego szkolenia", "w wierszu " . $lp);
+                            array_push($wykrytoblad, $blad);
+                        }
                     }
-                    echo '</tr>';
-                    array_push($tablicapobranychpracownikow, $wiersz);
                     $_SESSION['tablicapobranychpracownikow'] = $tablicapobranychpracownikow;
                 }
                 echo '</tbody>';

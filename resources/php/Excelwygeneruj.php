@@ -292,6 +292,7 @@ class Excelwygeneruj {
         $mailmanager = $_SESSION['uczestnik']['email'];
         $creator = $_SESSION['uczestnik']['imienazwisko'];
         $creatorid = $_SESSION['uczestnik']['id'];
+        $firma = $nazwafirmy;
 
         /** PHPExcel */
         require_once $_SERVER['DOCUMENT_ROOT'] . '/resources/PHPExcel-1.8.1/Classes/PHPExcel.php';
@@ -387,7 +388,10 @@ class Excelwygeneruj {
                     unlink($fileInfo->getFilename());
                 }
         }
-        $file = tempnam($sciezka, '');
+        //$file = tempnam($sciezka, '');
+        $today = date("Ymd");  
+        $time = date("H.i");
+        $file = $sciezka.$firma."_UPGrupy_".$today."_".$time;
         $file = $file . '.xlsx';
         //        $file = $_SERVER['DOCUMENT_ROOT'] . '/upload/' . $creatorid . '/listauzytkownicygrupy.xlsx'; 
         // Save Excel 2007 file
