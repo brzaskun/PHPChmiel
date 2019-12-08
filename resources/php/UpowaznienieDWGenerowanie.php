@@ -73,7 +73,7 @@ class UpowaznienieDWGenerowanie {
                     if (isset($_SESSION['uczestnik']['kontakt'])) {
                         $kontakt = $_SESSION['uczestnik']['kontakt'];
                     }
-                    $bcc = UpowaznienieDWGenerowanie::pobierzBCC();
+                    $bcc = UpowaznienieDWGenerowanie::pobierzBCC($kontakt);
                     //echo "adrez zbiorczy ".$bcc;
                     $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
                     if ($nrupowaznienia!="") {
@@ -105,7 +105,7 @@ class UpowaznienieDWGenerowanie {
                         $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
                         $nazwapliku = 'resources/upowaznienia/upowaznienieDW' . $id . '-' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
                         $mpdf->Output($nazwapliku, 'F');
-                        Mail::mailupowaznienieDW($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $id);
+                        Mail::mailupowaznienieDW($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $bcc, $id);
                         //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
                         $czasbiezacy = date("Y-m-d H:i:s");
                         $id = $_SESSION['uczestnik']['id'];
@@ -129,15 +129,18 @@ class UpowaznienieDWGenerowanie {
         $firma_id = $_SESSION['uczestnik']['firma_id'];
         $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
         $bcc = R::getCell($sql);
+        $firma_id = $_SESSION['uczestnik']['firma_id'];
         $_SESSION['uczestnik']['BCC'] = $bcc;
+        $zwrot = array();
+        $zwrot = array($bcc => $kontakt);
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
         $firma = $_SESSION['uczestnik']['firma'];
-//        $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
-//        $email2 = R::getCell($sql);
-//        if (isset($email2) && $email2!="") {
-//            $bcc = $email2;
-//        }
-        return $bcc;
+        $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma_id = '$firma_id' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
+        $email2 = R::getCell($sql);
+        if (isset($email2) && $email2!="") {
+            $zwrot[$email2] = $kontakt;
+        }
+        return $zwrot;
     }
 
     public final static function pobierzgrupy($id) {

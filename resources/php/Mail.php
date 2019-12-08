@@ -109,9 +109,8 @@ class Mail {
         return $linia1;
     }
            
-    public static function mailzaswiadczenie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenieuser, $id) {
+    public static function mailzaswiadczenie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $bcc, $szkolenieuser, $id) {
         $kontakt = trim($kontakt);
-        $bcc = trim($bcc);
         $wiadomosc = "nie";
         require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -127,7 +126,7 @@ class Mail {
                         ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
-                        ->setBcc(array($bcc => $kontakt));
+                        ->setBcc($bcc);
                 $message->setBody('
                     <!DOCTYPE html><html lang="pl">
                     <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -208,9 +207,8 @@ class Mail {
         return $wiadomosc;
     }
 
-    public static function mailupowaznienie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $id) {
+    public static function mailupowaznienie($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $bcc, $id) {
         $kontakt = trim($kontakt);
-        $bcc = trim($bcc);
 //        $bcc = "brzaskun@o2.pl";
 //        $kontakt = "Grzegorz";
         $wiadomosc = "nie";
@@ -227,7 +225,7 @@ class Mail {
                             ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
-                            ->setBcc(array($bcc => $kontakt));
+                            ->setBcc($bcc);
                     $message->setBody('
             <!DOCTYPE html><html lang="pl">
             <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -307,9 +305,8 @@ class Mail {
     }
     
     
-     public static function mailupowaznienieDW($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie, $kontakt, $bcc, $id) {
+     public static function mailupowaznienieDW($imienazwisko, $plec, $email, $filename, $poziomzaswiadczenie,$bcc, $id) {
         $kontakt = trim($kontakt);
-        $bcc = trim($bcc);
 //        $bcc = "brzaskun@o2.pl";
 //        $kontakt = "Grzegorz";
         $wiadomosc = "nie";
@@ -326,7 +323,7 @@ class Mail {
                             ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
-                            ->setBcc(array($bcc => $kontakt));
+                            ->setBcc($bcc);
                     $message->setBody('
             <!DOCTYPE html><html lang="pl">
             <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>

@@ -72,7 +72,7 @@ class UpowaznienieGenerowanie_old {
                     if (isset($_SESSION['uczestnik']['kontakt'])) {
                         $kontakt = $_SESSION['uczestnik']['kontakt'];
                     }
-                    $bcc = UpowaznienieGenerowanie::pobierzBCC();
+                    $bcc = UpowaznienieGenerowanie::pobierzBCC($kontakt);
                     $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
                     $datanadania = R::getCell("SELECT  `datanadania` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
                     $dataustania = $_SESSION['uczestnik']['dataustania'];
@@ -157,7 +157,7 @@ class UpowaznienieGenerowanie_old {
                         $id_szkolenia = R::getCell("SELECT id FROM szkoleniewykaz WHERE nazwa = '$szkolenie'");
                         $nazwapliku = 'resources/upowaznienia/upowaznienie' . $id . '-' . $imienazplik . '.' . $id_szkolenia .'-'.$stacjonarny.'.'.'pdf'; 
                         $mpdf->Output($nazwapliku, 'F');
-                        Mail::mailupowaznienie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $id);
+                        Mail::mailupowaznienie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $bcc, $id);
                         //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
                         $czasbiezacy = date("Y-m-d H:i:s");
                         $id = $_SESSION['uczestnik']['id'];
@@ -178,13 +178,15 @@ class UpowaznienieGenerowanie_old {
             $bcc = $_SESSION['uczestnik']['BCC'];
         }
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
-        $firma = $_SESSION['uczestnik']['firma'];
-        $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma = '$firma' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
+        $firma_id = $_SESSION['uczestnik']['firma_id'];
+        $zwrot = array();
+        $zwrot = array($bcc => $kontakt);
+        $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma_id = '$firma_id' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
         $email2 = R::getCell($sql);
         if (isset($email2) && $email2!="") {
-            $bcc = $email2;
+            $zwrot[$email2] = $kontakt;
         }
-        return $bcc;
+        return $zwrot;;
     }
 
     public final static function pobierzgrupy($id) {

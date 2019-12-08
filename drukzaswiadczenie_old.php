@@ -47,7 +47,7 @@
             if (isset($_SESSION['uczestnik']['kontakt'])) {
                 $kontakt = $_SESSION['uczestnik']['kontakt'];
             }
-            $bcc = CertyfikatGenerowanie::pobierzBCC();
+            $bcc = CertyfikatGenerowanie::pobierzBCC($kontakt);
             $datadozapisu = R::getCell("SELECT `sessionend` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
             $datadozapisu = date('d.m.Y', strtotime($datadozapisu));
             $poziomzaswiadczenie = CertyfikatGenerowanie::pobierzPoziomZaswiadczenia();
@@ -71,7 +71,7 @@
             $nazwapliku = 'resources/zaswiadczenia/zaswiadczenie' . $id . '_' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
             $mpdf->Output($nazwapliku, 'F');
             $czysiewyslalo = "nie";
-            $czysiewyslalo = Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $szkolenie, $id);
+            $czysiewyslalo = Mail::mailzaswiadczenie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $bcc, $szkolenie, $id);
 //            echo "wyslalem zaswiadczenie\r" . +"\r\n";
             //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
             if ($czysiewyslalo=="tak") {
@@ -99,7 +99,7 @@
                 if (isset($_SESSION['uczestnik']['kontakt'])) {
                     $kontakt = $_SESSION['uczestnik']['kontakt'];
                 }
-                $bcc = UpowaznienieGenerowanie::pobierzBCC();
+                $bcc = UpowaznienieGenerowanie::pobierzBCC($kontakt);
                 $nrupowaznienia = $_SESSION['uczestnik']['nrupowaznienia'];
                 $datanadania = R::getCell("SELECT  `datanadania` FROM `uczestnicy` WHERE  `uczestnicy`.`id` = '$id';");
                 $dataustania = $_SESSION['uczestnik']['dataustania'];
@@ -182,7 +182,7 @@
                     $nazwapliku = 'resources/upowaznienia/upowaznienie' . $id . '-' . $imienazplik . '.' . $id_szkolenia . '.' . 'pdf';
                     $mpdf->Output($nazwapliku, 'F');
                     $czysiewyslalo2 = "nie";
-                    $czysiewyslalo2 = Mail::mailupowaznienie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $kontakt, $bcc, $id);
+                    $czysiewyslalo2 = Mail::mailupowaznienie($imienaz, $plec, $email, $nazwapliku, $poziomzaswiadczenie, $bcc, $id);
                     //czas sesji zaswiadcza, ze funkcja zostala wykonana bez bledu do konca 
                     if ($czysiewyslalo2=="tak") {
                         $czasbiezacy = date("Y-m-d H:i:s");
