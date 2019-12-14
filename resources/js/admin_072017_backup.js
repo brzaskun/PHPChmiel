@@ -102,3 +102,36 @@ var archiwizuj = function () {
         }
     });
 };
+
+var testemaile = function() {
+    $("#pole3").show();
+    $("#pole4").hide();
+    $("#ajax_sun").show();
+    var testemailpole = $('#adresemail').val();
+    $.ajax({
+        type: "POST",
+        data: "testemail="+testemailpole,
+        url: "testemail.php",
+        cache: false,
+        timeout: 18000, // sets timeout for the request
+        error: function (xhr, status, error) {
+            alert('Error: ' + xhr.status + ' - ' + error);
+            $("#ajax_sun").hide();
+        },
+        success: function (response) {
+            $("#pole4").show();
+            $("#ajax_sun").hide();
+            document.getElementById("pole6").innerText= response;
+            $("#pole5").show();
+        }
+    });
+};
+
+var weryfikujtestemail = function() {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var testw = $('#adresemail').val();
+    if (!testw.match(re)){
+        $('#adresemail').val("b\u0142ędny email");
+        $('#adresemail').select();
+    }
+};

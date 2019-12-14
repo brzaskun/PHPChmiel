@@ -53,7 +53,13 @@ if ($firmaaktywna==0) {
     $_SESSION['wyjdz'] = 'tak';
     exit();
 }
-
+if (isset($_SESSION['uczestnik']['dataustania']) && $_SESSION['uczestnik']['dataustania']!='') {
+    $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
+    $url = "exit_dataustania.php?$zm";
+    header("Location: $url");
+    $_SESSION['wyjdz'] = 'tak';
+    exit();
+}
 //jezeli uczestnik zdal test to nie ma sensu robic innych rzeczy tylko przekierowac go na strone wynik testu. moze chce sobie przypomniec chwile chwaly
 //lub pobrac certyfikat
 if (isset($_SESSION['uczestnik']['sessionend'])) {

@@ -60,6 +60,7 @@ foreach ($tablicapobranychpracownikow as $wierszbaza) {
             VALUES ('$wierszbaza[0]',  '$imienazwisko', '$plec', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 1, '$dataszkoleniastamp' , '$dataszkoleniastamp', 101 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',1, '$datanadania');";
         } else {
             $imienazwisko = addslashes($wierszbaza[1]);
+            $plec = strtolower($wierszbaza[2]);
             $sql = "INSERT INTO  `uczestnicy` (`email` ,`imienazwisko` ,`plec` ,`firma` ,`firma_id` , `nazwaszkolenia`, `uprawnienia` ,`wyslanymailupr` ,`sessionstart` ,
             `sessionend` ,`wyniktestu` ,`wyslanycert`,`indetyfikator`, `nrupowaznienia`, `utworzony`,`stacjonarny`)
             VALUES ('$wierszbaza[0]',  '$imienazwisko', '$plec', '$firmabaza', '$firma_id', '$wierszbaza[3]', 'uzytkownik' , 0, NULL , NULL , 0 , 0, '$wierszbaza[4]', '$wierszbaza[5]', '$czasbiezacy',0);";

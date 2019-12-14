@@ -8,62 +8,20 @@ class Mail {
         $poziomzaswiadczenie = Mail::pobierzPoziomZaswiadczenia($szkolenieuser, $plec);
         $instrukcja = R::getCell("SELECT instrukcja FROM szkoleniewykaz WHERE  nazwa = '$szkolenieuser'");
         $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
-            // Create the Mailer using your created Transport 
-            $mailer = Mail::mailerFactory();
-            $logger = Mail::loggerFactory($mailer);
-            // Create a message
-            $message = null;
+        // Create the Mailer using your created Transport 
+        $mailer = Mail::mailerFactory();
+        $logger = Mail::loggerFactory($mailer);
+        // Create a message
+        $message = Swift_Message::newInstance('Rejestracja do e-szkolenia ' . $linia1) 
+                        ->setContentType('text/plain')
+                        ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
+                        ->setTo(array($email => $imienazwisko));
+        require_once('resources/php/MailText.php');
             if ($plec === "k") {
-                $message = Swift_Message::newInstance('Rejestracja do e-szkolenia ' . $linia1) 
-                        ->setContentType('text/plain')
-                        ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
-                        ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
-                        ->setTo(array($email => $imienazwisko))
-                        ->setBody('
-         <h4>Dzień dobry,</h4>
-        <div style="width: 550px; text-align: justify;">
-        <p>Pani adres email został zarejestrowany w systemie e-learningu. </p>
-        <p>Zapraszamy do wzięcia udziału w szkoleniu przygotowanym przez firmę ODO Management Group. 
-        Szkolenie kończy się testem wielokrotnego wyboru. Po ukończeniu testu generowane jest stosowne zaświadczenie (plik PDF). 
-        W przypadku niezaliczenia testu należy zalogować się jeszcze raz i ponownie przystąpić do szkolenia i do testu.</p>
-        <p style="color: rgb(243,112,33);">Poniższy link pozostaje aktywny przez 24 godziny od momentu pierwszego zalogowania do systemu.</p>
-        <p>Kliknij w ten link, aby rozpocząć <a href="https://szkolenie.odomg.pl/index.php?mail=' . urlencode($email) . '">SZKOLENIE</a> </p>
-        <p><a href="https://szkolenie.odomg.pl/resources/css/pics/'.$instrukcja.'">instrukcja do e-szkolenia,</a></p>
-         Wzięcie udziału w szkoleniu wymaga umieszczenia na komputerze użytkownika plików cookie.
-         Rozpoczęcie szkolenia oznacza wyrażenie zgody na użycie plików cookie.</p>
-		 <p>Wymagania systemowe umożliwiające prawidłowe funkcjonowanie programu: zainstalowany program Acrobat Reader (od wersji 10.0). <br/>
-		 Rekomendowane przeglądarki: Chrome, Mozilla Firefox, Internet Explorer (w ostatnich wersjach)</p>
-          
-        <p>Powodzenia!</p>
-        <p>Zespół ODO Management Group</p><br/>
-        <p style="font-weight: bold;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-        </div>
-    ', 'text/html');
+                $message->setBody(Mailtext::mailautomatKobieta($email, $instrukcja), 'text/html');
             } else {
-                $message = Swift_Message::newInstance('Rejestracja do e-szkolenia ' . $linia1)
-                        ->setContentType('text/plain')
-                        ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
-                        ->setTo(array($email => $imienazwisko))
-                        ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
-                        ->setBody('
-        <h4>Dzień dobry,</h4>
-        <div style="width: 550px; text-align: justify;">
-        <p>Pana adres email został zarejestrowany w systemie e-learningu. </p>
-        <p>Zapraszamy do wzięcia udziału w szkoleniu przygotowanym przez firmę ODO Management Group. 
-        Szkolenie kończy się testem wielokrotnego wyboru. Po ukończeniu testu generowane jest stosowne zaświadczenie (plik PDF). 
-        W przypadku niezaliczenia testu należy zalogować się jeszcze raz i ponownie przystąpić do szkolenia i do testu.</p>
-        <p style="color: rgb(243,112,33);">Poniższy link pozostaje aktywny przez 24 godziny od momentu pierwszego zalogowania do systemu.</p>
-        <p>Kliknij w ten link, aby rozpocząć <a href="https://szkolenie.odomg.pl/index.php?mail=' . urlencode($email) . '">SZKOLENIE</a> </p>
-        <p><a href="https://szkolenie.odomg.pl/resources/css/pics/'.$instrukcja.'">instrukcja do e-szkolenia,</a></p>
-         Wzięcie udziału w szkoleniu wymaga umieszczenia na komputerze użytkownika plików cookie.
-         Rozpoczęcie szkolenia oznacza wyrażenie zgody na użycie plików cookie.</p>
-		 <p>Wymagania systemowe umożliwiające prawidłowe funkcjonowanie programu: zainstalowany program Acrobat Reader (od wersji 10.0). <br/>
-		 Rekomendowane przeglądarki: Chrome, Mozilla Firefox, Internet Explorer (w ostatnich wersjach)</p>
-        <p>Powodzenia!</p>
-        <p>Zespół ODO Management Group</p><br/>
-        <p style="font-weight: bold;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-        </div>
-    ', 'text/html');
+                $message->setBody(Mailtext::mailautomatMezczyzna($email, $instrukcja), 'text/html');
             }
             // Send the message
             $failedRecipients = array();
@@ -72,7 +30,7 @@ class Mail {
             $numSent = $mailer->send($message, $failedRecipients);
             if (stripos($logger->dump(), "250 OK id") == 0) {
                 Mail::mailniewyslano($email,$logger, "rejestracja automatyczna");
-                return $email;
+                echo $email;
             } else if ($numSent == 1) {
                 $sql = "UPDATE  `uczestnicy` SET  `wyslanymailupr` = '1' WHERE  `uczestnicy`.`id` = $id_uzytkownik;";
                 $res = R::exec($sql);
@@ -118,6 +76,7 @@ class Mail {
             // Create the Mailer using your created Transport
             $mailer = Mail::mailerFactory();
             $logger = Mail::loggerFactory($mailer);
+            require_once('resources/php/MailText.php');
             // Create a message
             $message = null;
             if ($plec === "k") {
@@ -127,62 +86,15 @@ class Mail {
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
                         ->setBcc($bcc);
-                $message->setBody('
-                    <!DOCTYPE html><html lang="pl">
-                    <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-                    <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-                    <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
-                    <p>Dzień dobry.</p>
-                    <p>Gratulujemy ukończenia szkolenia ' . $poziomzaswiadczenie . '</p>
-                    <p>przygotowanego przez ODO Management Group.</p>
-                    <p>W załączniku tej wiadomości znajduje się zaświadczenie (plik PDF) potwierdzające zaliczenie testu.</p>
-                    <br/>
-                    <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
-                    <p>Zespół ODO Management Group</p><br/>
-                    <img src="' . // Embed the file
-                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                        '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
-                    <img src="' . // Embed the file
-                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                        '" width="152" height="32" margin-left="5">
-                    <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-                    </div>
-                    <div style="height: 40px;">
-                    </div>
-                    </body></html> 
-                ', 'text/html');
+                $message->setBody(Mailtext::mailzaswiadczenieKobieta($message, $poziomzaswiadczenie), 'text/html');
             } else {
-
                 $message = Swift_Message::newInstance($imienazwisko.' - zaświadczenie ukończenia e-szkolenia - ' . $linia1)
                         ->setContentType('text/plain')
                         ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                         ->setTo(array($email => $imienazwisko))
-                        ->setBcc(array($bcc => $kontakt))
+                        ->setBcc($bcc)
                         ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'));
-                $message->setBody('
-                    <!DOCTYPE html><html lang="pl">
-                    <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-                    <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-                    <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
-                    <p>Dzień dobry.</p>
-                     <p>Gratulujemy ukończenia szkolenia ' . $poziomzaswiadczenie . '</p>
-                    <p>przygotowanego przez ODO Management Group.</p>
-                    <p>W załączniku tej wiadomości znajduje się zaświadczenie (plik PDF) potwierdzające zaliczenie testu.</p>
-                    <br/>
-                    <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
-                    <p>Zespół ODO Management Group</p><br/>
-                    <img src="' . // Embed the file
-                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                        '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
-                    <img src="' . // Embed the file
-                        $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                        '" width="152" height="32">
-                    <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-                    </div>
-                    <div style="height: 40px;">
-                    </div>
-                    </body></html>
-                ', 'text/html');
+                $message->setBody(Mailtext::mailzaswiadczenieMezczyzna($message, $poziomzaswiadczenie), 'text/html');
             }
             //zalacz plik
             $message->attach(Swift_Attachment::fromPath($filename));
@@ -195,14 +107,15 @@ class Mail {
             } catch(exception $ex) {
                 echo $ex;
             }
-            if ($numSent == 0) {//ZMIENIC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if (stripos($logger->dump(), "250 OK id") == 0) {
                 $niewyslano = $failedRecipients[0];
                 Mail::mailniewyslano($niewyslano, $logger, "ukończenie szkolenia");
-            } else {
+            } 
+            //else { nie mozn azrobic else bo sa fikcyjne adresy. ciagle usilowalby dostarczyc bez skutecznie
                 $sql = "UPDATE uczestnicy SET wyslanycert = 1 WHERE id = '$id'";
                 $res = R::exec($sql);
                 $wiadomosc = "tak";
-            }
+            //}
         }
         return $wiadomosc;
     }
@@ -217,6 +130,7 @@ class Mail {
                 // Create the Mailer using your created Transport
                 $mailer = Mail::mailerFactory();
                 $logger = Mail::loggerFactory($mailer);
+                 require_once('resources/php/MailText.php');
                 // Create a message
                 $message = null;
                 if ($plec === "k") {
@@ -226,58 +140,16 @@ class Mail {
                             ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
                             ->setBcc($bcc);
-                    $message->setBody('
-            <!DOCTYPE html><html lang="pl">
-            <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-            <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-            <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
-            <p>Dzień dobry.</p>
-            <p>W załączniku tej wiadomości znajduje się upoważnienie do przetwarzania danych osobowych (plik PDF), należy je niezwłocznie wydrukować oraz podpisać w miejscu oznaczonym i przekazać przełożonemu lub innej osobie zgodnie z przyjętą w twojej firmie procedurą nadawania upoważnień.</p>
-            <br/>
-            <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
-            <p>Zespół ODO Management Group</p><br/>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                            '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                            '" width="152" height="32" margin-left="5">
-            <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-            </div>
-            <div style="height: 40px;">
-            </div>
-            </body></html> 
-        ', 'text/html');
+                    $message->setBody(Mailtext::mailzaupowaznienieKobieta($message), 'text/html');
                 } else {
 
                     $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
                             ->setContentType('text/plain')
                             ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
-                            ->setBcc(array($bcc => $kontakt))
+                            ->setBcc($bcc)
                             ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'));
-                    $message->setBody('
-            <!DOCTYPE html><html lang="pl">
-            <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-            <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-            <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
-            <p>Dzień dobry.</p>
-            <p>W załączniku tej wiadomości znajduje się upoważnienie do przetwarzania danych osobowych (plik PDF), należy je niezwłocznie wydrukować oraz podpisać w miejscu oznaczonym i przekazać przełożonemu lub innej osobie zgodnie z przyjętą w twojej firmie procedurą nadawania upoważnień.</p>
-            <br/>
-            <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
-            <p>Zespół ODO Management Group</p><br/>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                            '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                            '" width="152" height="32">
-            <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-            </div>
-            <div style="height: 40px;">
-            </div>
-            </body></html>
-        ', 'text/html');
+                    $message->setBody(Mailtext::mailzaupowaznienieMezczyzna($message), 'text/html');
                 }
                 //zalacz plik
                 $message->attach(Swift_Attachment::fromPath($filename));
@@ -285,7 +157,7 @@ class Mail {
                 $numSent = 0;
                 // Send the message 
                 $numSent = $mailer->send($message, $failedRecipients);
-                if ($numSent == 0) {
+                if (stripos($logger->dump(), "250 OK id") == 0) {
                     throw new Exception("Wystąpił błąd. Nie wysłano upoważnienia do użytkownika $email");
                 } else if ($numSent > 0) {
                     $niewyslano = NULL;
@@ -294,8 +166,10 @@ class Mail {
                         $niewyslano = $failedRecipients[0];
                         Mail::mailniewyslano($niewyslano,$logger, "wysyłka upoważnienia");
                     }
-                    $sql = "UPDATE uczestnicy SET  wyslaneup = 1 WHERE id = '$id'";
-                    $res = R::exec($sql);
+                    //else { nie mozn azrobic else bo sa fikcyjne adresy. ciagle usilowalby dostarczyc bez skutecznie
+                        $sql = "UPDATE uczestnicy SET  wyslaneup = 1 WHERE id = '$id'";
+                        $res = R::exec($sql);
+                    //}
     //                if ($res == 1) {
     //                    throw new Exception("Wysłano mail z upoważnieniem na adres $email, ale nie udało się zaznaczyć tego w tabeli");
     //                }
@@ -315,6 +189,7 @@ class Mail {
                 // Create the Mailer using your created Transport
                 $mailer = Mail::mailerFactory();
                 $logger = Mail::loggerFactory($mailer);
+                require_once('resources/php/MailText.php');
                 // Create a message
                 $message = null;
                 if ($plec === "k") {
@@ -324,58 +199,16 @@ class Mail {
                             ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
                             ->setBcc($bcc);
-                    $message->setBody('
-            <!DOCTYPE html><html lang="pl">
-            <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-            <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-            <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
-            <p>Dzień dobry.</p>
-            <p>W załączniku tej wiadomości znajduje się upoważnienie do przetwarzania danych osobowych (plik PDF), należy je niezwłocznie wydrukować oraz podpisać w miejscu oznaczonym i przekazać przełożonemu lub innej osobie zgodnie z przyjętą w twojej firmie procedurą nadawania upoważnień.</p>
-            <br/>
-            <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
-            <p>Zespół ODO Management Group</p><br/>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                            '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                            '" width="152" height="32" margin-left="5">
-            <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-            </div>
-            <div style="height: 40px;">
-            </div>
-            </body></html> 
-        ', 'text/html');
+                    $message->setBody(Mailtext::mailzaupowaznienieDWKobieta($message), 'text/html');
                 } else {
 
                     $message = Swift_Message::newInstance($imienazwisko.' - upoważnienie do przetwarzania danych osobowych')
                             ->setContentType('text/plain')
                             ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
                             ->setTo(array($email => $imienazwisko))
-                            ->setBcc(array($bcc => $kontakt))
+                            ->setBcc($bcc)
                             ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'));
-                    $message->setBody('
-            <!DOCTYPE html><html lang="pl">
-            <head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-            <link rel="stylesheet" href="/resources/css/zaswiadczenie.css"/></head><body>
-            <div style="text-align: left; font-size: 12pt; height: 250px; color: rgb(74,26,15);">
-            <p>Dzień dobry.</p>
-            <p>W załączniku tej wiadomości znajduje się upoważnienie do przetwarzania danych osobowych (plik PDF), należy je niezwłocznie wydrukować oraz podpisać w miejscu oznaczonym i przekazać przełożonemu lub innej osobie zgodnie z przyjętą w twojej firmie procedurą nadawania upoważnień.</p>
-            <br/>
-            <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
-            <p>Zespół ODO Management Group</p><br/>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector.png')) .
-                            '" width="93" height="61"><span style="margin-left: 5px; color: white;">a</span>
-            <img src="' . // Embed the file
-                            $message->embed(Swift_Image::fromPath($_SERVER['DOCUMENT_ROOT'] . '/resources/css/pics/ODOLogoVector1.png')) .
-                            '" width="152" height="32">
-            <p style="font-weight: bold; font-size: smaller;">Tę wiadomość wygenerowano automatycznie,  prosimy na nią nie odpowiadać.</p>
-            </div>
-            <div style="height: 40px;">
-            </div>
-            </body></html>
-        ', 'text/html');
+                    $message->setBody(Mailtext::mailzaupowaznienieDWMezczyzna($message), 'text/html');
                 }
                 //zalacz plik
                 $message->attach(Swift_Attachment::fromPath($filename));
@@ -383,7 +216,7 @@ class Mail {
                 $numSent = 0;
                 // Send the message 
                 $numSent = $mailer->send($message, $failedRecipients);
-                if ($numSent == 0) {
+                if (stripos($logger->dump(), "250 OK id") == 0) {
                     throw new Exception("Wystąpił błąd. Nie wysłano upoważnienia do użytkownika $email");
                 } else if ($numSent > 0) {
                     $niewyslano = NULL;
@@ -391,9 +224,11 @@ class Mail {
                     if ($numSent == 1) {
                         $niewyslano = $failedRecipients[0];
                         Mail::mailniewyslano($niewyslano,$logger, "wysyłka upoważnienia");
-                    }
-                    $sql = "UPDATE uczestnicy SET  wyslaneupdanewrazliwe = 1 WHERE id = '$id'";
-                    $res = R::exec($sql);
+                    } 
+                    //else { nie mozn azrobic else bo sa fikcyjne adresy. ciagle usilowalby dostarczyc bez skutecznieelse {
+                        $sql = "UPDATE uczestnicy SET  wyslaneupdanewrazliwe = 1 WHERE id = '$id'";
+                        $res = R::exec($sql);
+                    //}
     //                if ($res == 1) {
     //                    throw new Exception("Wysłano mail z upoważnieniem na adres $email, ale nie udało się zaznaczyć tego w tabeli");
     //                }
@@ -422,7 +257,10 @@ class Mail {
         $transport->setUsername($p['adres']);
         $transport->setPassword($p['pas']);
         // Create the Mailer using your created Transport
-        return Swift_Mailer::newInstance($transport);
+        $mailer = Swift_Mailer::newInstance($transport);
+        // And specify a time in seconds to pause for (30 secs)
+        $mailer->registerPlugin(new Swift_Plugins_AntiFloodPlugin(50, 90));
+        return $mailer;
     }
     
     public static function loggerFactory($mailer) {
@@ -598,7 +436,33 @@ class Mail {
             $mailer->send($message, $failedRecipients);
     }
 
-    
+    public static function mailautomattest($email) {
+        $email = trim($email);
+        require_once 'resources/swiftmailer/swift_required.php';
+        // Create the Mailer using your created Transport 
+        $mailer = Mail::mailerFactory();
+        $logger = Mail::loggerFactory($mailer);
+        require_once('resources/php/MailText.php');
+        // Create a message
+        $message = null;
+        $message = Swift_Message::newInstance('Mail testowy do e-szkolenia') 
+                        ->setContentType('text/plain')
+                        ->setFrom(array('mail@odomg.com.pl' => 'ODO Management Group'))
+                        ->setReplyTo(array('mail@odomg.com.pl' => 'ODO Management Group'))
+                        ->setTo(array($email => $email))
+                        ->setBody(Mailtext::mailautomattest(), 'text/html');
+        // Send the message
+        $failedRecipients = array();
+        $numSent = 0;
+        // Send the message
+        $numSent = $mailer->send($message, $failedRecipients);
+        if (stripos($logger->dump(), "250 OK id") == 0) {
+            Mail::mailniewyslano($email,$logger, "rejestracja automatyczna");
+            echo "<span style='color:red'>Błąd nie wysłano maila </span>".$logger->dump();
+        } else if ($numSent == 1) {
+            echo $logger->dump();
+        }
+    }
      
 }
 

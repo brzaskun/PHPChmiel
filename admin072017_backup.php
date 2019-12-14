@@ -6,6 +6,11 @@
     if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         die("Nie jesteś upoważniony do przeglądania zasobu");
     }
+    if ($_SERVER["HTTP_HOST"] != "localhost:8000") {
+        $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+    } else {
+        $_SESSION['host'] = 'mysql:host=localhost;';
+    }
     require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
     R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
     $_coszukac = "SELECT * FROM `uczestnicy` WHERE datanadania IS NOT NULL AND datanadania <>'' AND wyslanymailupr=0";
@@ -60,15 +65,26 @@
         <?php
             include_once './menu_backup.php';
         ?>
-        <div style="box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
-            <div>
+        <div style="box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: #363030; ">
+            <div style="width: 1100px;box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
             <form >
                 <button id='potwierdz' type='button' value="archiwizuj" onclick="archiwizuj();" style="width: 160px; margin-top: 1%; ">archiwizuj dane</button>
             </form>
             <p id="pole1"  style="display: none; color: blue; margin-left: 3%; font-weight: 900;">Rozpoczynam archiwizację</p>
             <p id="pole2"  style="display: none; color: blue; margin-left: 3%; font-weight: 900;">Zakończyłem archiwizację</p>
             </div>
-            <div style="width: 950px;margin-top: 25px;">
+            <div style="width: 1100px;box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
+            <form >
+                <span>adres email do przetestowania</span>
+                <input id="adresemail" name="adresemail" 
+                           type="text" onchange="weryfikujtestemail()"   style="width: 280px;"/>
+                <button id='testemail' type='button'  onclick="testemaile()" style="width: 160px; margin-top: 1%; ">test email</button>
+            </form>
+            <p id="pole3"  style="display: none; color: blue; margin-left: 3%; font-weight: 900;">Wysyłam maila</p>
+            <p id="pole4"  style="display: none; color: blue; margin-left: 3%; font-weight: 900;">Zakończyłem wysyłkę maila</p>
+            <p id="pole5"  style="display: none; color: green; margin-left: 3%; "><span id="pole6"></span></p>
+            </div>
+            <div style="width: 1100px;margin-top: 25px;box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
                 <p style="font-weight: bolder; color: blue;">Uczestnicy bez wysłanego linka</p>
                 <table  id="tab1" style="width: 1050px;">
                         <thead>
@@ -94,7 +110,7 @@
                         </tbody>
                     </table>
             </div>
-            <div style="width: 950px;margin-top: 25px;">
+            <div style="width: 1100px;margin-top: 25px;box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
                 <p style="font-weight: bolder; color: blue;">Uczestnicy bez wysłanego zaświadczenia</p>
                 <table  id="tab2" style="width: 1050px;">
                         <thead>
@@ -122,7 +138,7 @@
                         </tbody>
                     </table>
             </div>
-            <div style="width: 950px;margin-top: 25px;">
+            <div style="width: 1100px;margin-top: 25px;box-shadow: 10px 10px 5px #888; padding: 30px;  margin-top: 10px; background-color: gainsboro; ">
                 <p style="font-weight: bolder; color: blue;">Uczestnicy bez wysłanego upoważnienia</p>
                 <table  id="tab3" style="width: 1050px;">
                         <thead>
