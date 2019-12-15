@@ -78,8 +78,8 @@
                     if ($_SESSION['uczestnik']['email']=="brzaskun@gmail.com") {
                         $razdwa = true;
                     }
-                    $wynik2 = UpowaznienieGenerowanie::generuj();
-                    if ($wynik2) {
+                    $wynik4 = UpowaznienieGenerowanie::generuj();
+                    if ($wynik4) {
                         $ilemaili = $ilemaili+1;
                         array_push($maile, $_SESSION['uczestnik']['email']);
                         echo $_SESSION['uczestnik']['imienazwisko'];

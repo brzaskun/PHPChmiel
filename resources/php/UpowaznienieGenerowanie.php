@@ -129,7 +129,6 @@ class UpowaznienieGenerowanie {
         if (session_status() != 2) {
             session_start();
         };
-        $bcc = "";
         $firma_id = $_SESSION['uczestnik']['firma_id'];
         $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
         $bcc = R::getCell($sql);
