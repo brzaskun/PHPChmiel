@@ -259,7 +259,7 @@ class Mail {
         // Create the Mailer using your created Transport
         $mailer = Swift_Mailer::newInstance($transport);
         // And specify a time in seconds to pause for (30 secs)
-        $mailer->registerPlugin(new Swift_Plugins_AntiFloodPlugin(50, 90));
+        //$mailer->registerPlugin(new Swift_Plugins_AntiFloodPlugin(50, 90));
         return $mailer;
     }
     
