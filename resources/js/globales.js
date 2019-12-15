@@ -19,7 +19,9 @@ var zrobFloat = function (kwota){
  
  var podswietlmenu = function(menu) { 
      $(menu).css('background','#91D5FF'); 
-     $(menu).siblings().css('background','white');
+     $(menu).css('box-shadow','inset 0 10px 15px 0 #91D5FF'); 
+     $(menu).css('border','solid 1px #a14753'); 
+     $(menu).siblings().css('background','initial');
  };
  
  
