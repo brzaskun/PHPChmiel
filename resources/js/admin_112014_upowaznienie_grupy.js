@@ -57,7 +57,8 @@ $(document).ready(function() {
         resizable: false,
         showEffect: 'fade',
         hideEffect: 'fade',
-        location: "center", 
+        location: "center",
+        closable: true,
         modal: true
     });
     $("#nowanazwagrupy").puidialog('show');
@@ -70,7 +71,8 @@ $(document).ready(function() {
         resizable: false,
         showEffect: 'fade',
         hideEffect: 'fade',
-        location: "center", 
+        location: "center",
+        closable: true,
         modal: true
     });
     $("#editnazwagrupy").puidialog('show');

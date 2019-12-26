@@ -212,9 +212,8 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                 //ta czesc sluzy do obliczen duplikatow maili i szkolen
                 $dupsbaza = array();
                 $dupsplik = array();
-                $email_szkolenie_array = array();
+                $szkolenie_array = array();
                 foreach ($tablicapobranychpracownikow as $wierszyk) {
-                    $email_szkolenie_array[$wierszyk[0]] = $wierszyk[3];
                     $parametr = "email='$wierszyk[0]' AND nazwaszkolenia='$wierszyk[3]' AND (dataustania IS NULL OR CHAR_LENGTH(dataustania) < 1)";
                     $jestwbazie = R::findAll("uczestnicy", $parametr);
 //                    $jestwbazie = R::getAll( 'Select * FROM uczestnicy WHERE email = :email n', 
@@ -234,7 +233,16 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                         array_push($dupsbaza, $wierszyk);
                     } 
                 }
+                $naglowek = $tablicapobranychpracownikow[0];
+                $wielkosc = sizeof($naglowek);
+                if ($wielkosc>6) {
+                    for ($i=6; $i<$wielkosc;$i++) {
+                        array_push($szkolenie_array, $naglowek[$i]);
+                    }
+                }
+                $_SESSION['tablicaszkolen'] = json_encode($szkolenie_array);
                 //koniec czesci do obliczen duplikatow maili i szkolen
+                
                 if (sizeof($wykrytoblad)) {
                     echo '<br/><p style="color: red;">Ilość wykrytych błędów w tabeli - ' . sizeof($wykrytoblad) . '. Popraw arkusz i załaduj ponownie.</p>';
                     echo '<p>Szczegółowy wykaz błędów zawartych w pliku: </p>';
@@ -286,7 +294,7 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                 }
                 if (sizeof($dupsplik)) {
                     $wykrytoblad = $dupsplik;
-                    echo '<br/><p style="color: red;">We wprowadzonych wierszach są już pary email-szkolenie, które występują już w bazie. Zweryfikuj plik importu. Czy nazwa szkolenia nie powinna być inna?.<br/>';
+                    echo '<br/><p style="color: red;">We wprowadzonych wierszach są już pary email-szkolenie,  które występują już w tym samym pliku. Zweryfikuj plik importu. Czy nazwa szkolenia nie powinna być inna?.<br/>';
                     echo 'Szczegółowy wykaz powtarzających się duplikatów adresów email-szkoleń pliku: </p>';
                     echo '<div style="width:500px;"><table class="compact" class="ckeditor" id="tabeladuplikatyplik">';
                     echo '<thead>';
@@ -368,9 +376,12 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
  </script>
     <div id="wyborfirmydiv" style="height: 80px; display: none;">
         <p>Nazwa firmy, do której będą importowani pracownicy w liczbie <?php echo $_SESSION['highestRow'] ?></p>
-        <select id="IMPfirmauser" name="IMPfirmauser" style="width: 250px;">
+        <select id="IMPfirmauser" name="IMPfirmauser" style="width: 250px;" >
         </select>
     </div>
+ <div>
+     <span id="miejscenabledy"></span>
+ </div>
 <!--    <div class="row" style="width: 450px;">
         <form id="form2" method="post" action="upload_admin_112014.php">
             <input id="zaladuj" type="submit" value="Załaduj do bazy"  

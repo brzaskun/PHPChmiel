@@ -8,8 +8,23 @@ $(document).ready(function () {
         filter: true,
         scrollHeight: 400,
         filterMatchMode: "contains",
-        change: function (e) {
+        change: function () {
             firmadoimportu();
+            $.ajax({
+                type: "POST",
+                url: "sprawdzfirmagrupy_122019.php",
+                context: this,
+                success: function (response) {
+                    var wynik = $.parseJSON(response);
+                    if (wynik==="ok") {
+                        $("#miejscenabledy").text("Grupy w pliku zgadzają się z grupami przyporządkowanymi do firmy");
+                        $('#zaladuj').show();
+                    } else {
+                        $("#miejscenabledy").text("Błąd! Firma nie ma przyporządkowanych następujących grup umieszczonych w ładowanym pliku: "+wynik);
+                        $("#miejscenabledy").css("color","red");
+                    }
+                }
+            });
         },
         data: function (callback) {
             $.ajax({
@@ -25,11 +40,11 @@ $(document).ready(function () {
     });
 });
 
+
 var firmadoimportu = function() {
     var ciasteczko = new Cookie("firmadoimportu");
     ciasteczko.value = encodeURIComponent($('#IMPfirmauser').val());
     ciasteczko.save();
-    $('#zaladuj').show();
 };
 
 var dataszkoleniazachowaj = function() {

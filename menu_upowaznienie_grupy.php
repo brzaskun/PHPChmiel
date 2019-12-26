@@ -14,6 +14,7 @@
         <ul>   
             <li><a data-icon="ui-icon-plus" onclick="nowanazwagrupy();">Dodaj grupę</a></li>   
             <li><a data-icon="ui-icon-arrowthick-2-e-w" href="/admin112014_uzytkownik_grupy.php">Użytkownik - grupy</a></li>   
+            <li><a data-icon="ui-icon-circle-arrow-n" href="./admin112014_uzytkownik_grupy_korekta.php">Firma - grupy korekta</a></li>
         </ul> 
     </li>
     <li><a data-icon="ui-icon-locked" href="/admin082016_all.php"  style="width: 110px;">Duża tabela</a></li>
