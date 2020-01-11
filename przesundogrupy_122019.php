@@ -21,7 +21,7 @@
     $iledoprzesuniecia = sizeof($doprzesuniecia)*2;
     foreach ($doprzesuniecia as $val) {
         try {
-            $sqli = "INSERT INTO `p6273_odomg`.`uczestnikgrupy` (`email`, `nazwiskoiimie`, `grupa`, `id_uczestnik`) VALUES ('".$val["email"]."', '".$val["imienazwisko"]."', '".$nowa."', '".$val["id"]."')";
+            $sqli = "INSERT INTO `p6273_odomg`.`uczestnikgrupy` (`email`, `nazwiskoiimie`, `grupa`, `id_uczestnik`) VALUES ('".$val["email"]."', '".$val["imienazwisko"]."', '".$nowa."', '".$val["id_uczestnik"]."')";
             R::exec($sqli);
             array_push($sukces, $val);
             try {
