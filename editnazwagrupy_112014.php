@@ -9,16 +9,18 @@
   $nazwagrupy = $_POST['nazwagrupy']; 
   $sql = "SELECT grupyupowaznien.nazwagrupy FROM grupyupowaznien WHERE `id`='$id'";
   $staranazwa = R::getRow($sql);
-  $sql = "UPDATE  `grupyupowaznien` SET  `firma`='$firmanazwa', `nazwagrupy`='$nazwagrupy', 'firma_id'='$firma_id' WHERE `id`='$id';";
+  $sql = "UPDATE  `grupyupowaznien` SET  `firma`='$firmanazwa', `nazwagrupy`='$nazwagrupy', `firma_id`='$firma_id' WHERE `id`='$id';";
   R::exec($sql);
   $uczestnicy = array();
-  $sql = "SELECT uczestnicy.email FROM uczestnicy WHERE 'firma_id'='$firma_id'";
+  $sql = "SELECT uczestnicy.id FROM uczestnicy WHERE `firma_id`='$firma_id'";
   $uczestnicy = R::getCol($sql);
   foreach ($uczestnicy as $value) {
-      $sql = "SELECT uczestnikgrupy.id FROM uczestnikgrupy WHERE `grupa`='$staranazwa[nazwagrupy]' AND email = '$value'";
+      $sql = "SELECT uczestnikgrupy.id FROM uczestnikgrupy WHERE `grupa`='$staranazwa[nazwagrupy]' AND `id_uczestnik` = '$value'";
       $iduczestnikgrupa = R::getRow($sql);
-      $sql = "UPDATE  `uczestnikgrupy` SET  `grupa`='$nazwagrupy' WHERE `id`='$iduczestnikgrupa[id]';";
-      R::exec($sql);
+      if (isset($iduczestnikgrupa)) {
+        $sql = "UPDATE  `uczestnikgrupy` SET  `grupa`='$nazwagrupy' WHERE `id`='$iduczestnikgrupa[id]';";
+        R::exec($sql);
+      }
   }
 ?>
 
