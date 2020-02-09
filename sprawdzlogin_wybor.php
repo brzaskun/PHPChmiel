@@ -36,7 +36,11 @@ $szkoleniazdane = array();
 $uczestnicy = R::findAll('uczestnicy', $parametr);
 foreach (array_values($uczestnicy) as $val) {
     if ($val->wyslanycert == 1) {
-        $szkoleniazdane[$val->nazwaszkolenia] = $val->id;
+        if ($val->dataustania!='') {
+            $szkoleniazdane[$val->nazwaszkolenia] = -1;
+        } else {
+            $szkoleniazdane[$val->nazwaszkolenia] = $val->id;
+        }
     } else {
         $szkolenianowe[$val->nazwaszkolenia] = $val->id;
     }
@@ -117,9 +121,16 @@ foreach (array_values($uczestnicy) as $val) {
                                 echo "</tr>";
                             }
                             foreach ($szkoleniazdane as $key => $value) {
-                                echo "<tr>";
-                                echo "<td style='font-size: larger'><input type='checkbox' class='czekbox' onclick='odhaczinne(this,\"$value\")'></input><span>$key - zdane, pobierz certyfikat</span></td>";
-                                echo "</tr>";
+                                if ($value==-1) {
+                                    echo "<tr>";
+                                    echo "<td style='font-size: larger'><input type='checkbox' disabled class='czekboxover' ></input><span style-'itaklic' >$key - zdane i zarchiwizowane, nie można się zalogować</span></td>";
+                                    echo "</tr>";
+                                } else {
+                                    echo "<tr>";
+                                     echo "<td style='font-size: larger'><input type='checkbox' class='czekbox' onclick='odhaczinne(this,\"$value\")'></input><span>$key - zdane, pobierz certyfikat</span></td>";
+                                    echo "</tr>";
+
+                                }
                             }
                             ?>
                         </table>
