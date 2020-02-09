@@ -11,7 +11,7 @@ require_once($sciezkaroot . '/resources/php/PobierzIP.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $sqlfirma = $_SESSION['uczestnik']['firma'];
 $firma_id = $_SESSION['uczestnik']['firma_id'];
-$sql = "SELECT `firmaaktywna` FROM `zakladpracy` WHERE `zakladpracy`.`nazwazakladu`='$sqlfirma';";
+$sql = "SELECT `firmaaktywna` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
 $firmaaktywna = R::getCell($sql);
 $sql = "SELECT `progzdawalnosci` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
 $_SESSION['progzdawalnosciuczestnik'] = R::getCell($sql);
@@ -54,13 +54,13 @@ if ($firmaaktywna==0) {
     exit();
 }
 //to usuuwamy bo sa wyjatki
-//if (isset($_SESSION['uczestnik']['dataustania']) && $_SESSION['uczestnik']['dataustania']!='') {
-//    $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
-//    $url = "exit_dataustania.php?$zm";
-//    header("Location: $url");
-//    $_SESSION['wyjdz'] = 'tak';
-//    exit();
-//}
+if (isset($_SESSION['uczestnik']['dataustania']) && $_SESSION['uczestnik']['dataustania']!='') {
+    $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
+    $url = "exit_dataustania.php?$zm";
+    header("Location: $url");
+    $_SESSION['wyjdz'] = 'tak';
+    exit();
+}
 //jezeli uczestnik zdal test to nie ma sensu robic innych rzeczy tylko przekierowac go na strone wynik testu. moze chce sobie przypomniec chwile chwaly
 //lub pobrac certyfikat
 if (isset($_SESSION['uczestnik']['sessionend'])) {
