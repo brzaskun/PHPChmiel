@@ -118,10 +118,11 @@ var wybierzaktywnafirme = function () {
                     console.log(tablice[0]);
                     $('#tabuser').remove();
                     $('#tabuser_wrapper').remove();
-                    var contener = "<table id=\"tabuser\" class=\"context-menu-one box menu-1\"  style=\"margin: 0px; \"></table>";
-                    $('#tbl').find("#komunikatobraku").remove();
-                    $('#tbl').append(contener);
                     if (tablice[0].length > 0) {
+                        var contener = "<table id=\"tabuser\" class=\"context-menu-one box menu-1\"  style=\"margin: 0px; \"></table>";
+                        $('#tbl').find("#komunikatobraku").remove();
+                        $('#tbl').find("#komunikatobraku2").remove();
+                        $('#tbl').append(contener);
                         $('#notify').puigrowl('show', [{severity: 'info', summary: 'Uczestnicy z firmy  ' + nazwafirmy}]);
                         var uTable = $('#tabuser').dataTable({
                             "bDestroy": true,
@@ -170,6 +171,9 @@ var wybierzaktywnafirme = function () {
                             });
                         });
                         wycentruj('#tabuser');
+                    } else{
+                        var contener = "<span id=\"komunikatobraku2\" style=\"padding: 10px; color: red; font-size: bold;\">Nie przyporzadkowano nazw grup/stanowisk do firmy. Nie można prawidłowo wygenerować tabeli (menu Up.Grupy/Firma-grupy)</span>";
+                        $('#tbl').append(contener);
                     }
                     $("#ajax_sun").puidialog('hide');
                     $("#zachowajbutton").show();
