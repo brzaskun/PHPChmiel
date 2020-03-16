@@ -63,12 +63,12 @@ class UpowaznienieText {
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
                 '<p></p>' .
                 '<p></p>' .
-                '<p align="center"><b>UPOWAŻNIENIE ' . $nrupowaznienia . '/2018</p>' .
+                '<p align="center"><b>UPOWAŻNIENIE ' . $nrupowaznienia . '</p>' .
                 '<p align="center">do przetwarzania danych osobowych<br/>' .
                 '<p align="center"><b> w Sądzie Rejonowym w '.$miejscowosc.'</b></p>' .
                 '<p align="center">(dalej "Administrator")</p>' .
                 '<p></p>' .
-                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b>:</p>' .
+                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b></p>' .
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
                 '<p style="font-size: larger;">Pani ' . $imienaz . '</p>' .
@@ -91,12 +91,12 @@ class UpowaznienieText {
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
                 '<p></p>' .
                 '<p></p>' .
-                '<p align="center"><b>UPOWAŻNIENIE ' . $nrupowaznienia . '/2018</p>' .
+                '<p align="center"><b>UPOWAŻNIENIE ' . $nrupowaznienia . '</p>' .
                 '<p align="center">do przetwarzania danych osobowych<br/>' .
                 '<p align="center"><b> w Sądzie Rejonowym w '.$miejscowosc.'</b></p>' .
                 '<p align="center">(dalej "Administrator")</p>' .
                 '<p></p>' .
-                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b>:</p>' .
+                '<p>Działając na podstawie art. 29 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1), zwanego dalej "Rozporządzeniem", Administrator <b>informuje, że:</b></p>' .
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
                 '<p style="font-size: larger;">Pan ' . $imienaz . '</p>' .
