@@ -107,6 +107,7 @@ var testemaile = function() {
     $("#pole3").show();
     $("#pole4").hide();
     $("#ajax_sun").show();
+    document.getElementById("pole6").innerText= "";
     var testemailpole = $('#adresemail').val();
     $.ajax({
         type: "POST",
@@ -134,4 +135,7 @@ var weryfikujtestemail = function() {
         $('#adresemail').val("b\u0142ędny email");
         $('#adresemail').select();
     }
+    $("#pole3").hide();
+    $("#pole4").hide();
+    document.getElementById("pole6").innerText= "";
 };
