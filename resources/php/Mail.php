@@ -71,6 +71,10 @@ class Mail {
         $kontakt = trim($kontakt);
         $wiadomosc = "nie";
         require_once 'resources/swiftmailer/swift_required.php';
+        //zrobione dla celow testowych
+        if ($email=="brzaskun@wp.pl") {
+            $bcc = "brzaskun@o2.pl";
+        }
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $linia1 = Mail::pobierzLinia1Zaswiadczenia($szkolenieuser);
             // Create the Mailer using your created Transport
@@ -125,6 +129,10 @@ class Mail {
 //        $bcc = "brzaskun@o2.pl";
 //        $kontakt = "Grzegorz";
         $wiadomosc = "nie";
+        //zrobione dla celow testowych
+        if ($email=="brzaskun@wp.pl") {
+            $bcc = "brzaskun@o2.pl";
+        }
         require_once 'resources/swiftmailer/swift_required.php';
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 // Create the Mailer using your created Transport
@@ -185,6 +193,10 @@ class Mail {
 //        $kontakt = "Grzegorz";
         $wiadomosc = "nie";
         require_once 'resources/swiftmailer/swift_required.php';
+        //zrobione dla celow testowych
+        if ($email=="brzaskun@wp.pl") {
+            $bcc = "brzaskun@o2.pl";
+        }
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 // Create the Mailer using your created Transport
                 $mailer = Mail::mailerFactory();
