@@ -24,7 +24,7 @@ if (isset($_SESSION['automail'])) {
 }
 $_COOKIE['mail'] = $mail;
 setcookie("mail", $mail, time() + 3600);
-$parametr = "email = '$mail'";
+$parametr = "email = '$mail' AND (dataustania IS NULL OR CHAR_LENGTH(dataustania) < 1)";
 $uczestnik = R::findAll('uczestnicy', $parametr);
 if (isset($iduczestnika)) {
     $parameter = "id='$iduczestnika'";
