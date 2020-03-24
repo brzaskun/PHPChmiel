@@ -87,8 +87,7 @@ class CertyfikatGenerowanie {
         $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma_id = '$firma_id' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
         $email2 = R::getCell($sql);
         if (isset($email2) && $email2!="") {
-            $zwrot2 = array($email2 => $kontakt);
-            $zwrot = array($zwrot,$zwrot2);
+            $zwrot[$email2] = $kontakt;
         }
         return $zwrot;
     }
