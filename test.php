@@ -3,6 +3,9 @@
     if (session_status() != 2) {
         session_start();
     };
+     error_reporting(E_ALL & ~E_DEPRECATED);
+    require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+    $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -73,7 +76,7 @@
 
                 <form id="form" action="" method="post">
                     <div class="pytanietest">
-                        <span>Pytanie nr <?php error_reporting(0);
+                        <span><?= PL_EN::$pytanie[$lang]?><?php error_reporting(0);
                 echo $_SESSION['ilosc'] + 1 ?> : <?php error_reporting(0);
                 echo NextslideTest::$wybranepytania[NextslideTest::$ilosc]['pytanie']; ?></span>
                     </div>
@@ -159,16 +162,16 @@
                         <span id="odpowiedz"></span>
                     </div>
                     <div class="zakonczylesszkolenie">
-                        <span id="koniectest" style="display: none;">Jeśli chcesz możesz teraz zakończyć test i sprawdzić wynik. W tym celu kliknij poniżej.</span>
+                        <span id="koniectest" style="display: none;"><?= PL_EN::$koniec_test[$lang]?></span>
                     </div>
                     <div class="dolneprzyciski">
                         <!--                 po id tych buttonow wiadomo jest czy to nastepny czy poprzeni. jest to transportowane przez $_Post nie ma action wiec laduje sie ta sama strona-->
                         <button id="backtest" name="backtest" class="buttonszkolenie" type="submit" onclick="przechowajodpowiedz('<?php error_reporting(0);
-                echo $_SESSION['ilosc'] + 1 ?>');" style="float: left;" title="Powrót do poprzedniej strony testu"><span class="spanszkolenie">wróć</span></button>
+                echo $_SESSION['ilosc'] + 1 ?>');" style="float: left;" title="Powrót do poprzedniej strony testu"><span class="spanszkolenie"><?= PL_EN::$powrot[$lang]?></span></button>
                         <button id="nexttest" name="nexttest" class="buttonszkolenie" type="submit" onclick="przechowajodpowiedz('<?php error_reporting(0);
-                echo $_SESSION['ilosc'] + 1 ?>');" style="float: right;" title="Przejście do kolejnej strony testu"><span class="spanszkolenie">dalej</span></button>
+                echo $_SESSION['ilosc'] + 1 ?>');" style="float: right;" title="Przejście do kolejnej strony testu"><span class="spanszkolenie"><?= PL_EN::$dalej[$lang]?></span></button>
                         <button id="check" name="check" class ="buttonszkolenie" type="submit" formaction="wynik.php?<?= bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM)) ?>" formmethod="post" onclick="przechowajodpowiedz('<?php error_reporting(0);
-                echo $_SESSION['ilosc'] + 1 ?>');" style="float: right;" title="Definitywne zakończenie testu i publikacja wyniku"><span class="spanszkolenie">sprawdź</span></button>
+                echo $_SESSION['ilosc'] + 1 ?>');" style="float: right;" title="Definitywne zakończenie testu i publikacja wyniku"><span class="spanszkolenie"><?= PL_EN::$wyniktestu[$lang]?></span></button>
                     </div>
                     <script>
                         (function () {

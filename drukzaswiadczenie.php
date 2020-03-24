@@ -4,6 +4,8 @@
         session_start();
     };
     error_reporting(E_ALL & ~E_DEPRECATED);
+    require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+    $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -153,17 +155,17 @@
         <div class="box">
             <div class="slajd">
             <div id="testnaglowek">
-                    <h2>Wygenerowano zaświadczenie id_<?=$_SESSION['uczestnik']['id']?>_id</h2>
+                    <h2><?= PL_EN::$wygenerowanozaś[$lang]?><?=$_SESSION['uczestnik']['id']?>_id</h2>
                 </div>
                 <div class="pytanietest">
-                  <p style="font-size: 150%; margin-left: 3%"> Gratulujemy ukończenia szkolenia przygotowanego przez</p>
+                    <p style="font-size: 150%; margin-left: 3%"> <?= PL_EN::$gratulujemy[$lang]?></p>
                     <p style="font-size: 150%; margin-left: 3%"> ODO Management Group.</p>
                     <div style="padding: 3%; padding-top: 1%">
-                        <p>Na adres email, którym logowaleś się do systemu e-szkoleń zostało właśnie wysłane zaświadczenie potwierdzające zaliczenie testu.</p>
+                        <p><?= PL_EN::$wyslalismycert[$lang]?></p>
                     </div>
                     <div style="padding: 3%;">
-                        <p>Dziękujemy za skorzystanie z naszego systemu e-szkoleń.</p>
-                        <p>Zespół ODO Management Group</p> 
+                        <p><?= PL_EN::$dziekujemy1[$lang]?></p>
+                        <p><?= PL_EN::$dziekujemy2[$lang]?></p> 
                     </div>
                    
                 </div>

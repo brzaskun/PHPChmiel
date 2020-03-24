@@ -3,9 +3,11 @@
     if (session_status() != 2) {
         session_start();
     };
-    error_reporting(0);
+     error_reporting(E_ALL & ~E_DEPRECATED);
     $_SESSION['szkolenietrwa'] = "nie";
     $_SESSION['testrozpoczety'] = "nie";
+    require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+    $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -44,17 +46,17 @@
                                             <php }?>
                                         </div>-->
                         <div class="trescszkolenia"> 
-                            <p>punkty przyznane za zaznaczenie odp. poprawnych: <?php error_reporting(0);
+                            <p><?= PL_EN::$punkty_1[$lang]?><?php error_reporting(0);
         echo Sprawdzwyniki::$iloscpoprawnych ?></p>
-                            <p>punkty odjęte za zaznaczenie odp. niepoprawnych: <?php error_reporting(0);
+                            <p><?= PL_EN::$punkty_2[$lang]?><?php error_reporting(0);
         echo Sprawdzwyniki::$iloscblednych ?></p>
-                            <p>wynik końcowy - ilość uzyskanych punktów: <?php error_reporting(0);
+                            <p><?= PL_EN::$punkty_3[$lang]?><?php error_reporting(0);
         echo Sprawdzwyniki::$roznicapunktow ?></p>
-                            <p>maksymalna ilość punktów do uzyskania: <?php error_reporting(0);
+                            <p><?= PL_EN::$punkty_4[$lang]?><?php error_reporting(0);
         echo Sprawdzwyniki::$iloscodpowiedzi ?></p>
-                            <p>zaliczyłeś test w: <?php error_reporting(0);
+                            <p><?= PL_EN::$punkty_5[$lang]?><?php error_reporting(0);
         echo Sprawdzwyniki::$wynik ?>%</p><div id="zaliczeniebar"><div></div></div>
-                            <p>wyznaczony próg zdawalności: <?php error_reporting(0);
+                            <p><?= PL_EN::$punkty_6[$lang]?><?php error_reporting(0);
         echo Sprawdzwyniki::$progzdawalnosci ?>%</p><div id="zdawalnoscbar"><div></div></div>
                         </div>
                         <div class="dolneprzyciski" >
@@ -64,10 +66,10 @@
                             <button id="zaswiadczenie" name="zaswiadczenie" class="buttonszkolenie" formaction="drukzaswiadczenie.php?<?=bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM))?>" 
                                     formmethod="post"
                                     type="submit"  style="float: right;" title="Pobranie zaświadczenia o ukończeniu szkolenia" onclick="generujtesty()">
-                                <span class="spanszkolenie">zaświadczenie</span>
+                                <span class="spanszkolenie"><?= PL_EN::$zaswiadczenie[$lang]?></span>
                             </button>
                             <button id="powtorztest" name="powtorztest" type="submit" class="buttonszkolenie" formaction="nowylogin.php?<?=bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM))?>" formmethod="post"
-                                    style="float: right;"><span class="spanszkolenie" title="Możliwość powtórzenia szkolenia i testu">powtórz</span></button>
+                                    style="float: right;"><span class="spanszkolenie" title="Możliwość powtórzenia szkolenia i testu"><?= PL_EN::$powtorz[$lang]?></span></button>
                         </div>
                     </div>
                 </form>

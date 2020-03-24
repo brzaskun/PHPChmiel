@@ -3,6 +3,9 @@ session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() != 2) {
     session_start();
 }
+ error_reporting(E_ALL & ~E_DEPRECATED);
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+$lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
 <!DOCTYPE html>
 <html lang="pl">

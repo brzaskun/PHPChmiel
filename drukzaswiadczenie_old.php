@@ -3,7 +3,9 @@
     if (session_status() != 2) {
         session_start();
     };
-    error_reporting(E_ALL & ~E_DEPRECATED);
+    error_reporting(0);
+    require_once("../php/PL_EN.php");
+    $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['email']);
 ?>
 <!DOCTYPE html>
 <html lang="pl">

@@ -1,6 +1,7 @@
-<?php error_reporting(0);
+<?php
+error_reporting(E_ALL & ~E_DEPRECATED);
 session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
-if(session_status()!=2){     
+if(session_status()!=2){    
     session_start(); 
 };
 $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
@@ -18,6 +19,8 @@ if (isset($_POST['nextszkolenie'])) {
 } else {
     NextslideSzkolenie::init();
 }
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+$lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -87,12 +90,12 @@ if (isset($_POST['nextszkolenie'])) {
                     <span><?php  echo NextslideSzkolenie::$szkolenie[NextslideSzkolenie::$ilosc]['tresc']; ?></span>
                 </div>
                 <div class="zakonczylesszkolenie">
-                    <span id="koniecszkolenia" style="display: none; ">Zakończyłeś szkolenie. Możesz rozpocząć test. W tym celu kliknij poniżej.</span>
+                    <span id="koniecszkolenia" style="display: none; "><?= PL_EN::$koniec_szkolenia[$lang]?></span>
                 </div>
                 <div class="dolneprzyciski" >
-                    <button id="backszkolenie" name="backszkolenie" class="buttonszkolenie"  type="submit" title="Powrót do poprzedniej strony szkolenia"><span class="spanszkolenie">wróć</span></button>
-                    <button id="nextszkolenie" name="nextszkolenie" class="buttonszkolenie" type="submit" style="float: right;" title="Przejście do kolejnej strony szkolenia"><span class="spanszkolenie">dalej</span></button>
-                    <button id="zakonczszkolenie" name="zakonczszkolenie" class ="buttonszkolenie" type="submit" style="float: right;" title="Definitywne zakończenie szkolenia i rozpoczęcie testu"><span class="spanszkolenie">test</span></button>
+                    <button id="backszkolenie" name="backszkolenie" class="buttonszkolenie"  type="submit" title="Powrót do poprzedniej strony szkolenia"><span class="spanszkolenie"><?= PL_EN::$powrot[$lang]?></span></button>
+                    <button id="nextszkolenie" name="nextszkolenie" class="buttonszkolenie" type="submit" style="float: right;" title="Przejście do kolejnej strony szkolenia"><span class="spanszkolenie"><?= PL_EN::$dalej[$lang]?></span></button>
+                    <button id="zakonczszkolenie" name="zakonczszkolenie" class ="buttonszkolenie" type="submit" style="float: right;" title="Definitywne zakończenie szkolenia i rozpoczęcie testu"><span class="spanszkolenie"><?= PL_EN::$test[$lang]?></span></button>
                 </div>
                 <script>
                     (function() {

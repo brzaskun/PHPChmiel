@@ -2,10 +2,12 @@
 <html lang="pl">
 <?php 
 session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata'); 
-error_reporting(0);
+ error_reporting(E_ALL & ~E_DEPRECATED);
 if(session_status()!=2){     session_start(); };
 $_SESSION['szkolenietrwa'] = "nie";
 $_SESSION['testrozpoczety']= "nie";
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+$lang = PL_EN::wybierzjezyk($$_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
     <head>
         <meta charset="utf-8">
@@ -31,12 +33,14 @@ $_SESSION['testrozpoczety']= "nie";
              
             <div class="slajd">
             <div id="testnaglowek">
-                    <h2>Usługa e-szkoleń dla twojej firmy jest juz nieaktywna.</h2>
+                    <h2><?= PL_EN::$nieaktywna[$lang]?></h2>
                 </div>
                 <div class="trescszkolenia"> 
                     <p>
                       :(   
                     </p>
                 </div>
+            </div>
+        </div>
     </body>
 </html>
