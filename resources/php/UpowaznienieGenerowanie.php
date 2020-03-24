@@ -133,13 +133,13 @@ class UpowaznienieGenerowanie {
         $sql = "SELECT `email` FROM `zakladpracy` WHERE `zakladpracy`.`id`='$firma_id';";
         $bcc = R::getCell($sql);
         $_SESSION['uczestnik']['BCC'] = $bcc;
+        $zwrot = array();
         $zwrot = array($bcc => $kontakt);
         $szkolenie = $_SESSION['uczestnik']['nazwaszkolenia'];
         $sql = "SELECT email FROM szkolenieust WHERE szkolenieust.firma_id = '$firma_id' AND szkolenieust.nazwaszkolenia = '$szkolenie'";
         $email2 = R::getCell($sql);
         if (isset($email2) && $email2!="") {
-            $zwrot2 = array($email2 => $kontakt);
-            $zwrot = array($zwrot,$zwrot2);
+            $zwrot[$email2] = $kontakt;
         }
         return $zwrot;
     }
