@@ -31,7 +31,7 @@ $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 <div class="box">
          <div class="slajd">
             <div id="gornawklejka">
-                <span>Szkolenie z zakresu ochrony danych osobowych</span>
+                <span><?= PL_EN::$naglowek[$lang]?></span>
             </div>
             <div id="szkolenienaglowek">
                 <h2></h2>

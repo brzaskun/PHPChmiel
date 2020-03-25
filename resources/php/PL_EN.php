@@ -37,7 +37,10 @@ class PL_EN {
     static $przekroczono3a = [" miało miejsce "," took place "];
     static $przekroczono4 = ["Jeżeli dodatkowe logowania nastąpiły omyłkowo prosimy, w celu reaktywacji konta, skontaktować się z osobą odpowiedzialną za szkolenia.","If additional logins occurred by mistake, please contact the person responsible for training to reactivate your account"];
     static $przekroczono5 = ["W twojej firmie jest to: ","In your company it is: "];
-
+    static $naglowek = ["Szkolenie z zakresu ochrony danych osobowych","training - personal data protection"];
+    static $wynikpozytywny = ["Zakończono test z wynikiem pozytywnym","You passed the test"];
+    static $momentrozpoczecia = ["moment rozpoczęcia szkolenia: ","the training was started at: "];
+    static $momentzakonczenia = ["moment zakończenia testu: ","you had finished the test at: "];
 
     
     

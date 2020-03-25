@@ -8,6 +8,8 @@ if(session_status()!=2){
 };
 $_SESSION['szkolenietrwa'] = "nie";
 $_SESSION['testrozpoczety']= "nie";
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+$lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
     <head>
         <meta charset="utf-8">
@@ -34,25 +36,25 @@ $_SESSION['testrozpoczety']= "nie";
              
             <div class="slajd">
             <div id="testnaglowek">
-                    <h2>Zakończono test z wynikiem pozytywnym </h2>
+                    <h2><?= PL_EN::$wynikpozytywny[$lang]?> </h2>
                 </div>
             <form id="form" action="">
                 <div class="trescszkolenia"> 
-                    <p>moment rozpoczęcia szkolenia: <?php error_reporting(0); echo Wynikiarchiwum::$datarozpoczecia?></p>
-                    <p>moment zakończenia testu: <?php error_reporting(0); echo Wynikiarchiwum::$datazakonczenia?></p>
-                    <p>punkty przyznane za zaznaczenie odpowiedzi poprawnych: <?php error_reporting(0); echo Wynikiarchiwum::$iloscpoprawnych?></p>
-                    <p>punkty karne, odjęte za zaznaczenie odpowiedzi niepoprawnych: <?php error_reporting(0); echo Wynikiarchiwum::$iloscblednych?></p>
-                    <p>wynik końcowy - ilość uzyskanych punktów: <?php error_reporting(0); echo Wynikiarchiwum::$roznicapunktow?></p>
-                    <p>maksymalna ilość punktów do uzyskania: <?php error_reporting(0); echo Wynikiarchiwum::$iloscodpowiedzi?></p>
-                    <p>zaliczono test w: <?php error_reporting(0); echo Wynikiarchiwum::$wynik?>%</p><div id="zaliczeniebar"><div></div></div>
-                    <p>wyznaczony próg zdawalności: <?php error_reporting(0); echo Wynikiarchiwum::$progzdawalnosci?>%</p><div id="zdawalnoscbar"><div></div></div>
+                    <p><?= PL_EN::$momentrozpoczecia[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$datarozpoczecia?></p>
+                    <p><?= PL_EN::$momentzakonczenia[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$datazakonczenia?></p>
+                    <p>p<?= PL_EN::$iloscpoprawnych[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$iloscpoprawnych?></p>
+                    <p><?= PL_EN::$iloscblednych[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$iloscblednych?></p>
+                    <p><?= PL_EN::$roznicapunktow[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$roznicapunktow?></p>
+                    <p><?= PL_EN::$iloscodpowiedzi[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$iloscodpowiedzi?></p>
+                    <p>z<?= PL_EN::$wynik[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$wynik?>%</p><div id="zaliczeniebar"><div></div></div>
+                    <p><?= PL_EN::$progzdawalnosci[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$progzdawalnosci?>%</p><div id="zdawalnoscbar"><div></div></div>
                 </div>
                 <div class="dolneprzyciski"
                      >
                     <button id="zaswiadczenie" 
                             name="zaswiadczenie" class="buttonszkolenie" formaction="drukzaswiadczenie.php?<?=bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM))?>" formmethod="post"
                                     type="submit"  style="float: right;" title="Pobranie zaświadczenia o ukończeniu szkolenia" onclick="generujtesty()">
-                                <span class="spanszkolenie">zaświadczenie</span>
+                                <span class="spanszkolenie"><?= PL_EN::$zaswiadczenie[$lang]?></span>
                             </button>
                 </div>
                 <script>
