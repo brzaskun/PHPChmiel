@@ -35,7 +35,7 @@
         <div class="box">
             <div class="slajd">
                 <div id="testnaglowek">
-                    <h2>Wynik testu</h2>
+                    <h2><?= PL_EN::$wyniktestu[$lang]?></h2>
                 </div>
                 <form id="form" action="">
                     <div style="width: 90%; height: 320px; margin-left: auto; margin-right: auto; margin-top: 0px; font-size: 120%;"> 

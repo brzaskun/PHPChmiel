@@ -33,9 +33,10 @@ class PL_EN {
     static $przekroczono1 = ["Przekroczono liczbę dopuszczalnych logowań do serwisu szkoleń.","The numbers of allowed logins to the training website has been exceeded"];
     static $przekroczono2 = ["Zgodnie z regulaminem szkoleń do serwisu można logować się maksymalnie 4 razy.","According to the training regulations, you can log in to the website up to 4 times."];
     static $przekroczono2a = ["Zgodnie z regulaminem szkoleń do serwisu można logować się w ciągu 24 godzin od czasu pierwszego zalogowania.","According to the training regulations, you can log in to the website within 24 hours of logging in for the first time."];
-    static $przekroczono3 = ["Pierwsze zalogowanie z użyciem adresu miało miejsce","The first login using this email address took place"];
+    static $przekroczono3 = ["Pierwsze zalogowanie z użyciem adresu ","The first login using this email "];
+    static $przekroczono3a = [" miało miejsce "," took place "];
     static $przekroczono4 = ["Jeżeli dodatkowe logowania nastąpiły omyłkowo prosimy, w celu reaktywacji konta, skontaktować się z osobą odpowiedzialną za szkolenia.","If additional logins occurred by mistake, please contact the person responsible for training to reactivate your account"];
-    static $przekroczono5 = ["W twojej firmie jest to: ","In your company it is:"];
+    static $przekroczono5 = ["W twojej firmie jest to: ","In your company it is: "];
 
 
     

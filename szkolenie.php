@@ -84,6 +84,10 @@ $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
             </div>
             <div id="szkolenienaglowek">
                 <h2><?php  echo NextslideSzkolenie::$szkolenie[NextslideSzkolenie::$ilosc]['naglowek']; ?></h2>
+                <p><?=$_SESSION['uczestnik']['nazwaszkolenia']?></p>
+                <p><?=$lang?></p>
+                <p><?=$_SESSION['uczestnik']['email']?></p>
+                <p><?=$_SESSION['uczestnik']['id']?></p>
             </div>
             
                 <div class="trescszkolenia" style="margin-top: 10px;">

@@ -96,6 +96,10 @@ if ($_SESSION['uczestnik']['uprawnienia'] != "admin") {
         R::exec("UPDATE  `uczestnicy` SET `ilosclogowan`='$ilosclogowan', `dataostatniegologowania`='$czasbiezacy' WHERE  `uczestnicy`.`id` = '$id';");
         $_SESSION['test'] = null;
         $_SESSION['szkolenietrwa'] = "tak";
+        unset($_SESSION['szkolenie']);
+        $nazwaszkolenia = $_SESSION['uczestnik']['nazwaszkolenia'];
+        $sql = "SELECT `nazwaszkolenia` FROM `uczestnicy` WHERE `uczestnicy`.`id` = '$id';";
+        $_SESSION['uczestnik']['nazwaszkolenia'] = R::getCell($sql);
         $url = "szkolenie.php?$zm";
         header("Location: $url");
         exit();

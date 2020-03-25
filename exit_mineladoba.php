@@ -40,7 +40,7 @@ $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
             <form id="form" action="" method="post" >
                 <div class="odpowiedzitest">
                     <span><?= PL_EN::$przekroczono2a[$lang]?></span><br/><br/>
-                    <span><?= PL_EN::$przekroczono3[$lang]?><?php error_reporting(0); session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');   if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> miało miejsce
+                    <span><?= PL_EN::$przekroczono3[$lang]?><?php error_reporting(0); session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');   if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> <?= PL_EN::$przekroczono3a[$lang]?>
                         <?php error_reporting(0);  echo $_SESSION['uczestnik']['sessionstart'];?></span><br/><br/>
                     <span><?= PL_EN::$przekroczono4[$lang]?></span><br/>
                     <p> <?= PL_EN::$przekroczono5[$lang]?><?php error_reporting(0); echo $_SESSION['uczestnik']['kontakt'];?>.</p>

@@ -3,6 +3,8 @@ session_save_path($_SERVER['DOCUMENT_ROOT'].'/resources/sessiondata');
 if (session_status() != 2) {
     session_start();
 }
+require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/PL_EN.php');
+$lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -38,7 +40,7 @@ if (session_status() != 2) {
                 <div class="odpowiedzitest">
                     <p><?= PL_EN::$przekroczono1[$lang]?></p>
                     <p><?= PL_EN::$przekroczono2[$lang]?></p>
-                    <p><?= PL_EN::$przekroczono3[$lang]?><?php error_reporting(0); if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> miało miejsce
+                    <p><?= PL_EN::$przekroczono3[$lang]?><?php error_reporting(0); if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> <?= PL_EN::$przekroczono3a[$lang]?>
                         <?php error_reporting(0);  echo $_SESSION['uczestnik']['sessionstart'];?>.</p><br/>
                         
                     <span><?= PL_EN::$przekroczono4[$lang]?></span><br/>

@@ -10,6 +10,7 @@ if ($_SERVER["HTTP_HOST"] != "localhost:8000") {
     $_SESSION['host'] = 'mysql:host=localhost;';
 }
 error_reporting(E_ALL);
+unset($_SESSION['szkolenie']);
 $zm = bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM));
 require_once('resources/php/Rb.php');
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
