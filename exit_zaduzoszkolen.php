@@ -29,24 +29,24 @@ if (session_status() != 2) {
 <div class="box">
          <div class="slajd">
             <div id="gornawklejka">
-                <span>szkolenie z zakresu ochrony danych osobowych</span>
+                <span>Szkolenie z zakresu ochrony danych osobowych</span>
             </div>
             <div id="szkolenienaglowek">
                 <h2></h2>
             </div>
             <form id="form" action="" method="post" >
                 <div class="odpowiedzitest">
-                    <p>Przekroczono liczbę dopuszczalnych logowań do serwisu szkoleń.</p>
-                    <p>Zgodnie z regulaminem szkoleń do serwisu można logować się maksymalnie 4 razy.</p>
-                    <p>Pierwsze zalogowanie z użyciem adresu <?php error_reporting(0); if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> miało miejsce
+                    <p><?= PL_EN::$przekroczono1[$lang]?></p>
+                    <p><?= PL_EN::$przekroczono2[$lang]?></p>
+                    <p><?= PL_EN::$przekroczono3[$lang]?><?php error_reporting(0); if(session_status()!=2){     session_start(); }; echo $_SESSION['uczestnik']['email'];?> miało miejsce
                         <?php error_reporting(0);  echo $_SESSION['uczestnik']['sessionstart'];?>.</p><br/>
                         
-                    <span>Jeżeli dodatkowe logowania nastąpiły omyłkowo prosimy, w celu reaktywacji konta, skontaktować się z osobą odpowiedzialną za szkolenia.</span><br/>
-                    <p> W twojej firmie jest to: <?php error_reporting(0); echo $_SESSION['uczestnik']['kontakt'];?>.</p>
+                    <span><?= PL_EN::$przekroczono4[$lang]?></span><br/>
+                    <p> <?= PL_EN::$przekroczono5[$lang]?> <?php error_reporting(0); echo $_SESSION['uczestnik']['kontakt'];?>.</p>
                     
                 </div>
             </form>
-         </div>
+         </div> 
 </div>
     </body>
 </html>
