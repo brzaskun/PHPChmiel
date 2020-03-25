@@ -42,12 +42,12 @@ $lang = PL_EN::wybierzjezyk($_SESSION['uczestnik']['nazwaszkolenia']);
                 <div class="trescszkolenia"> 
                     <p><?= PL_EN::$momentrozpoczecia[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$datarozpoczecia?></p>
                     <p><?= PL_EN::$momentzakonczenia[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$datazakonczenia?></p>
-                    <p>p<?= PL_EN::$iloscpoprawnych[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$iloscpoprawnych?></p>
-                    <p><?= PL_EN::$iloscblednych[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$iloscblednych?></p>
-                    <p><?= PL_EN::$roznicapunktow[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$roznicapunktow?></p>
-                    <p><?= PL_EN::$iloscodpowiedzi[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$iloscodpowiedzi?></p>
-                    <p>z<?= PL_EN::$wynik[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$wynik?>%</p><div id="zaliczeniebar"><div></div></div>
-                    <p><?= PL_EN::$progzdawalnosci[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$progzdawalnosci?>%</p><div id="zdawalnoscbar"><div></div></div>
+                    <p><?= PL_EN::$punkty_1[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$iloscpoprawnych?></p>
+                    <p><?= PL_EN::$punkty_2[$lang]?> <?php error_reporting(0); echo Wynikiarchiwum::$iloscblednych?></p>
+                    <p><?= PL_EN::$punkty_3[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$roznicapunktow?></p>
+                    <p><?= PL_EN::$punkty_4[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$iloscodpowiedzi?></p>
+                    <p><?= PL_EN::$punkty_5[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$wynik?>%</p><div id="zaliczeniebar"><div></div></div>
+                    <p><?= PL_EN::$punkty_6[$lang]?><?php error_reporting(0); echo Wynikiarchiwum::$progzdawalnosci?>%</p><div id="zdawalnoscbar"><div></div></div>
                 </div>
                 <div class="dolneprzyciski"
                      >
