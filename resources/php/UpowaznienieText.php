@@ -57,7 +57,7 @@ class UpowaznienieText {
                 '</body></html>';
     }
     
-     public final static function upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
+     public final static function upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
@@ -72,8 +72,8 @@ class UpowaznienieText {
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
                 '<p style="font-size: larger;">Pani ' . $imienaz . '</p>' .
-                '<p style="font-size: larger;">Na stanowisku ' . $grupy . '</p>' .
-                '<p>zostaje upoważniona do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w '.$miejscowosc.'.</p>' .
+                '<p style="font-size: larger;">na stanowisku ' . $grupy . '</p>' .
+                '<p>zostaje upoważniona do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '.$szef.' Sądu Rejonowego w '.$miejscowosc.'.</p>' .
                 '<p align="justify">Upoważnienie dotyczy przetwarzania danych osobowych w ramach otrzymanego zakresu obowiązków, odpowiedzialności i uprawnień  oraz  w zakresie wynikającym z poleceń przełożonego.</p>' .
                 '<p></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .
@@ -85,7 +85,7 @@ class UpowaznienieText {
                 '</body></html>';
     }
     
-     public final static function upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy) {
+     public final static function upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef) {
         return '<!DOCTYPE html><html lang="pl">' .
                 '<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"/>' .
                 '<link rel="stylesheet" href="/resources/css/upowaznienie.css"/></head><body>' .
@@ -100,8 +100,8 @@ class UpowaznienieText {
                 '<p></p>' .
                 '<p style="font-size: larger;">z dniem ' . $datanadania . 'r.</p>' .
                 '<p style="font-size: larger;">Pan ' . $imienaz . '</p>' .
-                '<p style="font-size: larger;">Na stanowisku ' . $grupy . '</p>' .
-                '<p>zostaje upoważniony do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest Prezes Sądu Rejonowego w '.$miejscowosc.'.</p>' .
+                '<p style="font-size: larger;">na stanowisku ' . $grupy . '</p>' .
+                '<p>zostaje upoważniony do przetwarzania danych osobowych, których Administratorem w rozumieniu art. 4 pkt 7 Rozporządzenia jest '.$szef.' Sądu Rejonowego w '.$miejscowosc.'.</p>' .
                 '<p align="justify">Upoważnienie dotyczy przetwarzania danych osobowych w ramach otrzymanego zakresu obowiązków, odpowiedzialności i uprawnień  oraz  w zakresie wynikającym z poleceń przełożonego.</p>' .
                 '<p></p>' .
                 '<p align="justify">Upoważnienie traci ważność z chwilą jego cofnięcia lub ustania stosunku umownego wiążącego upoważnionego z administratorem danych.</p>' .

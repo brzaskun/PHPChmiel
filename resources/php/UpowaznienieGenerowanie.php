@@ -90,6 +90,7 @@ class UpowaznienieGenerowanie {
                         require_once('resources/php/UpowaznienieText.php');
                         if (strpos($sqlfirma, 'Sąd Rejonowy') !== false) {
                             $miejscowosc = substr($sqlfirma,16);
+                            $szef = self::wersjaPrezes0Dyrektor1($id);
                             if ($plec == "k") {
                                 $html = UpowaznienieText::upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                             } else {
@@ -148,6 +149,19 @@ class UpowaznienieGenerowanie {
         $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'  AND grupa!='dane szczególnej kategorii'";
         $zapisanegrupy = R::getCol($sql);
         $output = mb_strtolower(implode(", ",$zapisanegrupy),'UTF-8');
+        return $output;
+    }
+    
+    public final static function wersjaPrezes0Dyrektor1($id) {
+        $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'  AND grupa!='dane szczególnej kategorii'";
+        $zapisanegrupy = R::getCol($sql);
+        $zapisanegrupy = mb_strtolower(trim($zapisanegrupy[0]),'UTF-8');
+        $grupaPrezes = array("sekretarz sądowy","starszy sekretarz sądowy","sędzia","referendarz sądowy","asystent sędziego","aplikant kuratorski","kurator zawodowy","starszy kurator zawodowy","ławnik","kurator społeczny","praktykant","kurator specjalny");
+        $grupaDyrektor = array("główny specjalista do spraw administracyjno-kadrowych","specjalista do spraw administracyjno-kadrowych","informatyk","główny księgowy","księgowy","woźny sądowy","Stażysta","archiwista","inspektor");
+        $output = "Prezes";
+        if (in_array($zapisanegrupy, $grupaDyrektor)) {
+            $output = "Dyrektor";
+        }
         return $output;
     }
     
