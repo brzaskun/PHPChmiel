@@ -92,9 +92,9 @@ class UpowaznienieGenerowanie {
                             $miejscowosc = substr($sqlfirma,16);
                             $szef = self::wersjaPrezes0Dyrektor1($id);
                             if ($plec == "k") {
-                                $html = UpowaznienieText::upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                                $html = UpowaznienieText::upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef);
                             } else {
-                                $html = UpowaznienieText::upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                                $html = UpowaznienieText::upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef);
                             }
                         } else {
                             if ($plec == "k") {
