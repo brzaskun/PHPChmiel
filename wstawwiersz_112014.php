@@ -2,6 +2,11 @@
 $slidenr = $_POST['slidenr'];
 $nazwaszkolenia = $_POST['Nnazwaszkolenia'];
 require_once($_SERVER['DOCUMENT_ROOT'].'/resources/php/Rb.php');
+if ($_SERVER["HTTP_HOST"] != "localhost:8000") {
+    $_SESSION['host'] = 'mysql:host=172.16.0.6;';
+} else {
+    $_SESSION['host'] = 'mysql:host=localhost;';
+}
 R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
 $tabelaszkolen = R::getAll('SELECT * FROM szkolenie ORDER BY `id` DESC');
 foreach ($tabelaszkolen as $kolejnyslide) {
@@ -23,8 +28,7 @@ foreach ($tabelaszkolen as $kolejnyslide) {
             $p4 = "";
             $p5 = "";
             $sql = "INSERT INTO  `szkolenie` (`id` ,`nazwaszkolenia` ,`naglowek` ,`temat`,`tresc`) VALUES ('$nr', '$nazwaszkolenia', '$p3', '$p4', '$p5');";
-            R::exec($sql);
-            echo R::getCell("SELECT `id` FROM  `szkolenie` WHERE  (`szkolenie`.`nazwaszkolenia` = '$nazwaszkolenia' AND  `szkolenie`.`naglowek` =  'proszę wypełnić')");
+            echo R::exec($sql);
         } catch (Exception $e) {
             $d = $e;
         }
@@ -32,3 +36,4 @@ foreach ($tabelaszkolen as $kolejnyslide) {
     }
 }
 ?>
+    
