@@ -119,18 +119,28 @@
                     $ulica = R::getCell($sql);
                     require_once("resources/MPDF57/mpdf.php");
                     require_once('resources/php/UpowaznienieText.php');
-                    if (strpos($sqlfirma, 'Sąd Rejonowy') !== false) {
+                    if (strpos($sqlfirma, 'Sąd Rejonowy') !== false) { 
+                        $miejscowosc = substr($sqlfirma,16);
+                        $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'  AND grupa!='dane szczególnej kategorii'";
+                        $zapisanegrupy = R::getCol($sql);
+                        $zapisanegrupy = mb_strtolower(trim($zapisanegrupy[0]),'UTF-8');
+                        $grupaPrezes = array("sekretarz sądowy","starszy sekretarz sądowy","sędzia","referendarz sądowy","asystent sędziego","aplikant kuratorski","kurator zawodowy","starszy kurator zawodowy","ławnik","kurator społeczny","praktykant","kurator specjalny");
+                        $grupaDyrektor = array("główny specjalista do spraw administracyjno-kadrowych","specjalista do spraw administracyjno-kadrowych","informatyk","główny księgowy","księgowy","woźny sądowy","Stażysta","archiwista","inspektor");
+                        $szef = "Prezes";
+                        if (in_array($zapisanegrupy, $grupaDyrektor)) {
+                            $szef = "Dyrektor";
+                        }
                         if ($plec == "k") {
-                            $html = UpowaznienieText::upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                            $html = UpowaznienieText::upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef);
                         } else {
-                            $html = UpowaznienieText::upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef);
                         }
                     } else {
                         if ($plec == "k") {
                             $html = UpowaznienieText::upowaznienie_kobieta_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         } else {
                             $html = UpowaznienieText::upowaznienie_mezczyzna_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
-                        }
+                        } 
                     }
                     $mpdf = new mPDF();
                     $mpdf->WriteHTML($html);

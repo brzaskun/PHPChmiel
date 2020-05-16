@@ -18,7 +18,7 @@ class UpowaznienieDWGenerowanie {
         };
         try {
             require_once($_SERVER['DOCUMENT_ROOT'] . '/resources/php/Rb.php');
-            R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
+                R::setup($_SESSION['host'].'dbname=p6273_odomg', 'p6273_odomg', 'P3rsKy_K@tek1');
         } catch (exception $e) {};
         $id = $_SESSION['uczestnik']['id'];
         date_default_timezone_set('Europe/Warsaw');
