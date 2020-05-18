@@ -193,6 +193,7 @@ var dodajnoweszkolenie = function() {
 var wstawszkolenie = function (button) {
     var uTable = $('#tabszkolenie').dataTable();
     var elementy = pobierzelementybutton(button.parentElement.parentElement);
+    MYAPP.elemelki = elementy;
     var tresc = pobierzdanebutton(button.parentElement.parentElement);
     var noweid = parseInt(tresc[1]) + 1;
     $('#notify').puigrowl('show', [{severity: 'info', summary: 'Dodano nowy pusty slajd szkolenia'}]);
@@ -224,24 +225,22 @@ var wstawszkolenie = function (button) {
                 var nThisNode = nNodes[nNodes.length - 1];
                 uTable.fnSort([[1, 'desc']]);
                 uTable.fnDraw();
-                var nNodes = uTable.fnGetNodes();
-                var nLastNode = nNodes[nNodes.length - 1];
-                var parent = nLastNode.children;
-                $(nLastNode).addClass("czekboks");
-                $(nLastNode).on("click", function () {
-                    var parent = nLastNode.children;
-                    czyscinnewiersze(nLastNode);
-                    if (parent[0].children[0].checked === true) {
-                        parent[5].children[0].style.display = "inline";
-                        parent[6].children[0].style.display = "inline";
-                        parent[7].children[0].style.display = "inline";
+                var parent = MYAPP.elemelki[0].parentNode.previousElementSibling
+                var elemelki2 = parent.children;
+                $(elemelki2[0]).addClass("czekboks");
+                $(elemelki2[0]).on("click", function () {
+                    czyscinnewiersze(parent);
+                    if (elemelki2[0].children[0].checked === true) {
+                        elemelki2[5].children[0].style.display = "inline";
+                        elemelki2[6].children[0].style.display = "inline";
+                        elemelki2[7].children[0].style.display = "inline";
                     } else {
-                        parent[5].children[0].style.display = "none";
-                        parent[6].children[0].style.display = "none";
-                        parent[7].children[0].style.display = "none";
+                        elemelki2[5].children[0].style.display = "none";
+                        elemelki2[6].children[0].style.display = "none";
+                        elemelki2[7].children[0].style.display = "none";
                     }
                 });
-                $(nLastNode).on("click", function (event) {
+                $(elemelki2[0]).on("click", function (event) {
                     var tresc = pobierzdane(event);
                     var elementy = pobierzelementy(event);
                     var czykliknieto = $(elementy[0]).children().get(0).checked;
@@ -250,12 +249,12 @@ var wstawszkolenie = function (button) {
                         $("#nazwaszkolenia").val(tresc[2]);
                         $("#naglowek").val(tresc[3]);
                         pola = $(this).find(' > td');
-                        $('#notify').puigrowl('show', [{severity: 'info', summary: 'Zaznaczono firmę ' + tresc[1]}]);
+                        $('#notify').puigrowl('show', [{severity: 'info', summary: 'Zaznaczono slajd ' + tresc[1]}]);
                         MYAPP.pola = $(this).find(' > td');
                         $(this).css('background-color', 'white');
                     }
                 });
-                uzupelnijnumerWstaw(response, nThisNode);
+                uzupelnijnumerWstaw(response, parent);
                 przenumerujpozostale(response);
             }
         }
@@ -319,7 +318,7 @@ var ostatninumer = function () {
 
 var czyscinnewiersze = function(parent) {
     var innewiersze = $("#tabszkolenie").find("tr");
-    for (numer in innewiersze) {
+    for (let numer in innewiersze) {
         if (numer > 0 && innewiersze[numer] !== parent) {
             try {
                 var wiersz = innewiersze[numer].children;
