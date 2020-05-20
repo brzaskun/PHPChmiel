@@ -123,9 +123,9 @@
                         $miejscowosc = substr($sqlfirma,16);
                         $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'  AND grupa!='dane szczególnej kategorii'";
                         $zapisanegrupy = R::getCol($sql);
-                        $zapisanegrupy = mb_strtolower(trim($zapisanegrupy[0]),'UTF-8');
+                        $zapisanegrupy = trim($zapisanegrupy[0]);
                         $grupaPrezes = array("sekretarz sądowy","starszy sekretarz sądowy","sędzia","referendarz sądowy","asystent sędziego","aplikant kuratorski","kurator zawodowy","starszy kurator zawodowy","ławnik","kurator społeczny","praktykant","kurator specjalny");
-                        $grupaDyrektor = array("główny specjalista do spraw administracyjno-kadrowych","specjalista do spraw administracyjno-kadrowych","informatyk","główny księgowy","księgowy","woźny sądowy","Stażysta","archiwista","inspektor");
+                        $grupaDyrektor = array("sekretarz sądowy","starszy sekretarz sądowy","specjalista ds. administracyjnych i finansowych","administrator systemu informatycznego","główny księgowy","zastępca głównego księgowego","p.o. sekretarka","protokolant sądowy","woźny sadowy","sekretarka","sekretarz","specjalista ds. administracyjno-gospodarczych","kasjer","starszy inspektor","praktykant absolwencki","pracownik archiwum");
                         $szef = "Prezes";
                         if (in_array($zapisanegrupy, $grupaDyrektor)) {
                             $szef = "Dyrektor";
@@ -135,12 +135,30 @@
                         } else {
                             $html = UpowaznienieText::upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef);
                         }
+                    } else if  (strpos($sqlfirma, 'TKwadrat') !== false) {
+                        if ($plec == "k") {
+                            $html = UpowaznienieText::upowaznienie_kobieta_Fundacja($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        } else {
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_Fundacja($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        }
+                    } else if  (strpos($sqlfirma, 'Rzecznik') !== false) {
+                        if ($plec == "k") {
+                            $html = UpowaznienieText::upowaznienie_kobieta_Rzecznik($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        } else {
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_Rzecznik($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        }
+                    } else if  (strpos($sqlfirma, 'Dyscyplinarny') !== false) {
+                        if ($plec == "k") {
+                            $html = UpowaznienieText::upowaznienie_kobieta_SD($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        } else {
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_SD($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        }
                     } else {
                         if ($plec == "k") {
                             $html = UpowaznienieText::upowaznienie_kobieta_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         } else {
                             $html = UpowaznienieText::upowaznienie_mezczyzna_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
-                        } 
+                        }
                     }
                     $mpdf = new mPDF();
                     $mpdf->WriteHTML($html);

@@ -99,17 +99,39 @@
                     $ulica = R::getCell($sql);
                     require_once("resources/MPDF57/mpdf.php");
                     require_once('resources/php/UpowaznienieText.php');
-                    if ($sqlfirma=="Sąd Rejonowy w Myśliborzu") {
-                        if ($plec == "k") {
-                            $html = UpowaznienieText::upowaznienie_kobieta_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
-                        } else {
-                            $html = UpowaznienieText::upowaznienie_mezczyzna_SRMysliborz($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                    if (strpos($sqlfirma, 'Sąd Rejonowy') !== false) {
+                        $miejscowosc = substr($sqlfirma, 16);
+                        $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'  AND grupa!='dane szczególnej kategorii'";
+                        $zapisanegrupy = R::getCol($sql); 
+                        $zapisanegrupy = trim($zapisanegrupy[0]);
+                        $grupaPrezes = array("sekretarz sądowy", "starszy sekretarz sądowy", "sędzia", "referendarz sądowy", "asystent sędziego", "aplikant kuratorski", "kurator zawodowy", "starszy kurator zawodowy", "ławnik", "kurator społeczny", "praktykant", "kurator specjalny");
+                        $grupaDyrektor = array("sekretarz sądowy","starszy sekretarz sądowy","specjalista ds. administracyjnych i finansowych","administrator systemu informatycznego","główny księgowy","zastępca głównego księgowego","p.o. sekretarka","protokolant sądowy","woźny sadowy","sekretarka","sekretarz","specjalista ds. administracyjno-gospodarczych","kasjer","starszy inspektor","praktykant absolwencki","pracownik archiwum");
+                        $szef = "Prezes";
+                        if (in_array($zapisanegrupy, $grupaDyrektor)) {
+                            $szef = "Dyrektor";
                         }
-                    } else if ($sqlfirma=="Sąd Rejonowy w Pułtusku") {
                         if ($plec == "k") {
-                            $html = UpowaznienieText::upowaznienie_kobieta_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                            $html = UpowaznienieText::upowaznienie_kobieta_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef);
                         } else {
-                            $html = UpowaznienieText::upowaznienie_mezczyzna_SRPultusk($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_SR($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy, $szef);
+                        }
+                    } else if  (strpos($sqlfirma, 'TKwadrat') !== false) {
+                        if ($plec == "k") {
+                            $html = UpowaznienieText::upowaznienie_kobieta_Fundacja($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        } else {
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_Fundacja($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        }
+                    } else if  (strpos($sqlfirma, 'Rzecznik') !== false) {
+                        if ($plec == "k") {
+                            $html = UpowaznienieText::upowaznienie_kobieta_Rzecznik($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        } else {
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_Rzecznik($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        }
+                    } else if  (strpos($sqlfirma, 'Dyscyplinarny') !== false) {
+                        if ($plec == "k") {
+                            $html = UpowaznienieText::upowaznienie_kobieta_SD($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
+                        } else {
+                            $html = UpowaznienieText::upowaznienie_mezczyzna_SD($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         }
                     } else {
                         if ($plec == "k") {
@@ -118,7 +140,7 @@
                             $html = UpowaznienieText::upowaznienie_mezczyzna_old($nrupowaznienia, $sqlfirma, $miejscowosc, $ulica, $datanadania, $imienaz, $grupy);
                         }
                     }
-                    $mpdf = new mPDF();
+            $mpdf = new mPDF();
                     $mpdf->WriteHTML($html);
                     require_once('resources/php/ConvertNames.php');
                     $imienazplik = ConvertNames::cn($imienaz);

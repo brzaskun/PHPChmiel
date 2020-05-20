@@ -81,7 +81,7 @@
                 echo NextslideTest::$wybranepytania[NextslideTest::$ilosc]['pytanie']; ?></span>
                     </div>
                     <div class="odpowiedzitest" >
-                        <div style="height: 25%;">
+                        <div style="height: 35%;">
                             <table>
                                 <tr>
                                     <td style="vertical-align: baseline;">
@@ -93,7 +93,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div style="height: 25%;"> 
+                        <div style="height: 35%;"> 
                             <table>
                                 <tr>
                                     <td style="vertical-align: baseline;">
@@ -105,7 +105,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div style="height: 25%;">
+                        <div style="height: 35%;">
                             <table>
                                 <tr>
                                     <td style="vertical-align: baseline;">
@@ -117,7 +117,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div style="height: 25%;">
+                        <div style="height: 35%;">
                             <table>
                                 <tr>
                                     <td style="vertical-align: baseline;">
