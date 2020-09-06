@@ -144,10 +144,11 @@ $_wynik_firmaall = R::getAll('SELECT * FROM zakladpracy');
                     $wiersz = array();
                     for ($col = 0; $col < $highestColumnIndex; ++$col) {
                         $cell = $worksheet->getCellByColumnAndRow($col, $row);
-                        $val = $cell->getValue();
+                        $valtmp = $cell->getValue();
                         if (get_class($val) == "PHPExcel_RichText") {
-                            $val = $cell->getValue()->getPlainText();
+                            $valtmp = $cell->getValue()->getPlainText();
                         }
+                        $val = trim($valtmp);
                         $dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
                         echo '<td>' . $val . '</td>';
                         //walidacja adresu mail
