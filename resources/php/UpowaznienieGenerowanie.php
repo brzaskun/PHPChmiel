@@ -174,8 +174,8 @@ class UpowaznienieGenerowanie {
         $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'  AND grupa!='dane szczególnej kategorii'";
         $zapisanegrupy = R::getCol($sql);
         $zapisanegrupy = mb_strtolower(trim($zapisanegrupy[0]),'UTF-8');
-        $grupaPrezes = array("sekretarz sądowy","starszy sekretarz sądowy","sędzia","referendarz sądowy","asystent sędziego","aplikant kuratorski","kurator zawodowy","starszy kurator zawodowy","ławnik","kurator społeczny","praktykant","kurator specjalny");
-        $grupaDyrektor = array("sekretarz sądowy","starszy sekretarz sądowy","specjalista ds. administracyjnych i finansowych","administrator systemu informatycznego","główny księgowy","zastępca głównego księgowego","p.o. sekretarka","protokolant sądowy","woźny sadowy","sekretarka","sekretarz","specjalista ds. administracyjno-gospodarczych","kasjer","starszy inspektor","praktykant absolwencki","pracownik archiwum");
+        $grupaPrezes = array("sędzia","referendarz sądowy","asystent sędziego","aplikant kuratorski","kurator zawodowy","starszy kurator zawodowy","ławnik","kurator społeczny","praktykant","kurator specjalny","dyrektor");
+        $grupaDyrektor = array("sekretarz sądowy","starszy sekretarz sądowy","specjalista ds. administracyjnych i finansowych","administrator systemu informatycznego","główny księgowy","zastępca głównego księgowego","p.o. sekretarka","protokolant sądowy","woźny sadowy","sekretarka","sekretarz","specjalista ds. administracyjno-gospodarczych","kasjer","starszy inspektor","praktykant absolwencki","pracownik archiwum","informatyk");
         $output = "Prezes";
         if (in_array($zapisanegrupy, $grupaDyrektor)) {
             $output = "Dyrektor";

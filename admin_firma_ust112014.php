@@ -14,6 +14,29 @@ $_szkolenia = R::getAll('select * from szkoleniewykaz');
     </form>
 </div>
 
+ <script>
+$(document).ready(function () {
+    $("#emailust").blur(function () {
+        validateeditszkolenie();
+    });
+});
+var validateEmail = function(email) {
+    // http://stackoverflow.com/a/46181/11236
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+};
+var validateeditszkolenie = function() {
+    var email = $("#emailust").val();
+    if (validateEmail(email)) {
+    } else {
+        if (email.length > 1) {
+            $("#emailust").val("nieprawidlowy adres email");
+            $("#emailust").css("color", "red");
+        }
+    }
+    return false;
+};
+</script>
 <div id='editszkolenieust'  style='margin-top: 10px; display: none;' title="Edytuj szkolenie" onload="">
     <form id="formeditszkolenieust" >
         <table id="tabelaeditszkolenieust"  style="margin-bottom: 15px;" >
