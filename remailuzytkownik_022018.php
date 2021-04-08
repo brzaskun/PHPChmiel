@@ -102,9 +102,9 @@
                     if (strpos($sqlfirma, 'Sąd Rejonowy') !== false) {
                         $miejscowosc = substr($sqlfirma, 16);
                         $sql = "SELECT uczestnikgrupy.grupa FROM uczestnikgrupy WHERE id_uczestnik = '$id'  AND grupa!='dane szczególnej kategorii'";
-                        $zapisanegrupy = R::getCol($sql); 
+                        $zapisanegrupy = R::getCol($sql);
                         $zapisanegrupy = trim($zapisanegrupy[0]);
-                        $grupaPrezes = array("sekretarz sądowy", "starszy sekretarz sądowy", "sędzia", "referendarz sądowy", "asystent sędziego", "aplikant kuratorski", "kurator zawodowy", "starszy kurator zawodowy", "ławnik", "kurator społeczny", "praktykant", "kurator specjalny");
+                        $grupaPrezes = array("sekretarz sądowy", "starszy sekretarz sądowy", "sędzia","aplikant studencki", "referendarz sądowy", "asystent sędziego", "aplikant kuratorski", "kurator zawodowy", "starszy kurator zawodowy", "ławnik", "kurator społeczny", "praktykant", "kurator specjalny");
                         $grupaDyrektor = array("sekretarz sądowy","starszy sekretarz sądowy","specjalista ds. administracyjnych i finansowych","administrator systemu informatycznego","główny księgowy","zastępca głównego księgowego","p.o. sekretarka","protokolant sądowy","woźny sadowy","sekretarka","sekretarz","specjalista ds. administracyjno-gospodarczych","kasjer","starszy inspektor","praktykant absolwencki","pracownik archiwum");
                         $szef = "Prezes";
                         if (in_array($zapisanegrupy, $grupaDyrektor)) {

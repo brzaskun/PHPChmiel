@@ -123,6 +123,9 @@ var validateeditszkolenie = function() {
                 <td><span>ilość pytań: </span></td><td><input id="Niloscpytanust" name="Niloscpytanust" style="width: 100px;"></td>
             </tr>
              <tr>
+                    <td><span>email: </span></td><td><input id="Nemailust" name="Nemailust" style="width: 240px;"></td>
+                </tr>
+             <tr>
                     <td><span>nazwa upoważnienia: </span></td><td>
                         <select id="Nnazwaupowaznienia" name="Nnazwaupowaznienia" style="width: 240px;">
                             <option value="standard">standard</option>
@@ -131,7 +134,8 @@ var validateeditszkolenie = function() {
                     </td>
                 </tr>
         </table>
-        <input id="Ndodajszkolenieust" name="Ndodajszkolenieust" value="dodaj" type="button" onclick="dodajnoweszkolenieust();"  style="padding: 5px; width: 120px; margin-left: 35%;">
+        <input id="Ndodajszkolenieust" name="Ndodajszkolenieust" value="dodaj" type="button" onclick="dodajnoweszkolenieust();"  style="padding: 5px; width: 120px; margin-left: 15%;">
+        <input id="rezygnujszkolenie" name="rezygunjszkolenie" value="rezygnuj" type="button" onclick="rezygnujnoweszkolenieust();" style="padding: 5px; width: 120px; margin-left: 15%;">
     </form>
 </div>
 <div id="dialog_user_usun" title="" style="display: none;">

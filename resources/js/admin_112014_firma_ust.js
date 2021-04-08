@@ -153,8 +153,12 @@ var generujnazwykolumn = function () {
     $("#newszkolenieust").puidialog('show');
 };
 
+var rezygnujnoweszkolenieust = function() {
+    $("#newszkolenieust").puidialog('hide');
+};
+
 var dodajnoweszkolenieust = function() {
-    var teststring = "Nfirmaszkoleniaust="+rj("Nfirmaszkoleniaust").value+"&Nnazwaszkoleniaust="+rj("Nnazwaszkoleniaust").value+"&Nnazwaupowaznienia="+rj("Nnazwaupowaznienia").value+"&Niloscpytanust="+rj("Niloscpytanust").value+"&plik=admin112014_firma_ust.php";
+    var teststring = "Nfirmaszkoleniaust="+rj("Nfirmaszkoleniaust").value+"&Nnazwaszkoleniaust="+rj("Nnazwaszkoleniaust").value+"&Nnazwaupowaznienia="+rj("Nnazwaupowaznienia").value+"&Niloscpytanust="+rj("Niloscpytanust").value+"&plik=admin112014_firma_ust.php"+"&Nemailust="+rj("Nemailust").value;
     $.ajax({
         type: "POST",
         url: "newszkolenieust_1112014.php",
@@ -176,7 +180,7 @@ var dodajwierszdotabeli = function (tablename, ostatninumer) {
     "<span class='doedycji' style='text-align: center;'>"+rj("Nfirmaszkoleniaust").value+"</span>",
     "<span class='doedycji' style='text-align: center;'>"+rj("Nnazwaszkoleniaust").value+"</span>",
     "<span class='doedycji' style='text-align: center;'>"+rj("Niloscpytanust").value+"</span>",
-    "<span></span>",
+    "<span class='doedycji' style='text-align: center;'>"+rj("Nemailust").value+"</span>",
     "<span class='doedycji' style='text-align: center;'>"+rj("Nnazwaupowaznienia").value+"</span>",
     "<span></span>",
     "<input title='edytuj' name='edytuj' value='edytuj' type='button'  onclick='editszkolenieust(this);'  class='czekedycja' style=\"display: none;\"/>",
@@ -319,7 +323,7 @@ var edytujtabeleszkolenieust = function (){
        var teststring = "emailust="+$('#emailust').val()+"&progzdawalnosciust="+$('#progzdawalnosciust').val()+"&iloscpytanust="+$('#iloscpytanust').val()+"&firmaszkoleniaust="+$('#firmaszkoleniaust').val()+"&nazwaszkoleniaust="+$('#nazwaszkoleniaust').val()+"&nazwaupowaznienia="+$('#nazwaupowaznienia').val();
        $.ajax({
         type: "POST",
-        url: "editszkolenieust_112014.php",
+        url: "editszkolenieust_112014.php", 
         data: teststring,
         cache: false
     });

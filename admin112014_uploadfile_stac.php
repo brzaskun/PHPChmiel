@@ -82,7 +82,7 @@
                            ?>"
                            type="text" onchange="dataszkoleniazachowaj()" maxlength="10" placeholder="rrrr-mm-dd" style="width: 80px;"/>
                 </div>
-            </form>
+            </form> 
         </div>
         <?php
             include_once './admin_plik_112014.php';
